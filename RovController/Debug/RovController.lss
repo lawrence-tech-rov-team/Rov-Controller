@@ -15,19 +15,19 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, READONLY
   5 .debug_aranges 00000768  00000000  00000000  00002398  2**0
                   CONTENTS, READONLY, DEBUGGING
-  6 .debug_info   00011f32  00000000  00000000  00002b00  2**0
+  6 .debug_info   00011e72  00000000  00000000  00002b00  2**0
                   CONTENTS, READONLY, DEBUGGING
-  7 .debug_abbrev 00004316  00000000  00000000  00014a32  2**0
+  7 .debug_abbrev 00004300  00000000  00000000  00014972  2**0
                   CONTENTS, READONLY, DEBUGGING
-  8 .debug_line   00004be7  00000000  00000000  00018d48  2**0
+  8 .debug_line   00004be7  00000000  00000000  00018c72  2**0
                   CONTENTS, READONLY, DEBUGGING
-  9 .debug_frame  000017bc  00000000  00000000  0001d930  2**2
+  9 .debug_frame  000017bc  00000000  00000000  0001d85c  2**2
                   CONTENTS, READONLY, DEBUGGING
- 10 .debug_str    0000335e  00000000  00000000  0001f0ec  2**0
+ 10 .debug_str    00003311  00000000  00000000  0001f018  2**0
                   CONTENTS, READONLY, DEBUGGING
- 11 .debug_loc    0000814d  00000000  00000000  0002244a  2**0
+ 11 .debug_loc    00008131  00000000  00000000  00022329  2**0
                   CONTENTS, READONLY, DEBUGGING
- 12 .debug_ranges 00000840  00000000  00000000  0002a597  2**0
+ 12 .debug_ranges 00000840  00000000  00000000  0002a45a  2**0
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
@@ -4057,9 +4057,6 @@ bool EtherComm::begin(uint16_t recvPort, uint16_t destPort, Register& csDDR, Reg
     18be:	9c e0       	ldi	r25, 0x0C	; 12
     18c0:	07 df       	rcall	.-498    	; 0x16d0 <_ZN9EtherCard21udpServerListenOnPortEPFvjPhjPKcjEj>
   
-  uint8_t* buffer = EtherCard::GetDataBufferStart();
-  
-  
   return true;
     18c2:	81 e0       	ldi	r24, 0x01	; 1
     18c4:	01 c0       	rjmp	.+2      	; 0x18c8 <_ZN9EtherComm5beginEjjRVhS1_h+0x4a>
@@ -4071,8 +4068,8 @@ bool EtherComm::begin(uint16_t recvPort, uint16_t destPort, Register& csDDR, Reg
   if (ether.begin(EtherComm::_mymac, csDDR, csPort, csPin) == 0) return false;
     18c6:	80 e0       	ldi	r24, 0x00	; 0
   
-  uint8_t* buffer = EtherCard::GetDataBufferStart();
-  
+  //Register the udpSerialPrint() method to listen to port the receive port.
+  ether.udpServerListenOnPort(&udpReceive, recvPort);
   
   return true;
 }

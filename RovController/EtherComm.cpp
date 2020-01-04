@@ -73,9 +73,6 @@ bool EtherComm::begin(uint16_t recvPort, uint16_t destPort, Register& csDDR, Reg
   //Register the udpSerialPrint() method to listen to port the receive port.
   ether.udpServerListenOnPort(&udpReceive, recvPort);
   
-  uint8_t* buffer = EtherCard::GetDataBufferStart();
-  
-  
   return true;
 }
 

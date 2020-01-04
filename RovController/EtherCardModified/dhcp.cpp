@@ -101,8 +101,8 @@ typedef struct {
 static uint8_t dhcpState = DHCP_STATE_INIT;
 static char hostname[DHCP_HOSTNAME_MAX_LEN] = "Arduino-ENC28j60-00";   // Last two characters will be filled by last 2 MAC digits ;
 static uint32_t currentXid;
-static uint32_t stateTimer;
-static uint32_t leaseStart;
+//static uint32_t stateTimer;
+//static uint32_t leaseStart;
 static uint32_t leaseTime;
 static uint8_t* bufPtr;
 
