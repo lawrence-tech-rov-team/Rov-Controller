@@ -5,14 +5,25 @@
  * Author : zcarey
  */ 
 
-#include <avr/io.h>
+#include "PinDefinitions.h"
+#include "EtherComm.h"
+#include "Peripherals/HardwareSerial.h"
 
 
-int main(void)
-{
+int main(void){
+	Serial.begin(9600);
+	Serial.println("\nInitializing...");
+	
+	
+	if(!EtherComm::begin((uint16_t)6001, (uint16_t)6002, EthernetDDR, EthernetPort, EthernetPin_CS)){
+		Serial.println("Failed to access Ethernet controller.");
+		while(1);
+	}
+	Serial.println("Connected to controller.");
+	
     /* Replace with your application code */
-    while (1) 
-    {
+    while (1) {
+		EtherComm::Loop();
     }
 }
 
