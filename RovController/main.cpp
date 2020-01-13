@@ -8,12 +8,18 @@
 #include "PinDefinitions.h"
 #include "EtherComm.h"
 #include "Peripherals/HardwareSerial.h"
+#include "Robot.h"
 
 
 int main(void){
 	Serial.begin(9600);
 	Serial.println("\nInitializing...");
 	
+	if(!rov.begin()){
+		Serial.println("Failed to initialize robot.");
+		while(1);
+	}
+	Serial.println("Robot initialized.");
 	
 	if(!EtherComm::begin((uint16_t)6001, (uint16_t)6002, EthernetDDR, EthernetPort, EthernetPin_CS)){
 		Serial.println("Failed to access Ethernet controller.");

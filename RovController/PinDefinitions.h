@@ -24,6 +24,13 @@
 #define EthernetPin		PINH
 #define EthernetPin_CS	_BV(PINH5)
 
+#define LedPort		PORTB
+#define LedDDR		DDRB
+#define LedPinPort	PINB
+#define LedPin		_BV(PINB7)
+
+
+//==================Macros==================
 typedef volatile uint8_t Register;
 #define SetHigh(Port, pin) ((Port) |= (pin))
 #define SetLow(Port, pin) ((Port) &= ~(pin))

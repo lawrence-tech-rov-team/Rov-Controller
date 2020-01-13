@@ -1,9 +1,29 @@
-#ifndef ROBOT_H
-#define ROBOT_H
+/*
+ * Robot.h
+ *
+ * Created: 1/4/2020 3:40:48 PM
+ *  Author: zcarey
+ */ 
+
+
+#ifndef ROBOT_H_
+#define ROBOT_H_
+
+
+#include "PinDefinitions.h"
 
 class Robot{
 public:
+
+	static bool begin();
+	static void SetLed(bool illuminate);
+
 private:
+
+	Robot(){}
+
 };
 
-#endif //ROBOT_H
+extern Robot rov;
+
+#endif /* ROBOT_H_ */
