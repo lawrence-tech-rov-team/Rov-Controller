@@ -38,6 +38,8 @@ Peripherals\HardwareSerial3.cpp
 
 Robot.cpp
 
+Timer1.cpp
+
 Utils\Print.cpp
 
 Utils\Stream.cpp

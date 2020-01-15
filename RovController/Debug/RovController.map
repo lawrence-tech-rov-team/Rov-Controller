@@ -416,6 +416,24 @@ Discarded input sections
  .text          0x00000000        0x0 Robot.o
  .data          0x00000000        0x0 Robot.o
  .bss           0x00000000        0x0 Robot.o
+ .text          0x00000000        0x0 Timer1.o
+ .data          0x00000000        0x0 Timer1.o
+ .bss           0x00000000        0x0 Timer1.o
+ .text._ZN6Timer17getTimeEv
+                0x00000000        0xa Timer1.o
+ .text._ZN6Timer15resetEv
+                0x00000000        0xc Timer1.o
+ .text._ZN6Timer15beginEv
+                0x00000000        0xc Timer1.o
+ .debug_info    0x00000000       0xe1 Timer1.o
+ .debug_abbrev  0x00000000       0x82 Timer1.o
+ .debug_aranges
+                0x00000000       0x30 Timer1.o
+ .debug_ranges  0x00000000       0x20 Timer1.o
+ .debug_line    0x00000000       0xe9 Timer1.o
+ .debug_str     0x00000000      0x208 Timer1.o
+ .comment       0x00000000       0x31 Timer1.o
+ .debug_frame   0x00000000       0x44 Timer1.o
  .group         0x00000000        0x8 Utils/Print.o
  .group         0x00000000        0x8 Utils/Print.o
  .group         0x00000000        0x8 Utils/Print.o
@@ -872,6 +890,7 @@ LOAD Peripherals/HardwareSerial1.o
 LOAD Peripherals/HardwareSerial2.o
 LOAD Peripherals/HardwareSerial3.o
 LOAD Robot.o
+LOAD Timer1.o
 LOAD Utils/Print.o
 LOAD Utils/Stream.o
 START GROUP

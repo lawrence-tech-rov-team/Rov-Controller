@@ -230,6 +230,12 @@
     <Compile Include="Robot.h">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="Timer1.cpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Timer1.h">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="Utils\CpuFreq.h">
       <SubType>compile</SubType>
     </Compile>
