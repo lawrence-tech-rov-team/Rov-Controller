@@ -146,6 +146,9 @@
     <Compile Include="Commands.cpp">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="Commands.h">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="EtherCardModified\bufferfiller.cpp">
       <SubType>compile</SubType>
     </Compile>
@@ -197,6 +200,12 @@
     <Compile Include="EtherComm.h">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="IDevice.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="ISensor.h">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="main.cpp">
       <SubType>compile</SubType>
     </Compile>
@@ -230,6 +239,9 @@
     <Compile Include="Robot.h">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="Sensors\DigitalSensor.h">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="Timer1.cpp">
       <SubType>compile</SubType>
     </Compile>
@@ -257,6 +269,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="EtherCardModified" />
+    <Folder Include="Sensors" />
     <Folder Include="Utils" />
     <Folder Include="Peripherals" />
   </ItemGroup>

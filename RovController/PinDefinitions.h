@@ -29,6 +29,11 @@
 #define LedPinPort	PINB
 #define LedPin		_BV(PINB7)
 
+#define TestBtnPort		PORTF
+#define TestBtnDDR		DDRF
+#define TestBtnPinPort	PINF
+#define TestBtnPin		_BV(PINF0)
+
 
 //==================Macros==================
 typedef volatile uint8_t Register;
@@ -44,5 +49,6 @@ typedef volatile uint8_t Register;
 #define bitClear(value, bit) ((value) &= ~(1UL << (bit)))
 #define bitWrite(value, bit, bitvalue) (bitvalue ? bitSet(value, bit) : bitClear(value, bit))
 
+typedef volatile uint8_t Register;
 
 #endif /* PINDEFINITIONS_H_ */
