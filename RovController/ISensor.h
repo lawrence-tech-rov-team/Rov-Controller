@@ -14,23 +14,24 @@
 #include "EtherComm.h"
 #include "Commands.h" 
 
-
+//TODO remove definitions
 #define SENSOR_TYPE_IMU 0
 #define SENSOR_TYPE_DIGITAL 1
+
 
 class ISensor : public IDevice {
 	public:
 		void Update(const uint8_t* data, uint8_t len) { //override
-			if(len > 0){
-				uint8_t type = data[0];
-				if(type == sensorType){
-					if(IsValidRequest(data + 1, len - 1)){
+			if(len >= 0){
+				//uint8_t type = data[0];
+				//if(type == sensorType){
+					if(IsValidRequest(data, len)){
 						EtherComm::buffer[2] = getId(); //TODO does this really have to be called?
-						EtherComm::buffer[3] = sensorType;
-						len = UpdateRequested(EtherComm::buffer + 4);
-						EtherComm::SendCommand(CMD_UpdateDevice, len +  2);
+						//EtherComm::buffer[3] = sensorType;
+						len = UpdateRequested(EtherComm::buffer + /*4*/3);
+						EtherComm::SendCommand(CMD_UpdateDevice, len +  /*2*/1);
 					}
-				}
+				//}
 			}
 		}
 	

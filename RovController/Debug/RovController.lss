@@ -3,31 +3,31 @@ RovController.elf:     file format elf32-avr
 
 Sections:
 Idx Name          Size      VMA       LMA       File off  Algn
-  0 .data         000000e8  00800200  00002354  000023e8  2**0
+  0 .data         000000e8  00800200  00002338  000023cc  2**0
                   CONTENTS, ALLOC, LOAD, DATA
-  1 .text         00002354  00000000  00000000  00000094  2**1
+  1 .text         00002338  00000000  00000000  00000094  2**1
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
-  2 .bss          00000561  008002e8  008002e8  000024d0  2**0
+  2 .bss          00000561  008002e8  008002e8  000024b4  2**0
                   ALLOC
-  3 .comment      00000030  00000000  00000000  000024d0  2**0
+  3 .comment      00000030  00000000  00000000  000024b4  2**0
                   CONTENTS, READONLY
-  4 .note.gnu.avr.deviceinfo 00000040  00000000  00000000  00002500  2**2
+  4 .note.gnu.avr.deviceinfo 00000040  00000000  00000000  000024e4  2**2
                   CONTENTS, READONLY
-  5 .debug_aranges 000007d8  00000000  00000000  00002540  2**0
+  5 .debug_aranges 000007d8  00000000  00000000  00002524  2**0
                   CONTENTS, READONLY, DEBUGGING
-  6 .debug_info   00013896  00000000  00000000  00002d18  2**0
+  6 .debug_info   00013879  00000000  00000000  00002cfc  2**0
                   CONTENTS, READONLY, DEBUGGING
-  7 .debug_abbrev 00004a35  00000000  00000000  000165ae  2**0
+  7 .debug_abbrev 00004a1d  00000000  00000000  00016575  2**0
                   CONTENTS, READONLY, DEBUGGING
-  8 .debug_line   00004f2b  00000000  00000000  0001afe3  2**0
+  8 .debug_line   00004f19  00000000  00000000  0001af92  2**0
                   CONTENTS, READONLY, DEBUGGING
-  9 .debug_frame  0000188c  00000000  00000000  0001ff10  2**2
+  9 .debug_frame  0000188c  00000000  00000000  0001feac  2**2
                   CONTENTS, READONLY, DEBUGGING
- 10 .debug_str    00003692  00000000  00000000  0002179c  2**0
+ 10 .debug_str    00003692  00000000  00000000  00021738  2**0
                   CONTENTS, READONLY, DEBUGGING
- 11 .debug_loc    0000848c  00000000  00000000  00024e2e  2**0
+ 11 .debug_loc    00008453  00000000  00000000  00024dca  2**0
                   CONTENTS, READONLY, DEBUGGING
- 12 .debug_ranges 000008a0  00000000  00000000  0002d2ba  2**0
+ 12 .debug_ranges 000008a0  00000000  00000000  0002d21d  2**0
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
@@ -156,7 +156,7 @@ Disassembly of section .text:
       fe:	46 0f       	add	r20, r22
      100:	ce 0f       	add	r28, r30
      102:	56 10       	cpse	r5, r6
-     104:	dc 10       	cpse	r13, r12
+     104:	ce 10       	cpse	r12, r14
 
 00000106 <__ctors_end>:
      106:	11 24       	eor	r1, r1
@@ -172,7 +172,7 @@ Disassembly of section .text:
      116:	12 e0       	ldi	r17, 0x02	; 2
      118:	a0 e0       	ldi	r26, 0x00	; 0
      11a:	b2 e0       	ldi	r27, 0x02	; 2
-     11c:	e4 e5       	ldi	r30, 0x54	; 84
+     11c:	e8 e3       	ldi	r30, 0x38	; 56
      11e:	f3 e2       	ldi	r31, 0x23	; 35
      120:	00 e0       	ldi	r16, 0x00	; 0
      122:	0b bf       	out	0x3b, r16	; 59
@@ -207,14 +207,14 @@ Disassembly of section .text:
      14c:	01 09       	sbc	r16, r1
      14e:	80 2f       	mov	r24, r16
      150:	fe 01       	movw	r30, r28
-     152:	0e 94 8a 11 	call	0x2314	; 0x2314 <__tablejump2__>
+     152:	0e 94 7c 11 	call	0x22f8	; 0x22f8 <__tablejump2__>
      156:	cd 37       	cpi	r28, 0x7D	; 125
      158:	d1 07       	cpc	r29, r17
      15a:	80 e0       	ldi	r24, 0x00	; 0
      15c:	08 07       	cpc	r16, r24
      15e:	a9 f7       	brne	.-22     	; 0x14a <__do_global_ctors+0xa>
      160:	0e 94 df 0c 	call	0x19be	; 0x19be <main>
-     164:	0c 94 a8 11 	jmp	0x2350	; 0x2350 <_exit>
+     164:	0c 94 9a 11 	jmp	0x2334	; 0x2334 <_exit>
 
 00000168 <__bad_interrupt>:
      168:	4b cf       	rjmp	.-362    	; 0x0 <__vectors>
@@ -294,7 +294,7 @@ void RunLedCommand(const uint8_t* data, uint8_t len){
      1ba:	91 11       	cpse	r25, r1
      1bc:	01 c0       	rjmp	.+2      	; 0x1c0 <_Z13RunLedCommandPKhh+0x14>
      1be:	80 e0       	ldi	r24, 0x00	; 0
-     1c0:	0c 94 bc 10 	jmp	0x2178	; 0x2178 <_ZN5Robot6SetLedEb>
+     1c0:	0c 94 ae 10 	jmp	0x215c	; 0x215c <_ZN5Robot6SetLedEb>
      1c4:	08 95       	ret
 
 000001c6 <_Z22RunUpdateDeviceCommandPKhh>:
@@ -968,7 +968,7 @@ static void process_dhcp_ack(uint16_t len) {
      610:	a8 ee       	ldi	r26, 0xE8	; 232
                 leaseTime *= 1000;      // milliseconds
      612:	b3 e0       	ldi	r27, 0x03	; 3
-     614:	0e 94 80 11 	call	0x2300	; 0x2300 <__muluhisi3>
+     614:	0e 94 72 11 	call	0x22e4	; 0x22e4 <__muluhisi3>
      618:	60 93 ef 02 	sts	0x02EF, r22	; 0x8002ef <_ZL9leaseTime>
      61c:	70 93 f0 02 	sts	0x02F0, r23	; 0x8002f0 <_ZL9leaseTime+0x1>
      620:	80 93 f1 02 	sts	0x02F1, r24	; 0x8002f1 <_ZL9leaseTime+0x2>
@@ -2205,7 +2205,7 @@ uint8_t EtherCard::packetLoopIcmpCheckReply (const uint8_t *ip_monitoredhost) {
      eb0:	70 e0       	ldi	r23, 0x00	; 0
      eb2:	8c e0       	ldi	r24, 0x0C	; 12
      eb4:	93 e0       	ldi	r25, 0x03	; 3
-     eb6:	0e 94 92 11 	call	0x2324	; 0x2324 <memcpy_P>
+     eb6:	0e 94 84 11 	call	0x2308	; 0x2308 <memcpy_P>
      eba:	ee e1       	ldi	r30, 0x1E	; 30
      ebc:	f3 e0       	ldi	r31, 0x03	; 3
      ebe:	df 01       	movw	r26, r30
@@ -2243,7 +2243,7 @@ uint8_t EtherCard::packetLoopIcmpCheckReply (const uint8_t *ip_monitoredhost) {
      efa:	bc 01       	movw	r22, r24
      efc:	8a e1       	ldi	r24, 0x1A	; 26
      efe:	93 e0       	ldi	r25, 0x03	; 3
-     f00:	0e 94 9b 11 	call	0x2336	; 0x2336 <memcmp>
+     f00:	0e 94 8d 11 	call	0x231a	; 0x231a <memcmp>
      f04:	89 2b       	or	r24, r25
      f06:	31 f4       	brne	.+12     	; 0xf14 <_ZL16client_store_macPhS_+0x24>
      f08:	64 e1       	ldi	r22, 0x14	; 20
@@ -2332,7 +2332,7 @@ uint8_t EtherCard::packetLoopIcmpCheckReply (const uint8_t *ip_monitoredhost) {
      fa6:	be 01       	movw	r22, r28
      fa8:	82 e1       	ldi	r24, 0x12	; 18
      faa:	95 e0       	ldi	r25, 0x05	; 5
-     fac:	0e 94 9b 11 	call	0x2336	; 0x2336 <memcmp>
+     fac:	0e 94 8d 11 	call	0x231a	; 0x231a <memcmp>
      fb0:	89 2b       	or	r24, r25
      fb2:	29 f4       	brne	.+10     	; 0xfbe <_ZN9EtherCard10udpPrepareEjPKhj+0x68>
      fb4:	68 e3       	ldi	r22, 0x38	; 56
@@ -2351,7 +2351,7 @@ uint8_t EtherCard::packetLoopIcmpCheckReply (const uint8_t *ip_monitoredhost) {
      fce:	70 e0       	ldi	r23, 0x00	; 0
      fd0:	8c e0       	ldi	r24, 0x0C	; 12
      fd2:	93 e0       	ldi	r25, 0x03	; 3
-     fd4:	0e 94 92 11 	call	0x2324	; 0x2324 <memcpy_P>
+     fd4:	0e 94 84 11 	call	0x2308	; 0x2308 <memcpy_P>
      fd8:	18 8a       	std	Y+16, r1	; 0x10
      fda:	81 e1       	ldi	r24, 0x11	; 17
      fdc:	8f 8b       	std	Y+23, r24	; 0x17
@@ -2785,7 +2785,7 @@ static void client_syn(uint8_t srcport,uint8_t dstport_h,uint8_t dstport_l) {
     1274:	70 e0       	ldi	r23, 0x00	; 0
     1276:	8c e0       	ldi	r24, 0x0C	; 12
     1278:	93 e0       	ldi	r25, 0x03	; 3
-    127a:	0e 94 92 11 	call	0x2324	; 0x2324 <memcpy_P>
+    127a:	0e 94 84 11 	call	0x2308	; 0x2308 <memcpy_P>
     gPB[IP_TOTLEN_L_P] = 44; // good for syn
     127e:	8c e2       	ldi	r24, 0x2C	; 44
     1280:	89 8b       	std	Y+17, r24	; 0x11
@@ -2930,7 +2930,7 @@ static uint8_t eth_type_is_arp_and_my_ip(uint16_t len) {
     1342:	75 e0       	ldi	r23, 0x05	; 5
     1344:	84 e2       	ldi	r24, 0x24	; 36
     1346:	93 e0       	ldi	r25, 0x03	; 3
-    1348:	f6 d7       	rcall	.+4076   	; 0x2336 <memcmp>
+    1348:	e8 d7       	rcall	.+4048   	; 0x231a <memcmp>
     134a:	89 2b       	or	r24, r25
     return true;
 }
@@ -3079,7 +3079,7 @@ static uint8_t eth_type_is_ip_and_my_ip(uint16_t len) {
     1430:	75 e0       	ldi	r23, 0x05	; 5
     1432:	8c e1       	ldi	r24, 0x1C	; 28
     1434:	93 e0       	ldi	r25, 0x03	; 3
-    1436:	7f d7       	rcall	.+3838   	; 0x2336 <memcmp>
+    1436:	71 d7       	rcall	.+3810   	; 0x231a <memcmp>
 }
 
 static uint8_t eth_type_is_ip_and_my_ip(uint16_t len) {
@@ -3097,7 +3097,7 @@ static uint8_t eth_type_is_ip_and_my_ip(uint16_t len) {
     1444:	75 e0       	ldi	r23, 0x05	; 5
     1446:	8c e1       	ldi	r24, 0x1C	; 28
     1448:	93 e0       	ldi	r25, 0x03	; 3
-    144a:	75 d7       	rcall	.+3818   	; 0x2336 <memcmp>
+    144a:	67 d7       	rcall	.+3790   	; 0x231a <memcmp>
     144c:	89 2b       	or	r24, r25
     144e:	09 f4       	brne	.+2      	; 0x1452 <_ZN9EtherCard10packetLoopEj+0x2aa>
     1450:	55 c1       	rjmp	.+682    	; 0x16fc <_ZN9EtherCard10packetLoopEj+0x554>
@@ -3108,7 +3108,7 @@ static uint8_t eth_type_is_ip_and_my_ip(uint16_t len) {
     1458:	72 e0       	ldi	r23, 0x02	; 2
     145a:	8c e1       	ldi	r24, 0x1C	; 28
     145c:	93 e0       	ldi	r25, 0x03	; 3
-    145e:	6b d7       	rcall	.+3798   	; 0x2336 <memcmp>
+    145e:	5d d7       	rcall	.+3770   	; 0x231a <memcmp>
     1460:	89 2b       	or	r24, r25
     1462:	09 f4       	brne	.+2      	; 0x1466 <_ZN9EtherCard10packetLoopEj+0x2be>
     1464:	4b c1       	rjmp	.+662    	; 0x16fc <_ZN9EtherCard10packetLoopEj+0x554>
@@ -3217,7 +3217,7 @@ static uint8_t check_ip_message_is_from(const uint8_t *ip) {
     14dc:	75 e0       	ldi	r23, 0x05	; 5
     14de:	88 e1       	ldi	r24, 0x18	; 24
     14e0:	93 e0       	ldi	r25, 0x03	; 3
-    14e2:	29 d7       	rcall	.+3666   	; 0x2336 <memcmp>
+    14e2:	1b d7       	rcall	.+3638   	; 0x231a <memcmp>
     14e4:	89 2b       	or	r24, r25
     14e6:	09 f0       	breq	.+2      	; 0x14ea <_ZN9EtherCard10packetLoopEj+0x342>
         return 0; //from here on we are only interested in TCP-packets; these are longer than 54 bytes
@@ -4262,8 +4262,8 @@ int main(void){
     19d4:	95 e0       	ldi	r25, 0x05	; 5
 	
 	if(!rov.begin()){
-    19d6:	53 d4       	rcall	.+2214   	; 0x227e <_ZN5Print7printlnEPKc>
-    19d8:	e9 d3       	rcall	.+2002   	; 0x21ac <_ZN5Robot5beginEv>
+    19d6:	45 d4       	rcall	.+2186   	; 0x2262 <_ZN5Print7printlnEPKc>
+    19d8:	db d3       	rcall	.+1974   	; 0x2190 <_ZN5Robot5beginEv>
     19da:	81 11       	cpse	r24, r1
     19dc:	06 c0       	rjmp	.+12     	; 0x19ea <main+0x2c>
 		Serial.println("Failed to initialize robot.");
@@ -4271,7 +4271,7 @@ int main(void){
     19e0:	72 e0       	ldi	r23, 0x02	; 2
     19e2:	85 e7       	ldi	r24, 0x75	; 117
     19e4:	95 e0       	ldi	r25, 0x05	; 5
-    19e6:	4b d4       	rcall	.+2198   	; 0x227e <_ZN5Print7printlnEPKc>
+    19e6:	3d d4       	rcall	.+2170   	; 0x2262 <_ZN5Print7printlnEPKc>
     19e8:	ff cf       	rjmp	.-2      	; 0x19e8 <main+0x2a>
 		while(1);
 	}
@@ -4280,7 +4280,7 @@ int main(void){
     19ec:	72 e0       	ldi	r23, 0x02	; 2
     19ee:	85 e7       	ldi	r24, 0x75	; 117
     19f0:	95 e0       	ldi	r25, 0x05	; 5
-    19f2:	45 d4       	rcall	.+2186   	; 0x227e <_ZN5Print7printlnEPKc>
+    19f2:	37 d4       	rcall	.+2158   	; 0x2262 <_ZN5Print7printlnEPKc>
 	
 	if(!EtherComm::begin((uint16_t)6001, (uint16_t)6002, EthernetDDR, EthernetPort, EthernetPin_CS)){
     19f4:	00 e2       	ldi	r16, 0x20	; 32
@@ -4303,7 +4303,7 @@ int main(void){
 		while(1);
 	}
 	Serial.println("Connected to controller.");
-    1a14:	34 d4       	rcall	.+2152   	; 0x227e <_ZN5Print7printlnEPKc>
+    1a14:	26 d4       	rcall	.+2124   	; 0x2262 <_ZN5Print7printlnEPKc>
     1a16:	ff cf       	rjmp	.-2      	; 0x1a16 <main+0x58>
     1a18:	64 ea       	ldi	r22, 0xA4	; 164
     1a1a:	72 e0       	ldi	r23, 0x02	; 2
@@ -4315,7 +4315,7 @@ int main(void){
   static void Loop(){
     ether.packetLoop(ether.packetReceive());
     1a1e:	95 e0       	ldi	r25, 0x05	; 5
-    1a20:	2e d4       	rcall	.+2140   	; 0x227e <_ZN5Print7printlnEPKc>
+    1a20:	20 d4       	rcall	.+2112   	; 0x2262 <_ZN5Print7printlnEPKc>
     1a22:	07 d8       	rcall	.-4082   	; 0xa32 <_ZN8ENC28J6013packetReceiveEv>
     1a24:	c1 db       	rcall	.-2174   	; 0x11a8 <_ZN9EtherCard10packetLoopEj>
     1a26:	fd cf       	rjmp	.-6      	; 0x1a22 <main+0x64>
@@ -4752,7 +4752,7 @@ void HardwareSerial::begin(unsigned long baud, uint8_t config)
     1c1a:	90 e0       	ldi	r25, 0x00	; 0
     1c1c:	a7 01       	movw	r20, r14
     1c1e:	96 01       	movw	r18, r12
-    1c20:	3e d3       	rcall	.+1660   	; 0x229e <__udivmodsi4>
+    1c20:	30 d3       	rcall	.+1632   	; 0x2282 <__udivmodsi4>
     1c22:	da 01       	movw	r26, r20
     1c24:	c9 01       	movw	r24, r18
     1c26:	01 97       	sbiw	r24, 0x01	; 1
@@ -4785,7 +4785,7 @@ void HardwareSerial::begin(unsigned long baud, uint8_t config)
     1c4a:	90 e0       	ldi	r25, 0x00	; 0
     1c4c:	a7 01       	movw	r20, r14
     1c4e:	96 01       	movw	r18, r12
-    1c50:	26 d3       	rcall	.+1612   	; 0x229e <__udivmodsi4>
+    1c50:	18 d3       	rcall	.+1584   	; 0x2282 <__udivmodsi4>
     1c52:	da 01       	movw	r26, r20
     1c54:	c9 01       	movw	r24, r18
     1c56:	01 97       	sbiw	r24, 0x01	; 1
@@ -5468,387 +5468,373 @@ bool Robot::RegisterDevices(){
 00002118 <_ZN7ISensor6UpdateEPKhh>:
     2118:	cf 93       	push	r28
     211a:	df 93       	push	r29
-    211c:	44 23       	and	r20, r20
-    211e:	49 f1       	breq	.+82     	; 0x2172 <_ZN7ISensor6UpdateEPKhh+0x5a>
-    2120:	fb 01       	movw	r30, r22
-    2122:	30 81       	ld	r19, Z
-    2124:	fc 01       	movw	r30, r24
-    2126:	23 81       	ldd	r18, Z+3	; 0x03
-    2128:	32 13       	cpse	r19, r18
-    212a:	23 c0       	rjmp	.+70     	; 0x2172 <_ZN7ISensor6UpdateEPKhh+0x5a>
-    212c:	ec 01       	movw	r28, r24
-    212e:	41 50       	subi	r20, 0x01	; 1
-    2130:	6f 5f       	subi	r22, 0xFF	; 255
-    2132:	7f 4f       	sbci	r23, 0xFF	; 255
-    2134:	01 90       	ld	r0, Z+
-    2136:	f0 81       	ld	r31, Z
-    2138:	e0 2d       	mov	r30, r0
-    213a:	02 80       	ldd	r0, Z+2	; 0x02
-    213c:	f3 81       	ldd	r31, Z+3	; 0x03
-    213e:	e0 2d       	mov	r30, r0
-    2140:	19 95       	eicall
-    2142:	88 23       	and	r24, r24
-    2144:	b1 f0       	breq	.+44     	; 0x2172 <_ZN7ISensor6UpdateEPKhh+0x5a>
-    2146:	e0 91 24 02 	lds	r30, 0x0224	; 0x800224 <_ZN9EtherComm6bufferE>
-    214a:	f0 91 25 02 	lds	r31, 0x0225	; 0x800225 <_ZN9EtherComm6bufferE+0x1>
-    214e:	8a 81       	ldd	r24, Y+2	; 0x02
-    2150:	82 83       	std	Z+2, r24	; 0x02
-    2152:	8b 81       	ldd	r24, Y+3	; 0x03
-    2154:	83 83       	std	Z+3, r24	; 0x03
-    2156:	bf 01       	movw	r22, r30
-    2158:	6c 5f       	subi	r22, 0xFC	; 252
-    215a:	7f 4f       	sbci	r23, 0xFF	; 255
-    215c:	e8 81       	ld	r30, Y
-    215e:	f9 81       	ldd	r31, Y+1	; 0x01
-    2160:	04 80       	ldd	r0, Z+4	; 0x04
-    2162:	f5 81       	ldd	r31, Z+5	; 0x05
-    2164:	e0 2d       	mov	r30, r0
-    2166:	ce 01       	movw	r24, r28
-    2168:	19 95       	eicall
-    216a:	62 e0       	ldi	r22, 0x02	; 2
-    216c:	68 0f       	add	r22, r24
-    216e:	83 e0       	ldi	r24, 0x03	; 3
-    2170:	e4 db       	rcall	.-2104   	; 0x193a <_ZN9EtherComm11SendCommandEhh>
-    2172:	df 91       	pop	r29
-    2174:	cf 91       	pop	r28
-    2176:	08 95       	ret
+    211c:	ec 01       	movw	r28, r24
+    211e:	e8 81       	ld	r30, Y
+    2120:	f9 81       	ldd	r31, Y+1	; 0x01
+    2122:	02 80       	ldd	r0, Z+2	; 0x02
+    2124:	f3 81       	ldd	r31, Z+3	; 0x03
+    2126:	e0 2d       	mov	r30, r0
+    2128:	19 95       	eicall
+    212a:	88 23       	and	r24, r24
+    212c:	a1 f0       	breq	.+40     	; 0x2156 <_ZN7ISensor6UpdateEPKhh+0x3e>
+    212e:	e0 91 24 02 	lds	r30, 0x0224	; 0x800224 <_ZN9EtherComm6bufferE>
+    2132:	f0 91 25 02 	lds	r31, 0x0225	; 0x800225 <_ZN9EtherComm6bufferE+0x1>
+    2136:	8a 81       	ldd	r24, Y+2	; 0x02
+    2138:	82 83       	std	Z+2, r24	; 0x02
+    213a:	bf 01       	movw	r22, r30
+    213c:	6d 5f       	subi	r22, 0xFD	; 253
+    213e:	7f 4f       	sbci	r23, 0xFF	; 255
+    2140:	e8 81       	ld	r30, Y
+    2142:	f9 81       	ldd	r31, Y+1	; 0x01
+    2144:	04 80       	ldd	r0, Z+4	; 0x04
+    2146:	f5 81       	ldd	r31, Z+5	; 0x05
+    2148:	e0 2d       	mov	r30, r0
+    214a:	ce 01       	movw	r24, r28
+    214c:	19 95       	eicall
+    214e:	61 e0       	ldi	r22, 0x01	; 1
+    2150:	68 0f       	add	r22, r24
+    2152:	83 e0       	ldi	r24, 0x03	; 3
+    2154:	f2 db       	rcall	.-2076   	; 0x193a <_ZN9EtherComm11SendCommandEhh>
+    2156:	df 91       	pop	r29
+    2158:	cf 91       	pop	r28
+    215a:	08 95       	ret
 
-00002178 <_ZN5Robot6SetLedEb>:
-    2178:	88 23       	and	r24, r24
-    217a:	11 f0       	breq	.+4      	; 0x2180 <_ZN5Robot6SetLedEb+0x8>
-    217c:	2f 9a       	sbi	0x05, 7	; 5
-    217e:	08 95       	ret
-    2180:	2f 98       	cbi	0x05, 7	; 5
-    2182:	08 95       	ret
+0000215c <_ZN5Robot6SetLedEb>:
+    215c:	88 23       	and	r24, r24
+    215e:	11 f0       	breq	.+4      	; 0x2164 <_ZN5Robot6SetLedEb+0x8>
+    2160:	2f 9a       	sbi	0x05, 7	; 5
+    2162:	08 95       	ret
+    2164:	2f 98       	cbi	0x05, 7	; 5
+    2166:	08 95       	ret
 
-00002184 <_ZN5Robot14RegisterDeviceER7ISensor>:
-    2184:	fc 01       	movw	r30, r24
-    2186:	22 81       	ldd	r18, Z+2	; 0x02
-    2188:	30 e0       	ldi	r19, 0x00	; 0
-    218a:	f9 01       	movw	r30, r18
-    218c:	ee 0f       	add	r30, r30
-    218e:	ff 1f       	adc	r31, r31
-    2190:	e7 5b       	subi	r30, 0xB7	; 183
-    2192:	f9 4f       	sbci	r31, 0xF9	; 249
-    2194:	40 81       	ld	r20, Z
-    2196:	51 81       	ldd	r21, Z+1	; 0x01
-    2198:	45 2b       	or	r20, r21
-    219a:	39 f4       	brne	.+14     	; 0x21aa <_ZN5Robot14RegisterDeviceER7ISensor+0x26>
-    219c:	22 0f       	add	r18, r18
-    219e:	33 1f       	adc	r19, r19
-    21a0:	f9 01       	movw	r30, r18
-    21a2:	e7 5b       	subi	r30, 0xB7	; 183
-    21a4:	f9 4f       	sbci	r31, 0xF9	; 249
-    21a6:	91 83       	std	Z+1, r25	; 0x01
-    21a8:	80 83       	st	Z, r24
-    21aa:	08 95       	ret
+00002168 <_ZN5Robot14RegisterDeviceER7ISensor>:
+    2168:	fc 01       	movw	r30, r24
+    216a:	22 81       	ldd	r18, Z+2	; 0x02
+    216c:	30 e0       	ldi	r19, 0x00	; 0
+    216e:	f9 01       	movw	r30, r18
+    2170:	ee 0f       	add	r30, r30
+    2172:	ff 1f       	adc	r31, r31
+    2174:	e7 5b       	subi	r30, 0xB7	; 183
+    2176:	f9 4f       	sbci	r31, 0xF9	; 249
+    2178:	40 81       	ld	r20, Z
+    217a:	51 81       	ldd	r21, Z+1	; 0x01
+    217c:	45 2b       	or	r20, r21
+    217e:	39 f4       	brne	.+14     	; 0x218e <_ZN5Robot14RegisterDeviceER7ISensor+0x26>
+    2180:	22 0f       	add	r18, r18
+    2182:	33 1f       	adc	r19, r19
+    2184:	f9 01       	movw	r30, r18
+    2186:	e7 5b       	subi	r30, 0xB7	; 183
+    2188:	f9 4f       	sbci	r31, 0xF9	; 249
+    218a:	91 83       	std	Z+1, r25	; 0x01
+    218c:	80 83       	st	Z, r24
+    218e:	08 95       	ret
 
-000021ac <_ZN5Robot5beginEv>:
+00002190 <_ZN5Robot5beginEv>:
 bool Robot::ReadTestBtn(){
 	return !((TestBtnPinPort & TestBtnPin) > 0);
 }
 
 bool Robot::begin(){
 	LedDDR |= LedPin;
-    21ac:	27 9a       	sbi	0x04, 7	; 4
+    2190:	27 9a       	sbi	0x04, 7	; 4
 IDevice* Robot::devices[NUM_DEVICES];
 
 DigitalSensor BtnTest(0, TestBtnDDR, TestBtnPort, TestBtnPinPort, TestBtnPin);
 
 bool Robot::RegisterDevices(){
 	RegisterDevice(BtnTest); //TODO return if successful
-    21ae:	81 e4       	ldi	r24, 0x41	; 65
-    21b0:	96 e0       	ldi	r25, 0x06	; 6
-    21b2:	e8 df       	rcall	.-48     	; 0x2184 <_ZN5Robot14RegisterDeviceER7ISensor>
+    2192:	81 e4       	ldi	r24, 0x41	; 65
+    2194:	96 e0       	ldi	r25, 0x06	; 6
+    2196:	e8 df       	rcall	.-48     	; 0x2168 <_ZN5Robot14RegisterDeviceER7ISensor>
 }
 
 bool Robot::begin(){
 	LedDDR |= LedPin;
 	return RegisterDevices();
 }
-    21b4:	81 e0       	ldi	r24, 0x01	; 1
-    21b6:	08 95       	ret
+    2198:	81 e0       	ldi	r24, 0x01	; 1
+    219a:	08 95       	ret
 
-000021b8 <_GLOBAL__sub_I__ZN5Robot7devicesE>:
+0000219c <_GLOBAL__sub_I__ZN5Robot7devicesE>:
 	}
 	
 	virtual void Update(const uint8_t* data, uint8_t len) = 0;
 	
 protected:
 	IDevice(uint8_t ID) : id(ID){
-    21b8:	e1 e4       	ldi	r30, 0x41	; 65
-    21ba:	f6 e0       	ldi	r31, 0x06	; 6
-    21bc:	12 82       	std	Z+2, r1	; 0x02
-				}
+    219c:	e1 e4       	ldi	r30, 0x41	; 65
+    219e:	f6 e0       	ldi	r31, 0x06	; 6
+    21a0:	12 82       	std	Z+2, r1	; 0x02
+				//}
 			}
 		}
 	
 	protected:
 		ISensor(uint8_t ID, uint8_t type) : IDevice(ID), sensorType(type) {
-    21be:	81 e0       	ldi	r24, 0x01	; 1
-    21c0:	83 83       	std	Z+3, r24	; 0x03
+    21a2:	81 e0       	ldi	r24, 0x01	; 1
+    21a4:	83 83       	std	Z+3, r24	; 0x03
 
 #include "../ISensor.h"
 
 class DigitalSensor : public ISensor{
 public:
 	DigitalSensor(uint8_t ID, Register& DDRPort, Register& PortPort, Register& PinPort, uint8_t Pin, bool Inversed = true) : ISensor(ID, SENSOR_TYPE_DIGITAL), pin(Pin), pinPort(&PinPort), inversed(Inversed) {
-    21c2:	23 ed       	ldi	r18, 0xD3	; 211
-    21c4:	32 e0       	ldi	r19, 0x02	; 2
-    21c6:	31 83       	std	Z+1, r19	; 0x01
-    21c8:	20 83       	st	Z, r18
-    21ca:	84 83       	std	Z+4, r24	; 0x04
-    21cc:	2f e2       	ldi	r18, 0x2F	; 47
-    21ce:	30 e0       	ldi	r19, 0x00	; 0
-    21d0:	36 83       	std	Z+6, r19	; 0x06
-    21d2:	25 83       	std	Z+5, r18	; 0x05
-    21d4:	87 83       	std	Z+7, r24	; 0x07
+    21a6:	23 ed       	ldi	r18, 0xD3	; 211
+    21a8:	32 e0       	ldi	r19, 0x02	; 2
+    21aa:	31 83       	std	Z+1, r19	; 0x01
+    21ac:	20 83       	st	Z, r18
+    21ae:	84 83       	std	Z+4, r24	; 0x04
+    21b0:	2f e2       	ldi	r18, 0x2F	; 47
+    21b2:	30 e0       	ldi	r19, 0x00	; 0
+    21b4:	36 83       	std	Z+6, r19	; 0x06
+    21b6:	25 83       	std	Z+5, r18	; 0x05
+    21b8:	87 83       	std	Z+7, r24	; 0x07
 		DDRPort &= ~pin; //Enable input
-    21d6:	80 98       	cbi	0x10, 0	; 16
+    21ba:	80 98       	cbi	0x10, 0	; 16
 		PortPort |= pin; //Enable pullup
-    21d8:	88 9a       	sbi	0x11, 0	; 17
-    21da:	08 95       	ret
+    21bc:	88 9a       	sbi	0x11, 0	; 17
+    21be:	08 95       	ret
 
-000021dc <_ZN5Print5writeEPKhj>:
+000021c0 <_ZN5Print5writeEPKhj>:
 }
 
 uint16_t Print::print(char c)
 {
   return write(c);
 }
-    21dc:	cf 92       	push	r12
-    21de:	df 92       	push	r13
-    21e0:	ef 92       	push	r14
-    21e2:	ff 92       	push	r15
-    21e4:	0f 93       	push	r16
-    21e6:	1f 93       	push	r17
-    21e8:	cf 93       	push	r28
-    21ea:	df 93       	push	r29
-    21ec:	41 15       	cp	r20, r1
-    21ee:	51 05       	cpc	r21, r1
-    21f0:	c1 f0       	breq	.+48     	; 0x2222 <__stack+0x23>
-    21f2:	6a 01       	movw	r12, r20
-    21f4:	8c 01       	movw	r16, r24
-    21f6:	e6 2e       	mov	r14, r22
-    21f8:	f7 2e       	mov	r15, r23
-    21fa:	c0 e0       	ldi	r28, 0x00	; 0
-    21fc:	d0 e0       	ldi	r29, 0x00	; 0
-    21fe:	d7 01       	movw	r26, r14
-    2200:	6d 91       	ld	r22, X+
-    2202:	7d 01       	movw	r14, r26
-    2204:	d8 01       	movw	r26, r16
-    2206:	ed 91       	ld	r30, X+
-    2208:	fc 91       	ld	r31, X
-    220a:	01 90       	ld	r0, Z+
-    220c:	f0 81       	ld	r31, Z
-    220e:	e0 2d       	mov	r30, r0
-    2210:	c8 01       	movw	r24, r16
-    2212:	19 95       	eicall
-    2214:	89 2b       	or	r24, r25
-    2216:	39 f0       	breq	.+14     	; 0x2226 <__stack+0x27>
-    2218:	21 96       	adiw	r28, 0x01	; 1
-    221a:	cc 16       	cp	r12, r28
-    221c:	dd 06       	cpc	r13, r29
-    221e:	79 f7       	brne	.-34     	; 0x21fe <_ZN5Print5writeEPKhj+0x22>
-    2220:	02 c0       	rjmp	.+4      	; 0x2226 <__stack+0x27>
-    2222:	c0 e0       	ldi	r28, 0x00	; 0
-    2224:	d0 e0       	ldi	r29, 0x00	; 0
-    2226:	ce 01       	movw	r24, r28
-    2228:	df 91       	pop	r29
-    222a:	cf 91       	pop	r28
-    222c:	1f 91       	pop	r17
-    222e:	0f 91       	pop	r16
-    2230:	ff 90       	pop	r15
-    2232:	ef 90       	pop	r14
-    2234:	df 90       	pop	r13
-    2236:	cf 90       	pop	r12
-    2238:	08 95       	ret
+    21c0:	cf 92       	push	r12
+    21c2:	df 92       	push	r13
+    21c4:	ef 92       	push	r14
+    21c6:	ff 92       	push	r15
+    21c8:	0f 93       	push	r16
+    21ca:	1f 93       	push	r17
+    21cc:	cf 93       	push	r28
+    21ce:	df 93       	push	r29
+    21d0:	41 15       	cp	r20, r1
+    21d2:	51 05       	cpc	r21, r1
+    21d4:	c1 f0       	breq	.+48     	; 0x2206 <__stack+0x7>
+    21d6:	6a 01       	movw	r12, r20
+    21d8:	8c 01       	movw	r16, r24
+    21da:	e6 2e       	mov	r14, r22
+    21dc:	f7 2e       	mov	r15, r23
+    21de:	c0 e0       	ldi	r28, 0x00	; 0
+    21e0:	d0 e0       	ldi	r29, 0x00	; 0
+    21e2:	d7 01       	movw	r26, r14
+    21e4:	6d 91       	ld	r22, X+
+    21e6:	7d 01       	movw	r14, r26
+    21e8:	d8 01       	movw	r26, r16
+    21ea:	ed 91       	ld	r30, X+
+    21ec:	fc 91       	ld	r31, X
+    21ee:	01 90       	ld	r0, Z+
+    21f0:	f0 81       	ld	r31, Z
+    21f2:	e0 2d       	mov	r30, r0
+    21f4:	c8 01       	movw	r24, r16
+    21f6:	19 95       	eicall
+    21f8:	89 2b       	or	r24, r25
+    21fa:	39 f0       	breq	.+14     	; 0x220a <__stack+0xb>
+    21fc:	21 96       	adiw	r28, 0x01	; 1
+    21fe:	cc 16       	cp	r12, r28
+    2200:	dd 06       	cpc	r13, r29
+    2202:	79 f7       	brne	.-34     	; 0x21e2 <_ZN5Print5writeEPKhj+0x22>
+    2204:	02 c0       	rjmp	.+4      	; 0x220a <__stack+0xb>
+    2206:	c0 e0       	ldi	r28, 0x00	; 0
+    2208:	d0 e0       	ldi	r29, 0x00	; 0
+    220a:	ce 01       	movw	r24, r28
+    220c:	df 91       	pop	r29
+    220e:	cf 91       	pop	r28
+    2210:	1f 91       	pop	r17
+    2212:	0f 91       	pop	r16
+    2214:	ff 90       	pop	r15
+    2216:	ef 90       	pop	r14
+    2218:	df 90       	pop	r13
+    221a:	cf 90       	pop	r12
+    221c:	08 95       	ret
 
-0000223a <_ZN5Print5printEPKc>:
-    223a:	61 15       	cp	r22, r1
-    223c:	71 05       	cpc	r23, r1
-    223e:	81 f0       	breq	.+32     	; 0x2260 <_ZN5Print5printEPKc+0x26>
-    2240:	fb 01       	movw	r30, r22
-    2242:	01 90       	ld	r0, Z+
-    2244:	00 20       	and	r0, r0
-    2246:	e9 f7       	brne	.-6      	; 0x2242 <_ZN5Print5printEPKc+0x8>
-    2248:	31 97       	sbiw	r30, 0x01	; 1
-    224a:	af 01       	movw	r20, r30
-    224c:	46 1b       	sub	r20, r22
-    224e:	57 0b       	sbc	r21, r23
-    2250:	dc 01       	movw	r26, r24
-    2252:	ed 91       	ld	r30, X+
-    2254:	fc 91       	ld	r31, X
-    2256:	02 80       	ldd	r0, Z+2	; 0x02
-    2258:	f3 81       	ldd	r31, Z+3	; 0x03
-    225a:	e0 2d       	mov	r30, r0
-    225c:	19 95       	eicall
-    225e:	08 95       	ret
-    2260:	80 e0       	ldi	r24, 0x00	; 0
-    2262:	90 e0       	ldi	r25, 0x00	; 0
-    2264:	08 95       	ret
+0000221e <_ZN5Print5printEPKc>:
+    221e:	61 15       	cp	r22, r1
+    2220:	71 05       	cpc	r23, r1
+    2222:	81 f0       	breq	.+32     	; 0x2244 <_ZN5Print5printEPKc+0x26>
+    2224:	fb 01       	movw	r30, r22
+    2226:	01 90       	ld	r0, Z+
+    2228:	00 20       	and	r0, r0
+    222a:	e9 f7       	brne	.-6      	; 0x2226 <_ZN5Print5printEPKc+0x8>
+    222c:	31 97       	sbiw	r30, 0x01	; 1
+    222e:	af 01       	movw	r20, r30
+    2230:	46 1b       	sub	r20, r22
+    2232:	57 0b       	sbc	r21, r23
+    2234:	dc 01       	movw	r26, r24
+    2236:	ed 91       	ld	r30, X+
+    2238:	fc 91       	ld	r31, X
+    223a:	02 80       	ldd	r0, Z+2	; 0x02
+    223c:	f3 81       	ldd	r31, Z+3	; 0x03
+    223e:	e0 2d       	mov	r30, r0
+    2240:	19 95       	eicall
+    2242:	08 95       	ret
+    2244:	80 e0       	ldi	r24, 0x00	; 0
+    2246:	90 e0       	ldi	r25, 0x00	; 0
+    2248:	08 95       	ret
 
-00002266 <_ZN5Print7printlnEv>:
+0000224a <_ZN5Print7printlnEv>:
   //void clearWriteError() { setWriteError(0); }
   
   virtual uint16_t write(uint8_t) = 0;
   uint16_t write(const char *str) {
 	  if (str == NULL) return 0;
 	  return write((const uint8_t *)str, strlen(str));
-    2266:	dc 01       	movw	r26, r24
-    2268:	ed 91       	ld	r30, X+
-    226a:	fc 91       	ld	r31, X
-    226c:	02 80       	ldd	r0, Z+2	; 0x02
-    226e:	f3 81       	ldd	r31, Z+3	; 0x03
-    2270:	e0 2d       	mov	r30, r0
-    2272:	42 e0       	ldi	r20, 0x02	; 2
-    2274:	50 e0       	ldi	r21, 0x00	; 0
-    2276:	69 ed       	ldi	r22, 0xD9	; 217
-    2278:	72 e0       	ldi	r23, 0x02	; 2
-    227a:	19 95       	eicall
+    224a:	dc 01       	movw	r26, r24
+    224c:	ed 91       	ld	r30, X+
+    224e:	fc 91       	ld	r31, X
+    2250:	02 80       	ldd	r0, Z+2	; 0x02
+    2252:	f3 81       	ldd	r31, Z+3	; 0x03
+    2254:	e0 2d       	mov	r30, r0
+    2256:	42 e0       	ldi	r20, 0x02	; 2
+    2258:	50 e0       	ldi	r21, 0x00	; 0
+    225a:	69 ed       	ldi	r22, 0xD9	; 217
+    225c:	72 e0       	ldi	r23, 0x02	; 2
+    225e:	19 95       	eicall
 }
 */
 uint16_t Print::println(void)
 {
   return write("\r\n");
 }
-    227c:	08 95       	ret
+    2260:	08 95       	ret
 
-0000227e <_ZN5Print7printlnEPKc>:
+00002262 <_ZN5Print7printlnEPKc>:
   n += println();
   return n;
 }
 */
 uint16_t Print::println(const char c[])
 {
-    227e:	0f 93       	push	r16
-    2280:	1f 93       	push	r17
-    2282:	cf 93       	push	r28
-    2284:	df 93       	push	r29
-    2286:	ec 01       	movw	r28, r24
+    2262:	0f 93       	push	r16
+    2264:	1f 93       	push	r17
+    2266:	cf 93       	push	r28
+    2268:	df 93       	push	r29
+    226a:	ec 01       	movw	r28, r24
   uint16_t n = print(c);
-    2288:	d8 df       	rcall	.-80     	; 0x223a <_ZN5Print5printEPKc>
-    228a:	8c 01       	movw	r16, r24
+    226c:	d8 df       	rcall	.-80     	; 0x221e <_ZN5Print5printEPKc>
+    226e:	8c 01       	movw	r16, r24
   n += println();
-    228c:	ce 01       	movw	r24, r28
-    228e:	eb df       	rcall	.-42     	; 0x2266 <_ZN5Print7printlnEv>
+    2270:	ce 01       	movw	r24, r28
+    2272:	eb df       	rcall	.-42     	; 0x224a <_ZN5Print7printlnEv>
   return n;
 }
-    2290:	80 0f       	add	r24, r16
-    2292:	91 1f       	adc	r25, r17
-    2294:	df 91       	pop	r29
-    2296:	cf 91       	pop	r28
-    2298:	1f 91       	pop	r17
-    229a:	0f 91       	pop	r16
-    229c:	08 95       	ret
+    2274:	80 0f       	add	r24, r16
+    2276:	91 1f       	adc	r25, r17
+    2278:	df 91       	pop	r29
+    227a:	cf 91       	pop	r28
+    227c:	1f 91       	pop	r17
+    227e:	0f 91       	pop	r16
+    2280:	08 95       	ret
 
-0000229e <__udivmodsi4>:
-    229e:	a1 e2       	ldi	r26, 0x21	; 33
-    22a0:	1a 2e       	mov	r1, r26
-    22a2:	aa 1b       	sub	r26, r26
-    22a4:	bb 1b       	sub	r27, r27
-    22a6:	fd 01       	movw	r30, r26
-    22a8:	0d c0       	rjmp	.+26     	; 0x22c4 <__udivmodsi4_ep>
+00002282 <__udivmodsi4>:
+    2282:	a1 e2       	ldi	r26, 0x21	; 33
+    2284:	1a 2e       	mov	r1, r26
+    2286:	aa 1b       	sub	r26, r26
+    2288:	bb 1b       	sub	r27, r27
+    228a:	fd 01       	movw	r30, r26
+    228c:	0d c0       	rjmp	.+26     	; 0x22a8 <__udivmodsi4_ep>
 
-000022aa <__udivmodsi4_loop>:
-    22aa:	aa 1f       	adc	r26, r26
-    22ac:	bb 1f       	adc	r27, r27
-    22ae:	ee 1f       	adc	r30, r30
-    22b0:	ff 1f       	adc	r31, r31
-    22b2:	a2 17       	cp	r26, r18
-    22b4:	b3 07       	cpc	r27, r19
-    22b6:	e4 07       	cpc	r30, r20
-    22b8:	f5 07       	cpc	r31, r21
-    22ba:	20 f0       	brcs	.+8      	; 0x22c4 <__udivmodsi4_ep>
-    22bc:	a2 1b       	sub	r26, r18
-    22be:	b3 0b       	sbc	r27, r19
-    22c0:	e4 0b       	sbc	r30, r20
-    22c2:	f5 0b       	sbc	r31, r21
+0000228e <__udivmodsi4_loop>:
+    228e:	aa 1f       	adc	r26, r26
+    2290:	bb 1f       	adc	r27, r27
+    2292:	ee 1f       	adc	r30, r30
+    2294:	ff 1f       	adc	r31, r31
+    2296:	a2 17       	cp	r26, r18
+    2298:	b3 07       	cpc	r27, r19
+    229a:	e4 07       	cpc	r30, r20
+    229c:	f5 07       	cpc	r31, r21
+    229e:	20 f0       	brcs	.+8      	; 0x22a8 <__udivmodsi4_ep>
+    22a0:	a2 1b       	sub	r26, r18
+    22a2:	b3 0b       	sbc	r27, r19
+    22a4:	e4 0b       	sbc	r30, r20
+    22a6:	f5 0b       	sbc	r31, r21
 
-000022c4 <__udivmodsi4_ep>:
-    22c4:	66 1f       	adc	r22, r22
-    22c6:	77 1f       	adc	r23, r23
-    22c8:	88 1f       	adc	r24, r24
-    22ca:	99 1f       	adc	r25, r25
-    22cc:	1a 94       	dec	r1
-    22ce:	69 f7       	brne	.-38     	; 0x22aa <__udivmodsi4_loop>
-    22d0:	60 95       	com	r22
-    22d2:	70 95       	com	r23
-    22d4:	80 95       	com	r24
-    22d6:	90 95       	com	r25
-    22d8:	9b 01       	movw	r18, r22
-    22da:	ac 01       	movw	r20, r24
-    22dc:	bd 01       	movw	r22, r26
-    22de:	cf 01       	movw	r24, r30
-    22e0:	08 95       	ret
+000022a8 <__udivmodsi4_ep>:
+    22a8:	66 1f       	adc	r22, r22
+    22aa:	77 1f       	adc	r23, r23
+    22ac:	88 1f       	adc	r24, r24
+    22ae:	99 1f       	adc	r25, r25
+    22b0:	1a 94       	dec	r1
+    22b2:	69 f7       	brne	.-38     	; 0x228e <__udivmodsi4_loop>
+    22b4:	60 95       	com	r22
+    22b6:	70 95       	com	r23
+    22b8:	80 95       	com	r24
+    22ba:	90 95       	com	r25
+    22bc:	9b 01       	movw	r18, r22
+    22be:	ac 01       	movw	r20, r24
+    22c0:	bd 01       	movw	r22, r26
+    22c2:	cf 01       	movw	r24, r30
+    22c4:	08 95       	ret
 
-000022e2 <__umulhisi3>:
-    22e2:	a2 9f       	mul	r26, r18
-    22e4:	b0 01       	movw	r22, r0
-    22e6:	b3 9f       	mul	r27, r19
-    22e8:	c0 01       	movw	r24, r0
-    22ea:	a3 9f       	mul	r26, r19
-    22ec:	70 0d       	add	r23, r0
-    22ee:	81 1d       	adc	r24, r1
-    22f0:	11 24       	eor	r1, r1
+000022c6 <__umulhisi3>:
+    22c6:	a2 9f       	mul	r26, r18
+    22c8:	b0 01       	movw	r22, r0
+    22ca:	b3 9f       	mul	r27, r19
+    22cc:	c0 01       	movw	r24, r0
+    22ce:	a3 9f       	mul	r26, r19
+    22d0:	70 0d       	add	r23, r0
+    22d2:	81 1d       	adc	r24, r1
+    22d4:	11 24       	eor	r1, r1
+    22d6:	91 1d       	adc	r25, r1
+    22d8:	b2 9f       	mul	r27, r18
+    22da:	70 0d       	add	r23, r0
+    22dc:	81 1d       	adc	r24, r1
+    22de:	11 24       	eor	r1, r1
+    22e0:	91 1d       	adc	r25, r1
+    22e2:	08 95       	ret
+
+000022e4 <__muluhisi3>:
+    22e4:	f0 df       	rcall	.-32     	; 0x22c6 <__umulhisi3>
+    22e6:	a5 9f       	mul	r26, r21
+    22e8:	90 0d       	add	r25, r0
+    22ea:	b4 9f       	mul	r27, r20
+    22ec:	90 0d       	add	r25, r0
+    22ee:	a4 9f       	mul	r26, r20
+    22f0:	80 0d       	add	r24, r0
     22f2:	91 1d       	adc	r25, r1
-    22f4:	b2 9f       	mul	r27, r18
-    22f6:	70 0d       	add	r23, r0
-    22f8:	81 1d       	adc	r24, r1
-    22fa:	11 24       	eor	r1, r1
-    22fc:	91 1d       	adc	r25, r1
-    22fe:	08 95       	ret
+    22f4:	11 24       	eor	r1, r1
+    22f6:	08 95       	ret
 
-00002300 <__muluhisi3>:
-    2300:	f0 df       	rcall	.-32     	; 0x22e2 <__umulhisi3>
-    2302:	a5 9f       	mul	r26, r21
-    2304:	90 0d       	add	r25, r0
-    2306:	b4 9f       	mul	r27, r20
-    2308:	90 0d       	add	r25, r0
-    230a:	a4 9f       	mul	r26, r20
-    230c:	80 0d       	add	r24, r0
-    230e:	91 1d       	adc	r25, r1
-    2310:	11 24       	eor	r1, r1
-    2312:	08 95       	ret
+000022f8 <__tablejump2__>:
+    22f8:	ee 0f       	add	r30, r30
+    22fa:	ff 1f       	adc	r31, r31
+    22fc:	88 1f       	adc	r24, r24
+    22fe:	8b bf       	out	0x3b, r24	; 59
+    2300:	07 90       	elpm	r0, Z+
+    2302:	f6 91       	elpm	r31, Z
+    2304:	e0 2d       	mov	r30, r0
+    2306:	19 94       	eijmp
 
-00002314 <__tablejump2__>:
-    2314:	ee 0f       	add	r30, r30
-    2316:	ff 1f       	adc	r31, r31
-    2318:	88 1f       	adc	r24, r24
-    231a:	8b bf       	out	0x3b, r24	; 59
-    231c:	07 90       	elpm	r0, Z+
-    231e:	f6 91       	elpm	r31, Z
-    2320:	e0 2d       	mov	r30, r0
-    2322:	19 94       	eijmp
+00002308 <memcpy_P>:
+    2308:	fb 01       	movw	r30, r22
+    230a:	dc 01       	movw	r26, r24
+    230c:	02 c0       	rjmp	.+4      	; 0x2312 <memcpy_P+0xa>
+    230e:	05 90       	lpm	r0, Z+
+    2310:	0d 92       	st	X+, r0
+    2312:	41 50       	subi	r20, 0x01	; 1
+    2314:	50 40       	sbci	r21, 0x00	; 0
+    2316:	d8 f7       	brcc	.-10     	; 0x230e <memcpy_P+0x6>
+    2318:	08 95       	ret
 
-00002324 <memcpy_P>:
-    2324:	fb 01       	movw	r30, r22
-    2326:	dc 01       	movw	r26, r24
-    2328:	02 c0       	rjmp	.+4      	; 0x232e <memcpy_P+0xa>
-    232a:	05 90       	lpm	r0, Z+
-    232c:	0d 92       	st	X+, r0
-    232e:	41 50       	subi	r20, 0x01	; 1
-    2330:	50 40       	sbci	r21, 0x00	; 0
-    2332:	d8 f7       	brcc	.-10     	; 0x232a <memcpy_P+0x6>
-    2334:	08 95       	ret
+0000231a <memcmp>:
+    231a:	fb 01       	movw	r30, r22
+    231c:	dc 01       	movw	r26, r24
+    231e:	04 c0       	rjmp	.+8      	; 0x2328 <memcmp+0xe>
+    2320:	8d 91       	ld	r24, X+
+    2322:	01 90       	ld	r0, Z+
+    2324:	80 19       	sub	r24, r0
+    2326:	21 f4       	brne	.+8      	; 0x2330 <memcmp+0x16>
+    2328:	41 50       	subi	r20, 0x01	; 1
+    232a:	50 40       	sbci	r21, 0x00	; 0
+    232c:	c8 f7       	brcc	.-14     	; 0x2320 <memcmp+0x6>
+    232e:	88 1b       	sub	r24, r24
+    2330:	99 0b       	sbc	r25, r25
+    2332:	08 95       	ret
 
-00002336 <memcmp>:
-    2336:	fb 01       	movw	r30, r22
-    2338:	dc 01       	movw	r26, r24
-    233a:	04 c0       	rjmp	.+8      	; 0x2344 <memcmp+0xe>
-    233c:	8d 91       	ld	r24, X+
-    233e:	01 90       	ld	r0, Z+
-    2340:	80 19       	sub	r24, r0
-    2342:	21 f4       	brne	.+8      	; 0x234c <memcmp+0x16>
-    2344:	41 50       	subi	r20, 0x01	; 1
-    2346:	50 40       	sbci	r21, 0x00	; 0
-    2348:	c8 f7       	brcc	.-14     	; 0x233c <memcmp+0x6>
-    234a:	88 1b       	sub	r24, r24
-    234c:	99 0b       	sbc	r25, r25
-    234e:	08 95       	ret
+00002334 <_exit>:
+    2334:	f8 94       	cli
 
-00002350 <_exit>:
-    2350:	f8 94       	cli
-
-00002352 <__stop_program>:
-    2352:	ff cf       	rjmp	.-2      	; 0x2352 <__stop_program>
+00002336 <__stop_program>:
+    2336:	ff cf       	rjmp	.-2      	; 0x2336 <__stop_program>
