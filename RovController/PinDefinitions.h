@@ -19,6 +19,12 @@
 #define SpiPin_MOSI	_BV(PINB2)
 #define SpiPin_MISO	_BV(PINB3)
 
+#define TwiPort		PORTD
+#define TwiDDR		DDRD
+#define TwiPin		PIND
+#define TwiPin_SDA	_BV(PIND1)
+#define TwiPin_SCL	_BV(PIND0)
+
 #define EthernetPort	PORTH
 #define EthernetDDR		DDRH
 #define EthernetPin		PINH

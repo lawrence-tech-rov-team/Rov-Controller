@@ -143,6 +143,30 @@
     </ToolchainSettings>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="BNO055\Adafruit_BNO055.cpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="BNO055\Adafruit_BNO055.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="BNO055\Adafruit_Sensor.cpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="BNO055\Adafruit_Sensor.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="BNO055\utility\imumaths.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="BNO055\utility\matrix.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="BNO055\utility\quaternion.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="BNO055\utility\vector.h">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="Commands.cpp">
       <SubType>compile</SubType>
     </Compile>
@@ -230,6 +254,18 @@
     <Compile Include="Peripherals\HardwareSerial_Private.h">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="Peripherals\twi.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Peripherals\twi.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Peripherals\Wire.cpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Peripherals\Wire.h">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="PinDefinitions.h">
       <SubType>compile</SubType>
     </Compile>
@@ -240,6 +276,12 @@
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="Sensors\DigitalSensor.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="TestIMU.cpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="TestIMU.h">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="Timer1.cpp">
@@ -268,7 +310,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="BNO055\utility" />
     <Folder Include="EtherCardModified" />
+    <Folder Include="BNO055" />
     <Folder Include="Sensors" />
     <Folder Include="Utils" />
     <Folder Include="Peripherals" />

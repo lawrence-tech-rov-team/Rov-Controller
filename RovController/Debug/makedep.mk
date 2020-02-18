@@ -2,6 +2,10 @@
 # Automatically-generated file. Do not edit or delete the file
 ################################################################################
 
+BNO055\Adafruit_BNO055.cpp
+
+BNO055\Adafruit_Sensor.cpp
+
 Commands.cpp
 
 EtherCardModified\bufferfiller.cpp
@@ -36,7 +40,13 @@ Peripherals\HardwareSerial2.cpp
 
 Peripherals\HardwareSerial3.cpp
 
+Peripherals\twi.c
+
+Peripherals\Wire.cpp
+
 Robot.cpp
+
+TestIMU.cpp
 
 Timer1.cpp
 

@@ -9,9 +9,10 @@
 #include "EtherComm.h"
 #include "Peripherals/HardwareSerial.h"
 #include "Robot.h"
-
+#include "TestIMU.h"
 
 int main(void){
+	TestIMU();
 	Serial.begin(9600);
 	Serial.println("\nInitializing...");
 	
