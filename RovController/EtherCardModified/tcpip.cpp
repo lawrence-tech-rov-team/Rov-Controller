@@ -85,10 +85,6 @@ static void setMACandIPs (const uint8_t *mac, const uint8_t *dst) {
     EtherCard::copyIp(gPB + IP_SRC_P, EtherCard::myip);
 }
 
-static uint8_t check_ip_message_is_from(const uint8_t *ip) {
-    return memcmp(gPB + IP_SRC_P, ip, IP_LEN) == 0;
-}
-
 static bool is_lan(const uint8_t source[IP_LEN], const uint8_t destination[IP_LEN]) {
     if(source[0] == 0 || destination[0] == 0) {
         return false;
@@ -168,31 +164,6 @@ static uint32_t getBigEndianLong(uint8_t offs) { //get the sequence number of pa
 
 uint32_t EtherCard::getSequenceNumber() {
     return getBigEndianLong(TCP_SEQ_H_P);
-}
-
-void EtherCard::clientIcmpRequest(const uint8_t *destip) {
-    if(is_lan(EtherCard::myip, destip)) {
-        setMACandIPs(destmacaddr, destip);
-    } else {
-        setMACandIPs(gwmacaddr, destip);
-    }
-    gPB[ETH_TYPE_H_P] = ETHTYPE_IP_H_V;
-    gPB[ETH_TYPE_L_P] = ETHTYPE_IP_L_V;
-    memcpy_P(gPB + IP_P,iphdr,sizeof iphdr);
-    gPB[IP_TOTLEN_L_P] = 0x54;
-    gPB[IP_PROTO_P] = IP_PROTO_ICMP_V;
-    fill_ip_hdr_checksum();
-    gPB[ICMP_TYPE_P] = ICMP_TYPE_ECHOREQUEST_V;
-    gPB[ICMP_TYPE_P+1] = 0; // code
-    gPB[ICMP_CHECKSUM_H_P] = 0;
-    gPB[ICMP_CHECKSUM_L_P] = 0;
-    gPB[ICMP_IDENT_H_P] = 5; // some number
-    gPB[ICMP_IDENT_L_P] = EtherCard::myip[3]; // last byte of my IP
-    gPB[ICMP_IDENT_L_P+1] = 0; // seq number, high byte
-    gPB[ICMP_IDENT_L_P+2] = 1; // seq number, low byte, we send only 1 ping at a time
-    memset(gPB + ICMP_DATA_P, PINGPATTERN, 56);
-    fill_checksum(ICMP_CHECKSUM_H_P, ICMP_TYPE_P, 56+8,0);
-    packetSend(98);
 }
 
 //TODO UdpPrepare
@@ -318,13 +289,6 @@ void EtherCard::registerPingCallback (void (*callback)(uint8_t *srcip)) {
     icmp_cb = callback;
 }
 
-uint8_t EtherCard::packetLoopIcmpCheckReply (const uint8_t *ip_monitoredhost) {
-    return gPB[IP_PROTO_P]==IP_PROTO_ICMP_V &&
-           gPB[ICMP_TYPE_P]==ICMP_TYPE_ECHOREPLY_V &&
-           gPB[ICMP_DATA_P]== PINGPATTERN &&
-           check_ip_message_is_from(ip_monitoredhost);
-}
-
 uint16_t EtherCard::packetLoop (uint16_t plen) {
     if (plen==0) {
         //Check every 65536 (no-packet) cycles whether we need to retry ARP request for gateway
@@ -373,15 +337,6 @@ uint16_t EtherCard::packetLoop (uint16_t plen) {
         return 0;
     }
 
-#if ETHERCARD_ICMP
-    if (gPB[IP_PROTO_P]==IP_PROTO_ICMP_V && gPB[ICMP_TYPE_P]==ICMP_TYPE_ECHOREQUEST_V)
-    {   //Service ICMP echo request (ping)
-        if (icmp_cb)
-            (*icmp_cb)(&(gPB[IP_SRC_P]));
-        make_echo_reply_from_request(plen);
-        return 0;
-    }
-#endif
 #if ETHERCARD_UDPSERVER
     if (ether.udpServerListening() && gPB[IP_PROTO_P]==IP_PROTO_UDP_V)
     {   //Call UDP server handler (callback) if one is defined for this packet

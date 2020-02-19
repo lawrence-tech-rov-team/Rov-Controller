@@ -13,21 +13,21 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, READONLY
   4 .note.gnu.avr.deviceinfo 00000040  00000000  00000000  00002a3c  2**2
                   CONTENTS, READONLY
-  5 .debug_aranges 00000898  00000000  00000000  00002a7c  2**0
+  5 .debug_aranges 00000888  00000000  00000000  00002a7c  2**0
                   CONTENTS, READONLY, DEBUGGING
-  6 .debug_info   00014150  00000000  00000000  00003314  2**0
+  6 .debug_info   00013e06  00000000  00000000  00003304  2**0
                   CONTENTS, READONLY, DEBUGGING
-  7 .debug_abbrev 00004ad9  00000000  00000000  00017464  2**0
+  7 .debug_abbrev 00004a04  00000000  00000000  0001710a  2**0
                   CONTENTS, READONLY, DEBUGGING
-  8 .debug_line   000050bd  00000000  00000000  0001bf3d  2**0
+  8 .debug_line   00004ff7  00000000  00000000  0001bb0e  2**0
                   CONTENTS, READONLY, DEBUGGING
-  9 .debug_frame  00001ad8  00000000  00000000  00020ffc  2**2
+  9 .debug_frame  00001aa4  00000000  00000000  00020b08  2**2
                   CONTENTS, READONLY, DEBUGGING
- 10 .debug_str    00005b99  00000000  00000000  00022ad4  2**0
+ 10 .debug_str    00005ae5  00000000  00000000  000225ac  2**0
                   CONTENTS, READONLY, DEBUGGING
- 11 .debug_loc    00008c98  00000000  00000000  0002866d  2**0
+ 11 .debug_loc    00008b8f  00000000  00000000  00028091  2**0
                   CONTENTS, READONLY, DEBUGGING
- 12 .debug_ranges 000007d8  00000000  00000000  00031305  2**0
+ 12 .debug_ranges 000007c8  00000000  00000000  00030c20  2**0
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
@@ -2380,12 +2380,12 @@ bool EtherCard::staticSetup (const uint8_t* my_ip,
      dfa:	08 95       	ret
 
 00000dfc <_ZL13fill_checksumhhjh>:
-uint8_t EtherCard::packetLoopIcmpCheckReply (const uint8_t *ip_monitoredhost) {
-    return gPB[IP_PROTO_P]==IP_PROTO_ICMP_V &&
-           gPB[ICMP_TYPE_P]==ICMP_TYPE_ECHOREPLY_V &&
-           gPB[ICMP_DATA_P]== PINGPATTERN &&
-           check_ip_message_is_from(ip_monitoredhost);
+{
+    for(uint8_t i=0; i<IP_LEN; i++)
+        broadcastip[i] = myip[i] | ~netmask[i];
 }
+
+void EtherCard::registerPingCallback (void (*callback)(uint8_t *srcip)) {
      dfc:	cf 92       	push	r12
      dfe:	df 92       	push	r13
      e00:	ef 92       	push	r14
@@ -2590,76 +2590,76 @@ uint8_t EtherCard::packetLoopIcmpCheckReply (const uint8_t *ip_monitoredhost) {
      f80:	cf 91       	pop	r28
      f82:	08 95       	ret
 
-00000f84 <_ZL17client_arp_whohasPh>:
-     f84:	0f 93       	push	r16
-     f86:	1f 93       	push	r17
-     f88:	cf 93       	push	r28
-     f8a:	8c 01       	movw	r16, r24
-     f8c:	85 e2       	ldi	r24, 0x25	; 37
-     f8e:	92 e0       	ldi	r25, 0x02	; 2
-     f90:	df df       	rcall	.-66     	; 0xf50 <_ZL7setMACsPKh>
-     f92:	e3 ef       	ldi	r30, 0xF3	; 243
-     f94:	f2 e0       	ldi	r31, 0x02	; 2
-     f96:	88 e0       	ldi	r24, 0x08	; 8
-     f98:	84 87       	std	Z+12, r24	; 0x0c
-     f9a:	c6 e0       	ldi	r28, 0x06	; 6
-     f9c:	c5 87       	std	Z+13, r28	; 0x0d
-     f9e:	48 e0       	ldi	r20, 0x08	; 8
-     fa0:	50 e0       	ldi	r21, 0x00	; 0
-     fa2:	6f e7       	ldi	r22, 0x7F	; 127
-     fa4:	72 e0       	ldi	r23, 0x02	; 2
-     fa6:	81 e0       	ldi	r24, 0x01	; 1
-     fa8:	93 e0       	ldi	r25, 0x03	; 3
-     faa:	0e 94 20 14 	call	0x2840	; 0x2840 <memcpy_P>
-     fae:	e3 e1       	ldi	r30, 0x13	; 19
-     fb0:	f3 e0       	ldi	r31, 0x03	; 3
-     fb2:	df 01       	movw	r26, r30
-     fb4:	1d 92       	st	X+, r1
-     fb6:	ca 95       	dec	r28
-     fb8:	e9 f7       	brne	.-6      	; 0xfb4 <_ZL17client_arp_whohasPh+0x30>
-     fba:	6d e0       	ldi	r22, 0x0D	; 13
-     fbc:	75 e0       	ldi	r23, 0x05	; 5
-     fbe:	89 e0       	ldi	r24, 0x09	; 9
-     fc0:	93 e0       	ldi	r25, 0x03	; 3
-     fc2:	77 d2       	rcall	.+1262   	; 0x14b2 <_ZN9EtherCard7copyMacEPhPKh>
-     fc4:	b8 01       	movw	r22, r16
-     fc6:	89 e1       	ldi	r24, 0x19	; 25
-     fc8:	93 e0       	ldi	r25, 0x03	; 3
-     fca:	66 d2       	rcall	.+1228   	; 0x1498 <_ZN9EtherCard6copyIpEPhPKh>
-     fcc:	69 e0       	ldi	r22, 0x09	; 9
-     fce:	75 e0       	ldi	r23, 0x05	; 5
-     fd0:	8f e0       	ldi	r24, 0x0F	; 15
-     fd2:	93 e0       	ldi	r25, 0x03	; 3
-     fd4:	61 d2       	rcall	.+1218   	; 0x1498 <_ZN9EtherCard6copyIpEPhPKh>
-     fd6:	8a e2       	ldi	r24, 0x2A	; 42
-     fd8:	90 e0       	ldi	r25, 0x00	; 0
-     fda:	23 de       	rcall	.-954    	; 0xc22 <_ZN8ENC28J6010packetSendEj>
-     fdc:	cf 91       	pop	r28
-     fde:	1f 91       	pop	r17
-     fe0:	0f 91       	pop	r16
-     fe2:	08 95       	ret
+00000f84 <_ZL16client_store_macPhS_>:
+     f84:	cf 93       	push	r28
+     f86:	df 93       	push	r29
+     f88:	eb 01       	movw	r28, r22
+     f8a:	44 e0       	ldi	r20, 0x04	; 4
+     f8c:	50 e0       	ldi	r21, 0x00	; 0
+     f8e:	bc 01       	movw	r22, r24
+     f90:	8f e0       	ldi	r24, 0x0F	; 15
+     f92:	93 e0       	ldi	r25, 0x03	; 3
+     f94:	0e 94 29 14 	call	0x2852	; 0x2852 <memcmp>
+     f98:	89 2b       	or	r24, r25
+     f9a:	31 f4       	brne	.+12     	; 0xfa8 <_ZL16client_store_macPhS_+0x24>
+     f9c:	69 e0       	ldi	r22, 0x09	; 9
+     f9e:	73 e0       	ldi	r23, 0x03	; 3
+     fa0:	ce 01       	movw	r24, r28
+     fa2:	87 d2       	rcall	.+1294   	; 0x14b2 <_ZN9EtherCard7copyMacEPhPKh>
+     fa4:	81 e0       	ldi	r24, 0x01	; 1
+     fa6:	01 c0       	rjmp	.+2      	; 0xfaa <_ZL16client_store_macPhS_+0x26>
+     fa8:	80 e0       	ldi	r24, 0x00	; 0
+     faa:	df 91       	pop	r29
+     fac:	cf 91       	pop	r28
+     fae:	08 95       	ret
 
-00000fe4 <_ZL16client_store_macPhS_>:
-     fe4:	cf 93       	push	r28
-     fe6:	df 93       	push	r29
-     fe8:	eb 01       	movw	r28, r22
-     fea:	44 e0       	ldi	r20, 0x04	; 4
-     fec:	50 e0       	ldi	r21, 0x00	; 0
-     fee:	bc 01       	movw	r22, r24
-     ff0:	8f e0       	ldi	r24, 0x0F	; 15
-     ff2:	93 e0       	ldi	r25, 0x03	; 3
-     ff4:	0e 94 29 14 	call	0x2852	; 0x2852 <memcmp>
-     ff8:	89 2b       	or	r24, r25
-     ffa:	31 f4       	brne	.+12     	; 0x1008 <_ZL16client_store_macPhS_+0x24>
-     ffc:	69 e0       	ldi	r22, 0x09	; 9
-     ffe:	73 e0       	ldi	r23, 0x03	; 3
-    1000:	ce 01       	movw	r24, r28
-    1002:	57 d2       	rcall	.+1198   	; 0x14b2 <_ZN9EtherCard7copyMacEPhPKh>
-    1004:	81 e0       	ldi	r24, 0x01	; 1
-    1006:	01 c0       	rjmp	.+2      	; 0x100a <_ZL16client_store_macPhS_+0x26>
-    1008:	80 e0       	ldi	r24, 0x00	; 0
-    100a:	df 91       	pop	r29
-    100c:	cf 91       	pop	r28
+00000fb0 <_ZL17client_arp_whohasPh>:
+     fb0:	0f 93       	push	r16
+     fb2:	1f 93       	push	r17
+     fb4:	cf 93       	push	r28
+     fb6:	8c 01       	movw	r16, r24
+     fb8:	85 e2       	ldi	r24, 0x25	; 37
+     fba:	92 e0       	ldi	r25, 0x02	; 2
+     fbc:	c9 df       	rcall	.-110    	; 0xf50 <_ZL7setMACsPKh>
+     fbe:	e3 ef       	ldi	r30, 0xF3	; 243
+     fc0:	f2 e0       	ldi	r31, 0x02	; 2
+     fc2:	88 e0       	ldi	r24, 0x08	; 8
+     fc4:	84 87       	std	Z+12, r24	; 0x0c
+     fc6:	c6 e0       	ldi	r28, 0x06	; 6
+     fc8:	c5 87       	std	Z+13, r28	; 0x0d
+     fca:	48 e0       	ldi	r20, 0x08	; 8
+     fcc:	50 e0       	ldi	r21, 0x00	; 0
+     fce:	6f e7       	ldi	r22, 0x7F	; 127
+     fd0:	72 e0       	ldi	r23, 0x02	; 2
+     fd2:	81 e0       	ldi	r24, 0x01	; 1
+     fd4:	93 e0       	ldi	r25, 0x03	; 3
+     fd6:	0e 94 20 14 	call	0x2840	; 0x2840 <memcpy_P>
+     fda:	e3 e1       	ldi	r30, 0x13	; 19
+     fdc:	f3 e0       	ldi	r31, 0x03	; 3
+     fde:	df 01       	movw	r26, r30
+     fe0:	1d 92       	st	X+, r1
+     fe2:	ca 95       	dec	r28
+     fe4:	e9 f7       	brne	.-6      	; 0xfe0 <_ZL17client_arp_whohasPh+0x30>
+     fe6:	6d e0       	ldi	r22, 0x0D	; 13
+     fe8:	75 e0       	ldi	r23, 0x05	; 5
+     fea:	89 e0       	ldi	r24, 0x09	; 9
+     fec:	93 e0       	ldi	r25, 0x03	; 3
+     fee:	61 d2       	rcall	.+1218   	; 0x14b2 <_ZN9EtherCard7copyMacEPhPKh>
+     ff0:	b8 01       	movw	r22, r16
+     ff2:	89 e1       	ldi	r24, 0x19	; 25
+     ff4:	93 e0       	ldi	r25, 0x03	; 3
+     ff6:	50 d2       	rcall	.+1184   	; 0x1498 <_ZN9EtherCard6copyIpEPhPKh>
+     ff8:	69 e0       	ldi	r22, 0x09	; 9
+     ffa:	75 e0       	ldi	r23, 0x05	; 5
+     ffc:	8f e0       	ldi	r24, 0x0F	; 15
+     ffe:	93 e0       	ldi	r25, 0x03	; 3
+    1000:	4b d2       	rcall	.+1174   	; 0x1498 <_ZN9EtherCard6copyIpEPhPKh>
+    1002:	8a e2       	ldi	r24, 0x2A	; 42
+    1004:	90 e0       	ldi	r25, 0x00	; 0
+    1006:	0d de       	rcall	.-998    	; 0xc22 <_ZN8ENC28J6010packetSendEj>
+    1008:	cf 91       	pop	r28
+    100a:	1f 91       	pop	r17
+    100c:	0f 91       	pop	r16
     100e:	08 95       	ret
 
 00001010 <_ZN9EtherCard10udpPrepareEjPKhj>:
@@ -2839,6 +2839,8 @@ uint8_t EtherCard::packetLoopIcmpCheckReply (const uint8_t *ip_monitoredhost) {
     1164:	08 95       	ret
 
 00001166 <_ZN9EtherCard10packetLoopEj>:
+    icmp_cb = callback;
+}
 
 uint16_t EtherCard::packetLoop (uint16_t plen) {
     1166:	cf 93       	push	r28
@@ -2871,7 +2873,7 @@ uint16_t EtherCard::packetLoop (uint16_t plen) {
             client_arp_whohas(gwip);
     118c:	8d ef       	ldi	r24, 0xFD	; 253
     118e:	94 e0       	ldi	r25, 0x04	; 4
-    1190:	f9 de       	rcall	.-526    	; 0xf84 <_ZL17client_arp_whohasPh>
+    1190:	0f df       	rcall	.-482    	; 0xfb0 <_ZL17client_arp_whohasPh>
             waitgwmac |= WGW_ACCEPT_ARP_REPLY;
     1192:	80 91 13 05 	lds	r24, 0x0513	; 0x800513 <_ZL9waitgwmac>
     1196:	88 60       	ori	r24, 0x08	; 8
@@ -3024,7 +3026,7 @@ static void make_arp_answer_from_request() {
     1274:	75 e0       	ldi	r23, 0x05	; 5
     1276:	8d ef       	ldi	r24, 0xFD	; 253
     1278:	94 e0       	ldi	r25, 0x04	; 4
-    127a:	b4 de       	rcall	.-664    	; 0xfe4 <_ZL16client_store_macPhS_>
+    127a:	84 de       	rcall	.-760    	; 0xf84 <_ZL16client_store_macPhS_>
     127c:	88 23       	and	r24, r24
     127e:	19 f0       	breq	.+6      	; 0x1286 <_ZN9EtherCard10packetLoopEj+0x120>
     1280:	82 e0       	ldi	r24, 0x02	; 2
@@ -3041,7 +3043,7 @@ static void make_arp_answer_from_request() {
     1298:	75 e0       	ldi	r23, 0x05	; 5
     129a:	89 ef       	ldi	r24, 0xF9	; 249
     129c:	94 e0       	ldi	r25, 0x04	; 4
-    129e:	a2 de       	rcall	.-700    	; 0xfe4 <_ZL16client_store_macPhS_>
+    129e:	72 de       	rcall	.-796    	; 0xf84 <_ZL16client_store_macPhS_>
     12a0:	88 23       	and	r24, r24
     12a2:	29 f0       	breq	.+10     	; 0x12ae <_ZN9EtherCard10packetLoopEj+0x148>
     12a4:	81 e0       	ldi	r24, 0x01	; 1
@@ -3062,7 +3064,7 @@ static void make_arp_answer_from_request() {
     12c2:	75 e0       	ldi	r23, 0x05	; 5
     12c4:	85 ef       	ldi	r24, 0xF5	; 245
     12c6:	94 e0       	ldi	r25, 0x04	; 4
-    12c8:	8d de       	rcall	.-742    	; 0xfe4 <_ZL16client_store_macPhS_>
+    12c8:	5d de       	rcall	.-838    	; 0xf84 <_ZL16client_store_macPhS_>
     12ca:	88 23       	and	r24, r24
     12cc:	09 f4       	brne	.+2      	; 0x12d0 <_ZN9EtherCard10packetLoopEj+0x16a>
     12ce:	5b c0       	rjmp	.+182    	; 0x1386 <_ZN9EtherCard10packetLoopEj+0x220>
@@ -3129,10 +3131,10 @@ static uint8_t eth_type_is_ip_and_my_ip(uint16_t len) {
     1330:	89 2b       	or	r24, r25
     1332:	49 f5       	brne	.+82     	; 0x1386 <_ZN9EtherCard10packetLoopEj+0x220>
     1334:	1d c0       	rjmp	.+58     	; 0x1370 <_ZN9EtherCard10packetLoopEj+0x20a>
-        make_echo_reply_from_request(plen);
+        //!@todo Add other protocols (and make each optional at compile time)
         return 0;
     }
-#endif
+
 #if ETHERCARD_UDPSERVER
     if (ether.udpServerListening() && gPB[IP_PROTO_P]==IP_PROTO_UDP_V)
     1336:	80 91 0a 03 	lds	r24, 0x030A	; 0x80030a <_ZN8ENC28J606bufferE+0x17>
@@ -3147,7 +3149,7 @@ static uint8_t eth_type_is_ip_and_my_ip(uint16_t len) {
     133e:	1c c0       	rjmp	.+56     	; 0x1378 <_ZN9EtherCard10packetLoopEj+0x212>
     1340:	89 ef       	ldi	r24, 0xF9	; 249
     1342:	94 e0       	ldi	r25, 0x04	; 4
-    1344:	1f de       	rcall	.-962    	; 0xf84 <_ZL17client_arp_whohasPh>
+    1344:	35 de       	rcall	.-918    	; 0xfb0 <_ZL17client_arp_whohasPh>
             waiting_for_dns_mac = true;
     1346:	81 e0       	ldi	r24, 0x01	; 1
     1348:	80 93 1d 05 	sts	0x051D, r24	; 0x80051d <_ZL19waiting_for_dns_mac>
@@ -3159,7 +3161,7 @@ static uint8_t eth_type_is_ip_and_my_ip(uint16_t len) {
             client_arp_whohas(hisip);
     134e:	85 ef       	ldi	r24, 0xF5	; 245
     1350:	94 e0       	ldi	r25, 0x04	; 4
-    1352:	18 de       	rcall	.-976    	; 0xf84 <_ZL17client_arp_whohasPh>
+    1352:	2e de       	rcall	.-932    	; 0xfb0 <_ZL17client_arp_whohasPh>
             waiting_for_dest_mac = true;
     1354:	81 e0       	ldi	r24, 0x01	; 1
     1356:	80 93 1b 05 	sts	0x051B, r24	; 0x80051b <_ZL20waiting_for_dest_mac>
@@ -3184,10 +3186,10 @@ static uint8_t eth_type_is_ip_and_my_ip(uint16_t len) {
     1368:	81 30       	cpi	r24, 0x01	; 1
     136a:	09 f0       	breq	.+2      	; 0x136e <_ZN9EtherCard10packetLoopEj+0x208>
     136c:	7a cf       	rjmp	.-268    	; 0x1262 <_ZN9EtherCard10packetLoopEj+0xfc>
-        make_echo_reply_from_request(plen);
+        //!@todo Add other protocols (and make each optional at compile time)
         return 0;
     }
-#endif
+
 #if ETHERCARD_UDPSERVER
     if (ether.udpServerListening() && gPB[IP_PROTO_P]==IP_PROTO_UDP_V)
     136e:	5a cf       	rjmp	.-332    	; 0x1224 <_ZN9EtherCard10packetLoopEj+0xbe>

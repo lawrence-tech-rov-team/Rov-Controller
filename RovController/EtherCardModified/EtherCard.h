@@ -152,17 +152,6 @@ public:
     */
     static void registerPingCallback (void (*cb)(uint8_t*));
 
-    /**   @brief  Send ping
-    *     @param  destip Pointer to 4 byte destination IP address
-    */
-    static void clientIcmpRequest (const uint8_t *destip);
-
-    /**   @brief  Check for ping response
-    *     @param  ip_monitoredhost Pointer to 4 byte IP address of host to check
-    *     @return <i>uint8_t</i> True (1) if ping response from specified host
-    */
-    static uint8_t packetLoopIcmpCheckReply (const uint8_t *ip_monitoredhost);
-
     /**   @brief  Send a wake on lan message
     *     @param  wolmac Pointer to 6 byte hardware (MAC) address of host to send message to
     */
