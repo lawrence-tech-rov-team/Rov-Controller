@@ -25,7 +25,7 @@ class SPI{
 public:
 	static void begin(uint8_t clock = SPI_CLOCK_DIV2){
 		//SPI_DIR |= SS;
-		SPI_DIR |= SPI_MOSI | SPI_SCK | SPI_SS;
+		SPI_DIR |= SPI_MOSI | SPI_SCK | SPI_SS; //Not sure why, but SS pin requires to be set as output even when not being used.
 		SPI_DIR &= ~(SPI_MISO);
 		//disableCS();
 
@@ -40,10 +40,29 @@ public:
 	//Write SPI assuming CS is low, meaning the device is selected.
 	static void write8(uint8_t data){
 		//enableCS();
+		//SPDR = data;
+		//asm volatile("nop");
+		//while(!(SPSR & _BV(SPIF)));
+		//disableCS();
 		SPDR = data;
 		asm volatile("nop");
-		while(!(SPSR & _BV(SPIF)));
-		//disableCS();
+		asm volatile("nop");
+		asm volatile("nop");
+		asm volatile("nop");
+		asm volatile("nop");
+		asm volatile("nop");
+		asm volatile("nop");
+		asm volatile("nop");
+		asm volatile("nop");
+		asm volatile("nop");
+		asm volatile("nop");
+		asm volatile("nop");
+		asm volatile("nop");
+		asm volatile("nop");
+		asm volatile("nop");
+		asm volatile("nop");
+		asm volatile("nop");
+		asm volatile("nop");
 	}
 
 	//write8, excepts also returns the received byte

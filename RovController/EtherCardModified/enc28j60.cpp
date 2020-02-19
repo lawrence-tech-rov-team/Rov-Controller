@@ -148,26 +148,16 @@ static void disableChip () {
 
 void ENC28J60::initSPI (Register& csDDR) {
 	SPI.begin(SPI_CLOCK_DIV2);
-	//SetOutput(SPI_DIR, SPI_SS);
-    //SetHigh(SPI_PORT, SPI_SS); 
-    //SetOutput(SPI_DIR, SPI_MOSI); 
-    //SetOutput(SPI_DIR, SPI_SCK); 
-    //SetInput(SPI_DIR, SPI_MISO);
 
 	SetOutput(csDDR, selectPin);
-	disableChip();//SetHigh(*selectPort, selectPin);
-	//SetHigh(SPI_PORT, SPI_MOSI); //digitalWrite(SpiPin_MOSI, HIGH);
-    //SetLow(SPI_PORT, SPI_MOSI); //digitalWrite(SpiPin_MOSI, LOW);
-    //SetLow(SPI_PORT, SPI_SCK); //digitalWrite(SpiPin_SCK, LOW);
-
-    //SPCR = bit(SPE) | bit(MSTR); // 8 MHz @ 16
-    //bitSet(SPSR, SPI2X);
+	disableChip();
 }
 
 static void xferSPI (uint8_t data) {
-    SPDR = data;
+	SPI.write8(data);
+    /*SPDR = data;
     while (!(SPSR&(1<<SPIF)))
-        ;
+        ;*/
 }
 
 static uint8_t readOp (uint8_t op, uint8_t address) {
@@ -269,12 +259,9 @@ static void writePhy (uint8_t address, uint16_t data) {
 
 uint8_t ENC28J60::initialize (uint16_t size, const uint8_t* macaddr, Register& csDDR, Register& csPort, uint8_t csPin) {
     bufferSize = size;
-    //if (bitRead(SPCR, SPE) == 0)
 	selectPin = csPin;
 	selectPort = &csPort;
-     initSPI(csDDR);
-    SetHigh(csDDR, csPin); //pinMode(selectPin, OUTPUT);
-    disableChip();
+    initSPI(csDDR);
 
     writeOp(ENC28J60_SOFT_RESET, 0, ENC28J60_SOFT_RESET);
 	_delay_ms(2);
