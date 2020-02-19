@@ -42,9 +42,7 @@ class ENC28J60 {
 public:
     static uint8_t buffer[]; //!< Data buffer (shared by receive and transmit)
     static uint16_t bufferSize; //!< Size of data buffer
-    static bool broadcast_enabled; //!< True if broadcasts enabled (used to allow temporary disable of broadcast for DHCP or other internal functions)
-    static bool promiscuous_enabled; //!< True if promiscuous mode enabled (used to allow temporary disable of promiscuous mode)
-
+	
     /**   @brief  Initialise SPI interface
     *     @note   Configures Arduino pins as input / output, etc.
     */
@@ -62,7 +60,7 @@ public:
     /**   @brief  Check if network link is connected
     *     @return <i>bool</i> True if link is up
     */
-    static bool isLinkUp ();
+    static bool isLinkUp (); //Required, packerLoop
 
     /**   @brief  Sends data to network interface
     *     @param  len Size of data to send
@@ -80,22 +78,4 @@ public:
 
 typedef ENC28J60 Ethernet; //!< Define alias Ethernet for ENC28J60
 
-
-/** Workaround for Errata 13.
-*   The transmission hardware may drop some packets because it thinks a late collision
-*   occurred (which should never happen if all cable length etc. are ok). If setting
-*   this to 1 these packages will be retried a fixed number of times. Costs about 150bytes
-*   of flash.
-*/
-#define ETHERCARD_RETRY_LATECOLLISIONS 0
-
-/** Enable pipelining of packet transmissions.
-*   If enabled the packetSend function will not block/wait until the packet is actually
-*   transmitted; but instead this wait is shifted to the next time that packetSend is
-*   called. This gives higher performance; however in combination with
-*   ETHERCARD_RETRY_LATECOLLISIONS this may lead to problems because a packet whose
-*   transmission fails because the ENC-chip thinks that it is a late collision will
-*   not be retried until the next call to packetSend.
-*/
-#define ETHERCARD_SEND_PIPELINING 0
 #endif

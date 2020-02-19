@@ -142,10 +142,6 @@ Discarded input sections
  .text          0x00000000        0x0 EtherCardModified/enc28j60.o
  .data          0x00000000        0x0 EtherCardModified/enc28j60.o
  .bss           0x00000000        0x0 EtherCardModified/enc28j60.o
- .bss._ZN8ENC28J6019promiscuous_enabledE
-                0x00000000        0x1 EtherCardModified/enc28j60.o
- .bss._ZN8ENC28J6017broadcast_enabledE
-                0x00000000        0x1 EtherCardModified/enc28j60.o
  .text          0x00000000        0x0 EtherCardModified/EtherCard.o
  .data          0x00000000        0x0 EtherCardModified/EtherCard.o
  .bss           0x00000000        0x0 EtherCardModified/EtherCard.o
@@ -791,7 +787,7 @@ END GROUP
 .rela.plt
  *(.rela.plt)
 
-.text           0x00000000     0x2870
+.text           0x00000000     0x28a0
  *(.vectors)
  .vectors       0x00000000       0xe4 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.209/gcc/dev/atmega2560/avr6/crtatmega2560.o
                 0x00000000                __vector_default
@@ -954,316 +950,316 @@ END GROUP
  .text._GLOBAL__sub_I__Z14RunPingCommandPKhh
                 0x000008ea       0x14 Commands.o
  .text._ZL10enableChipv
-                0x000008fe       0x18 EtherCardModified/enc28j60.o
+                0x000008fe       0x16 EtherCardModified/enc28j60.o
  .text._ZL11disableChipv
-                0x00000916       0x16 EtherCardModified/enc28j60.o
+                0x00000914       0x14 EtherCardModified/enc28j60.o
  .text._ZL7xferSPIh
-                0x0000092c        0xa EtherCardModified/enc28j60.o
+                0x00000928        0xa EtherCardModified/enc28j60.o
  .text._ZL7writeOphhh
-                0x00000936       0x24 EtherCardModified/enc28j60.o
+                0x00000932       0x24 EtherCardModified/enc28j60.o
  .text._ZL7readBufjPh
-                0x0000095a       0x4e EtherCardModified/enc28j60.o
+                0x00000956       0x4e EtherCardModified/enc28j60.o
  .text._ZL7SetBankh
-                0x000009a8       0x4a EtherCardModified/enc28j60.o
+                0x000009a4       0x4a EtherCardModified/enc28j60.o
  .text._ZL11readRegByteh
-                0x000009f2       0x24 EtherCardModified/enc28j60.o
+                0x000009ee       0x24 EtherCardModified/enc28j60.o
  .text._ZL12writeRegBytehh
-                0x00000a16       0x18 EtherCardModified/enc28j60.o
+                0x00000a12       0x18 EtherCardModified/enc28j60.o
  .text._ZL8writeReghj
-                0x00000a2e       0x18 EtherCardModified/enc28j60.o
+                0x00000a2a       0x18 EtherCardModified/enc28j60.o
  .text._ZL8writePhyhj
-                0x00000a46       0x20 EtherCardModified/enc28j60.o
+                0x00000a42       0x20 EtherCardModified/enc28j60.o
  .text._ZN8ENC28J607initSPIEv
-                0x00000a66       0x1c EtherCardModified/enc28j60.o
-                0x00000a66                _ZN8ENC28J607initSPIEv
+                0x00000a62       0x1c EtherCardModified/enc28j60.o
+                0x00000a62                _ZN8ENC28J607initSPIEv
  .text._ZN8ENC28J6010initializeEjPKhRVhS3_h
-                0x00000a82      0x12c EtherCardModified/enc28j60.o
-                0x00000a82                _ZN8ENC28J6010initializeEjPKhRVhS3_h
+                0x00000a7e      0x12c EtherCardModified/enc28j60.o
+                0x00000a7e                _ZN8ENC28J6010initializeEjPKhRVhS3_h
  .text._ZN8ENC28J608isLinkUpEv
-                0x00000bae       0x26 EtherCardModified/enc28j60.o
-                0x00000bae                _ZN8ENC28J608isLinkUpEv
+                0x00000baa       0x26 EtherCardModified/enc28j60.o
+                0x00000baa                _ZN8ENC28J608isLinkUpEv
  .text._ZN8ENC28J6010packetSendEj
-                0x00000bd4       0xb2 EtherCardModified/enc28j60.o
-                0x00000bd4                _ZN8ENC28J6010packetSendEj
+                0x00000bd0       0xe6 EtherCardModified/enc28j60.o
+                0x00000bd0                _ZN8ENC28J6010packetSendEj
  .text._ZN8ENC28J6013packetReceiveEv
-                0x00000c86       0xca EtherCardModified/enc28j60.o
-                0x00000c86                _ZN8ENC28J6013packetReceiveEv
+                0x00000cb6       0xca EtherCardModified/enc28j60.o
+                0x00000cb6                _ZN8ENC28J6013packetReceiveEv
  .text._ZN9EtherCard5beginEPKhRVhS3_h
-                0x00000d50       0x32 EtherCardModified/EtherCard.o
-                0x00000d50                _ZN9EtherCard5beginEPKhRVhS3_h
+                0x00000d80       0x32 EtherCardModified/EtherCard.o
+                0x00000d80                _ZN9EtherCard5beginEPKhRVhS3_h
  .text._ZN9EtherCard11staticSetupEPKhS1_S1_S1_
-                0x00000d82       0x5c EtherCardModified/EtherCard.o
-                0x00000d82                _ZN9EtherCard11staticSetupEPKhS1_S1_S1_
+                0x00000db2       0x5c EtherCardModified/EtherCard.o
+                0x00000db2                _ZN9EtherCard11staticSetupEPKhS1_S1_S1_
  .text._ZL13fill_checksumhhjh
-                0x00000dde       0xe2 EtherCardModified/tcpip.o
+                0x00000e0e       0xe2 EtherCardModified/tcpip.o
  .text._ZL6is_lanPKhS0_
-                0x00000ec0       0x54 EtherCardModified/tcpip.o
+                0x00000ef0       0x54 EtherCardModified/tcpip.o
  .text._ZL20fill_ip_hdr_checksumv
-                0x00000f14       0x1e EtherCardModified/tcpip.o
+                0x00000f44       0x1e EtherCardModified/tcpip.o
  .text._ZL7setMACsPKh
-                0x00000f32       0x14 EtherCardModified/tcpip.o
+                0x00000f62       0x14 EtherCardModified/tcpip.o
  .text._ZL12setMACandIPsPKhS0_
-                0x00000f46       0x20 EtherCardModified/tcpip.o
+                0x00000f76       0x20 EtherCardModified/tcpip.o
  .text._ZL16client_store_macPhS_
-                0x00000f66       0x2c EtherCardModified/tcpip.o
+                0x00000f96       0x2c EtherCardModified/tcpip.o
  .text._ZL17client_arp_whohasPh
-                0x00000f92       0x60 EtherCardModified/tcpip.o
+                0x00000fc2       0x60 EtherCardModified/tcpip.o
  .text._ZN9EtherCard10udpPrepareEjPKhj
-                0x00000ff2       0xa4 EtherCardModified/tcpip.o
-                0x00000ff2                _ZN9EtherCard10udpPrepareEjPKhj
+                0x00001022       0xa4 EtherCardModified/tcpip.o
+                0x00001022                _ZN9EtherCard10udpPrepareEjPKhj
  .text._ZN9EtherCard11udpTransmitEj
-                0x00001096       0x40 EtherCardModified/tcpip.o
-                0x00001096                _ZN9EtherCard11udpTransmitEj
+                0x000010c6       0x40 EtherCardModified/tcpip.o
+                0x000010c6                _ZN9EtherCard11udpTransmitEj
  .text._ZN9EtherCard7sendUdpEPKhjjS1_j
-                0x000010d6       0x30 EtherCardModified/tcpip.o
-                0x000010d6                _ZN9EtherCard7sendUdpEPKhjjS1_j
+                0x00001106       0x30 EtherCardModified/tcpip.o
+                0x00001106                _ZN9EtherCard7sendUdpEPKhjjS1_j
  .text._ZN9EtherCard7setGwIpEPKh
-                0x00001106       0x18 EtherCardModified/tcpip.o
-                0x00001106                _ZN9EtherCard7setGwIpEPKh
+                0x00001136       0x18 EtherCardModified/tcpip.o
+                0x00001136                _ZN9EtherCard7setGwIpEPKh
  .text._ZN9EtherCard22updateBroadcastAddressEv
-                0x0000111e       0x2a EtherCardModified/tcpip.o
-                0x0000111e                _ZN9EtherCard22updateBroadcastAddressEv
+                0x0000114e       0x2a EtherCardModified/tcpip.o
+                0x0000114e                _ZN9EtherCard22updateBroadcastAddressEv
  .text._ZN9EtherCard10packetLoopEj
-                0x00001148      0x22a EtherCardModified/tcpip.o
-                0x00001148                _ZN9EtherCard10packetLoopEj
+                0x00001178      0x22a EtherCardModified/tcpip.o
+                0x00001178                _ZN9EtherCard10packetLoopEj
  .text._ZN9EtherCard21udpServerListenOnPortEPFvjPhjPKcjEj
-                0x00001372       0x34 EtherCardModified/udpserver.o
-                0x00001372                _ZN9EtherCard21udpServerListenOnPortEPFvjPhjPKcjEj
+                0x000013a2       0x34 EtherCardModified/udpserver.o
+                0x000013a2                _ZN9EtherCard21udpServerListenOnPortEPFvjPhjPKcjEj
  .text._ZN9EtherCard18udpServerListeningEv
-                0x000013a6        0xe EtherCardModified/udpserver.o
-                0x000013a6                _ZN9EtherCard18udpServerListeningEv
+                0x000013d6        0xe EtherCardModified/udpserver.o
+                0x000013d6                _ZN9EtherCard18udpServerListeningEv
  .text._ZN9EtherCard27udpServerHasProcessedPacketEj
-                0x000013b4       0xc6 EtherCardModified/udpserver.o
-                0x000013b4                _ZN9EtherCard27udpServerHasProcessedPacketEj
+                0x000013e4       0xc6 EtherCardModified/udpserver.o
+                0x000013e4                _ZN9EtherCard27udpServerHasProcessedPacketEj
  .text._ZN9EtherCard6copyIpEPhPKh
-                0x0000147a       0x1a EtherCardModified/webutil.o
-                0x0000147a                _ZN9EtherCard6copyIpEPhPKh
+                0x000014aa       0x1a EtherCardModified/webutil.o
+                0x000014aa                _ZN9EtherCard6copyIpEPhPKh
  .text._ZN9EtherCard7copyMacEPhPKh
-                0x00001494       0x10 EtherCardModified/webutil.o
-                0x00001494                _ZN9EtherCard7copyMacEPhPKh
+                0x000014c4       0x10 EtherCardModified/webutil.o
+                0x000014c4                _ZN9EtherCard7copyMacEPhPKh
  .text._ZN9EtherComm13CheckChecksumEPKch
-                0x000014a4       0x38 EtherComm.o
-                0x000014a4                _ZN9EtherComm13CheckChecksumEPKch
+                0x000014d4       0x38 EtherComm.o
+                0x000014d4                _ZN9EtherComm13CheckChecksumEPKch
  .text._Z10udpReceivejPhjPKcj
-                0x000014dc       0x42 EtherComm.o
-                0x000014dc                _Z10udpReceivejPhjPKcj
+                0x0000150c       0x42 EtherComm.o
+                0x0000150c                _Z10udpReceivejPhjPKcj
  .text._ZN9EtherComm5beginEjjRVhS1_h
-                0x0000151e       0x52 EtherComm.o
-                0x0000151e                _ZN9EtherComm5beginEjjRVhS1_h
+                0x0000154e       0x52 EtherComm.o
+                0x0000154e                _ZN9EtherComm5beginEjjRVhS1_h
  .text._ZN9EtherComm11SendCommandEhh
-                0x00001570       0x84 EtherComm.o
-                0x00001570                _ZN9EtherComm11SendCommandEhh
- .text.main     0x000015f4       0x6a main.o
-                0x000015f4                main
+                0x000015a0       0x84 EtherComm.o
+                0x000015a0                _ZN9EtherComm11SendCommandEhh
+ .text.main     0x00001624       0x6a main.o
+                0x00001624                main
  .text._ZN14HardwareSerial9availableEv
-                0x0000165e       0x18 Peripherals/HardwareSerial.o
-                0x0000165e                _ZN14HardwareSerial9availableEv
+                0x0000168e       0x18 Peripherals/HardwareSerial.o
+                0x0000168e                _ZN14HardwareSerial9availableEv
  .text._ZN14HardwareSerial4peekEv
-                0x00001676       0x1c Peripherals/HardwareSerial.o
-                0x00001676                _ZN14HardwareSerial4peekEv
+                0x000016a6       0x1c Peripherals/HardwareSerial.o
+                0x000016a6                _ZN14HardwareSerial4peekEv
  .text._ZN14HardwareSerial4readEv
-                0x00001692       0x28 Peripherals/HardwareSerial.o
-                0x00001692                _ZN14HardwareSerial4readEv
+                0x000016c2       0x28 Peripherals/HardwareSerial.o
+                0x000016c2                _ZN14HardwareSerial4readEv
  .text._ZN14HardwareSerial17availableForWriteEv
-                0x000016ba       0x24 Peripherals/HardwareSerial.o
-                0x000016ba                _ZN14HardwareSerial17availableForWriteEv
+                0x000016ea       0x24 Peripherals/HardwareSerial.o
+                0x000016ea                _ZN14HardwareSerial17availableForWriteEv
  .text._ZN14HardwareSerial17_tx_udr_empty_irqEv
-                0x000016de       0x56 Peripherals/HardwareSerial.o
-                0x000016de                _ZN14HardwareSerial17_tx_udr_empty_irqEv
+                0x0000170e       0x56 Peripherals/HardwareSerial.o
+                0x0000170e                _ZN14HardwareSerial17_tx_udr_empty_irqEv
  .text._ZN14HardwareSerial5flushEv
-                0x00001734       0x46 Peripherals/HardwareSerial.o
-                0x00001734                _ZN14HardwareSerial5flushEv
+                0x00001764       0x46 Peripherals/HardwareSerial.o
+                0x00001764                _ZN14HardwareSerial5flushEv
  .text._ZN14HardwareSerial5writeEh
-                0x0000177a       0xa8 Peripherals/HardwareSerial.o
-                0x0000177a                _ZN14HardwareSerial5writeEh
+                0x000017aa       0xa8 Peripherals/HardwareSerial.o
+                0x000017aa                _ZN14HardwareSerial5writeEh
  .text._ZN14HardwareSerial5beginEmh
-                0x00001822       0xc6 Peripherals/HardwareSerial.o
-                0x00001822                _ZN14HardwareSerial5beginEmh
+                0x00001852       0xc6 Peripherals/HardwareSerial.o
+                0x00001852                _ZN14HardwareSerial5beginEmh
  .text._ZN5Print17availableForWriteEv
-                0x000018e8        0x6 Peripherals/HardwareSerial0.o
-                0x000018e8                _ZN5Print17availableForWriteEv
+                0x00001918        0x6 Peripherals/HardwareSerial0.o
+                0x00001918                _ZN5Print17availableForWriteEv
  .text.__vector_25
-                0x000018ee       0x78 Peripherals/HardwareSerial0.o
-                0x000018ee                __vector_25
+                0x0000191e       0x78 Peripherals/HardwareSerial0.o
+                0x0000191e                __vector_25
  .text.__vector_26
-                0x00001966       0x52 Peripherals/HardwareSerial0.o
-                0x00001966                __vector_26
+                0x00001996       0x52 Peripherals/HardwareSerial0.o
+                0x00001996                __vector_26
  .text._GLOBAL__sub_I___vector_25
-                0x000019b8       0x46 Peripherals/HardwareSerial0.o
+                0x000019e8       0x46 Peripherals/HardwareSerial0.o
  .text.__vector_36
-                0x000019fe       0x78 Peripherals/HardwareSerial1.o
-                0x000019fe                __vector_36
+                0x00001a2e       0x78 Peripherals/HardwareSerial1.o
+                0x00001a2e                __vector_36
  .text.__vector_37
-                0x00001a76       0x52 Peripherals/HardwareSerial1.o
-                0x00001a76                __vector_37
+                0x00001aa6       0x52 Peripherals/HardwareSerial1.o
+                0x00001aa6                __vector_37
  .text._GLOBAL__sub_I___vector_36
-                0x00001ac8       0x46 Peripherals/HardwareSerial1.o
+                0x00001af8       0x46 Peripherals/HardwareSerial1.o
  .text.__vector_51
-                0x00001b0e       0x78 Peripherals/HardwareSerial2.o
-                0x00001b0e                __vector_51
+                0x00001b3e       0x78 Peripherals/HardwareSerial2.o
+                0x00001b3e                __vector_51
  .text.__vector_52
-                0x00001b86       0x52 Peripherals/HardwareSerial2.o
-                0x00001b86                __vector_52
+                0x00001bb6       0x52 Peripherals/HardwareSerial2.o
+                0x00001bb6                __vector_52
  .text._GLOBAL__sub_I___vector_51
-                0x00001bd8       0x46 Peripherals/HardwareSerial2.o
+                0x00001c08       0x46 Peripherals/HardwareSerial2.o
  .text.__vector_54
-                0x00001c1e       0x78 Peripherals/HardwareSerial3.o
-                0x00001c1e                __vector_54
+                0x00001c4e       0x78 Peripherals/HardwareSerial3.o
+                0x00001c4e                __vector_54
  .text.__vector_55
-                0x00001c96       0x52 Peripherals/HardwareSerial3.o
-                0x00001c96                __vector_55
+                0x00001cc6       0x52 Peripherals/HardwareSerial3.o
+                0x00001cc6                __vector_55
  .text._GLOBAL__sub_I___vector_54
-                0x00001ce8       0x46 Peripherals/HardwareSerial3.o
+                0x00001d18       0x46 Peripherals/HardwareSerial3.o
  .text.twi_readFrom
-                0x00001d2e       0xa4 Peripherals/twi.o
-                0x00001d2e                twi_readFrom
+                0x00001d5e       0xa4 Peripherals/twi.o
+                0x00001d5e                twi_readFrom
  .text.twi_writeTo
-                0x00001dd2       0xc6 Peripherals/twi.o
-                0x00001dd2                twi_writeTo
+                0x00001e02       0xc6 Peripherals/twi.o
+                0x00001e02                twi_writeTo
  .text.twi_transmit
-                0x00001e98       0x54 Peripherals/twi.o
-                0x00001e98                twi_transmit
+                0x00001ec8       0x54 Peripherals/twi.o
+                0x00001ec8                twi_transmit
  .text.twi_stop
-                0x00001eec       0x16 Peripherals/twi.o
-                0x00001eec                twi_stop
+                0x00001f1c       0x16 Peripherals/twi.o
+                0x00001f1c                twi_stop
  .text.twi_releaseBus
-                0x00001f02        0xc Peripherals/twi.o
-                0x00001f02                twi_releaseBus
+                0x00001f32        0xc Peripherals/twi.o
+                0x00001f32                twi_releaseBus
  .text.__vector_39
-                0x00001f0e      0x238 Peripherals/twi.o
-                0x00001f0e                __vector_39
+                0x00001f3e      0x238 Peripherals/twi.o
+                0x00001f3e                __vector_39
  .text._ZN7TwoWire9availableEv
-                0x00002146       0x10 Peripherals/Wire.o
-                0x00002146                _ZN7TwoWire9availableEv
+                0x00002176       0x10 Peripherals/Wire.o
+                0x00002176                _ZN7TwoWire9availableEv
  .text._ZN7TwoWire4readEv
-                0x00002156       0x28 Peripherals/Wire.o
-                0x00002156                _ZN7TwoWire4readEv
+                0x00002186       0x28 Peripherals/Wire.o
+                0x00002186                _ZN7TwoWire4readEv
  .text._ZN7TwoWire4peekEv
-                0x0000217e       0x1e Peripherals/Wire.o
-                0x0000217e                _ZN7TwoWire4peekEv
+                0x000021ae       0x1e Peripherals/Wire.o
+                0x000021ae                _ZN7TwoWire4peekEv
  .text._ZN7TwoWire5flushEv
-                0x0000219c        0x2 Peripherals/Wire.o
-                0x0000219c                _ZN7TwoWire5flushEv
+                0x000021cc        0x2 Peripherals/Wire.o
+                0x000021cc                _ZN7TwoWire5flushEv
  .text._ZN7TwoWire5writeEh
-                0x0000219e       0x54 Peripherals/Wire.o
-                0x0000219e                _ZN7TwoWire5writeEh
+                0x000021ce       0x54 Peripherals/Wire.o
+                0x000021ce                _ZN7TwoWire5writeEh
  .text._ZN7TwoWire5writeEPKhj
-                0x000021f2       0x5e Peripherals/Wire.o
-                0x000021f2                _ZN7TwoWire5writeEPKhj
+                0x00002222       0x5e Peripherals/Wire.o
+                0x00002222                _ZN7TwoWire5writeEPKhj
  .text._ZN7TwoWire17beginTransmissionEh
-                0x00002250       0x14 Peripherals/Wire.o
-                0x00002250                _ZN7TwoWire17beginTransmissionEh
+                0x00002280       0x14 Peripherals/Wire.o
+                0x00002280                _ZN7TwoWire17beginTransmissionEh
  .text._ZN7TwoWire15endTransmissionEh
-                0x00002264       0x24 Peripherals/Wire.o
-                0x00002264                _ZN7TwoWire15endTransmissionEh
+                0x00002294       0x24 Peripherals/Wire.o
+                0x00002294                _ZN7TwoWire15endTransmissionEh
  .text._ZN7TwoWire11requestFromEhhmhh
-                0x00002288       0xac Peripherals/Wire.o
-                0x00002288                _ZN7TwoWire11requestFromEhhmhh
+                0x000022b8       0xac Peripherals/Wire.o
+                0x000022b8                _ZN7TwoWire11requestFromEhhmhh
  .text._ZN7TwoWire11requestFromEhhh
-                0x00002334       0x1e Peripherals/Wire.o
-                0x00002334                _ZN7TwoWire11requestFromEhhh
+                0x00002364       0x1e Peripherals/Wire.o
+                0x00002364                _ZN7TwoWire11requestFromEhhh
  .text._ZN7TwoWire11requestFromEhh
-                0x00002352        0x6 Peripherals/Wire.o
-                0x00002352                _ZN7TwoWire11requestFromEhh
+                0x00002382        0x6 Peripherals/Wire.o
+                0x00002382                _ZN7TwoWire11requestFromEhh
  .text._ZN7TwoWire15endTransmissionEv
-                0x00002358        0x6 Peripherals/Wire.o
-                0x00002358                _ZN7TwoWire15endTransmissionEv
+                0x00002388        0x6 Peripherals/Wire.o
+                0x00002388                _ZN7TwoWire15endTransmissionEv
  .text._GLOBAL__sub_I__ZN7TwoWire8rxBufferE
-                0x0000235e        0xe Peripherals/Wire.o
+                0x0000238e        0xe Peripherals/Wire.o
  .text._ZN13DigitalSensor14IsValidRequestEPKhh
-                0x0000236c        0x8 Robot.o
-                0x0000236c                _ZN13DigitalSensor14IsValidRequestEPKhh
+                0x0000239c        0x8 Robot.o
+                0x0000239c                _ZN13DigitalSensor14IsValidRequestEPKhh
  .text._ZN13DigitalSensor15UpdateRequestedEPh
-                0x00002374       0x1e Robot.o
-                0x00002374                _ZN13DigitalSensor15UpdateRequestedEPh
+                0x000023a4       0x1e Robot.o
+                0x000023a4                _ZN13DigitalSensor15UpdateRequestedEPh
  .text._ZN7ISensor6UpdateEPKhh
-                0x00002392       0x44 Robot.o
-                0x00002392                _ZN7ISensor6UpdateEPKhh
+                0x000023c2       0x44 Robot.o
+                0x000023c2                _ZN7ISensor6UpdateEPKhh
  .text._ZN5Robot6SetLedEb
-                0x000023d6        0xc Robot.o
-                0x000023d6                _ZN5Robot6SetLedEb
+                0x00002406        0xc Robot.o
+                0x00002406                _ZN5Robot6SetLedEb
  .text._ZN5Robot14RegisterDeviceER7ISensor
-                0x000023e2       0x28 Robot.o
-                0x000023e2                _ZN5Robot14RegisterDeviceER7ISensor
+                0x00002412       0x28 Robot.o
+                0x00002412                _ZN5Robot14RegisterDeviceER7ISensor
  .text._ZN5Robot5beginEv
-                0x0000240a        0xc Robot.o
-                0x0000240a                _ZN5Robot5beginEv
+                0x0000243a        0xc Robot.o
+                0x0000243a                _ZN5Robot5beginEv
  .text._GLOBAL__sub_I__ZN5Robot7devicesE
-                0x00002416       0x24 Robot.o
+                0x00002446       0x24 Robot.o
  .text._GLOBAL__sub_I_bno
-                0x0000243a       0x20 TestIMU.o
+                0x0000246a       0x20 TestIMU.o
  .text._ZN5Print5writeEPKhj
-                0x0000245a       0x5e Utils/Print.o
-                0x0000245a                _ZN5Print5writeEPKhj
+                0x0000248a       0x5e Utils/Print.o
+                0x0000248a                _ZN5Print5writeEPKhj
  .text._ZN5Print5printEPKc
-                0x000024b8       0x2c Utils/Print.o
-                0x000024b8                _ZN5Print5printEPKc
+                0x000024e8       0x2c Utils/Print.o
+                0x000024e8                _ZN5Print5printEPKc
  .text._ZN5Print7printlnEv
-                0x000024e4       0x18 Utils/Print.o
-                0x000024e4                _ZN5Print7printlnEv
+                0x00002514       0x18 Utils/Print.o
+                0x00002514                _ZN5Print7printlnEv
  .text._ZN5Print7printlnEPKc
-                0x000024fc       0x20 Utils/Print.o
-                0x000024fc                _ZN5Print7printlnEPKc
+                0x0000252c       0x20 Utils/Print.o
+                0x0000252c                _ZN5Print7printlnEPKc
  .text.avr-libc.fplib
-                0x0000251c        0x4 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr6\libm.a(divsf3.o)
-                0x0000251c                __divsf3
+                0x0000254c        0x4 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr6\libm.a(divsf3.o)
+                0x0000254c                __divsf3
  .text.avr-libc.fplib
-                0x00002520       0xcc c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr6\libm.a(divsf3x.o)
-                0x00002536                __divsf3x
-                0x0000253a                __divsf3_pse
+                0x00002550       0xcc c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr6\libm.a(divsf3x.o)
+                0x00002566                __divsf3x
+                0x0000256a                __divsf3_pse
  .text.avr-libc.fplib
-                0x000025ec       0x7a c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr6\libm.a(floatsisf.o)
-                0x000025ec                __floatunsisf
-                0x000025f0                __floatsisf
+                0x0000261c       0x7a c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr6\libm.a(floatsisf.o)
+                0x0000261c                __floatunsisf
+                0x00002620                __floatsisf
  .text.avr-libc.fplib
-                0x00002666        0xc c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr6\libm.a(fp_inf.o)
-                0x00002666                __fp_inf
+                0x00002696        0xc c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr6\libm.a(fp_inf.o)
+                0x00002696                __fp_inf
  .text.avr-libc.fplib
-                0x00002672        0x6 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr6\libm.a(fp_nan.o)
-                0x00002672                __fp_nan
+                0x000026a2        0x6 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr6\libm.a(fp_nan.o)
+                0x000026a2                __fp_nan
  .text.avr-libc.fplib
-                0x00002678        0xe c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr6\libm.a(fp_pscA.o)
-                0x00002678                __fp_pscA
+                0x000026a8        0xe c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr6\libm.a(fp_pscA.o)
+                0x000026a8                __fp_pscA
  .text.avr-libc.fplib
-                0x00002686        0xe c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr6\libm.a(fp_pscB.o)
-                0x00002686                __fp_pscB
+                0x000026b6        0xe c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr6\libm.a(fp_pscB.o)
+                0x000026b6                __fp_pscB
  .text.avr-libc.fplib
-                0x00002694       0x22 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr6\libm.a(fp_round.o)
-                0x00002694                __fp_round
+                0x000026c4       0x22 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr6\libm.a(fp_round.o)
+                0x000026c4                __fp_round
  .text.avr-libc.fplib
-                0x000026b6       0x44 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr6\libm.a(fp_split3.o)
-                0x000026b6                __fp_split3
-                0x000026c6                __fp_splitA
+                0x000026e6       0x44 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr6\libm.a(fp_split3.o)
+                0x000026e6                __fp_split3
+                0x000026f6                __fp_splitA
  .text.avr-libc.fplib
-                0x000026fa        0xe c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr6\libm.a(fp_zero.o)
-                0x000026fa                __fp_zero
-                0x000026fc                __fp_szero
+                0x0000272a        0xe c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr6\libm.a(fp_zero.o)
+                0x0000272a                __fp_zero
+                0x0000272c                __fp_szero
  .text.avr-libc.fplib
-                0x00002708        0x4 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr6\libm.a(mulsf3.o)
-                0x00002708                __mulsf3
+                0x00002738        0x4 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr6\libm.a(mulsf3.o)
+                0x00002738                __mulsf3
  .text.avr-libc.fplib
-                0x0000270c       0xc2 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr6\libm.a(mulsf3x.o)
-                0x00002720                __mulsf3x
-                0x00002724                __mulsf3_pse
+                0x0000273c       0xc2 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr6\libm.a(mulsf3x.o)
+                0x00002750                __mulsf3x
+                0x00002754                __mulsf3_pse
  .text.libgcc.div
-                0x000027ce       0x44 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr6\libgcc.a(_udivmodsi4.o)
-                0x000027ce                __udivmodsi4
- .text.libgcc   0x00002812       0x10 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr6\libgcc.a(_tablejump2.o)
-                0x00002812                __tablejump2__
+                0x000027fe       0x44 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr6\libgcc.a(_udivmodsi4.o)
+                0x000027fe                __udivmodsi4
+ .text.libgcc   0x00002842       0x10 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr6\libgcc.a(_tablejump2.o)
+                0x00002842                __tablejump2__
  .text.avr-libc
-                0x00002822       0x12 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr6\libc.a(memcpy_P.o)
-                0x00002822                memcpy_P
+                0x00002852       0x12 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr6\libc.a(memcpy_P.o)
+                0x00002852                memcpy_P
  .text.avr-libc
-                0x00002834       0x1a c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr6\libc.a(memcmp.o)
-                0x00002834                memcmp
+                0x00002864       0x1a c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr6\libc.a(memcmp.o)
+                0x00002864                memcmp
  .text.avr-libc
-                0x0000284e       0x1e c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr6\libc.a(strncpy.o)
-                0x0000284e                strncpy
-                0x0000286c                . = ALIGN (0x2)
+                0x0000287e       0x1e c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr6\libc.a(strncpy.o)
+                0x0000287e                strncpy
+                0x0000289c                . = ALIGN (0x2)
  *(.fini9)
- .fini9         0x0000286c        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr6\libgcc.a(_exit.o)
-                0x0000286c                _exit
-                0x0000286c                exit
+ .fini9         0x0000289c        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr6\libgcc.a(_exit.o)
+                0x0000289c                _exit
+                0x0000289c                exit
  *(.fini9)
  *(.fini8)
  *(.fini8)
@@ -1282,11 +1278,11 @@ END GROUP
  *(.fini1)
  *(.fini1)
  *(.fini0)
- .fini0         0x0000286c        0x4 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr6\libgcc.a(_exit.o)
+ .fini0         0x0000289c        0x4 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr6\libgcc.a(_exit.o)
  *(.fini0)
-                0x00002870                _etext = .
+                0x000028a0                _etext = .
 
-.data           0x00800200       0xe8 load address 0x00002870
+.data           0x00800200       0xe8 load address 0x000028a0
                 0x00800200                PROVIDE (__data_start, .)
  *(.data)
  *(.data*)
@@ -1480,8 +1476,8 @@ END GROUP
                 0x008008db                bno
  *(COMMON)
                 0x008008e6                PROVIDE (__bss_end, .)
-                0x00002870                __data_load_start = LOADADDR (.data)
-                0x00002958                __data_load_end = (__data_load_start + SIZEOF (.data))
+                0x000028a0                __data_load_start = LOADADDR (.data)
+                0x00002988                __data_load_end = (__data_load_start + SIZEOF (.data))
 
 .noinit         0x008008e6        0x0
                 [!provide]                PROVIDE (__noinit_start, .)
@@ -1614,160 +1610,160 @@ END GROUP
 .debug_pubnames
  *(.debug_pubnames)
 
-.debug_info     0x00000000    0x12442
+.debug_info     0x00000000    0x122de
  *(.debug_info .gnu.linkonce.wi.*)
  .debug_info    0x00000000      0xbbc C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.209/gcc/dev/atmega2560/avr6/crtatmega2560.o
  .debug_info    0x00000bbc     0x4250 BNO055/Adafruit_BNO055.o
- .debug_info    0x00004e0c      0xb8f Commands.o
- .debug_info    0x0000599b      0xea9 EtherCardModified/enc28j60.o
- .debug_info    0x00006844      0x78b EtherCardModified/EtherCard.o
- .debug_info    0x00006fcf     0x1082 EtherCardModified/tcpip.o
- .debug_info    0x00008051      0x6ee EtherCardModified/udpserver.o
- .debug_info    0x0000873f      0xa3a EtherCardModified/webutil.o
- .debug_info    0x00009179      0x994 EtherComm.o
- .debug_info    0x00009b0d      0xb3e main.o
- .debug_info    0x0000a64b      0xdbe Peripherals/HardwareSerial.o
- .debug_info    0x0000b409      0x989 Peripherals/HardwareSerial0.o
- .debug_info    0x0000bd92      0x989 Peripherals/HardwareSerial1.o
- .debug_info    0x0000c71b      0x989 Peripherals/HardwareSerial2.o
- .debug_info    0x0000d0a4      0x98f Peripherals/HardwareSerial3.o
- .debug_info    0x0000da33      0x60a Peripherals/twi.o
- .debug_info    0x0000e03d     0x163d Peripherals/Wire.o
- .debug_info    0x0000f67a      0xe6d Robot.o
- .debug_info    0x000104e7      0xd9b TestIMU.o
- .debug_info    0x00011282     0x11c0 Utils/Print.o
+ .debug_info    0x00004e0c      0xb75 Commands.o
+ .debug_info    0x00005981      0xe15 EtherCardModified/enc28j60.o
+ .debug_info    0x00006796      0x771 EtherCardModified/EtherCard.o
+ .debug_info    0x00006f07     0x1068 EtherCardModified/tcpip.o
+ .debug_info    0x00007f6f      0x6d4 EtherCardModified/udpserver.o
+ .debug_info    0x00008643      0xa20 EtherCardModified/webutil.o
+ .debug_info    0x00009063      0x97a EtherComm.o
+ .debug_info    0x000099dd      0xb24 main.o
+ .debug_info    0x0000a501      0xdbe Peripherals/HardwareSerial.o
+ .debug_info    0x0000b2bf      0x989 Peripherals/HardwareSerial0.o
+ .debug_info    0x0000bc48      0x989 Peripherals/HardwareSerial1.o
+ .debug_info    0x0000c5d1      0x989 Peripherals/HardwareSerial2.o
+ .debug_info    0x0000cf5a      0x98f Peripherals/HardwareSerial3.o
+ .debug_info    0x0000d8e9      0x60a Peripherals/twi.o
+ .debug_info    0x0000def3     0x163d Peripherals/Wire.o
+ .debug_info    0x0000f530      0xe53 Robot.o
+ .debug_info    0x00010383      0xd9b TestIMU.o
+ .debug_info    0x0001111e     0x11c0 Utils/Print.o
 
-.debug_abbrev   0x00000000     0x471c
+.debug_abbrev   0x00000000     0x4702
  *(.debug_abbrev)
  .debug_abbrev  0x00000000      0xb1a C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.209/gcc/dev/atmega2560/avr6/crtatmega2560.o
  .debug_abbrev  0x00000b1a      0x5a8 BNO055/Adafruit_BNO055.o
  .debug_abbrev  0x000010c2      0x3a2 Commands.o
- .debug_abbrev  0x00001464      0x37a EtherCardModified/enc28j60.o
- .debug_abbrev  0x000017de      0x180 EtherCardModified/EtherCard.o
- .debug_abbrev  0x0000195e      0x37b EtherCardModified/tcpip.o
- .debug_abbrev  0x00001cd9      0x1fd EtherCardModified/udpserver.o
- .debug_abbrev  0x00001ed6      0x315 EtherCardModified/webutil.o
- .debug_abbrev  0x000021eb      0x247 EtherComm.o
- .debug_abbrev  0x00002432      0x3a4 main.o
- .debug_abbrev  0x000027d6      0x363 Peripherals/HardwareSerial.o
- .debug_abbrev  0x00002b39      0x2d8 Peripherals/HardwareSerial0.o
- .debug_abbrev  0x00002e11      0x2d8 Peripherals/HardwareSerial1.o
- .debug_abbrev  0x000030e9      0x2d8 Peripherals/HardwareSerial2.o
- .debug_abbrev  0x000033c1      0x2d8 Peripherals/HardwareSerial3.o
- .debug_abbrev  0x00003699      0x222 Peripherals/twi.o
- .debug_abbrev  0x000038bb      0x428 Peripherals/Wire.o
- .debug_abbrev  0x00003ce3      0x455 Robot.o
- .debug_abbrev  0x00004138      0x348 TestIMU.o
- .debug_abbrev  0x00004480      0x29c Utils/Print.o
+ .debug_abbrev  0x00001464      0x360 EtherCardModified/enc28j60.o
+ .debug_abbrev  0x000017c4      0x180 EtherCardModified/EtherCard.o
+ .debug_abbrev  0x00001944      0x37b EtherCardModified/tcpip.o
+ .debug_abbrev  0x00001cbf      0x1fd EtherCardModified/udpserver.o
+ .debug_abbrev  0x00001ebc      0x315 EtherCardModified/webutil.o
+ .debug_abbrev  0x000021d1      0x247 EtherComm.o
+ .debug_abbrev  0x00002418      0x3a4 main.o
+ .debug_abbrev  0x000027bc      0x363 Peripherals/HardwareSerial.o
+ .debug_abbrev  0x00002b1f      0x2d8 Peripherals/HardwareSerial0.o
+ .debug_abbrev  0x00002df7      0x2d8 Peripherals/HardwareSerial1.o
+ .debug_abbrev  0x000030cf      0x2d8 Peripherals/HardwareSerial2.o
+ .debug_abbrev  0x000033a7      0x2d8 Peripherals/HardwareSerial3.o
+ .debug_abbrev  0x0000367f      0x222 Peripherals/twi.o
+ .debug_abbrev  0x000038a1      0x428 Peripherals/Wire.o
+ .debug_abbrev  0x00003cc9      0x455 Robot.o
+ .debug_abbrev  0x0000411e      0x348 TestIMU.o
+ .debug_abbrev  0x00004466      0x29c Utils/Print.o
 
-.debug_line     0x00000000     0x4ccd
+.debug_line     0x00000000     0x4ccf
  *(.debug_line .debug_line.* .debug_line_end)
  .debug_line    0x00000000      0x1f9 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.209/gcc/dev/atmega2560/avr6/crtatmega2560.o
  .debug_line    0x000001f9      0xc47 BNO055/Adafruit_BNO055.o
  .debug_line    0x00000e40      0x1e9 Commands.o
- .debug_line    0x00001029      0x600 EtherCardModified/enc28j60.o
- .debug_line    0x00001629      0x15f EtherCardModified/EtherCard.o
- .debug_line    0x00001788      0x7a2 EtherCardModified/tcpip.o
- .debug_line    0x00001f2a      0x211 EtherCardModified/udpserver.o
- .debug_line    0x0000213b      0x468 EtherCardModified/webutil.o
- .debug_line    0x000025a3      0x20a EtherComm.o
- .debug_line    0x000027ad      0x1b1 main.o
- .debug_line    0x0000295e      0x51d Peripherals/HardwareSerial.o
- .debug_line    0x00002e7b      0x23c Peripherals/HardwareSerial0.o
- .debug_line    0x000030b7      0x23b Peripherals/HardwareSerial1.o
- .debug_line    0x000032f2      0x23a Peripherals/HardwareSerial2.o
- .debug_line    0x0000352c      0x23a Peripherals/HardwareSerial3.o
- .debug_line    0x00003766      0x53e Peripherals/twi.o
- .debug_line    0x00003ca4      0x58b Peripherals/Wire.o
- .debug_line    0x0000422f      0x280 Robot.o
- .debug_line    0x000044af      0x333 TestIMU.o
- .debug_line    0x000047e2      0x4eb Utils/Print.o
+ .debug_line    0x00001029      0x602 EtherCardModified/enc28j60.o
+ .debug_line    0x0000162b      0x15f EtherCardModified/EtherCard.o
+ .debug_line    0x0000178a      0x7a2 EtherCardModified/tcpip.o
+ .debug_line    0x00001f2c      0x211 EtherCardModified/udpserver.o
+ .debug_line    0x0000213d      0x468 EtherCardModified/webutil.o
+ .debug_line    0x000025a5      0x20a EtherComm.o
+ .debug_line    0x000027af      0x1b1 main.o
+ .debug_line    0x00002960      0x51d Peripherals/HardwareSerial.o
+ .debug_line    0x00002e7d      0x23c Peripherals/HardwareSerial0.o
+ .debug_line    0x000030b9      0x23b Peripherals/HardwareSerial1.o
+ .debug_line    0x000032f4      0x23a Peripherals/HardwareSerial2.o
+ .debug_line    0x0000352e      0x23a Peripherals/HardwareSerial3.o
+ .debug_line    0x00003768      0x53e Peripherals/twi.o
+ .debug_line    0x00003ca6      0x58b Peripherals/Wire.o
+ .debug_line    0x00004231      0x280 Robot.o
+ .debug_line    0x000044b1      0x333 TestIMU.o
+ .debug_line    0x000047e4      0x4eb Utils/Print.o
 
-.debug_frame    0x00000000     0x18b0
+.debug_frame    0x00000000     0x18d8
  *(.debug_frame)
  .debug_frame   0x00000000      0x470 BNO055/Adafruit_BNO055.o
  .debug_frame   0x00000470       0x74 Commands.o
- .debug_frame   0x000004e4      0x1b0 EtherCardModified/enc28j60.o
- .debug_frame   0x00000694       0x70 EtherCardModified/EtherCard.o
- .debug_frame   0x00000704      0x230 EtherCardModified/tcpip.o
- .debug_frame   0x00000934       0xb8 EtherCardModified/udpserver.o
- .debug_frame   0x000009ec      0x14c EtherCardModified/webutil.o
- .debug_frame   0x00000b38       0x8c EtherComm.o
- .debug_frame   0x00000bc4       0x24 main.o
- .debug_frame   0x00000be8      0x104 Peripherals/HardwareSerial.o
- .debug_frame   0x00000cec       0xec Peripherals/HardwareSerial0.o
- .debug_frame   0x00000dd8       0xec Peripherals/HardwareSerial1.o
- .debug_frame   0x00000ec4       0xec Peripherals/HardwareSerial2.o
- .debug_frame   0x00000fb0       0xec Peripherals/HardwareSerial3.o
- .debug_frame   0x0000109c      0x134 Peripherals/twi.o
- .debug_frame   0x000011d0      0x280 Peripherals/Wire.o
- .debug_frame   0x00001450       0xb0 Robot.o
- .debug_frame   0x00001500       0xd0 TestIMU.o
- .debug_frame   0x000015d0      0x2e0 Utils/Print.o
+ .debug_frame   0x000004e4      0x1d8 EtherCardModified/enc28j60.o
+ .debug_frame   0x000006bc       0x70 EtherCardModified/EtherCard.o
+ .debug_frame   0x0000072c      0x230 EtherCardModified/tcpip.o
+ .debug_frame   0x0000095c       0xb8 EtherCardModified/udpserver.o
+ .debug_frame   0x00000a14      0x14c EtherCardModified/webutil.o
+ .debug_frame   0x00000b60       0x8c EtherComm.o
+ .debug_frame   0x00000bec       0x24 main.o
+ .debug_frame   0x00000c10      0x104 Peripherals/HardwareSerial.o
+ .debug_frame   0x00000d14       0xec Peripherals/HardwareSerial0.o
+ .debug_frame   0x00000e00       0xec Peripherals/HardwareSerial1.o
+ .debug_frame   0x00000eec       0xec Peripherals/HardwareSerial2.o
+ .debug_frame   0x00000fd8       0xec Peripherals/HardwareSerial3.o
+ .debug_frame   0x000010c4      0x134 Peripherals/twi.o
+ .debug_frame   0x000011f8      0x280 Peripherals/Wire.o
+ .debug_frame   0x00001478       0xb0 Robot.o
+ .debug_frame   0x00001528       0xd0 TestIMU.o
+ .debug_frame   0x000015f8      0x2e0 Utils/Print.o
 
-.debug_str      0x00000000     0x571e
+.debug_str      0x00000000     0x5686
  *(.debug_str)
  .debug_str     0x00000000      0x3e6 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.209/gcc/dev/atmega2560/avr6/crtatmega2560.o
- .debug_str     0x000003e6     0x2d80 BNO055/Adafruit_BNO055.o
+ .debug_str     0x000003e6     0x2d88 BNO055/Adafruit_BNO055.o
                                0x2eda (size before relaxing)
- .debug_str     0x00003166      0xa00 Commands.o
-                                0xc21 (size before relaxing)
- .debug_str     0x00003b66      0x1c0 EtherCardModified/enc28j60.o
-                                0x4f7 (size before relaxing)
- .debug_str     0x00003d26       0xf7 EtherCardModified/EtherCard.o
-                                0x8ef (size before relaxing)
- .debug_str     0x00003e1d      0x1e1 EtherCardModified/tcpip.o
-                                0x9cb (size before relaxing)
- .debug_str     0x00003ffe       0x68 EtherCardModified/udpserver.o
-                                0x867 (size before relaxing)
- .debug_str     0x00004066      0x124 EtherCardModified/webutil.o
-                                0x954 (size before relaxing)
- .debug_str     0x0000418a       0xf8 EtherComm.o
-                                0xa5a (size before relaxing)
- .debug_str     0x00004282       0x67 main.o
-                                0xbb1 (size before relaxing)
- .debug_str     0x000042e9      0x801 Peripherals/HardwareSerial.o
+ .debug_str     0x0000316e      0x9da Commands.o
+                                0xbfb (size before relaxing)
+ .debug_str     0x00003b48      0x140 EtherCardModified/enc28j60.o
+                                0x451 (size before relaxing)
+ .debug_str     0x00003c88       0xf7 EtherCardModified/EtherCard.o
+                                0x8c9 (size before relaxing)
+ .debug_str     0x00003d7f      0x1e1 EtherCardModified/tcpip.o
+                                0x9a5 (size before relaxing)
+ .debug_str     0x00003f60       0x68 EtherCardModified/udpserver.o
+                                0x841 (size before relaxing)
+ .debug_str     0x00003fc8      0x124 EtherCardModified/webutil.o
+                                0x92e (size before relaxing)
+ .debug_str     0x000040ec       0xfe EtherComm.o
+                                0xa34 (size before relaxing)
+ .debug_str     0x000041ea       0x67 main.o
+                                0xb8b (size before relaxing)
+ .debug_str     0x00004251      0x801 Peripherals/HardwareSerial.o
                                 0xa8f (size before relaxing)
- .debug_str     0x00004aea       0x89 Peripherals/HardwareSerial0.o
+ .debug_str     0x00004a52       0x89 Peripherals/HardwareSerial0.o
                                 0x7cb (size before relaxing)
- .debug_str     0x00004b73       0x52 Peripherals/HardwareSerial1.o
+ .debug_str     0x00004adb       0x52 Peripherals/HardwareSerial1.o
                                 0x7cc (size before relaxing)
- .debug_str     0x00004bc5       0x52 Peripherals/HardwareSerial2.o
+ .debug_str     0x00004b2d       0x52 Peripherals/HardwareSerial2.o
                                 0x7cc (size before relaxing)
- .debug_str     0x00004c17       0x52 Peripherals/HardwareSerial3.o
+ .debug_str     0x00004b7f       0x52 Peripherals/HardwareSerial3.o
                                 0x7cc (size before relaxing)
- .debug_str     0x00004c69      0x28e Peripherals/twi.o
+ .debug_str     0x00004bd1      0x28e Peripherals/twi.o
                                 0x37c (size before relaxing)
- .debug_str     0x00004ef7      0x44f Peripherals/Wire.o
+ .debug_str     0x00004e5f      0x44f Peripherals/Wire.o
                                 0xc70 (size before relaxing)
- .debug_str     0x00005346      0x155 Robot.o
-                                0xc91 (size before relaxing)
- .debug_str     0x0000549b      0x10c TestIMU.o
+ .debug_str     0x000052ae      0x155 Robot.o
+                                0xc6b (size before relaxing)
+ .debug_str     0x00005403      0x10c TestIMU.o
                                0x14d3 (size before relaxing)
- .debug_str     0x000055a7      0x177 Utils/Print.o
+ .debug_str     0x0000550f      0x177 Utils/Print.o
                                 0x4a3 (size before relaxing)
 
-.debug_loc      0x00000000     0x8316
+.debug_loc      0x00000000     0x838c
  *(.debug_loc)
  .debug_loc     0x00000000     0x2157 BNO055/Adafruit_BNO055.o
  .debug_loc     0x00002157      0x37d Commands.o
- .debug_loc     0x000024d4      0x808 EtherCardModified/enc28j60.o
- .debug_loc     0x00002cdc      0x25f EtherCardModified/EtherCard.o
- .debug_loc     0x00002f3b      0xa48 EtherCardModified/tcpip.o
- .debug_loc     0x00003983      0x243 EtherCardModified/udpserver.o
- .debug_loc     0x00003bc6      0x9be EtherCardModified/webutil.o
- .debug_loc     0x00004584      0x486 EtherComm.o
- .debug_loc     0x00004a0a       0x16 main.o
- .debug_loc     0x00004a20      0x4e0 Peripherals/HardwareSerial.o
- .debug_loc     0x00004f00      0x1ca Peripherals/HardwareSerial0.o
- .debug_loc     0x000050ca      0x1ca Peripherals/HardwareSerial1.o
- .debug_loc     0x00005294      0x1ca Peripherals/HardwareSerial2.o
- .debug_loc     0x0000545e      0x1ca Peripherals/HardwareSerial3.o
- .debug_loc     0x00005628      0x54a Peripherals/twi.o
- .debug_loc     0x00005b72      0xb3b Peripherals/Wire.o
- .debug_loc     0x000066ad      0x190 Robot.o
- .debug_loc     0x0000683d      0x4b9 TestIMU.o
- .debug_loc     0x00006cf6     0x1620 Utils/Print.o
+ .debug_loc     0x000024d4      0x87e EtherCardModified/enc28j60.o
+ .debug_loc     0x00002d52      0x25f EtherCardModified/EtherCard.o
+ .debug_loc     0x00002fb1      0xa48 EtherCardModified/tcpip.o
+ .debug_loc     0x000039f9      0x243 EtherCardModified/udpserver.o
+ .debug_loc     0x00003c3c      0x9be EtherCardModified/webutil.o
+ .debug_loc     0x000045fa      0x486 EtherComm.o
+ .debug_loc     0x00004a80       0x16 main.o
+ .debug_loc     0x00004a96      0x4e0 Peripherals/HardwareSerial.o
+ .debug_loc     0x00004f76      0x1ca Peripherals/HardwareSerial0.o
+ .debug_loc     0x00005140      0x1ca Peripherals/HardwareSerial1.o
+ .debug_loc     0x0000530a      0x1ca Peripherals/HardwareSerial2.o
+ .debug_loc     0x000054d4      0x1ca Peripherals/HardwareSerial3.o
+ .debug_loc     0x0000569e      0x54a Peripherals/twi.o
+ .debug_loc     0x00005be8      0xb3b Peripherals/Wire.o
+ .debug_loc     0x00006723      0x190 Robot.o
+ .debug_loc     0x000068b3      0x4b9 TestIMU.o
+ .debug_loc     0x00006d6c     0x1620 Utils/Print.o
 
 .debug_macinfo
  *(.debug_macinfo)
@@ -1787,27 +1783,27 @@ END GROUP
 .debug_pubtypes
  *(.debug_pubtypes)
 
-.debug_ranges   0x00000000      0x730
+.debug_ranges   0x00000000      0x760
  *(.debug_ranges)
  .debug_ranges  0x00000000       0xd8 BNO055/Adafruit_BNO055.o
  .debug_ranges  0x000000d8       0x38 Commands.o
- .debug_ranges  0x00000110       0x80 EtherCardModified/enc28j60.o
- .debug_ranges  0x00000190       0x18 EtherCardModified/EtherCard.o
- .debug_ranges  0x000001a8       0xd8 EtherCardModified/tcpip.o
- .debug_ranges  0x00000280       0x48 EtherCardModified/udpserver.o
- .debug_ranges  0x000002c8       0x68 EtherCardModified/webutil.o
- .debug_ranges  0x00000330       0x28 EtherComm.o
- .debug_ranges  0x00000358       0x10 main.o
- .debug_ranges  0x00000368       0x58 Peripherals/HardwareSerial.o
- .debug_ranges  0x000003c0       0x38 Peripherals/HardwareSerial0.o
- .debug_ranges  0x000003f8       0x38 Peripherals/HardwareSerial1.o
- .debug_ranges  0x00000430       0x38 Peripherals/HardwareSerial2.o
- .debug_ranges  0x00000468       0x38 Peripherals/HardwareSerial3.o
- .debug_ranges  0x000004a0       0x70 Peripherals/twi.o
- .debug_ranges  0x00000510       0xe8 Peripherals/Wire.o
- .debug_ranges  0x000005f8       0x50 Robot.o
- .debug_ranges  0x00000648       0x30 TestIMU.o
- .debug_ranges  0x00000678       0xb8 Utils/Print.o
+ .debug_ranges  0x00000110       0xb0 EtherCardModified/enc28j60.o
+ .debug_ranges  0x000001c0       0x18 EtherCardModified/EtherCard.o
+ .debug_ranges  0x000001d8       0xd8 EtherCardModified/tcpip.o
+ .debug_ranges  0x000002b0       0x48 EtherCardModified/udpserver.o
+ .debug_ranges  0x000002f8       0x68 EtherCardModified/webutil.o
+ .debug_ranges  0x00000360       0x28 EtherComm.o
+ .debug_ranges  0x00000388       0x10 main.o
+ .debug_ranges  0x00000398       0x58 Peripherals/HardwareSerial.o
+ .debug_ranges  0x000003f0       0x38 Peripherals/HardwareSerial0.o
+ .debug_ranges  0x00000428       0x38 Peripherals/HardwareSerial1.o
+ .debug_ranges  0x00000460       0x38 Peripherals/HardwareSerial2.o
+ .debug_ranges  0x00000498       0x38 Peripherals/HardwareSerial3.o
+ .debug_ranges  0x000004d0       0x70 Peripherals/twi.o
+ .debug_ranges  0x00000540       0xe8 Peripherals/Wire.o
+ .debug_ranges  0x00000628       0x50 Robot.o
+ .debug_ranges  0x00000678       0x30 TestIMU.o
+ .debug_ranges  0x000006a8       0xb8 Utils/Print.o
 
 .debug_macro
  *(.debug_macro)
