@@ -179,9 +179,6 @@
     <Compile Include="EtherCardModified\bufferfiller.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="EtherCardModified\dhcp.cpp">
-      <SubType>compile</SubType>
-    </Compile>
     <Compile Include="EtherCardModified\dns.cpp">
       <SubType>compile</SubType>
     </Compile>
@@ -201,12 +198,6 @@
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="EtherCardModified\net.h">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="EtherCardModified\stash.cpp">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="EtherCardModified\stash.h">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="EtherCardModified\tcpip.cpp">

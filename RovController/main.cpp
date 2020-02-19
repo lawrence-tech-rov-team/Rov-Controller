@@ -12,7 +12,7 @@
 #include "TestIMU.h"
 
 int main(void){
-	TestIMU();
+	//TestIMU();
 	Serial.begin(9600);
 	Serial.println("\nInitializing...");
 	

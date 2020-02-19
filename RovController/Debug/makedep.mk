@@ -10,15 +10,11 @@ Commands.cpp
 
 EtherCardModified\bufferfiller.cpp
 
-EtherCardModified\dhcp.cpp
-
 EtherCardModified\dns.cpp
 
 EtherCardModified\enc28j60.cpp
 
 EtherCardModified\EtherCard.cpp
-
-EtherCardModified\stash.cpp
 
 EtherCardModified\tcpip.cpp
 

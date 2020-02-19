@@ -47,11 +47,9 @@ C_SRCS +=  \
 ../BNO055/Adafruit_Sensor.cpp \
 ../Commands.cpp \
 ../EtherCardModified/bufferfiller.cpp \
-../EtherCardModified/dhcp.cpp \
 ../EtherCardModified/dns.cpp \
 ../EtherCardModified/enc28j60.cpp \
 ../EtherCardModified/EtherCard.cpp \
-../EtherCardModified/stash.cpp \
 ../EtherCardModified/tcpip.cpp \
 ../EtherCardModified/udpserver.cpp \
 ../EtherCardModified/webutil.cpp \
@@ -82,11 +80,9 @@ BNO055/Adafruit_BNO055.o \
 BNO055/Adafruit_Sensor.o \
 Commands.o \
 EtherCardModified/bufferfiller.o \
-EtherCardModified/dhcp.o \
 EtherCardModified/dns.o \
 EtherCardModified/enc28j60.o \
 EtherCardModified/EtherCard.o \
-EtherCardModified/stash.o \
 EtherCardModified/tcpip.o \
 EtherCardModified/udpserver.o \
 EtherCardModified/webutil.o \
@@ -110,11 +106,9 @@ BNO055/Adafruit_BNO055.o \
 BNO055/Adafruit_Sensor.o \
 Commands.o \
 EtherCardModified/bufferfiller.o \
-EtherCardModified/dhcp.o \
 EtherCardModified/dns.o \
 EtherCardModified/enc28j60.o \
 EtherCardModified/EtherCard.o \
-EtherCardModified/stash.o \
 EtherCardModified/tcpip.o \
 EtherCardModified/udpserver.o \
 EtherCardModified/webutil.o \
@@ -138,11 +132,9 @@ BNO055/Adafruit_BNO055.d \
 BNO055/Adafruit_Sensor.d \
 Commands.d \
 EtherCardModified/bufferfiller.d \
-EtherCardModified/dhcp.d \
 EtherCardModified/dns.d \
 EtherCardModified/enc28j60.d \
 EtherCardModified/EtherCard.d \
-EtherCardModified/stash.d \
 EtherCardModified/tcpip.d \
 EtherCardModified/udpserver.d \
 EtherCardModified/webutil.d \
@@ -166,11 +158,9 @@ BNO055/Adafruit_BNO055.d \
 BNO055/Adafruit_Sensor.d \
 Commands.d \
 EtherCardModified/bufferfiller.d \
-EtherCardModified/dhcp.d \
 EtherCardModified/dns.d \
 EtherCardModified/enc28j60.d \
 EtherCardModified/EtherCard.d \
-EtherCardModified/stash.d \
 EtherCardModified/tcpip.d \
 EtherCardModified/udpserver.d \
 EtherCardModified/webutil.d \
@@ -231,13 +221,6 @@ EtherCardModified/bufferfiller.o: ../EtherCardModified/bufferfiller.cpp
 	@echo Finished building: $<
 	
 
-EtherCardModified/dhcp.o: ../EtherCardModified/dhcp.cpp
-	@echo Building file: $<
-	@echo Invoking: AVR8/GNU C Compiler : 5.4.0
-	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-g++.exe$(QUOTE) -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.2.209\include"  -O1 -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -mrelax -g2 -Wall -mmcu=atmega2560 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.2.209\gcc\dev\atmega2560" -c -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
-	@echo Finished building: $<
-	
-
 EtherCardModified/dns.o: ../EtherCardModified/dns.cpp
 	@echo Building file: $<
 	@echo Invoking: AVR8/GNU C Compiler : 5.4.0
@@ -253,13 +236,6 @@ EtherCardModified/enc28j60.o: ../EtherCardModified/enc28j60.cpp
 	
 
 EtherCardModified/EtherCard.o: ../EtherCardModified/EtherCard.cpp
-	@echo Building file: $<
-	@echo Invoking: AVR8/GNU C Compiler : 5.4.0
-	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-g++.exe$(QUOTE) -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.2.209\include"  -O1 -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -mrelax -g2 -Wall -mmcu=atmega2560 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.2.209\gcc\dev\atmega2560" -c -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
-	@echo Finished building: $<
-	
-
-EtherCardModified/stash.o: ../EtherCardModified/stash.cpp
 	@echo Building file: $<
 	@echo Invoking: AVR8/GNU C Compiler : 5.4.0
 	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-g++.exe$(QUOTE) -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.2.209\include"  -O1 -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -mrelax -g2 -Wall -mmcu=atmega2560 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.2.209\gcc\dev\atmega2560" -c -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
