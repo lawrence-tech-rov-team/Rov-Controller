@@ -595,16 +595,6 @@ uint8_t ENC28J60::peekin (uint8_t page, uint8_t off) {
     return result;
 }
 
-void ENC28J60::memcpy_to_enc(uint16_t dest, void* source, int16_t num) {
-    writeReg(EWRPT, dest);
-    writeBuf(num, (uint8_t*) source);
-}
-
-void ENC28J60::memcpy_from_enc(void* dest, uint16_t source, int16_t num) {
-    writeReg(ERDPT, source);
-    readBuf(num, (uint8_t*) dest);
-}
-
 static uint16_t endRam = ENC_HEAP_END;
 uint16_t ENC28J60::enc_malloc(uint16_t size) {
     if (endRam-size >= ENC_HEAP_START) {
@@ -614,24 +604,4 @@ uint16_t ENC28J60::enc_malloc(uint16_t size) {
     return 0;
 }
 
-uint16_t ENC28J60::enc_freemem() {
-    return endRam-ENC_HEAP_START;
-}
 
-uint16_t ENC28J60::readPacketSlice(char* dest, int16_t maxlength, int16_t packetOffset) {
-    uint16_t erxrdpt = readReg(ERXRDPT);
-    int16_t packetLength;
-
-    memcpy_from_enc((char*) &packetLength, (erxrdpt+3)%(RXSTOP_INIT+1), 2);
-    packetLength -= 4; // remove crc
-
-    int16_t bytesToCopy = packetLength - packetOffset;
-    if (bytesToCopy > maxlength) bytesToCopy = maxlength;
-    if (bytesToCopy <= 0) bytesToCopy = 0;
-
-    int16_t startofSlice = (erxrdpt+7+packetOffset)%(RXSTOP_INIT+1);
-    memcpy_from_enc(dest, startofSlice, bytesToCopy);
-    dest[bytesToCopy] = 0;
-
-    return bytesToCopy;
-}

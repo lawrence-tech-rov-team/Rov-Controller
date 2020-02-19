@@ -95,15 +95,6 @@ public:
     */
     static uint8_t peekin (uint8_t page, uint8_t off);
 
-    /**   @brief  Copies a slice from the current packet to RAM
-    *     @param  dest pointer in RAM where the data is copied to
-    *     @param  maxlength how many bytes to copy;
-    *     @param  packetOffset where within the packet to start; if less than maxlength bytes are available only the remaining bytes are copied.
-    *     @return <i>uint16_t</i> the number of bytes that have been read
-    *     @note   At the destination at least maxlength+1 bytes should be reserved because the copied content will be 0-terminated.
-    */
-    static uint16_t readPacketSlice(char* dest, int16_t maxlength, int16_t packetOffset);
-
     /** @brief  reserves a block of RAM in the memory of the enc chip
      *  @param  size number of bytes to reserve
      *  @return <i>uint16_t</i> start address of the block within the enc memory. 0 if the remaining memory for malloc operation is less than size.
@@ -112,25 +103,6 @@ public:
      */
     static uint16_t enc_malloc(uint16_t size);
 
-    /** @brief  returns the amount of memory within the enc28j60 chip that is still available for malloc.
-     *  @return <i>uint16_t</i> the amount of memory in bytes.
-     */
-    static uint16_t enc_freemem();
-
-    /** @brief copies a block of data from SRAM to the enc memory
-        @param dest destination address within enc memory
-        @param source source pointer to a block of SRAM in the arduino
-        @param num number of bytes to copy
-        @note  There is no sanity check. Handle with care
-     */
-    static void memcpy_to_enc(uint16_t dest, void* source, int16_t num);
-
-     /** @brief copies a block of data from the enc memory to SRAM
-        @param dest destination address within SRAM
-        @param source source address within enc memory
-        @param num number of bytes to copy
-     */
-    static void memcpy_from_enc(void* dest, uint16_t source, int16_t num);
 };
 
 typedef ENC28J60 Ethernet; //!< Define alias Ethernet for ENC28J60
