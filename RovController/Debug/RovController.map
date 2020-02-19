@@ -150,22 +150,6 @@ Discarded input sections
                 0x00000000       0x30 EtherCardModified/enc28j60.o
  .text._ZN8ENC28J606peekinEhh
                 0x00000000       0x46 EtherCardModified/enc28j60.o
- .text._ZN8ENC28J609powerDownEv
-                0x00000000       0x34 EtherCardModified/enc28j60.o
- .text._ZN8ENC28J607powerUpEv
-                0x00000000       0x20 EtherCardModified/enc28j60.o
- .text._ZN8ENC28J6015enableBroadcastEb
-                0x00000000       0x22 EtherCardModified/enc28j60.o
- .text._ZN8ENC28J6016disableBroadcastEb
-                0x00000000       0x24 EtherCardModified/enc28j60.o
- .text._ZN8ENC28J6015enableMulticastEv
-                0x00000000       0x12 EtherCardModified/enc28j60.o
- .text._ZN8ENC28J6016disableMulticastEv
-                0x00000000       0x12 EtherCardModified/enc28j60.o
- .text._ZN8ENC28J6017enablePromiscuousEb
-                0x00000000       0x22 EtherCardModified/enc28j60.o
- .text._ZN8ENC28J6018disablePromiscuousEb
-                0x00000000       0x1c EtherCardModified/enc28j60.o
  .text._ZN8ENC28J6013memcpy_to_encEjPvi
                 0x00000000       0x26 EtherCardModified/enc28j60.o
  .text._ZN8ENC28J6015memcpy_from_encEPvji
@@ -1624,72 +1608,72 @@ END GROUP
 .debug_sfnames
  *(.debug_sfnames)
 
-.debug_aranges  0x00000000      0x878
+.debug_aranges  0x00000000      0x838
  *(.debug_aranges)
  .debug_aranges
                 0x00000000       0xe8 BNO055/Adafruit_BNO055.o
  .debug_aranges
                 0x000000e8       0x48 Commands.o
  .debug_aranges
-                0x00000130      0x118 EtherCardModified/enc28j60.o
+                0x00000130       0xd8 EtherCardModified/enc28j60.o
  .debug_aranges
-                0x00000248       0x28 EtherCardModified/EtherCard.o
+                0x00000208       0x28 EtherCardModified/EtherCard.o
  .debug_aranges
-                0x00000270       0xa8 EtherCardModified/tcpip.o
+                0x00000230       0xa8 EtherCardModified/tcpip.o
  .debug_aranges
-                0x00000318       0x40 EtherCardModified/udpserver.o
+                0x000002d8       0x40 EtherCardModified/udpserver.o
  .debug_aranges
-                0x00000358       0x60 EtherCardModified/webutil.o
+                0x00000318       0x60 EtherCardModified/webutil.o
  .debug_aranges
-                0x000003b8       0x38 EtherComm.o
+                0x00000378       0x38 EtherComm.o
  .debug_aranges
-                0x000003f0       0x20 main.o
+                0x000003b0       0x20 main.o
  .debug_aranges
-                0x00000410       0x68 Peripherals/HardwareSerial.o
+                0x000003d0       0x68 Peripherals/HardwareSerial.o
  .debug_aranges
-                0x00000478       0x48 Peripherals/HardwareSerial0.o
+                0x00000438       0x48 Peripherals/HardwareSerial0.o
  .debug_aranges
-                0x000004c0       0x48 Peripherals/HardwareSerial1.o
+                0x00000480       0x48 Peripherals/HardwareSerial1.o
  .debug_aranges
-                0x00000508       0x48 Peripherals/HardwareSerial2.o
+                0x000004c8       0x48 Peripherals/HardwareSerial2.o
  .debug_aranges
-                0x00000550       0x48 Peripherals/HardwareSerial3.o
+                0x00000510       0x48 Peripherals/HardwareSerial3.o
  .debug_aranges
-                0x00000598       0x80 Peripherals/twi.o
+                0x00000558       0x80 Peripherals/twi.o
  .debug_aranges
-                0x00000618       0xf8 Peripherals/Wire.o
+                0x000005d8       0xf8 Peripherals/Wire.o
  .debug_aranges
-                0x00000710       0x60 Robot.o
+                0x000006d0       0x60 Robot.o
  .debug_aranges
-                0x00000770       0x40 TestIMU.o
+                0x00000730       0x40 TestIMU.o
  .debug_aranges
-                0x000007b0       0xc8 Utils/Print.o
+                0x00000770       0xc8 Utils/Print.o
 
 .debug_pubnames
  *(.debug_pubnames)
 
-.debug_info     0x00000000    0x13909
+.debug_info     0x00000000    0x13156
  *(.debug_info .gnu.linkonce.wi.*)
  .debug_info    0x00000000      0xbbc C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.209/gcc/dev/atmega2560/avr6/crtatmega2560.o
  .debug_info    0x00000bbc     0x4250 BNO055/Adafruit_BNO055.o
- .debug_info    0x00004e0c      0xd13 Commands.o
- .debug_info    0x00005b1f     0x1750 EtherCardModified/enc28j60.o
- .debug_info    0x0000726f      0x90f EtherCardModified/EtherCard.o
- .debug_info    0x00007b7e     0x1206 EtherCardModified/tcpip.o
- .debug_info    0x00008d84      0x872 EtherCardModified/udpserver.o
- .debug_info    0x000095f6      0xbbe EtherCardModified/webutil.o
- .debug_info    0x0000a1b4      0xb18 EtherComm.o
- .debug_info    0x0000accc      0xcc2 main.o
- .debug_info    0x0000b98e      0xdbe Peripherals/HardwareSerial.o
- .debug_info    0x0000c74c      0x989 Peripherals/HardwareSerial0.o
- .debug_info    0x0000d0d5      0x989 Peripherals/HardwareSerial1.o
- .debug_info    0x0000da5e      0x989 Peripherals/HardwareSerial2.o
- .debug_info    0x0000e3e7      0x98f Peripherals/HardwareSerial3.o
- .debug_info    0x0000ed76      0x60a Peripherals/twi.o
- .debug_info    0x0000f380     0x163d Peripherals/Wire.o
- .debug_info    0x000109bd      0xff1 Robot.o
- .debug_info    0x000119ae      0xd9b TestIMU.o
- .debug_info    0x00012749     0x11c0 Utils/Print.o
+ .debug_info    0x00004e0c      0xc83 Commands.o
+ .debug_info    0x00005a8f     0x141d EtherCardModified/enc28j60.o
+ .debug_info    0x00006eac      0x87f EtherCardModified/EtherCard.o
+ .debug_info    0x0000772b     0x1176 EtherCardModified/tcpip.o
+ .debug_info    0x000088a1      0x7e2 EtherCardModified/udpserver.o
+ .debug_info    0x00009083      0xb2e EtherCardModified/webutil.o
+ .debug_info    0x00009bb1      0xa88 EtherComm.o
+ .debug_info    0x0000a639      0xc32 main.o
+ .debug_info    0x0000b26b      0xdbe Peripherals/HardwareSerial.o
+ .debug_info    0x0000c029      0x989 Peripherals/HardwareSerial0.o
+ .debug_info    0x0000c9b2      0x989 Peripherals/HardwareSerial1.o
+ .debug_info    0x0000d33b      0x989 Peripherals/HardwareSerial2.o
+ .debug_info    0x0000dcc4      0x98f Peripherals/HardwareSerial3.o
+ .debug_info    0x0000e653      0x60a Peripherals/twi.o
+ .debug_info    0x0000ec5d     0x163d Peripherals/Wire.o
+ .debug_info    0x0001029a      0xf61 Robot.o
+ .debug_info    0x000111fb      0xd9b TestIMU.o
+ .debug_info    0x00011f96     0x11c0 Utils/Print.o
 
 .debug_abbrev   0x00000000     0x476d
  *(.debug_abbrev)
@@ -1714,114 +1698,114 @@ END GROUP
  .debug_abbrev  0x00004189      0x348 TestIMU.o
  .debug_abbrev  0x000044d1      0x29c Utils/Print.o
 
-.debug_line     0x00000000     0x4f68
+.debug_line     0x00000000     0x4e44
  *(.debug_line .debug_line.* .debug_line_end)
  .debug_line    0x00000000      0x1f9 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.209/gcc/dev/atmega2560/avr6/crtatmega2560.o
  .debug_line    0x000001f9      0xc47 BNO055/Adafruit_BNO055.o
  .debug_line    0x00000e40      0x1e9 Commands.o
- .debug_line    0x00001029      0x89b EtherCardModified/enc28j60.o
- .debug_line    0x000018c4      0x15f EtherCardModified/EtherCard.o
- .debug_line    0x00001a23      0x7a2 EtherCardModified/tcpip.o
- .debug_line    0x000021c5      0x211 EtherCardModified/udpserver.o
- .debug_line    0x000023d6      0x468 EtherCardModified/webutil.o
- .debug_line    0x0000283e      0x20a EtherComm.o
- .debug_line    0x00002a48      0x1b1 main.o
- .debug_line    0x00002bf9      0x51d Peripherals/HardwareSerial.o
- .debug_line    0x00003116      0x23c Peripherals/HardwareSerial0.o
- .debug_line    0x00003352      0x23b Peripherals/HardwareSerial1.o
- .debug_line    0x0000358d      0x23a Peripherals/HardwareSerial2.o
- .debug_line    0x000037c7      0x23a Peripherals/HardwareSerial3.o
- .debug_line    0x00003a01      0x53e Peripherals/twi.o
- .debug_line    0x00003f3f      0x58b Peripherals/Wire.o
- .debug_line    0x000044ca      0x280 Robot.o
- .debug_line    0x0000474a      0x333 TestIMU.o
- .debug_line    0x00004a7d      0x4eb Utils/Print.o
+ .debug_line    0x00001029      0x777 EtherCardModified/enc28j60.o
+ .debug_line    0x000017a0      0x15f EtherCardModified/EtherCard.o
+ .debug_line    0x000018ff      0x7a2 EtherCardModified/tcpip.o
+ .debug_line    0x000020a1      0x211 EtherCardModified/udpserver.o
+ .debug_line    0x000022b2      0x468 EtherCardModified/webutil.o
+ .debug_line    0x0000271a      0x20a EtherComm.o
+ .debug_line    0x00002924      0x1b1 main.o
+ .debug_line    0x00002ad5      0x51d Peripherals/HardwareSerial.o
+ .debug_line    0x00002ff2      0x23c Peripherals/HardwareSerial0.o
+ .debug_line    0x0000322e      0x23b Peripherals/HardwareSerial1.o
+ .debug_line    0x00003469      0x23a Peripherals/HardwareSerial2.o
+ .debug_line    0x000036a3      0x23a Peripherals/HardwareSerial3.o
+ .debug_line    0x000038dd      0x53e Peripherals/twi.o
+ .debug_line    0x00003e1b      0x58b Peripherals/Wire.o
+ .debug_line    0x000043a6      0x280 Robot.o
+ .debug_line    0x00004626      0x333 TestIMU.o
+ .debug_line    0x00004959      0x4eb Utils/Print.o
 
-.debug_frame    0x00000000     0x1a78
+.debug_frame    0x00000000     0x19e8
  *(.debug_frame)
  .debug_frame   0x00000000      0x470 BNO055/Adafruit_BNO055.o
  .debug_frame   0x00000470       0x74 Commands.o
- .debug_frame   0x000004e4      0x378 EtherCardModified/enc28j60.o
- .debug_frame   0x0000085c       0x70 EtherCardModified/EtherCard.o
- .debug_frame   0x000008cc      0x230 EtherCardModified/tcpip.o
- .debug_frame   0x00000afc       0xb8 EtherCardModified/udpserver.o
- .debug_frame   0x00000bb4      0x14c EtherCardModified/webutil.o
- .debug_frame   0x00000d00       0x8c EtherComm.o
- .debug_frame   0x00000d8c       0x24 main.o
- .debug_frame   0x00000db0      0x104 Peripherals/HardwareSerial.o
- .debug_frame   0x00000eb4       0xec Peripherals/HardwareSerial0.o
- .debug_frame   0x00000fa0       0xec Peripherals/HardwareSerial1.o
- .debug_frame   0x0000108c       0xec Peripherals/HardwareSerial2.o
- .debug_frame   0x00001178       0xec Peripherals/HardwareSerial3.o
- .debug_frame   0x00001264      0x134 Peripherals/twi.o
- .debug_frame   0x00001398      0x280 Peripherals/Wire.o
- .debug_frame   0x00001618       0xb0 Robot.o
- .debug_frame   0x000016c8       0xd0 TestIMU.o
- .debug_frame   0x00001798      0x2e0 Utils/Print.o
+ .debug_frame   0x000004e4      0x2e8 EtherCardModified/enc28j60.o
+ .debug_frame   0x000007cc       0x70 EtherCardModified/EtherCard.o
+ .debug_frame   0x0000083c      0x230 EtherCardModified/tcpip.o
+ .debug_frame   0x00000a6c       0xb8 EtherCardModified/udpserver.o
+ .debug_frame   0x00000b24      0x14c EtherCardModified/webutil.o
+ .debug_frame   0x00000c70       0x8c EtherComm.o
+ .debug_frame   0x00000cfc       0x24 main.o
+ .debug_frame   0x00000d20      0x104 Peripherals/HardwareSerial.o
+ .debug_frame   0x00000e24       0xec Peripherals/HardwareSerial0.o
+ .debug_frame   0x00000f10       0xec Peripherals/HardwareSerial1.o
+ .debug_frame   0x00000ffc       0xec Peripherals/HardwareSerial2.o
+ .debug_frame   0x000010e8       0xec Peripherals/HardwareSerial3.o
+ .debug_frame   0x000011d4      0x134 Peripherals/twi.o
+ .debug_frame   0x00001308      0x280 Peripherals/Wire.o
+ .debug_frame   0x00001588       0xb0 Robot.o
+ .debug_frame   0x00001638       0xd0 TestIMU.o
+ .debug_frame   0x00001708      0x2e0 Utils/Print.o
 
-.debug_str      0x00000000     0x5a34
+.debug_str      0x00000000     0x58ba
  *(.debug_str)
  .debug_str     0x00000000      0x3e6 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.209/gcc/dev/atmega2560/avr6/crtatmega2560.o
  .debug_str     0x000003e6     0x2d80 BNO055/Adafruit_BNO055.o
                                0x2eda (size before relaxing)
- .debug_str     0x00003166      0xcb2 Commands.o
-                                0xedb (size before relaxing)
- .debug_str     0x00003e18      0x237 EtherCardModified/enc28j60.o
-                                0x82d (size before relaxing)
- .debug_str     0x0000404f       0xf7 EtherCardModified/EtherCard.o
-                                0xba9 (size before relaxing)
- .debug_str     0x00004146      0x1d5 EtherCardModified/tcpip.o
-                                0xc85 (size before relaxing)
- .debug_str     0x0000431b       0x68 EtherCardModified/udpserver.o
-                                0xb21 (size before relaxing)
- .debug_str     0x00004383      0x124 EtherCardModified/webutil.o
-                                0xc0e (size before relaxing)
- .debug_str     0x000044a7       0xf8 EtherComm.o
-                                0xd14 (size before relaxing)
- .debug_str     0x0000459f       0x67 main.o
-                                0xe6b (size before relaxing)
- .debug_str     0x00004606      0x801 Peripherals/HardwareSerial.o
+ .debug_str     0x00003166      0xb42 Commands.o
+                                0xd6b (size before relaxing)
+ .debug_str     0x00003ca8      0x22d EtherCardModified/enc28j60.o
+                                0x6b3 (size before relaxing)
+ .debug_str     0x00003ed5       0xf7 EtherCardModified/EtherCard.o
+                                0xa39 (size before relaxing)
+ .debug_str     0x00003fcc      0x1d5 EtherCardModified/tcpip.o
+                                0xb15 (size before relaxing)
+ .debug_str     0x000041a1       0x68 EtherCardModified/udpserver.o
+                                0x9b1 (size before relaxing)
+ .debug_str     0x00004209      0x124 EtherCardModified/webutil.o
+                                0xa9e (size before relaxing)
+ .debug_str     0x0000432d       0xf8 EtherComm.o
+                                0xba4 (size before relaxing)
+ .debug_str     0x00004425       0x67 main.o
+                                0xcfb (size before relaxing)
+ .debug_str     0x0000448c      0x801 Peripherals/HardwareSerial.o
                                 0xa8f (size before relaxing)
- .debug_str     0x00004e07       0x89 Peripherals/HardwareSerial0.o
+ .debug_str     0x00004c8d       0x89 Peripherals/HardwareSerial0.o
                                 0x7cb (size before relaxing)
- .debug_str     0x00004e90       0x52 Peripherals/HardwareSerial1.o
+ .debug_str     0x00004d16       0x52 Peripherals/HardwareSerial1.o
                                 0x7cc (size before relaxing)
- .debug_str     0x00004ee2       0x52 Peripherals/HardwareSerial2.o
+ .debug_str     0x00004d68       0x52 Peripherals/HardwareSerial2.o
                                 0x7cc (size before relaxing)
- .debug_str     0x00004f34       0x52 Peripherals/HardwareSerial3.o
+ .debug_str     0x00004dba       0x52 Peripherals/HardwareSerial3.o
                                 0x7cc (size before relaxing)
- .debug_str     0x00004f86      0x287 Peripherals/twi.o
+ .debug_str     0x00004e0c      0x287 Peripherals/twi.o
                                 0x37c (size before relaxing)
- .debug_str     0x0000520d      0x44f Peripherals/Wire.o
+ .debug_str     0x00005093      0x44f Peripherals/Wire.o
                                 0xc70 (size before relaxing)
- .debug_str     0x0000565c      0x155 Robot.o
-                                0xf4b (size before relaxing)
- .debug_str     0x000057b1      0x10c TestIMU.o
+ .debug_str     0x000054e2      0x155 Robot.o
+                                0xddb (size before relaxing)
+ .debug_str     0x00005637      0x10c TestIMU.o
                                0x14d3 (size before relaxing)
- .debug_str     0x000058bd      0x177 Utils/Print.o
+ .debug_str     0x00005743      0x177 Utils/Print.o
                                 0x4a3 (size before relaxing)
 
-.debug_loc      0x00000000     0x8a91
+.debug_loc      0x00000000     0x89b3
  *(.debug_loc)
  .debug_loc     0x00000000     0x2157 BNO055/Adafruit_BNO055.o
  .debug_loc     0x00002157      0x37d Commands.o
- .debug_loc     0x000024d4      0xf83 EtherCardModified/enc28j60.o
- .debug_loc     0x00003457      0x25f EtherCardModified/EtherCard.o
- .debug_loc     0x000036b6      0xa48 EtherCardModified/tcpip.o
- .debug_loc     0x000040fe      0x243 EtherCardModified/udpserver.o
- .debug_loc     0x00004341      0x9be EtherCardModified/webutil.o
- .debug_loc     0x00004cff      0x486 EtherComm.o
- .debug_loc     0x00005185       0x16 main.o
- .debug_loc     0x0000519b      0x4e0 Peripherals/HardwareSerial.o
- .debug_loc     0x0000567b      0x1ca Peripherals/HardwareSerial0.o
- .debug_loc     0x00005845      0x1ca Peripherals/HardwareSerial1.o
- .debug_loc     0x00005a0f      0x1ca Peripherals/HardwareSerial2.o
- .debug_loc     0x00005bd9      0x1ca Peripherals/HardwareSerial3.o
- .debug_loc     0x00005da3      0x54a Peripherals/twi.o
- .debug_loc     0x000062ed      0xb3b Peripherals/Wire.o
- .debug_loc     0x00006e28      0x190 Robot.o
- .debug_loc     0x00006fb8      0x4b9 TestIMU.o
- .debug_loc     0x00007471     0x1620 Utils/Print.o
+ .debug_loc     0x000024d4      0xea5 EtherCardModified/enc28j60.o
+ .debug_loc     0x00003379      0x25f EtherCardModified/EtherCard.o
+ .debug_loc     0x000035d8      0xa48 EtherCardModified/tcpip.o
+ .debug_loc     0x00004020      0x243 EtherCardModified/udpserver.o
+ .debug_loc     0x00004263      0x9be EtherCardModified/webutil.o
+ .debug_loc     0x00004c21      0x486 EtherComm.o
+ .debug_loc     0x000050a7       0x16 main.o
+ .debug_loc     0x000050bd      0x4e0 Peripherals/HardwareSerial.o
+ .debug_loc     0x0000559d      0x1ca Peripherals/HardwareSerial0.o
+ .debug_loc     0x00005767      0x1ca Peripherals/HardwareSerial1.o
+ .debug_loc     0x00005931      0x1ca Peripherals/HardwareSerial2.o
+ .debug_loc     0x00005afb      0x1ca Peripherals/HardwareSerial3.o
+ .debug_loc     0x00005cc5      0x54a Peripherals/twi.o
+ .debug_loc     0x0000620f      0xb3b Peripherals/Wire.o
+ .debug_loc     0x00006d4a      0x190 Robot.o
+ .debug_loc     0x00006eda      0x4b9 TestIMU.o
+ .debug_loc     0x00007393     0x1620 Utils/Print.o
 
 .debug_macinfo
  *(.debug_macinfo)
@@ -1841,27 +1825,27 @@ END GROUP
 .debug_pubtypes
  *(.debug_pubtypes)
 
-.debug_ranges   0x00000000      0x7b8
+.debug_ranges   0x00000000      0x778
  *(.debug_ranges)
  .debug_ranges  0x00000000       0xd8 BNO055/Adafruit_BNO055.o
  .debug_ranges  0x000000d8       0x38 Commands.o
- .debug_ranges  0x00000110      0x108 EtherCardModified/enc28j60.o
- .debug_ranges  0x00000218       0x18 EtherCardModified/EtherCard.o
- .debug_ranges  0x00000230       0xd8 EtherCardModified/tcpip.o
- .debug_ranges  0x00000308       0x48 EtherCardModified/udpserver.o
- .debug_ranges  0x00000350       0x68 EtherCardModified/webutil.o
- .debug_ranges  0x000003b8       0x28 EtherComm.o
- .debug_ranges  0x000003e0       0x10 main.o
- .debug_ranges  0x000003f0       0x58 Peripherals/HardwareSerial.o
- .debug_ranges  0x00000448       0x38 Peripherals/HardwareSerial0.o
- .debug_ranges  0x00000480       0x38 Peripherals/HardwareSerial1.o
- .debug_ranges  0x000004b8       0x38 Peripherals/HardwareSerial2.o
- .debug_ranges  0x000004f0       0x38 Peripherals/HardwareSerial3.o
- .debug_ranges  0x00000528       0x70 Peripherals/twi.o
- .debug_ranges  0x00000598       0xe8 Peripherals/Wire.o
- .debug_ranges  0x00000680       0x50 Robot.o
- .debug_ranges  0x000006d0       0x30 TestIMU.o
- .debug_ranges  0x00000700       0xb8 Utils/Print.o
+ .debug_ranges  0x00000110       0xc8 EtherCardModified/enc28j60.o
+ .debug_ranges  0x000001d8       0x18 EtherCardModified/EtherCard.o
+ .debug_ranges  0x000001f0       0xd8 EtherCardModified/tcpip.o
+ .debug_ranges  0x000002c8       0x48 EtherCardModified/udpserver.o
+ .debug_ranges  0x00000310       0x68 EtherCardModified/webutil.o
+ .debug_ranges  0x00000378       0x28 EtherComm.o
+ .debug_ranges  0x000003a0       0x10 main.o
+ .debug_ranges  0x000003b0       0x58 Peripherals/HardwareSerial.o
+ .debug_ranges  0x00000408       0x38 Peripherals/HardwareSerial0.o
+ .debug_ranges  0x00000440       0x38 Peripherals/HardwareSerial1.o
+ .debug_ranges  0x00000478       0x38 Peripherals/HardwareSerial2.o
+ .debug_ranges  0x000004b0       0x38 Peripherals/HardwareSerial3.o
+ .debug_ranges  0x000004e8       0x70 Peripherals/twi.o
+ .debug_ranges  0x00000558       0xe8 Peripherals/Wire.o
+ .debug_ranges  0x00000640       0x50 Robot.o
+ .debug_ranges  0x00000690       0x30 TestIMU.o
+ .debug_ranges  0x000006c0       0xb8 Utils/Print.o
 
 .debug_macro
  *(.debug_macro)

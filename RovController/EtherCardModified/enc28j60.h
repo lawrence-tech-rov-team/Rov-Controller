@@ -95,57 +95,6 @@ public:
     */
     static uint8_t peekin (uint8_t page, uint8_t off);
 
-    /**   @brief  Put ENC28J60 in sleep mode
-    */
-    static void powerDown();  // contrib by Alex M.
-
-    /**   @brief  Wake ENC28J60 from sleep mode
-    */
-    static void powerUp();    // contrib by Alex M.
-
-    /**   @brief  Enable reception of broadcast messages
-    *     @param  temporary Set true to temporarily enable broadcast
-    *     @note   This will increase load on received data handling
-    */
-    static void enableBroadcast(bool temporary = false);
-
-    /**   @brief  Disable reception of broadcast messages
-    *     @param  temporary Set true to only disable if temporarily enabled
-    *     @note   This will reduce load on received data handling
-    */
-    static void disableBroadcast(bool temporary = false);
-
-    /**   @brief  Enables reception of multicast messages
-    *     @note   This will increase load on received data handling
-    */
-    static void enableMulticast ();
-
-    /**   @brief  Enables reception of all messages
-    *     @param  temporary Set true to temporarily enable promiscuous
-    *     @note   This will increase load significantly on received data handling
-    *     @note   All messages will be accepted, even messages with destination MAC other than own
-    *     @note   Messages with invalid CRC checksum will still be rejected
-    */
-    static void enablePromiscuous (bool temporary = false);
-
-    /**   @brief  Disable reception of all messages and go back to default mode
-    *     @param  temporary Set true to only disable if temporarily enabled
-    *     @note   This will reduce load on received data handling
-    *     @note   In this mode only unicast and broadcast messages will be received
-    */
-    static void disablePromiscuous(bool temporary = false);
-
-    /**   @brief  Disable reception of multicast messages
-    *     @note   This will reduce load on received data handling
-    */
-    static void disableMulticast();
-
-    /**   @brief  Reset and fully initialise ENC28J60
-    *     @param  csPin Arduino pin used for chip select (enable SPI bus)
-    *     @return <i>uint8_t</i> 0 on failure
-    */
-   // static uint8_t doBIST(uint8_t csPin = 8);
-
     /**   @brief  Copies a slice from the current packet to RAM
     *     @param  dest pointer in RAM where the data is copied to
     *     @param  maxlength how many bytes to copy;
