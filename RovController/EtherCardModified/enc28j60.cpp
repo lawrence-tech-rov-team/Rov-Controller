@@ -569,39 +569,4 @@ uint16_t ENC28J60::packetReceive() {
     return len;
 }
 
-void ENC28J60::copyout (uint8_t page, const uint8_t* data) {
-    uint16_t destPos = SCRATCH_START + (page << SCRATCH_PAGE_SHIFT);
-    if (destPos < SCRATCH_START || destPos > SCRATCH_LIMIT - SCRATCH_PAGE_SIZE)
-        return;
-    writeReg(EWRPT, destPos);
-    writeBuf(SCRATCH_PAGE_SIZE, data);
-}
-
-void ENC28J60::copyin (uint8_t page, uint8_t* data) {
-    uint16_t destPos = SCRATCH_START + (page << SCRATCH_PAGE_SHIFT);
-    if (destPos < SCRATCH_START || destPos > SCRATCH_LIMIT - SCRATCH_PAGE_SIZE)
-        return;
-    writeReg(ERDPT, destPos);
-    readBuf(SCRATCH_PAGE_SIZE, data);
-}
-
-uint8_t ENC28J60::peekin (uint8_t page, uint8_t off) {
-    uint8_t result = 0;
-    uint16_t destPos = SCRATCH_START + (page << SCRATCH_PAGE_SHIFT) + off;
-    if (SCRATCH_START <= destPos && destPos < SCRATCH_LIMIT) {
-        writeReg(ERDPT, destPos);
-        readBuf(1, &result);
-    }
-    return result;
-}
-
-static uint16_t endRam = ENC_HEAP_END;
-uint16_t ENC28J60::enc_malloc(uint16_t size) {
-    if (endRam-size >= ENC_HEAP_START) {
-        endRam -= size;
-        return endRam;
-    }
-    return 0;
-}
-
 

@@ -76,33 +76,6 @@ public:
     */
     static uint16_t packetReceive ();
 
-    /**   @brief  Copy data from ENC28J60 memory
-    *     @param  page Data page of memory
-    *     @param  data Pointer to buffer to copy data to
-    */
-    static void copyout (uint8_t page, const uint8_t* data);
-
-    /**   @brief  Copy data to ENC28J60 memory
-    *     @param  page Data page of memory
-    *     @param  data Pointer to buffer to copy data from
-    */
-    static void copyin (uint8_t page, uint8_t* data);
-
-    /**   @brief  Get single byte of data from ENC28J60 memory
-    *     @param  page Data page of memory
-    *     @param  off Offset of data within page
-    *     @return Data value
-    */
-    static uint8_t peekin (uint8_t page, uint8_t off);
-
-    /** @brief  reserves a block of RAM in the memory of the enc chip
-     *  @param  size number of bytes to reserve
-     *  @return <i>uint16_t</i> start address of the block within the enc memory. 0 if the remaining memory for malloc operation is less than size.
-     *  @note  There is no enc_free(), i.e., reserved blocks stay reserved for the duration of the program.
-     *  @note  The total memory available for malloc-operations is determined by ENC_HEAP_END-ENC_HEAP_START, defined in enc28j60.h; by default this is 0, i.e., you have to change these values in order to use enc_malloc().
-     */
-    static uint16_t enc_malloc(uint16_t size);
-
 };
 
 typedef ENC28J60 Ethernet; //!< Define alias Ethernet for ENC28J60
