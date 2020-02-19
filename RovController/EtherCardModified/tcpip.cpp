@@ -13,6 +13,7 @@
 
 #include "EtherCard.h"
 #include "net.h"
+#include <string.h>
 #undef word // arduino nonsense
 
 #define gPB ether.buffer

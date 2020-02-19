@@ -45,7 +45,7 @@ public:
     static bool broadcast_enabled; //!< True if broadcasts enabled (used to allow temporary disable of broadcast for DHCP or other internal functions)
     static bool promiscuous_enabled; //!< True if promiscuous mode enabled (used to allow temporary disable of promiscuous mode)
 
-    static uint8_t* tcpOffset () { return buffer + 0x36; } //!< Pointer to the start of TCP payload
+    //static uint8_t* tcpOffset () { return buffer + 0x36; } //!< Pointer to the start of TCP payload
 
     /**   @brief  Initialise SPI interface
     *     @note   Configures Arduino pins as input / output, etc.

@@ -52,12 +52,3 @@ bool EtherCard::staticSetup (const uint8_t* my_ip,
     delaycnt = 0; //request gateway ARP lookup
     return true;
 }
-
-char* EtherCard::wtoa(uint16_t value, char* ptr)
-{
-    if (value > 9)
-        ptr = wtoa(value / 10, ptr);
-    *ptr = '0' + value % 10;
-    *++ptr = 0;
-    return ptr;
-}

@@ -8,6 +8,7 @@
 #include "Robot.h"
 
 #include "Sensors/DigitalSensor.h"
+#include <stddef.h>
 
 IDevice* Robot::devices[NUM_DEVICES];
 

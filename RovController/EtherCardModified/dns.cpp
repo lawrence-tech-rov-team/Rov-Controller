@@ -6,6 +6,7 @@
 
 #include "EtherCard.h"
 #include "net.h"
+#include <string.h>
 
 #define gPB ether.buffer
 

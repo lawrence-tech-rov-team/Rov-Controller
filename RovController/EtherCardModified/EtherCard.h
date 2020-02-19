@@ -33,7 +33,6 @@
 
 #include "EtherCardConfig.h"
 #include <avr/pgmspace.h>
-#include "bufferfiller.h"
 #include "enc28j60.h"
 #include "net.h"
 
@@ -257,12 +256,6 @@ public:
     */
     static void makeNetStr(char *resultstr,uint8_t *bytestr,uint8_t len,
                            char separator,uint8_t base);
-
-    /**   @brief  Convert a 16-bit integer into a string
-    *     @param  value The number to convert
-    *     @param  ptr The string location to write to
-    */
-    char* wtoa(uint16_t value, char* ptr);
 
 };
 

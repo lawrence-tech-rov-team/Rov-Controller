@@ -173,12 +173,6 @@
     <Compile Include="Commands.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="EtherCardModified\bufferfiller.cpp">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="EtherCardModified\bufferfiller.h">
-      <SubType>compile</SubType>
-    </Compile>
     <Compile Include="EtherCardModified\dns.cpp">
       <SubType>compile</SubType>
     </Compile>
