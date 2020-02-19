@@ -158,14 +158,6 @@ void EtherCard::makeUdpReply (const char *data,uint16_t datalen,uint16_t port) {
     packetSend(UDP_HEADER_LEN+IP_HEADER_LEN+ETH_HEADER_LEN+datalen);
 }
 
-static uint32_t getBigEndianLong(uint8_t offs) { //get the sequence number of packets after an ack from GET
-    return (((unsigned long)gPB[offs]*256+gPB[offs+1])*256+gPB[offs+2])*256+gPB[offs+3];
-} //thanks to mstuetz for the missing (unsigned long)
-
-uint32_t EtherCard::getSequenceNumber() {
-    return getBigEndianLong(TCP_SEQ_H_P);
-}
-
 //TODO UdpPrepare
 void EtherCard::udpPrepare (uint16_t sport, const uint8_t *dip, uint16_t dport) {
     if(is_lan(myip, dip)) {                    // this works because both dns mac and destinations mac are stored in same variable - destmacaddr

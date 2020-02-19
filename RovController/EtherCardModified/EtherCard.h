@@ -264,10 +264,6 @@ public:
     */
     char* wtoa(uint16_t value, char* ptr);
 
-    /**   @brief  Return the sequence number of the current TCP package
-    */
-    static uint32_t getSequenceNumber();
-
 };
 
 extern EtherCard ether; //!< Global presentation of EtherCard class
