@@ -8,8 +8,6 @@ BNO055\Adafruit_Sensor.cpp
 
 Commands.cpp
 
-EtherCardModified\dns.cpp
-
 EtherCardModified\enc28j60.cpp
 
 EtherCardModified\EtherCard.cpp

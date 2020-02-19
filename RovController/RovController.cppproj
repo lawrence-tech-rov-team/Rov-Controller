@@ -173,9 +173,6 @@
     <Compile Include="Commands.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="EtherCardModified\dns.cpp">
-      <SubType>compile</SubType>
-    </Compile>
     <Compile Include="EtherCardModified\enc28j60.cpp">
       <SubType>compile</SubType>
     </Compile>

@@ -184,15 +184,6 @@ public:
     */
     static bool udpServerHasProcessedPacket(uint16_t len);    //called by tcpip, in packetLoop
 
-    // dns.cpp
-    /**   @brief  Perform DNS lookup
-    *     @param  name Host name to lookup
-    *     @param  fromRam Set true to indicate whether name is in RAM or in program space. Default = false
-    *     @return <i>bool</i> True on success.
-    *     @note   Result is stored in <i>hisip</i> member
-    */
-    static bool dnsLookup (const char* name, bool fromRam =false);
-
     // webutil.cpp
     /**   @brief  Copies an IP address
     *     @param  dst Pointer to the 4 byte destination
