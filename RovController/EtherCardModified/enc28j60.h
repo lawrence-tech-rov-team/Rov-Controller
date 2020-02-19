@@ -46,7 +46,7 @@ public:
     /**   @brief  Initialise SPI interface
     *     @note   Configures Arduino pins as input / output, etc.
     */
-    static void initSPI ();
+    static void initSPI (Register& csDDR);
 
     /**   @brief  Initialise network interface
     *     @param  size Size of data buffer

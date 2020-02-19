@@ -35,6 +35,7 @@
 #include <avr/pgmspace.h>
 #include "enc28j60.h"
 #include "net.h"
+#include "../Peripherals/Spi.h"
 
 /** Enable UDP server functionality.
 *   If zero UDP server is disabled. It is
@@ -75,7 +76,7 @@ public:
     *     @return <i>uint8_t</i> Firmware version or zero on failure.
     */
     static uint8_t begin (const uint8_t* macaddr,
-                          Register& csDDR, Register& csPort, uint8_t csPin = SpiPin_SS);
+                          Register& csDDR /*= SPI_DIR*/, Register& csPort /*= SPI_PORT*/, uint8_t csPin /*= SPI_SS*/);
 
     /**   @brief  Configure network interface with static IP
     *     @param  my_ip IP address (4 bytes). 0 for no change.

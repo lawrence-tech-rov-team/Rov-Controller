@@ -10,7 +10,7 @@
 #define PINDEFINITIONS_H_
 
 #include <avr/io.h>
-
+/*
 #define SpiPort		PORTB
 #define SpiDDR		DDRB
 #define SpiPin		PINB
@@ -18,7 +18,7 @@
 #define SpiPin_SCK	_BV(PINB1)
 #define SpiPin_MOSI	_BV(PINB2)
 #define SpiPin_MISO	_BV(PINB3)
-
+*/
 #define TwiPort		PORTD
 #define TwiDDR		DDRD
 #define TwiPin		PIND

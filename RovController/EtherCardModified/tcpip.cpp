@@ -36,6 +36,17 @@
 
 #define TCPCLIENT_SRC_PORT_H 11 //Source port (MSB) for TCP/IP client connections - hardcode all TCP/IP client connection from ports in range 2816-3071
 
+//ICMP used to handle pings
+#define ICMP_TYPE_ECHOREPLY_V 0
+#define ICMP_TYPE_ECHOREQUEST_V 8
+#define ICMP_TYPE_P 0x22
+#define ICMP_CHECKSUM_P 0x24
+#define ICMP_CHECKSUM_H_P 0x24
+#define ICMP_CHECKSUM_L_P 0x25
+#define ICMP_IDENT_H_P 0x26
+#define ICMP_IDENT_L_P 0x27
+#define ICMP_DATA_P 0x2a
+
 static void (*icmp_cb)(uint8_t *ip); // Pointer to callback function for ICMP ECHO response handler (triggers when localhost receives ping response (pong))
 static uint8_t destmacaddr[ETH_LEN]; // storing both dns server and destination mac addresses, but at different times because both are never needed at same time.
 static bool waiting_for_dns_mac = false; //might be better to use bit flags and bitmask operations for these conditions
@@ -282,6 +293,15 @@ void EtherCard::registerPingCallback (void (*callback)(uint8_t *srcip)) {
     icmp_cb = callback;
 }
 
+static void make_echo_reply_from_request(uint16_t len) {
+	make_eth_ip();
+	gPB[ICMP_TYPE_P] = ICMP_TYPE_ECHOREPLY_V;
+	if (gPB[ICMP_CHECKSUM_P] > (0xFF-0x08))
+	gPB[ICMP_CHECKSUM_P+1]++;
+	gPB[ICMP_CHECKSUM_P] += 0x08;
+	EtherCard::packetSend(len);
+}
+
 uint16_t EtherCard::packetLoop (uint16_t plen) {
     if (plen==0) {
         //Check every 65536 (no-packet) cycles whether we need to retry ARP request for gateway
@@ -329,6 +349,15 @@ uint16_t EtherCard::packetLoop (uint16_t plen) {
         //!@todo Add other protocols (and make each optional at compile time)
         return 0;
     }
+	
+	//To handle pinging
+	if (gPB[IP_PROTO_P]==IP_PROTO_ICMP_V && gPB[ICMP_TYPE_P]==ICMP_TYPE_ECHOREQUEST_V)
+	{   //Service ICMP echo request (ping)
+		if (icmp_cb)
+		(*icmp_cb)(&(gPB[IP_SRC_P]));
+		make_echo_reply_from_request(plen);
+		return 0;
+	}
 
 #if ETHERCARD_UDPSERVER
     if (ether.udpServerListening() && gPB[IP_PROTO_P]==IP_PROTO_UDP_V)

@@ -236,6 +236,9 @@
     <Compile Include="Peripherals\HardwareSerial_Private.h">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="Peripherals\SPI.h">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="Peripherals\twi.c">
       <SubType>compile</SubType>
     </Compile>
