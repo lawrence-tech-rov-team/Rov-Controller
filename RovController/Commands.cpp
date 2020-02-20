@@ -1,6 +1,7 @@
 #include "EtherComm.h"
 #include "Robot.h"
 #include "Commands.h"
+#include <stddef.h>
 
 uint8_t* const SendDataBuffer = (uint8_t*)(&EtherComm::buffer[2]);
 

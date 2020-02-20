@@ -9,6 +9,7 @@
 
 #include "Sensors/DigitalSensor.h"
 #include "Sensors/ImuSensor.h"
+#include <stddef.h>
 
 IDevice* Robot::devices[NUM_DEVICES];
 

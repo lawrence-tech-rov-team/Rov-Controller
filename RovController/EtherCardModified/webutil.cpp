@@ -93,23 +93,6 @@ unsigned char h2int(char c)
     return(0);
 }
 
-// decode a url string e.g "hello%20joe" or "hello+joe" becomes "hello joe"
-void EtherCard::urlDecode (char *urlbuf)
-{
-    char c;
-    char *dst = urlbuf;
-    while ((c = *urlbuf) != 0) {
-        if (c == '+') c = ' ';
-        if (c == '%') {
-            c = *++urlbuf;
-            c = (h2int(c) << 4) | h2int(*++urlbuf);
-        }
-        *dst++ = c;
-        urlbuf++;
-    }
-    *dst = '\0';
-}
-
 // convert a single character to a 2 digit hex str
 // a terminating '\0' is added
 void int2h(char c, char *hstr)
@@ -124,31 +107,6 @@ void int2h(char c, char *hstr)
         hstr[0]=c - 10 + 'a';
     }
     hstr[2]='\0';
-}
-
-// there must be enough space in urlbuf. In the worst case that is
-// 3 times the length of str
-void EtherCard::urlEncode (char *str,char *urlbuf)
-{
-    char c;
-    while ((c = *str) != 0) {
-        if (c == ' '||isalnum(c)) {
-            if (c == ' ') {
-                c = '+';
-            }
-            *urlbuf=c;
-            str++;
-            urlbuf++;
-            continue;
-        }
-        *urlbuf='%';
-        urlbuf++;
-        int2h(c,urlbuf);
-        urlbuf++;
-        urlbuf++;
-        str++;
-    }
-    *urlbuf='\0';
 }
 
 // parse a string and extract the IP to bytestr
