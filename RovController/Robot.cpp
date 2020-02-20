@@ -8,13 +8,16 @@
 #include "Robot.h"
 
 #include "Sensors/DigitalSensor.h"
+#include "Sensors/ImuSensor.h"
 
 IDevice* Robot::devices[NUM_DEVICES];
 
 DigitalSensor BtnTest(0, TestBtnDDR, TestBtnPort, TestBtnPinPort, TestBtnPin);
+ImuSensor Imu(1);
 
 bool Robot::RegisterDevices(){
 	RegisterDevice(BtnTest); //TODO return if successful
+	RegisterDevice(Imu);
 	
 	return true;
 }

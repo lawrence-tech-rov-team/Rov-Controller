@@ -8,17 +8,9 @@ BNO055\Adafruit_Sensor.cpp
 
 Commands.cpp
 
-EtherCardModified\bufferfiller.cpp
-
-EtherCardModified\dhcp.cpp
-
-EtherCardModified\dns.cpp
-
 EtherCardModified\enc28j60.cpp
 
 EtherCardModified\EtherCard.cpp
-
-EtherCardModified\stash.cpp
 
 EtherCardModified\tcpip.cpp
 
@@ -45,6 +37,8 @@ Peripherals\twi.c
 Peripherals\Wire.cpp
 
 Robot.cpp
+
+Sensors\ImuSensor.cpp
 
 TestIMU.cpp
 

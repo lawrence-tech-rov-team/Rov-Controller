@@ -46,12 +46,8 @@ C_SRCS +=  \
 ../BNO055/Adafruit_BNO055.cpp \
 ../BNO055/Adafruit_Sensor.cpp \
 ../Commands.cpp \
-../EtherCardModified/bufferfiller.cpp \
-../EtherCardModified/dhcp.cpp \
-../EtherCardModified/dns.cpp \
 ../EtherCardModified/enc28j60.cpp \
 ../EtherCardModified/EtherCard.cpp \
-../EtherCardModified/stash.cpp \
 ../EtherCardModified/tcpip.cpp \
 ../EtherCardModified/udpserver.cpp \
 ../EtherCardModified/webutil.cpp \
@@ -65,6 +61,7 @@ C_SRCS +=  \
 ../Peripherals/twi.c \
 ../Peripherals/Wire.cpp \
 ../Robot.cpp \
+../Sensors/ImuSensor.cpp \
 ../TestIMU.cpp \
 ../Timer1.cpp \
 ../Utils/Print.cpp \
@@ -81,12 +78,8 @@ OBJS +=  \
 BNO055/Adafruit_BNO055.o \
 BNO055/Adafruit_Sensor.o \
 Commands.o \
-EtherCardModified/bufferfiller.o \
-EtherCardModified/dhcp.o \
-EtherCardModified/dns.o \
 EtherCardModified/enc28j60.o \
 EtherCardModified/EtherCard.o \
-EtherCardModified/stash.o \
 EtherCardModified/tcpip.o \
 EtherCardModified/udpserver.o \
 EtherCardModified/webutil.o \
@@ -100,6 +93,7 @@ Peripherals/HardwareSerial3.o \
 Peripherals/twi.o \
 Peripherals/Wire.o \
 Robot.o \
+Sensors/ImuSensor.o \
 TestIMU.o \
 Timer1.o \
 Utils/Print.o \
@@ -109,12 +103,8 @@ OBJS_AS_ARGS +=  \
 BNO055/Adafruit_BNO055.o \
 BNO055/Adafruit_Sensor.o \
 Commands.o \
-EtherCardModified/bufferfiller.o \
-EtherCardModified/dhcp.o \
-EtherCardModified/dns.o \
 EtherCardModified/enc28j60.o \
 EtherCardModified/EtherCard.o \
-EtherCardModified/stash.o \
 EtherCardModified/tcpip.o \
 EtherCardModified/udpserver.o \
 EtherCardModified/webutil.o \
@@ -128,6 +118,7 @@ Peripherals/HardwareSerial3.o \
 Peripherals/twi.o \
 Peripherals/Wire.o \
 Robot.o \
+Sensors/ImuSensor.o \
 TestIMU.o \
 Timer1.o \
 Utils/Print.o \
@@ -137,12 +128,8 @@ C_DEPS +=  \
 BNO055/Adafruit_BNO055.d \
 BNO055/Adafruit_Sensor.d \
 Commands.d \
-EtherCardModified/bufferfiller.d \
-EtherCardModified/dhcp.d \
-EtherCardModified/dns.d \
 EtherCardModified/enc28j60.d \
 EtherCardModified/EtherCard.d \
-EtherCardModified/stash.d \
 EtherCardModified/tcpip.d \
 EtherCardModified/udpserver.d \
 EtherCardModified/webutil.d \
@@ -156,6 +143,7 @@ Peripherals/HardwareSerial3.d \
 Peripherals/twi.d \
 Peripherals/Wire.d \
 Robot.d \
+Sensors/ImuSensor.d \
 TestIMU.d \
 Timer1.d \
 Utils/Print.d \
@@ -165,12 +153,8 @@ C_DEPS_AS_ARGS +=  \
 BNO055/Adafruit_BNO055.d \
 BNO055/Adafruit_Sensor.d \
 Commands.d \
-EtherCardModified/bufferfiller.d \
-EtherCardModified/dhcp.d \
-EtherCardModified/dns.d \
 EtherCardModified/enc28j60.d \
 EtherCardModified/EtherCard.d \
-EtherCardModified/stash.d \
 EtherCardModified/tcpip.d \
 EtherCardModified/udpserver.d \
 EtherCardModified/webutil.d \
@@ -184,6 +168,7 @@ Peripherals/HardwareSerial3.d \
 Peripherals/twi.d \
 Peripherals/Wire.d \
 Robot.d \
+Sensors/ImuSensor.d \
 TestIMU.d \
 Timer1.d \
 Utils/Print.d \
@@ -224,27 +209,6 @@ BNO055/Adafruit_Sensor.o: ../BNO055/Adafruit_Sensor.cpp
 	@echo Finished building: $<
 	
 
-EtherCardModified/bufferfiller.o: ../EtherCardModified/bufferfiller.cpp
-	@echo Building file: $<
-	@echo Invoking: AVR8/GNU C Compiler : 5.4.0
-	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-g++.exe$(QUOTE) -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.2.209\include"  -O1 -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -mrelax -g2 -Wall -mmcu=atmega2560 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.2.209\gcc\dev\atmega2560" -c -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
-	@echo Finished building: $<
-	
-
-EtherCardModified/dhcp.o: ../EtherCardModified/dhcp.cpp
-	@echo Building file: $<
-	@echo Invoking: AVR8/GNU C Compiler : 5.4.0
-	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-g++.exe$(QUOTE) -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.2.209\include"  -O1 -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -mrelax -g2 -Wall -mmcu=atmega2560 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.2.209\gcc\dev\atmega2560" -c -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
-	@echo Finished building: $<
-	
-
-EtherCardModified/dns.o: ../EtherCardModified/dns.cpp
-	@echo Building file: $<
-	@echo Invoking: AVR8/GNU C Compiler : 5.4.0
-	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-g++.exe$(QUOTE) -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.2.209\include"  -O1 -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -mrelax -g2 -Wall -mmcu=atmega2560 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.2.209\gcc\dev\atmega2560" -c -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
-	@echo Finished building: $<
-	
-
 EtherCardModified/enc28j60.o: ../EtherCardModified/enc28j60.cpp
 	@echo Building file: $<
 	@echo Invoking: AVR8/GNU C Compiler : 5.4.0
@@ -253,13 +217,6 @@ EtherCardModified/enc28j60.o: ../EtherCardModified/enc28j60.cpp
 	
 
 EtherCardModified/EtherCard.o: ../EtherCardModified/EtherCard.cpp
-	@echo Building file: $<
-	@echo Invoking: AVR8/GNU C Compiler : 5.4.0
-	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-g++.exe$(QUOTE) -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.2.209\include"  -O1 -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -mrelax -g2 -Wall -mmcu=atmega2560 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.2.209\gcc\dev\atmega2560" -c -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
-	@echo Finished building: $<
-	
-
-EtherCardModified/stash.o: ../EtherCardModified/stash.cpp
 	@echo Building file: $<
 	@echo Invoking: AVR8/GNU C Compiler : 5.4.0
 	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-g++.exe$(QUOTE) -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.2.209\include"  -O1 -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -mrelax -g2 -Wall -mmcu=atmega2560 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.2.209\gcc\dev\atmega2560" -c -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
@@ -351,6 +308,13 @@ Peripherals/Wire.o: ../Peripherals/Wire.cpp
 	
 
 ./Robot.o: .././Robot.cpp
+	@echo Building file: $<
+	@echo Invoking: AVR8/GNU C Compiler : 5.4.0
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-g++.exe$(QUOTE) -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.2.209\include"  -O1 -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -mrelax -g2 -Wall -mmcu=atmega2560 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.2.209\gcc\dev\atmega2560" -c -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	@echo Finished building: $<
+	
+
+Sensors/ImuSensor.o: ../Sensors/ImuSensor.cpp
 	@echo Building file: $<
 	@echo Invoking: AVR8/GNU C Compiler : 5.4.0
 	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-g++.exe$(QUOTE) -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.2.209\include"  -O1 -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -mrelax -g2 -Wall -mmcu=atmega2560 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.2.209\gcc\dev\atmega2560" -c -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 

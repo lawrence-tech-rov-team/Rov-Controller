@@ -173,18 +173,6 @@
     <Compile Include="Commands.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="EtherCardModified\bufferfiller.cpp">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="EtherCardModified\bufferfiller.h">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="EtherCardModified\dhcp.cpp">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="EtherCardModified\dns.cpp">
-      <SubType>compile</SubType>
-    </Compile>
     <Compile Include="EtherCardModified\enc28j60.cpp">
       <SubType>compile</SubType>
     </Compile>
@@ -201,12 +189,6 @@
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="EtherCardModified\net.h">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="EtherCardModified\stash.cpp">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="EtherCardModified\stash.h">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="EtherCardModified\tcpip.cpp">
@@ -254,6 +236,9 @@
     <Compile Include="Peripherals\HardwareSerial_Private.h">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="Peripherals\SPI.h">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="Peripherals\twi.c">
       <SubType>compile</SubType>
     </Compile>
@@ -276,6 +261,12 @@
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="Sensors\DigitalSensor.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Sensors\ImuSensor.cpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Sensors\ImuSensor.h">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="TestIMU.cpp">
