@@ -17,6 +17,7 @@ public:
 	}
 	
 	virtual void Update(const uint8_t* data, uint8_t len) = 0;
+	virtual bool begin() = 0;
 	
 protected:
 	IDevice(uint8_t ID) : id(ID){

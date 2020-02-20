@@ -14,9 +14,9 @@
 
 class ImuSensor : public ISensor{
 public:
-	ImuSensor(uint8_t ID) : ISensor(ID, SENSOR_TYPE_DIGITAL) {
-		
-	}
+	ImuSensor(uint8_t ID);
+	
+	bool begin(); //override
 
 protected:
 	bool IsValidRequest(const uint8_t* data, uint8_t len) { //override

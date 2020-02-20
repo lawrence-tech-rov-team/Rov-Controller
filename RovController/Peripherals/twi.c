@@ -11,6 +11,16 @@
 #include <avr/io.h>
 #include <avr/interrupt.h>
 #include <compat/twi.h>
+#include "../Utils/CpuFreq.h"
+//#include "Arduino.h" // for digitalWrite
+
+#define TwiDDR PORTD
+#define TwiPort PORTD
+#define SDA _BV(PIND1)
+#define SCL _BV(PIND0)
+
+#define false 0
+#define true 1
 
 #ifndef cbi
 #define cbi(sfr, bit) (_SFR_BYTE(sfr) &= ~_BV(bit))
@@ -20,9 +30,8 @@
 #define sbi(sfr, bit) (_SFR_BYTE(sfr) |= _BV(bit))
 #endif
 
+//#include "pins_arduino.h"
 #include "twi.h"
-#include "../Utils/CpuFreq.h"
-#include "../PinDefinitions.h"
 
 static volatile uint8_t twi_state;
 static volatile uint8_t twi_slarw;
@@ -55,11 +64,11 @@ void twi_init(void)
 {
   // initialize state
   twi_state = TWI_READY;
-  twi_sendStop = 1;		// default value
-  twi_inRepStart = 0;
+  twi_sendStop = true;		// default value
+  twi_inRepStart = false;
   
   // activate internal pullups for twi.
-  TwiPort |= TwiPin_SCL | TwiPin_SDA;
+  TwiPort |= SDA | SCL;
 
   // initialize twi prescaler and bit rate
   cbi(TWSR, TWPS0);
@@ -87,7 +96,7 @@ void twi_disable(void)
   TWCR &= ~(_BV(TWEN) | _BV(TWIE) | _BV(TWEA));
 
   // deactivate internal pullups for twi.
-  TwiPort &= ~(TwiPin_SDA | TwiPin_SCL);
+  TwiPort &= ~(SDA | SCL);
 }
 
 /* 
@@ -159,14 +168,14 @@ uint8_t twi_readFrom(uint8_t address, uint8_t* data, uint8_t length, uint8_t sen
   twi_slarw = TW_READ;
   twi_slarw |= address << 1;
 
-  if (1 == twi_inRepStart) {
+  if (true == twi_inRepStart) {
     // if we're in the repeated start state, then we've already sent the start,
     // (@@@ we hope), and the TWI statemachine is just waiting for the address byte.
     // We need to remove ourselves from the repeated start state before we enable interrupts,
     // since the ISR is ASYNC, and we could get confused if we hit the ISR before cleaning
     // up. Also, don't enable the START interrupt. There may be one pending from the 
     // repeated start that we sent ourselves, and that would really confuse things.
-    twi_inRepStart = 0;			// remember, we're dealing with an ASYNC ISR
+    twi_inRepStart = false;			// remember, we're dealing with an ASYNC ISR
     do {
       TWDR = twi_slarw;
     } while(TWCR & _BV(TWWC));
@@ -241,14 +250,14 @@ uint8_t twi_writeTo(uint8_t address, uint8_t* data, uint8_t length, uint8_t wait
   // if we're in a repeated start, then we've already sent the START
   // in the ISR. Don't do it again.
   //
-  if (1 == twi_inRepStart) {
+  if (true == twi_inRepStart) {
     // if we're in the repeated start state, then we've already sent the start,
     // (@@@ we hope), and the TWI statemachine is just waiting for the address byte.
     // We need to remove ourselves from the repeated start state before we enable interrupts,
     // since the ISR is ASYNC, and we could get confused if we hit the ISR before cleaning
     // up. Also, don't enable the START interrupt. There may be one pending from the 
     // repeated start that we sent outselves, and that would really confuse things.
-    twi_inRepStart = 0;			// remember, we're dealing with an ASYNC ISR
+    twi_inRepStart = false;			// remember, we're dealing with an ASYNC ISR
     do {
       TWDR = twi_slarw;				
     } while(TWCR & _BV(TWWC));
@@ -403,7 +412,7 @@ ISR(TWI_vect)
 	if (twi_sendStop)
           twi_stop();
 	else {
-	  twi_inRepStart = 1;	// we're gonna send the START
+	  twi_inRepStart = true;	// we're gonna send the START
 	  // don't enable the interrupt. We'll generate the start, but we 
 	  // avoid handling the interrupt until we're in the next transaction,
 	  // at the point where we would normally issue the start.
@@ -443,7 +452,7 @@ ISR(TWI_vect)
 	if (twi_sendStop)
           twi_stop();
 	else {
-	  twi_inRepStart = 1;	// we're gonna send the START
+	  twi_inRepStart = true;	// we're gonna send the START
 	  // don't enable the interrupt. We'll generate the start, but we 
 	  // avoid handling the interrupt until we're in the next transaction,
 	  // at the point where we would normally issue the start.

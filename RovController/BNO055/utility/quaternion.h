@@ -18,7 +18,7 @@
 #include "matrix.h"
 
 
-namespace imu
+namespace AdafruitImu
 {
 
 	class Quaternion

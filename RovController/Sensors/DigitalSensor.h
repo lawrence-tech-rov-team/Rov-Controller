@@ -16,9 +16,15 @@ public:
 	DigitalSensor(uint8_t ID, Register& DDRPort, Register& PortPort, Register& PinPort, uint8_t Pin, bool Inversed = true) : ISensor(ID, SENSOR_TYPE_DIGITAL), pin(Pin), pinPort(&PinPort), inversed(Inversed) {
 		DDRPort &= ~pin; //Enable input
 		PortPort |= pin; //Enable pullup
+		//TODO move to begin?
+	}
+	
+	bool begin(){
+		return true;
 	}
 
 protected:
+
 	bool IsValidRequest(const uint8_t* data, uint8_t len) { //override
 		return len == 0;
 	}

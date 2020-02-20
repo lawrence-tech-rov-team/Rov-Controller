@@ -15,7 +15,7 @@
 
 #include "vector.h"
 
-namespace imu
+namespace AdafruitImu
 {
 
 

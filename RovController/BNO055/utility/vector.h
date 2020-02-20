@@ -15,7 +15,7 @@
 #include <math.h>
 
 
-namespace imu
+namespace AdafruitImu
 {
 
 	template <uint8_t N> class Vector

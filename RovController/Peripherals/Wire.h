@@ -9,7 +9,6 @@
 #ifndef WIRE_H_
 #define WIRE_H_
 
-
 #include <inttypes.h>
 #include "../Utils/Stream.h"
 

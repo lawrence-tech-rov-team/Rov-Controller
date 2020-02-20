@@ -19,7 +19,7 @@
 #define SENSOR_TYPE_DIGITAL 1
 
 
-class ISensor : public IDevice {
+class ISensor : public IDevice { //TODO have a "begin" phase, check for bad startups
 	public:
 		void Update(const uint8_t* data, uint8_t len) { //override
 			if(len >= 0){

@@ -40,7 +40,9 @@ bool Robot::begin(){
 void Robot::RegisterDevice(ISensor& sensor){
 	uint8_t id = sensor.getId();
 	if(devices[id] == NULL){
-		devices[id] = &sensor;
+		if(sensor.begin()){
+			devices[id] = &sensor; //TODO error handling
+		}
 	}else{
 		//TODO id collisions
 	}

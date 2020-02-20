@@ -10,9 +10,11 @@
 #include "Peripherals/HardwareSerial.h"
 #include "Robot.h"
 #include "TestIMU.h"
+#include <avr/interrupt.h>
 
 int main(void){
 	//TestIMU();
+	sei(); //Enable global interrupts
 	Serial.begin(9600);
 	Serial.println("\nInitializing...");
 	
