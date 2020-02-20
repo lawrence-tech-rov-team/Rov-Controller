@@ -153,49 +153,28 @@ void ENC28J60::initSPI (Register& csDDR) {
 	disableChip();
 }
 
-static void xferSPI (uint8_t data) {
-	SPI.write8(data);
-    /*SPDR = data;
-    while (!(SPSR&(1<<SPIF)))
-        ;*/
-}
-
 static uint8_t readOp (uint8_t op, uint8_t address) {
     enableChip();
-    xferSPI(op | (address & ADDR_MASK));
-    xferSPI(0x00);
+    SPI.write8(op | (address & ADDR_MASK));
+    uint8_t result = SPI.read_write8(0x00);
     if (address & 0x80)
-        xferSPI(0x00);
-    uint8_t result = SPDR;
+        result = SPI.read_write8(0x00);
     disableChip();
     return result;
 }
 
 static void writeOp (uint8_t op, uint8_t address, uint8_t data) {
     enableChip();
-    xferSPI(op | (address & ADDR_MASK));
-    xferSPI(data);
+    SPI.write8(op | (address & ADDR_MASK));
+    SPI.write8(data);
     disableChip();
 }
 
 static void readBuf(uint16_t len, uint8_t* data) {
-    uint8_t nextbyte;
-
     enableChip();
     if (len != 0) {
-        xferSPI(ENC28J60_READ_BUF_MEM);
-
-        SPDR = 0x00;
-        while (--len) {
-            while (!(SPSR & (1<<SPIF)))
-                ;
-            nextbyte = SPDR;
-            SPDR = 0x00;
-            *data++ = nextbyte;
-        }
-        while (!(SPSR & (1<<SPIF)))
-            ;
-        *data++ = SPDR;
+        SPI.write8(ENC28J60_READ_BUF_MEM);
+		SPI.read(data, len);
     }
     disableChip();
 }
@@ -203,17 +182,9 @@ static void readBuf(uint16_t len, uint8_t* data) {
 static void writeBuf(uint16_t len, const uint8_t* data) {
     enableChip();
     if (len != 0) {
-        xferSPI(ENC28J60_WRITE_BUF_MEM);
+        SPI.write8(ENC28J60_WRITE_BUF_MEM);
 
-        SPDR = *data++;
-        while (--len) {
-            uint8_t nextbyte = *data++;
-        	while (!(SPSR & (1<<SPIF)))
-                ;
-            SPDR = nextbyte;
-     	};
-        while (!(SPSR & (1<<SPIF)))
-            ;
+        SPI.write(data, len);
     }
     disableChip();
 }

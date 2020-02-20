@@ -40,29 +40,10 @@ public:
 	//Write SPI assuming CS is low, meaning the device is selected.
 	static void write8(uint8_t data){
 		//enableCS();
-		//SPDR = data;
-		//asm volatile("nop");
-		//while(!(SPSR & _BV(SPIF)));
-		//disableCS();
 		SPDR = data;
 		asm volatile("nop");
-		asm volatile("nop");
-		asm volatile("nop");
-		asm volatile("nop");
-		asm volatile("nop");
-		asm volatile("nop");
-		asm volatile("nop");
-		asm volatile("nop");
-		asm volatile("nop");
-		asm volatile("nop");
-		asm volatile("nop");
-		asm volatile("nop");
-		asm volatile("nop");
-		asm volatile("nop");
-		asm volatile("nop");
-		asm volatile("nop");
-		asm volatile("nop");
-		asm volatile("nop");
+		while(!(SPSR & _BV(SPIF)));
+		//disableCS();
 	}
 
 	//write8, excepts also returns the received byte
@@ -79,13 +60,14 @@ public:
 	static uint16_t read_write16(uint16_t data){
 		uint16_t val;
 		val |= read_write8(data >> 8);
-		val <<= 8;
-		val |= read_write8(data);
+		val = (val << 8) | read_write8(data);
 		return val;
 	}
 
-	static void write(void *buf, uint16_t nbyte){
-		uint8_t* buff = reinterpret_cast<uint8_t*>(buf);
+	static void write(const void *buf, uint16_t nbyte){
+		if(nbyte == 0) return;
+		
+		const uint8_t* buff = (const uint8_t*)(buf);
 		SPDR = *buff;
 		while(--nbyte){
 			asm volatile("nop");
@@ -97,7 +79,9 @@ public:
 	}
 
 	static void read_write(void *buf, uint16_t nbyte){
-		uint8_t* buff = reinterpret_cast<uint8_t*>(buf);
+		if(nbyte == 0) return;
+		
+		uint8_t* buff = (uint8_t*)buf;
 		SPDR = *buff;
 		while(--nbyte){
 			while(!(SPSR & _BV(SPIF)));
@@ -108,7 +92,9 @@ public:
 	}
 		
 	static void read(void *buf, uint16_t nbyte, uint8_t dataSend = 0){
-		uint8_t* buff = reinterpret_cast<uint8_t*>(buf);
+		if(nbyte == 0) return;
+		
+		uint8_t* buff = (uint8_t*)buf;
 		while(nbyte--){
 			SPDR = dataSend;
 			//asm volatile("nop\nnop\nnop\nnop\nnop\nnop\nnop\nnop\nnop\nnop\nnop\nnop\n");
