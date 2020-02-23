@@ -36,6 +36,7 @@ SUBDIRS :=  \
 ../BNO055/utility \
 ../EtherCardModified \
 ../BNO055 \
+../Peripherals/TWI \
 ../Sensors \
 ../Utils \
 ../Peripherals
@@ -58,7 +59,7 @@ C_SRCS +=  \
 ../Peripherals/HardwareSerial1.cpp \
 ../Peripherals/HardwareSerial2.cpp \
 ../Peripherals/HardwareSerial3.cpp \
-../Peripherals/Wire.cpp \
+../Peripherals/TWI/TWI.cpp \
 ../Robot.cpp \
 ../Sensors/ImuSensor.cpp \
 ../TestIMU.cpp \
@@ -89,7 +90,7 @@ Peripherals/HardwareSerial0.o \
 Peripherals/HardwareSerial1.o \
 Peripherals/HardwareSerial2.o \
 Peripherals/HardwareSerial3.o \
-Peripherals/Wire.o \
+Peripherals/TWI/TWI.o \
 Robot.o \
 Sensors/ImuSensor.o \
 TestIMU.o \
@@ -113,7 +114,7 @@ Peripherals/HardwareSerial0.o \
 Peripherals/HardwareSerial1.o \
 Peripherals/HardwareSerial2.o \
 Peripherals/HardwareSerial3.o \
-Peripherals/Wire.o \
+Peripherals/TWI/TWI.o \
 Robot.o \
 Sensors/ImuSensor.o \
 TestIMU.o \
@@ -137,7 +138,7 @@ Peripherals/HardwareSerial0.d \
 Peripherals/HardwareSerial1.d \
 Peripherals/HardwareSerial2.d \
 Peripherals/HardwareSerial3.d \
-Peripherals/Wire.d \
+Peripherals/TWI/TWI.d \
 Robot.d \
 Sensors/ImuSensor.d \
 TestIMU.d \
@@ -161,7 +162,7 @@ Peripherals/HardwareSerial0.d \
 Peripherals/HardwareSerial1.d \
 Peripherals/HardwareSerial2.d \
 Peripherals/HardwareSerial3.d \
-Peripherals/Wire.d \
+Peripherals/TWI/TWI.d \
 Robot.d \
 Sensors/ImuSensor.d \
 TestIMU.d \
@@ -288,7 +289,7 @@ Peripherals/HardwareSerial3.o: ../Peripherals/HardwareSerial3.cpp
 	@echo Finished building: $<
 	
 
-Peripherals/Wire.o: ../Peripherals/Wire.cpp
+Peripherals/TWI/TWI.o: ../Peripherals/TWI/TWI.cpp
 	@echo Building file: $<
 	@echo Invoking: AVR8/GNU C Compiler : 5.4.0
 	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-g++.exe$(QUOTE) -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.2.209\include"  -O1 -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -mrelax -g2 -Wall -mmcu=atmega2560 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.2.209\gcc\dev\atmega2560" -c -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 

@@ -1,22 +1,15 @@
 /*
- * Wire.cpp
+ * TWI.cpp
  *
- * Created: 2/17/2020 10:15:36 PM
+ * Created: 2/22/2020 10:40:37 PM
  *  Author: zcarey
  */ 
 
-
-//extern "C" {
-//	#include <stdlib.h>
-//	#include <string.h>
-//	#include <inttypes.h>
-//	#include "twi.h"
-//}
-
 #include <avr/interrupt.h>
 #include <avr/io.h>
-#include "Wire.h"
-#include "../Utils/CpuFreq.h"
+#include "TWI.h"
+#include "../../Utils/CpuFreq.h"
+#include <util/twi.h>
 
 #define TwiDDR PORTD
 #define TwiPort PORTD
@@ -33,16 +26,16 @@
 
 // Initialize Class Variables //////////////////////////////////////////////////
 
-uint8_t TwoWire::rxBuffer[BUFFER_LENGTH];
+uint8_t TwoWire::rxBuffer[TWI_BUFFER_LENGTH];
 uint8_t TwoWire::rxBufferIndex = 0;
 uint8_t TwoWire::rxBufferLength = 0;
 
 uint8_t TwoWire::txAddress = 0;
-uint8_t TwoWire::txBuffer[BUFFER_LENGTH];
+uint8_t TwoWire::txBuffer[TWI_BUFFER_LENGTH];
 uint8_t TwoWire::txBufferIndex = 0;
 uint8_t TwoWire::txBufferLength = 0;
 
-uint8_t TwoWire::transmitting = 0;
+bool TwoWire::transmitting = false;
 void (*TwoWire::user_onRequest)(void);
 void (*TwoWire::user_onReceive)(int);
 
@@ -257,8 +250,8 @@ uint8_t TwoWire::requestFrom(uint8_t address, uint8_t quantity, uint32_t iaddres
 	}
 
 	// clamp to buffer length
-	if(quantity > BUFFER_LENGTH){
-		quantity = BUFFER_LENGTH;
+	if(quantity > TWI_BUFFER_LENGTH){
+		quantity = TWI_BUFFER_LENGTH;
 	}
 	// perform blocking read into buffer
 	uint8_t read = readFrom(address, rxBuffer, quantity, sendStop);
@@ -291,7 +284,7 @@ uint8_t TwoWire::requestFrom(int address, int quantity, int sendStop)
 void TwoWire::beginTransmission(uint8_t address)
 {
 	// indicate that we are transmitting
-	transmitting = 1;
+	transmitting = true;
 	// set address of targeted slave
 	txAddress = address;
 	// reset tx buffer iterator vars
@@ -391,7 +384,7 @@ uint8_t TwoWire::endTransmission(uint8_t sendStop)
 	txBufferIndex = 0;
 	txBufferLength = 0;
 	// indicate that we are done transmitting
-	transmitting = 0;
+	transmitting = false;
 	return ret;
 }
 
@@ -434,7 +427,7 @@ size_t TwoWire::write(uint8_t data)
 	if(transmitting){
 		// in master transmitter mode
 		// don't bother if buffer is full
-		if(txBufferLength >= BUFFER_LENGTH){
+		if(txBufferLength >= TWI_BUFFER_LENGTH){
 			//setWriteError();
 			return 0;
 		}

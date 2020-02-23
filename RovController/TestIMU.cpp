@@ -9,7 +9,7 @@
 #include "PinDefinitions.h"
 #include "Peripherals/HardwareSerial.h"
 
-#include "Peripherals/Wire.h"
+#include "Peripherals/TWI/TWI.h"
 #include "BNO055/Adafruit_Sensor.h"
 #include "BNO055/Adafruit_BNO055.h"
 #include "BNO055/utility/imumaths.h"

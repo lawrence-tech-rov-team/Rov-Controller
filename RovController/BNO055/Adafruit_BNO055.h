@@ -9,7 +9,7 @@
 #ifndef ADAFRUIT_BNO055_H_
 #define ADAFRUIT_BNO055_H_
 
-#include "../Peripherals/Wire.h"
+#include "../Peripherals/TWI/TWI.h"
 
 #include "Adafruit_Sensor.h"
 #include "utility/imumaths.h"

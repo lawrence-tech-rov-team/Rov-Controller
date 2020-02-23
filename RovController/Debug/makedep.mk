@@ -32,7 +32,7 @@ Peripherals\HardwareSerial2.cpp
 
 Peripherals\HardwareSerial3.cpp
 
-Peripherals\Wire.cpp
+Peripherals\TWI\TWI.cpp
 
 Robot.cpp
 
