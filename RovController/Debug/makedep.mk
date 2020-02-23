@@ -32,8 +32,6 @@ Peripherals\HardwareSerial2.cpp
 
 Peripherals\HardwareSerial3.cpp
 
-Peripherals\twi.c
-
 Peripherals\Wire.cpp
 
 Robot.cpp

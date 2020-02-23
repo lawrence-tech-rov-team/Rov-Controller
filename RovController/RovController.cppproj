@@ -239,12 +239,6 @@
     <Compile Include="Peripherals\SPI.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="Peripherals\twi.c">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="Peripherals\twi.h">
-      <SubType>compile</SubType>
-    </Compile>
     <Compile Include="Peripherals\Wire.cpp">
       <SubType>compile</SubType>
     </Compile>
