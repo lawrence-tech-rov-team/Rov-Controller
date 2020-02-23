@@ -149,9 +149,6 @@
     <Compile Include="BNO055\Adafruit_BNO055.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="BNO055\Adafruit_Sensor.cpp">
-      <SubType>compile</SubType>
-    </Compile>
     <Compile Include="BNO055\Adafruit_Sensor.h">
       <SubType>compile</SubType>
     </Compile>
@@ -243,6 +240,12 @@
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="Peripherals\TWI\TWI.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Peripherals\TWI\Wire.cpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Peripherals\TWI\Wire.h">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="PinDefinitions.h">
