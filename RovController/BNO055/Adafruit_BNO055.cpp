@@ -870,7 +870,6 @@ bool Adafruit_BNO055::readLen(adafruit_bno055_reg_t reg, uint8_t *buffer,
   }*/
 	while(!_twi->available()){
 	}
-	Serial.println(_twi->getError());
 
   /* ToDo: Check for errors! */
   return true;
