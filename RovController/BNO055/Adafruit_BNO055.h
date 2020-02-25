@@ -267,7 +267,7 @@ public:
   } adafruit_vector_type_t;
 
   Adafruit_BNO055(int32_t sensorID = -1, uint8_t address = BNO055_ADDRESS_A,
-                  TwoWire *theWire = &Wire);
+                  TWI *theWire = &Twi);
 
   bool begin(adafruit_bno055_opmode_t mode = OPERATION_MODE_NDOF);
   void setMode(adafruit_bno055_opmode_t mode);
@@ -306,7 +306,7 @@ private:
   bool write8(adafruit_bno055_reg_t, uint8_t value);
 
   uint8_t _address;
-  TwoWire *_wire;
+  TWI *_twi;
 
   int32_t _sensorID;
   adafruit_bno055_opmode_t _mode;

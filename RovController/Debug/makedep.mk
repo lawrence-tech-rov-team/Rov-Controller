@@ -4,8 +4,6 @@
 
 BNO055\Adafruit_BNO055.cpp
 
-BNO055\Adafruit_Sensor.cpp
-
 Commands.cpp
 
 EtherCardModified\enc28j60.cpp

@@ -242,12 +242,6 @@
     <Compile Include="Peripherals\TWI\TWI.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="Peripherals\TWI\Wire.cpp">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="Peripherals\TWI\Wire.h">
-      <SubType>compile</SubType>
-    </Compile>
     <Compile Include="PinDefinitions.h">
       <SubType>compile</SubType>
     </Compile>

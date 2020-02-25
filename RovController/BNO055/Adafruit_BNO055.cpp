@@ -11,6 +11,7 @@
 #include <math.h>
 
 #include "Adafruit_BNO055.h"
+#include "../Peripherals/HardwareSerial.h" //TODO remove
 
 /*!
  *  @brief  Instantiates a new Adafruit_BNO055 class
@@ -22,10 +23,10 @@
  *          Wire object
  */
 Adafruit_BNO055::Adafruit_BNO055(int32_t sensorID, uint8_t address,
-                                 TwoWire *theWire) {
+                                 TWI *theWire) {
   _sensorID = sensorID;
   _address = address;
-  _wire = theWire;
+  _twi = theWire;
 }
 
 /*!
@@ -55,7 +56,7 @@ bool Adafruit_BNO055::begin(adafruit_bno055_opmode_t mode) {
 #endif
 
   /* Enable I2C */
-  _wire->begin();
+  _twi->begin();
 
   /* Make sure we have the right device */
   uint8_t id = read8(BNO055_CHIP_ID_ADDR);
@@ -802,16 +803,24 @@ void Adafruit_BNO055::enterNormalMode() {
   _delay_ms(20);
 }
 
+uint8_t tempReg;
 /*!
  *  @brief  Writes an 8 bit value over I2C
  */
 bool Adafruit_BNO055::write8(adafruit_bno055_reg_t reg, uint8_t value) {
-  _wire->beginTransmission(_address);
+  /*_twi->beginTransmission(_address);
 
-  _wire->write((uint8_t)reg);
-  _wire->write((uint8_t)value);
+  _twi->write((uint8_t)reg);
+  _twi->write((uint8_t)value);
 
-  _wire->endTransmission();
+  _twi->endTransmission();*/
+  tempReg = reg;
+  while(!_twi->writeAsync(_address, &value, 1, &tempReg, 1)){
+	  
+  }
+  while(!_twi->available()){
+	  
+  }
 
   /* ToDo: Check for error! */
   return true;
@@ -822,36 +831,46 @@ bool Adafruit_BNO055::write8(adafruit_bno055_reg_t reg, uint8_t value) {
  */
 uint8_t Adafruit_BNO055::read8(adafruit_bno055_reg_t reg) {
   uint8_t value = 0;
+/*
+  _twi->beginTransmission(_address);
 
-  _wire->beginTransmission(_address);
+  _twi->write((uint8_t)reg);
 
-  _wire->write((uint8_t)reg);
+  _twi->endTransmission();
+  _twi->requestFrom(_address, (uint8_t)1);
 
-  _wire->endTransmission();
-  _wire->requestFrom(_address, (uint8_t)1);
-
-  value = _wire->read();
+  value = _twi->read();*/
+	readLen(reg, &value, 1);
 
   return value;
 }
+
 
 /*!
  *  @brief  Reads the specified number of bytes over I2C
  */
 bool Adafruit_BNO055::readLen(adafruit_bno055_reg_t reg, uint8_t *buffer,
                               uint8_t len) {
-  _wire->beginTransmission(_address);
+								
+  //_twi->beginTransmission(_address);
 
-  _wire->write((uint8_t)reg);
+  //_twi->write((uint8_t)reg);
 
-  _wire->endTransmission();
-  _wire->requestFrom(_address, (uint8_t)len);
-
+  //_twi->endTransmission();
+  
+  tempReg = reg;
+  while(!_twi->readAsync(buffer, _address, len, &tempReg, 1)){
+	  
+  }
+/*
   for (uint8_t i = 0; i < len; i++) {
 
-    buffer[i] = _wire->read();
+    buffer[i] = _twi->read();
 
-  }
+  }*/
+	while(!_twi->available()){
+	}
+	Serial.println(_twi->getError());
 
   /* ToDo: Check for errors! */
   return true;

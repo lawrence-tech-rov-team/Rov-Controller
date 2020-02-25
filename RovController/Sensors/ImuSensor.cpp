@@ -31,15 +31,15 @@ uint8_t ImuSensor::UpdateRequested(uint8_t* buffer){
 	buffer[0] = 0b01111111;
 	buffer[1] = imu.getTemp();
 	
-	vector = imu.getVector(Adafruit_BNO055::VECTOR_EULER);
-	saveFloat(vector.x(), buffer + 2);
-	saveFloat(vector.y(), buffer + 6);
-	saveFloat(vector.z(), buffer + 10);
+	//vector = imu.getVector(Adafruit_BNO055::VECTOR_EULER);
+	saveFloat(/*vector.x()*/0.0, buffer + 2);
+	saveFloat(/*vector.y()*/0.0, buffer + 6);
+	saveFloat(/*vector.z()*/0.0, buffer + 10);
 	
-	vector = imu.getVector(Adafruit_BNO055::VECTOR_ACCELEROMETER );
-	saveFloat(vector.x(), buffer + 14);
-	saveFloat(vector.y(), buffer + 18);
-	saveFloat(vector.z(), buffer + 22);
+	//vector = imu.getVector(Adafruit_BNO055::VECTOR_ACCELEROMETER );
+	saveFloat(/*vector.x()*/0.0, buffer + 14);
+	saveFloat(/*vector.y()*/0.0, buffer + 18);
+	saveFloat(/*vector.z()*/0.0, buffer + 22);
 	
 	return 1 + 1 + 6*4;
 }

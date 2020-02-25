@@ -45,7 +45,6 @@ SUBDIRS :=  \
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS +=  \
 ../BNO055/Adafruit_BNO055.cpp \
-../BNO055/Adafruit_Sensor.cpp \
 ../Commands.cpp \
 ../EtherCardModified/enc28j60.cpp \
 ../EtherCardModified/EtherCard.cpp \
@@ -76,7 +75,6 @@ ASM_SRCS +=
 
 OBJS +=  \
 BNO055/Adafruit_BNO055.o \
-BNO055/Adafruit_Sensor.o \
 Commands.o \
 EtherCardModified/enc28j60.o \
 EtherCardModified/EtherCard.o \
@@ -100,7 +98,6 @@ Utils/Stream.o
 
 OBJS_AS_ARGS +=  \
 BNO055/Adafruit_BNO055.o \
-BNO055/Adafruit_Sensor.o \
 Commands.o \
 EtherCardModified/enc28j60.o \
 EtherCardModified/EtherCard.o \
@@ -124,7 +121,6 @@ Utils/Stream.o
 
 C_DEPS +=  \
 BNO055/Adafruit_BNO055.d \
-BNO055/Adafruit_Sensor.d \
 Commands.d \
 EtherCardModified/enc28j60.d \
 EtherCardModified/EtherCard.d \
@@ -148,7 +144,6 @@ Utils/Stream.d
 
 C_DEPS_AS_ARGS +=  \
 BNO055/Adafruit_BNO055.d \
-BNO055/Adafruit_Sensor.d \
 Commands.d \
 EtherCardModified/enc28j60.d \
 EtherCardModified/EtherCard.d \
@@ -185,13 +180,6 @@ LINKER_SCRIPT_DEP+=
 
 # AVR32/GNU C Compiler
 BNO055/Adafruit_BNO055.o: ../BNO055/Adafruit_BNO055.cpp
-	@echo Building file: $<
-	@echo Invoking: AVR8/GNU C Compiler : 5.4.0
-	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-g++.exe$(QUOTE) -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.2.209\include"  -O1 -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -mrelax -g2 -Wall -mmcu=atmega2560 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.2.209\gcc\dev\atmega2560" -c -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
-	@echo Finished building: $<
-	
-
-BNO055/Adafruit_Sensor.o: ../BNO055/Adafruit_Sensor.cpp
 	@echo Building file: $<
 	@echo Invoking: AVR8/GNU C Compiler : 5.4.0
 	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-g++.exe$(QUOTE) -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.2.209\include"  -O1 -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -mrelax -g2 -Wall -mmcu=atmega2560 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.2.209\gcc\dev\atmega2560" -c -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
