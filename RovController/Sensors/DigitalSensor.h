@@ -29,7 +29,7 @@ protected:
 		return len == 0;
 	}
 
-	uint8_t UpdateRequested(uint8_t* buffer, uint8_t mask) { //override
+	uint8_t UpdateRequested(uint8_t* buffer) { //override
 		buffer[0] = ((*pinPort & pin) > 0) ^ inversed;
 		return 1;
 	}
