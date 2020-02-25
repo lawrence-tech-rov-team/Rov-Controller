@@ -11,7 +11,6 @@
 #include <math.h>
 
 #include "Adafruit_BNO055.h"
-#include "../Peripherals/HardwareSerial.h" //TODO remove
 
 /*!
  *  @brief  Instantiates a new Adafruit_BNO055 class
