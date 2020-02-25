@@ -12,6 +12,15 @@
 #include "../BNO055/Adafruit_BNO055.h"
 #include "../ISensor.h"
 
+#define IMU_SENSOR_BIT_TEMP 0x01
+#define IMU_SENSOR_BIT_MAGNETOMETER 0x02
+#define IMU_SENSOR_BIT_GYROSCOPE 0x04
+#define IMU_SENSOR_BIT_EULER 0x08
+#define IMU_SENSOR_BIT_ACCELEROMETER 0x10
+#define IMU_SENSOR_BIT_LINEARACCEL 0x20
+#define IMU_SENSOR_BIT_GRAVITY 0x40
+#define IMU_SENSOR_BIT_QUATERNION 0x80
+
 class ImuSensor : public ISensor{
 public:
 	ImuSensor(uint8_t ID);
@@ -23,7 +32,8 @@ protected:
 		return len == 0;
 	}
 
-	uint8_t UpdateRequested(uint8_t* buffer); //override
+	//using ISensor::UpdateRequested(uint8_t* buffer, uint8_t mask);
+	uint8_t UpdateRequested(uint8_t* buffer, uint8_t mask); //override
 
 private:
 	Adafruit_BNO055 imu;

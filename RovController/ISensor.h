@@ -28,7 +28,7 @@ class ISensor : public IDevice { //TODO have a "begin" phase, check for bad star
 					if(IsValidRequest(data, len)){
 						EtherComm::buffer[2] = getId(); //TODO does this really have to be called?
 						//EtherComm::buffer[3] = sensorType;
-						len = UpdateRequested(EtherComm::buffer + /*4*/3);
+						len = UpdateRequested(EtherComm::buffer + /*4*/3, (len > 0) ? data[0] : 0);
 						EtherComm::SendCommand(CMD_UpdateDevice, len +  /*2*/1);
 					}
 				//}
@@ -42,7 +42,7 @@ class ISensor : public IDevice { //TODO have a "begin" phase, check for bad star
 		
 		virtual bool IsValidRequest(const uint8_t* data, uint8_t len) = 0;
 		
-		virtual uint8_t UpdateRequested(uint8_t* buffer) = 0;
+		virtual uint8_t UpdateRequested(uint8_t* buffer, uint8_t mask) = 0;
 		
 	private:
 		uint8_t sensorType;
