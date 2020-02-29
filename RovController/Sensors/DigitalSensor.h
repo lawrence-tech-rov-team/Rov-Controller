@@ -10,7 +10,6 @@
 #define DIGITALSENSOR_H_
 
 #include "../IReadable.h"
-#include "../Peripherals/HardwareSerial.h" //TODO remove
 
 class DigitalSensor : public IReadable {
 public:
@@ -32,10 +31,10 @@ public:
 protected:
 
 	void ReadRegisterRequested(uint8_t id, uint8_t* buffer) { //override
-		Serial.print("My id: ");
+		/*Serial.print("My id: ");
 		Serial.print(_id);
 		Serial.print("    Reg id: ");
-		Serial.println(id);
+		Serial.println(id);*/
 		if(id == _id){
 			buffer[0] = ((*pinPort & pin) > 0) ^ inversed;
 			SendCommand(id, 1);

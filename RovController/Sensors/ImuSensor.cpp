@@ -41,13 +41,15 @@ AdafruitImu::Vector<3> vector;
 void ImuSensor::ReadRegisterRequested(uint8_t id, uint8_t* buffer){
 	if(id == tempId){
 		buffer[0] = imu.getTemp();
+		SendCommand(id, 1);
 	}else if(id == accelId){
-		vector = imu.getVector(Adafruit_BNO055::VECTOR_EULER);
+		vector = imu.getVector(Adafruit_BNO055::VECTOR_ACCELEROMETER );
 		saveFloat(vector.x(), buffer + 0);
 		saveFloat(vector.y(), buffer + 4);
 		saveFloat(vector.z(), buffer + 8);
+		SendCommand(id, 12);
 	}
-/*	vector = imu.getVector(Adafruit_BNO055::VECTOR_ACCELEROMETER );
+/*	vector = imu.getVector(Adafruit_BNO055::VECTOR_EULER);
 	saveFloat(vector.x(), buffer + 14);
 	saveFloat(vector.y(), buffer + 18);
 	saveFloat(vector.z(), buffer + 22);

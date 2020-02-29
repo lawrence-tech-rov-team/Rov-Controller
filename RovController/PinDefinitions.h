@@ -38,7 +38,7 @@
 #define TestBtnPort		PORTF
 #define TestBtnDDR		DDRF
 #define TestBtnPinPort	PINF
-#define TestBtnPin		_BV(PINF0)
+#define TestBtnPin		_BV(PINF1)
 
 
 //==================Macros==================
