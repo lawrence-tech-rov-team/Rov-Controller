@@ -209,7 +209,10 @@
     <Compile Include="IDevice.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="ISensor.h">
+    <Compile Include="IReadable.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="IWritable.h">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="main.cpp">

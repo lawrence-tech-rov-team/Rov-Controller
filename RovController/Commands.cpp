@@ -21,7 +21,7 @@ void RunEchoCommand(const uint8_t* data, uint8_t len){
   
   EtherComm::SendCommand(CMD_Echo, dataLen);
 }
-
+//TODO remove this command from both devices
 void RunLedCommand(const uint8_t* data, uint8_t len){
 	if(len == 1){
 		uint8_t state = *data;
@@ -31,20 +31,12 @@ void RunLedCommand(const uint8_t* data, uint8_t len){
 	}
 }
 
-void RunUpdateDeviceCommand(const uint8_t* data, uint8_t len){
-	if(len > 0){
-		if(Robot::devices[data[0]] != NULL){
-			Robot::devices[data[0]]->Update(data + 1, len - 1);
-		}
-	}
-}
-
 void EtherComm::CommandReceived(uint8_t command, const uint8_t* data, uint8_t len){
   switch(command){
     case CMD_Ping: RunPingCommand(data, len); break;
     case CMD_Echo: RunEchoCommand(data, len); break;
 	case CMD_Led: RunLedCommand(data, len); break;
-	case CMD_UpdateDevice: RunUpdateDeviceCommand(data, len); break;
+	case CMD_UpdateDevice: rov.CommandReceived(data, len); break;
     default: break;
   }
 }

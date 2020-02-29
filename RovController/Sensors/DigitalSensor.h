@@ -9,32 +9,41 @@
 #ifndef DIGITALSENSOR_H_
 #define DIGITALSENSOR_H_
 
-#include "../ISensor.h"
+#include "../IReadable.h"
+#include "../Peripherals/HardwareSerial.h" //TODO remove
 
-class DigitalSensor : public ISensor{
+class DigitalSensor : public IReadable {
 public:
-	DigitalSensor(uint8_t ID, Register& DDRPort, Register& PortPort, Register& PinPort, uint8_t Pin, bool Inversed = true) : ISensor(ID, SENSOR_TYPE_DIGITAL), pin(Pin), pinPort(&PinPort), inversed(Inversed) {
+	DigitalSensor(const uint8_t ID, Register& DDRPort, Register& PortPort, Register& PinPort, uint8_t Pin, bool Inversed = true) : _id(ID), pin(Pin), pinPort(&PinPort), inversed(Inversed) {
 		DDRPort &= ~pin; //Enable input
 		PortPort |= pin; //Enable pullup
+		rov.RegisterDevice(0, this);
 		//TODO move to begin?
 	}
 	
-	bool begin(){
-		return true;
+	bool begin(){ //override
+		return rov.RegisterDevice(_id, this);
+	}
+	
+	void Update(uint8_t* buffer) { //override
+		
 	}
 
 protected:
 
-	bool IsValidRequest(const uint8_t* data, uint8_t len) { //override
-		return len == 0;
-	}
-
-	uint8_t UpdateRequested(uint8_t* buffer) { //override
-		buffer[0] = ((*pinPort & pin) > 0) ^ inversed;
-		return 1;
+	void ReadRegisterRequested(uint8_t id, uint8_t* buffer) { //override
+		Serial.print("My id: ");
+		Serial.print(_id);
+		Serial.print("    Reg id: ");
+		Serial.println(id);
+		if(id == _id){
+			buffer[0] = ((*pinPort & pin) > 0) ^ inversed;
+			SendCommand(id, 1);
+		}
 	}
 
 private:
+	const uint8_t _id;
 	const uint8_t pin;
 	Register* const pinPort;
 	const bool inversed;

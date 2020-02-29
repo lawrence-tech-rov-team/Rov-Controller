@@ -10,23 +10,23 @@
 #define IMUSENSOR_H_
 
 #include "../BNO055/Adafruit_BNO055.h"
-#include "../ISensor.h"
+#include "../IReadable.h"
 
-class ImuSensor : public ISensor{
+class ImuSensor : public IReadable{
 public:
-	ImuSensor(uint8_t ID);
+	ImuSensor(const uint8_t TempId, const uint8_t AccelId);
 	
 	bool begin(); //override
+	
+	void Update(uint8_t* buffer); //override
 
 protected:
-	bool IsValidRequest(const uint8_t* data, uint8_t len) { //override
-		return len == 0;
-	}
-
-	uint8_t UpdateRequested(uint8_t* buffer); //override
+	void ReadRegisterRequested(uint8_t id, uint8_t* buffer); //override
 
 private:
 	Adafruit_BNO055 imu;
+	const uint8_t tempId;
+	const uint8_t accelId;
 };
 
 

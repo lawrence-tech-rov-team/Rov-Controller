@@ -1,7 +1,7 @@
 /*
  * IDevice.h
  *
- * Created: 2/2/2020 6:21:04 PM
+ * Created: 2/28/2020 8:07:17 PM
  *  Author: zcarey
  */ 
 
@@ -9,25 +9,24 @@
 #ifndef IDEVICE_H_
 #define IDEVICE_H_
 
+#include "EtherComm.h"
+#include "Commands.h"
 
 class IDevice{
 public:
-	uint8_t getId(){
-		return id;
-	}
-	
-	virtual void Update(const uint8_t* data, uint8_t len) = 0;
+
 	virtual bool begin() = 0;
+	virtual void CommandReceived(uint8_t id, const uint8_t* data, uint8_t len) = 0;
+	virtual void Update(uint8_t* buffer) = 0;
 	
 protected:
-	IDevice(uint8_t ID) : id(ID){
-		
+	void inline SendCommand(uint8_t id, uint8_t len){
+		EtherComm::buffer[2] = id;
+		EtherComm::SendCommand(CMD_UpdateDevice, len + 1);
 	}
 	
-private:
-	uint8_t id;
+private:	
 };
-
 
 
 #endif /* IDEVICE_H_ */

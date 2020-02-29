@@ -12,21 +12,27 @@
 
 #include "PinDefinitions.h"
 #include "IDevice.h"
-#include "ISensor.h"
 
 #define NUM_DEVICES 256
+
+//typedef void(*RegisterCallback)();
 
 class Robot{
 public:
 	static bool begin();
+	static void Loop();
+	static void CommandReceived(const uint8_t* data, uint8_t len);
+	
 	static void SetLed(bool illuminate);
 	static bool ReadTestBtn();
-	static IDevice* devices[NUM_DEVICES];
+	//static IDevice* devices[NUM_DEVICES];
+	static IDevice* registers[NUM_DEVICES];
+	
+	static bool RegisterDevice(uint8_t id, IDevice* device);
 	
 private:
 	Robot(){}
-	static bool RegisterDevices();
-	static void RegisterDevice(ISensor& sensor);
+	//static bool RegisterDevices();
 
 };
 

@@ -25,10 +25,10 @@
 #define TwiPin_SDA	_BV(PIND1)
 #define TwiPin_SCL	_BV(PIND0)
 
-#define EthernetPort	PORTH
-#define EthernetDDR		DDRH
-#define EthernetPin		PINH
-#define EthernetPin_CS	_BV(PINH5)
+#define EthernetPort	PORTB
+#define EthernetDDR		DDRB
+#define EthernetPin		PINB
+#define EthernetPin_CS	_BV(PINB0)
 
 #define LedPort		PORTB
 #define LedDDR		DDRB
