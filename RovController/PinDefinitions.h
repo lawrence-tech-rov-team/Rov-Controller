@@ -43,6 +43,7 @@
 
 //==================Macros==================
 typedef volatile uint8_t Register;
+typedef volatile uint16_t Register16;
 #define SetHigh(Port, pin) ((Port) |= (pin))
 #define SetLow(Port, pin) ((Port) &= ~(pin))
 #define SetOutput(Port, pin) ((Port) |= (pin))

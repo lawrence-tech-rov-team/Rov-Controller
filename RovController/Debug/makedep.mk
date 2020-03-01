@@ -32,6 +32,16 @@ Peripherals\HardwareSerial2.cpp
 
 Peripherals\HardwareSerial3.cpp
 
+Peripherals\PWM\HardwareServo.cpp
+
+Peripherals\PWM\HardwareServo1.cpp
+
+Peripherals\PWM\HardwareServo3.cpp
+
+Peripherals\PWM\HardwareServo4.cpp
+
+Peripherals\PWM\HardwareServo5.cpp
+
 Peripherals\twi.c
 
 Peripherals\Wire.cpp

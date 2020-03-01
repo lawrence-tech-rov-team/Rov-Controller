@@ -239,6 +239,24 @@
     <Compile Include="Peripherals\HardwareSerial_Private.h">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="Peripherals\PWM\HardwareServo.cpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Peripherals\PWM\HardwareServo.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Peripherals\PWM\HardwareServo1.cpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Peripherals\PWM\HardwareServo3.cpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Peripherals\PWM\HardwareServo4.cpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Peripherals\PWM\HardwareServo5.cpp">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="Peripherals\SPI.h">
       <SubType>compile</SubType>
     </Compile>
@@ -307,6 +325,7 @@
     <Folder Include="BNO055\utility" />
     <Folder Include="EtherCardModified" />
     <Folder Include="BNO055" />
+    <Folder Include="Peripherals\PWM" />
     <Folder Include="Sensors" />
     <Folder Include="Utils" />
     <Folder Include="Peripherals" />
