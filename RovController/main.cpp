@@ -12,12 +12,14 @@
 #include "TestIMU.h"
 #include <avr/interrupt.h>
 #include "Peripherals/PWM/HardwareServo.h"
+#include "PCA9685/TwiServoController.h"
 
 int8_t dir = 1;
 uint8_t pos = 128;
 #include "Utils/CpuFreq.h"
 #include <util/delay.h>
 
+TwiServoController TwiServo(0x40);
 #define MIN 550
 #define MAX 2400
 
@@ -38,7 +40,7 @@ int main(void){
 		while(1);
 	}
 	Serial.println("Connected to controller.");
-	
+/*	
 	DDRB |= _BV(PINB5) | _BV(PINB6);
 	DDRE |= _BV(PINE3) | _BV(PINE4) | _BV(PINE5);
 	DDRH |= _BV(PINH3) | _BV(PINH4) | _BV(PINH5);
@@ -88,12 +90,13 @@ int main(void){
 	Servo5.EnableA();
 	Servo5.EnableB();
 	Servo5.EnableC();
-	
+	*/
     /* Replace with your application code */
+	TwiServo.begin();
     while (1) {
 		EtherComm::Loop();
 		rov.Loop();
-		Servo1.setPulseA(pos);
+/*		Servo1.setPulseA(pos);
 		Servo1.setPulseB(pos);
 		Servo1.setPulseC(pos);
 		Servo3.setPulseA(pos);
@@ -113,7 +116,8 @@ int main(void){
 			dir = 1;
 			_delay_ms(500);
 		}
-		_delay_ms(5);
+		_delay_ms(5);*/
+		TwiServo.sweep();
     }
 }
 

@@ -36,6 +36,7 @@ SUBDIRS :=  \
 ../BNO055/utility \
 ../EtherCardModified \
 ../BNO055 \
+../PCA9685 \
 ../Peripherals/PWM \
 ../Sensors \
 ../Utils \
@@ -54,6 +55,8 @@ C_SRCS +=  \
 ../EtherCardModified/webutil.cpp \
 ../EtherComm.cpp \
 ../main.cpp \
+../PCA9685/PCA9685.cpp \
+../PCA9685/TwiServoController.cpp \
 ../Peripherals/HardwareSerial.cpp \
 ../Peripherals/HardwareSerial0.cpp \
 ../Peripherals/HardwareSerial1.cpp \
@@ -91,6 +94,8 @@ EtherCardModified/udpserver.o \
 EtherCardModified/webutil.o \
 EtherComm.o \
 main.o \
+PCA9685/PCA9685.o \
+PCA9685/TwiServoController.o \
 Peripherals/HardwareSerial.o \
 Peripherals/HardwareSerial0.o \
 Peripherals/HardwareSerial1.o \
@@ -121,6 +126,8 @@ EtherCardModified/udpserver.o \
 EtherCardModified/webutil.o \
 EtherComm.o \
 main.o \
+PCA9685/PCA9685.o \
+PCA9685/TwiServoController.o \
 Peripherals/HardwareSerial.o \
 Peripherals/HardwareSerial0.o \
 Peripherals/HardwareSerial1.o \
@@ -151,6 +158,8 @@ EtherCardModified/udpserver.d \
 EtherCardModified/webutil.d \
 EtherComm.d \
 main.d \
+PCA9685/PCA9685.d \
+PCA9685/TwiServoController.d \
 Peripherals/HardwareSerial.d \
 Peripherals/HardwareSerial0.d \
 Peripherals/HardwareSerial1.d \
@@ -181,6 +190,8 @@ EtherCardModified/udpserver.d \
 EtherCardModified/webutil.d \
 EtherComm.d \
 main.d \
+PCA9685/PCA9685.d \
+PCA9685/TwiServoController.d \
 Peripherals/HardwareSerial.d \
 Peripherals/HardwareSerial0.d \
 Peripherals/HardwareSerial1.d \
@@ -278,6 +289,20 @@ EtherCardModified/webutil.o: ../EtherCardModified/webutil.cpp
 	
 
 ./main.o: .././main.cpp
+	@echo Building file: $<
+	@echo Invoking: AVR8/GNU C Compiler : 5.4.0
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-g++.exe$(QUOTE) -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.2.209\include"  -O1 -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -mrelax -g2 -Wall -mmcu=atmega2560 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.2.209\gcc\dev\atmega2560" -c -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	@echo Finished building: $<
+	
+
+PCA9685/PCA9685.o: ../PCA9685/PCA9685.cpp
+	@echo Building file: $<
+	@echo Invoking: AVR8/GNU C Compiler : 5.4.0
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-g++.exe$(QUOTE) -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.2.209\include"  -O1 -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -mrelax -g2 -Wall -mmcu=atmega2560 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.2.209\gcc\dev\atmega2560" -c -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	@echo Finished building: $<
+	
+
+PCA9685/TwiServoController.o: ../PCA9685/TwiServoController.cpp
 	@echo Building file: $<
 	@echo Invoking: AVR8/GNU C Compiler : 5.4.0
 	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-g++.exe$(QUOTE) -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.2.209\include"  -O1 -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -mrelax -g2 -Wall -mmcu=atmega2560 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.2.209\gcc\dev\atmega2560" -c -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 

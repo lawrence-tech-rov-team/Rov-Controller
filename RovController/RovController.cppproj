@@ -218,6 +218,18 @@
     <Compile Include="main.cpp">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="PCA9685\PCA9685.cpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="PCA9685\PCA9685.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="PCA9685\TwiServoController.cpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="PCA9685\TwiServoController.h">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="Peripherals\HardwareSerial.cpp">
       <SubType>compile</SubType>
     </Compile>
@@ -325,6 +337,7 @@
     <Folder Include="BNO055\utility" />
     <Folder Include="EtherCardModified" />
     <Folder Include="BNO055" />
+    <Folder Include="PCA9685" />
     <Folder Include="Peripherals\PWM" />
     <Folder Include="Sensors" />
     <Folder Include="Utils" />

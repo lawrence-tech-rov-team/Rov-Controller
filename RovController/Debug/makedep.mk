@@ -22,6 +22,10 @@ EtherComm.cpp
 
 main.cpp
 
+PCA9685\PCA9685.cpp
+
+PCA9685\TwiServoController.cpp
+
 Peripherals\HardwareSerial.cpp
 
 Peripherals\HardwareSerial0.cpp
