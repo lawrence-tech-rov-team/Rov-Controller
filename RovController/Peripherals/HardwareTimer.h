@@ -14,27 +14,29 @@
 
 #include "../PinDefinitions.h"
 
-/*
-	Due to some development time constraints, this timer class is designed for 20ms timing with a 16MHz clock.
-*/
 class HardwareTimer{
 public:
 	HardwareTimer(Register &tccrA, Register &tccrB, Register &timsk, Register &tcnt, Register &ocra);
-	void begin();
+	void beginMs(float ms);
+	void beginUs(float us);
+	void beginNs(float ns);
 	
-	void start();
+	void start(uint8_t ticks = 1);
 	bool finished();
 	void waitForFinish();
 	
 	//NOT TO BE CALLED BY USER
 	void isr_timer_comp();
 private:
+	float findPrescale(float ms);
+
 	Register* const _tccrA;
 	Register* const _tccrB;
 	Register* const _timsk;
 	Register* const _tcnt;
 	Register* const _ocra;
 	
+	uint8_t prescaleMask;
 	uint8_t ovfRemaining;
 };
 

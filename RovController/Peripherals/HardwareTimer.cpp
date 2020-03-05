@@ -6,6 +6,7 @@
  */ 
 
 #include "HardwareTimer.h"
+#include "../Utils/CpuFreq.h"
 #include <avr/interrupt.h>
 
 #define CLK_DISABLE (0)
@@ -20,18 +21,60 @@ HardwareTimer::HardwareTimer(Register &tccrA, Register &tccrB, Register &timsk, 
 {
 	
 }
+/*
+inline uint16_t divRoundUp(uint16_t n, uint16_t d){
+	return ((n - 1) / d) + 1;
+}
+*/
+float HardwareTimer::findPrescale(float ms){
+	float prescale = (ms * (F_CPU / 1000.0)) / 256.0;
+	
+	if(prescale <= 1.0){
+		prescaleMask = CLK_DIV_1;
+		return 1.0;
+	}else if(prescale <= 8.0){
+		prescaleMask = CLK_DIV_8;
+		return 8.0;
+	}else if(prescale <= 64.0){
+		prescaleMask = CLK_DIV_64;
+		return 64.0;
+	}else if(prescale <= 256.0){
+		prescaleMask = CLK_DIV_256;
+		return 256.0;
+	}else{ //if(prescale <= 1024) return 1024;
+		prescaleMask = CLK_DIV_1024;
+		return 1024.0;	
+	}
+}
 
-void HardwareTimer::begin(){
-	*_tccrA = _BV(WGM01); //Normal mode, off by default
+void HardwareTimer::beginMs(float ms){
+	*_tccrA = _BV(WGM01); //CTC mode, off by default
 	*_tccrB = 0;
 	*_timsk = _BV(OCIE0A); //Overflow interrupt
-	*_ocra = 155; //Clock div 1024 ~= 10ms per overflow
 	sei();
-}//OCR0A
+	
+	float P = findPrescale(ms);
+	float TOP = ((ms * F_CPU) / (1000.0 * P)) - 1;
+	if(TOP > 255.0){
+		*_ocra = 255;
+	}else if (TOP < 0){
+		*_ocra = 0;
+	}else{
+		*_ocra = (uint8_t)TOP;
+	}
+}
 
-void HardwareTimer::start(){
+void HardwareTimer::beginUs(float us){
+	beginMs(us / 1000.0);
+}
+
+void HardwareTimer::beginNs(float ns){
+	beginMs(ns / 1000000.0);
+}
+
+void HardwareTimer::start(uint8_t ticks/*= 1*/){
 	*_tccrB = 0; //Disable timer
-	ovfRemaining = 2;
+	ovfRemaining = ticks;
 	*_tcnt = 0; //Reset timer
 	*_tccrB = CLK_DIV_1024; 
 }

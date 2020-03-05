@@ -29,7 +29,7 @@ MS5837::MS5837() {
 }
 
 bool MS5837::begin() {
-	Timer0.begin();
+	Timer0.beginMs(10);
 	
 	// Reset the MS5837, per datasheet
 	Wire.beginTransmission(MS5837_ADDR);

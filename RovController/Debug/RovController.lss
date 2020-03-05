@@ -7,27 +7,27 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, ALLOC, LOAD, DATA
   1 .text         00003038  00000000  00000000  00000094  2**1
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
-  2 .bss          000006ad  008002f6  008002f6  000031c2  2**0
+  2 .bss          000006af  008002f6  008002f6  000031c2  2**0
                   ALLOC
   3 .comment      00000030  00000000  00000000  000031c2  2**0
                   CONTENTS, READONLY
   4 .note.gnu.avr.deviceinfo 00000040  00000000  00000000  000031f4  2**2
                   CONTENTS, READONLY
-  5 .debug_aranges 00000a28  00000000  00000000  00003234  2**0
+  5 .debug_aranges 00000a40  00000000  00000000  00003234  2**0
                   CONTENTS, READONLY, DEBUGGING
-  6 .debug_info   0001667f  00000000  00000000  00003c5c  2**0
+  6 .debug_info   00016848  00000000  00000000  00003c74  2**0
                   CONTENTS, READONLY, DEBUGGING
-  7 .debug_abbrev 0000541f  00000000  00000000  0001a2db  2**0
+  7 .debug_abbrev 00005475  00000000  00000000  0001a4bc  2**0
                   CONTENTS, READONLY, DEBUGGING
-  8 .debug_line   00005dd1  00000000  00000000  0001f6fa  2**0
+  8 .debug_line   00005eac  00000000  00000000  0001f931  2**0
                   CONTENTS, READONLY, DEBUGGING
-  9 .debug_frame  00001f30  00000000  00000000  000254cc  2**2
+  9 .debug_frame  00001fcc  00000000  00000000  000257e0  2**2
                   CONTENTS, READONLY, DEBUGGING
- 10 .debug_str    000064ed  00000000  00000000  000273fc  2**0
+ 10 .debug_str    00006584  00000000  00000000  000277ac  2**0
                   CONTENTS, READONLY, DEBUGGING
- 11 .debug_loc    0000a75b  00000000  00000000  0002d8e9  2**0
+ 11 .debug_loc    0000aa6d  00000000  00000000  0002dd30  2**0
                   CONTENTS, READONLY, DEBUGGING
- 12 .debug_ranges 00000978  00000000  00000000  00038044  2**0
+ 12 .debug_ranges 00000990  00000000  00000000  0003879d  2**0
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
@@ -398,7 +398,7 @@ Disassembly of section .text:
      2d2:	1d 92       	st	X+, r1
 
 000002d4 <.do_clear_bss_start>:
-     2d4:	a3 3a       	cpi	r26, 0xA3	; 163
+     2d4:	a5 3a       	cpi	r26, 0xA5	; 165
      2d6:	b2 07       	cpc	r27, r18
      2d8:	e1 f7       	brne	.-8      	; 0x2d2 <.do_clear_bss_loop>
 
@@ -5463,11 +5463,11 @@ void HardwareTimer::waitForFinish(){
 void HardwareTimer::isr_timer_comp(){
     20d2:	fc 01       	movw	r30, r24
 	if(ovfRemaining > 0) ovfRemaining--;
-    20d4:	92 85       	ldd	r25, Z+10	; 0x0a
+    20d4:	93 85       	ldd	r25, Z+11	; 0x0b
     20d6:	99 23       	and	r25, r25
     20d8:	11 f0       	breq	.+4      	; 0x20de <_ZN13HardwareTimer14isr_timer_compEv+0xc>
     20da:	91 50       	subi	r25, 0x01	; 1
-    20dc:	92 87       	std	Z+10, r25	; 0x0a
+    20dc:	93 87       	std	Z+11, r25	; 0x0b
     20de:	08 95       	ret
 
 000020e0 <__vector_21>:
@@ -5497,7 +5497,7 @@ ISR(TIMER0_COMPA_vect){
     2102:	ef 93       	push	r30
     2104:	ff 93       	push	r31
 	Timer0.isr_timer_comp();
-    2106:	81 eb       	ldi	r24, 0xB1	; 177
+    2106:	82 eb       	ldi	r24, 0xB2	; 178
     2108:	96 e0       	ldi	r25, 0x06	; 6
     210a:	e3 df       	rcall	.-58     	; 0x20d2 <_ZN13HardwareTimer14isr_timer_compEv>
 }
@@ -5579,7 +5579,7 @@ ISR(TIMER2_COMPA_vect){
 
 HardwareTimer::HardwareTimer(Register &tccrA, Register &tccrB, Register &timsk, Register &tcnt, Register &ocra)
 : _tccrA(&tccrA), _tccrB(&tccrB), _timsk(&timsk), _tcnt(&tcnt), _ocra(&ocra)
-    2184:	e1 eb       	ldi	r30, 0xB1	; 177
+    2184:	e2 eb       	ldi	r30, 0xB2	; 178
     2186:	f6 e0       	ldi	r31, 0x06	; 6
     2188:	84 e4       	ldi	r24, 0x44	; 68
     218a:	90 e0       	ldi	r25, 0x00	; 0
@@ -5632,10 +5632,10 @@ HardwareTimer::HardwareTimer(Register &tccrA, Register &tccrB, Register &timsk, 
     TWCR = _BV(TWEN) | _BV(TWIE) | _BV(TWINT) | _BV(TWEA);
   }else{
 	  TWCR = _BV(TWEN) | _BV(TWIE) | _BV(TWINT);
-    21de:	10 92 29 07 	sts	0x0729, r1	; 0x800729 <twi_state>
+    21de:	10 92 2b 07 	sts	0x072B, r1	; 0x80072b <twi_state>
     21e2:	81 e0       	ldi	r24, 0x01	; 1
-    21e4:	80 93 27 07 	sts	0x0727, r24	; 0x800727 <twi_sendStop>
-    21e8:	10 92 26 07 	sts	0x0726, r1	; 0x800726 <twi_inRepStart>
+    21e4:	80 93 29 07 	sts	0x0729, r24	; 0x800729 <twi_sendStop>
+    21e8:	10 92 28 07 	sts	0x0728, r1	; 0x800728 <twi_inRepStart>
     21ec:	8b b1       	in	r24, 0x0b	; 11
     21ee:	83 60       	ori	r24, 0x03	; 3
     21f0:	8b b9       	out	0x0b, r24	; 11
@@ -5657,31 +5657,31 @@ HardwareTimer::HardwareTimer(Register &tccrA, Register &tccrB, Register &timsk, 
     2210:	41 32       	cpi	r20, 0x21	; 33
     2212:	08 f0       	brcs	.+2      	; 0x2216 <twi_readFrom+0x6>
     2214:	4c c0       	rjmp	.+152    	; 0x22ae <twi_readFrom+0x9e>
-    2216:	90 91 29 07 	lds	r25, 0x0729	; 0x800729 <twi_state>
+    2216:	90 91 2b 07 	lds	r25, 0x072B	; 0x80072b <twi_state>
     221a:	91 11       	cpse	r25, r1
     221c:	fc cf       	rjmp	.-8      	; 0x2216 <twi_readFrom+0x6>
     221e:	31 e0       	ldi	r19, 0x01	; 1
-    2220:	30 93 29 07 	sts	0x0729, r19	; 0x800729 <twi_state>
-    2224:	20 93 27 07 	sts	0x0727, r18	; 0x800727 <twi_sendStop>
+    2220:	30 93 2b 07 	sts	0x072B, r19	; 0x80072b <twi_state>
+    2224:	20 93 29 07 	sts	0x0729, r18	; 0x800729 <twi_sendStop>
     2228:	2f ef       	ldi	r18, 0xFF	; 255
-    222a:	20 93 bc 06 	sts	0x06BC, r18	; 0x8006bc <twi_error>
-    222e:	10 92 01 07 	sts	0x0701, r1	; 0x800701 <twi_masterBufferIndex>
+    222a:	20 93 be 06 	sts	0x06BE, r18	; 0x8006be <twi_error>
+    222e:	10 92 03 07 	sts	0x0703, r1	; 0x800703 <twi_masterBufferIndex>
     2232:	24 0f       	add	r18, r20
-    2234:	20 93 00 07 	sts	0x0700, r18	; 0x800700 <twi_masterBufferLength>
-    2238:	30 93 28 07 	sts	0x0728, r19	; 0x800728 <twi_slarw>
-    223c:	20 91 28 07 	lds	r18, 0x0728	; 0x800728 <twi_slarw>
+    2234:	20 93 02 07 	sts	0x0702, r18	; 0x800702 <twi_masterBufferLength>
+    2238:	30 93 2a 07 	sts	0x072A, r19	; 0x80072a <twi_slarw>
+    223c:	20 91 2a 07 	lds	r18, 0x072A	; 0x80072a <twi_slarw>
     2240:	88 0f       	add	r24, r24
     2242:	82 2b       	or	r24, r18
-    2244:	80 93 28 07 	sts	0x0728, r24	; 0x800728 <twi_slarw>
-    2248:	80 91 26 07 	lds	r24, 0x0726	; 0x800726 <twi_inRepStart>
+    2244:	80 93 2a 07 	sts	0x072A, r24	; 0x80072a <twi_slarw>
+    2248:	80 91 28 07 	lds	r24, 0x0728	; 0x800728 <twi_inRepStart>
     224c:	81 30       	cpi	r24, 0x01	; 1
     224e:	81 f4       	brne	.+32     	; 0x2270 <twi_readFrom+0x60>
-    2250:	10 92 26 07 	sts	0x0726, r1	; 0x800726 <twi_inRepStart>
+    2250:	10 92 28 07 	sts	0x0728, r1	; 0x800728 <twi_inRepStart>
     2254:	ab eb       	ldi	r26, 0xBB	; 187
     2256:	b0 e0       	ldi	r27, 0x00	; 0
     2258:	ec eb       	ldi	r30, 0xBC	; 188
     225a:	f0 e0       	ldi	r31, 0x00	; 0
-    225c:	80 91 28 07 	lds	r24, 0x0728	; 0x800728 <twi_slarw>
+    225c:	80 91 2a 07 	lds	r24, 0x072A	; 0x80072a <twi_slarw>
     2260:	8c 93       	st	X, r24
     2262:	80 81       	ld	r24, Z
     2264:	83 fd       	sbrc	r24, 3
@@ -5691,23 +5691,23 @@ HardwareTimer::HardwareTimer(Register &tccrA, Register &tccrB, Register &timsk, 
     226e:	03 c0       	rjmp	.+6      	; 0x2276 <twi_readFrom+0x66>
     2270:	85 ee       	ldi	r24, 0xE5	; 229
     2272:	80 93 bc 00 	sts	0x00BC, r24	; 0x8000bc <__TEXT_REGION_LENGTH__+0x7000bc>
-    2276:	80 91 29 07 	lds	r24, 0x0729	; 0x800729 <twi_state>
+    2276:	80 91 2b 07 	lds	r24, 0x072B	; 0x80072b <twi_state>
     227a:	81 30       	cpi	r24, 0x01	; 1
     227c:	e1 f3       	breq	.-8      	; 0x2276 <twi_readFrom+0x66>
-    227e:	80 91 01 07 	lds	r24, 0x0701	; 0x800701 <twi_masterBufferIndex>
+    227e:	80 91 03 07 	lds	r24, 0x0703	; 0x800703 <twi_masterBufferIndex>
     2282:	84 17       	cp	r24, r20
     2284:	10 f4       	brcc	.+4      	; 0x228a <twi_readFrom+0x7a>
-    2286:	40 91 01 07 	lds	r20, 0x0701	; 0x800701 <twi_masterBufferIndex>
+    2286:	40 91 03 07 	lds	r20, 0x0703	; 0x800703 <twi_masterBufferIndex>
     228a:	44 23       	and	r20, r20
     228c:	89 f0       	breq	.+34     	; 0x22b0 <twi_readFrom+0xa0>
-    228e:	e2 e0       	ldi	r30, 0x02	; 2
+    228e:	e4 e0       	ldi	r30, 0x04	; 4
     2290:	f7 e0       	ldi	r31, 0x07	; 7
     2292:	a6 2f       	mov	r26, r22
     2294:	b7 2f       	mov	r27, r23
     2296:	2f ef       	ldi	r18, 0xFF	; 255
     2298:	24 0f       	add	r18, r20
     229a:	30 e0       	ldi	r19, 0x00	; 0
-    229c:	2d 5f       	subi	r18, 0xFD	; 253
+    229c:	2b 5f       	subi	r18, 0xFB	; 251
     229e:	38 4f       	sbci	r19, 0xF8	; 248
     22a0:	81 91       	ld	r24, Z+
     22a2:	8d 93       	st	X+, r24
@@ -5725,20 +5725,20 @@ HardwareTimer::HardwareTimer(Register &tccrA, Register &tccrB, Register &timsk, 
     22b6:	41 32       	cpi	r20, 0x21	; 33
     22b8:	08 f0       	brcs	.+2      	; 0x22bc <twi_writeTo+0x8>
     22ba:	57 c0       	rjmp	.+174    	; 0x236a <twi_writeTo+0xb6>
-    22bc:	30 91 29 07 	lds	r19, 0x0729	; 0x800729 <twi_state>
+    22bc:	30 91 2b 07 	lds	r19, 0x072B	; 0x80072b <twi_state>
     22c0:	31 11       	cpse	r19, r1
     22c2:	fc cf       	rjmp	.-8      	; 0x22bc <twi_writeTo+0x8>
     22c4:	92 e0       	ldi	r25, 0x02	; 2
-    22c6:	90 93 29 07 	sts	0x0729, r25	; 0x800729 <twi_state>
-    22ca:	00 93 27 07 	sts	0x0727, r16	; 0x800727 <twi_sendStop>
+    22c6:	90 93 2b 07 	sts	0x072B, r25	; 0x80072b <twi_state>
+    22ca:	00 93 29 07 	sts	0x0729, r16	; 0x800729 <twi_sendStop>
     22ce:	9f ef       	ldi	r25, 0xFF	; 255
-    22d0:	90 93 bc 06 	sts	0x06BC, r25	; 0x8006bc <twi_error>
-    22d4:	10 92 01 07 	sts	0x0701, r1	; 0x800701 <twi_masterBufferIndex>
-    22d8:	40 93 00 07 	sts	0x0700, r20	; 0x800700 <twi_masterBufferLength>
+    22d0:	90 93 be 06 	sts	0x06BE, r25	; 0x8006be <twi_error>
+    22d4:	10 92 03 07 	sts	0x0703, r1	; 0x800703 <twi_masterBufferIndex>
+    22d8:	40 93 02 07 	sts	0x0702, r20	; 0x800702 <twi_masterBufferLength>
     22dc:	44 23       	and	r20, r20
     22de:	71 f0       	breq	.+28     	; 0x22fc <twi_writeTo+0x48>
     22e0:	fb 01       	movw	r30, r22
-    22e2:	a2 e0       	ldi	r26, 0x02	; 2
+    22e2:	a4 e0       	ldi	r26, 0x04	; 4
     22e4:	b7 e0       	ldi	r27, 0x07	; 7
     22e6:	41 50       	subi	r20, 0x01	; 1
     22e8:	50 e0       	ldi	r21, 0x00	; 0
@@ -5751,20 +5751,20 @@ HardwareTimer::HardwareTimer(Register &tccrA, Register &tccrB, Register &timsk, 
     22f6:	e6 17       	cp	r30, r22
     22f8:	f7 07       	cpc	r31, r23
     22fa:	d9 f7       	brne	.-10     	; 0x22f2 <twi_writeTo+0x3e>
-    22fc:	10 92 28 07 	sts	0x0728, r1	; 0x800728 <twi_slarw>
-    2300:	90 91 28 07 	lds	r25, 0x0728	; 0x800728 <twi_slarw>
+    22fc:	10 92 2a 07 	sts	0x072A, r1	; 0x80072a <twi_slarw>
+    2300:	90 91 2a 07 	lds	r25, 0x072A	; 0x80072a <twi_slarw>
     2304:	88 0f       	add	r24, r24
     2306:	89 2b       	or	r24, r25
-    2308:	80 93 28 07 	sts	0x0728, r24	; 0x800728 <twi_slarw>
-    230c:	80 91 26 07 	lds	r24, 0x0726	; 0x800726 <twi_inRepStart>
+    2308:	80 93 2a 07 	sts	0x072A, r24	; 0x80072a <twi_slarw>
+    230c:	80 91 28 07 	lds	r24, 0x0728	; 0x800728 <twi_inRepStart>
     2310:	81 30       	cpi	r24, 0x01	; 1
     2312:	81 f4       	brne	.+32     	; 0x2334 <twi_writeTo+0x80>
-    2314:	10 92 26 07 	sts	0x0726, r1	; 0x800726 <twi_inRepStart>
+    2314:	10 92 28 07 	sts	0x0728, r1	; 0x800728 <twi_inRepStart>
     2318:	ab eb       	ldi	r26, 0xBB	; 187
     231a:	b0 e0       	ldi	r27, 0x00	; 0
     231c:	ec eb       	ldi	r30, 0xBC	; 188
     231e:	f0 e0       	ldi	r31, 0x00	; 0
-    2320:	80 91 28 07 	lds	r24, 0x0728	; 0x800728 <twi_slarw>
+    2320:	80 91 2a 07 	lds	r24, 0x072A	; 0x80072a <twi_slarw>
     2324:	8c 93       	st	X, r24
     2326:	80 81       	ld	r24, Z
     2328:	83 fd       	sbrc	r24, 3
@@ -5776,19 +5776,19 @@ HardwareTimer::HardwareTimer(Register &tccrA, Register &tccrB, Register &timsk, 
     2336:	80 93 bc 00 	sts	0x00BC, r24	; 0x8000bc <__TEXT_REGION_LENGTH__+0x7000bc>
     233a:	22 23       	and	r18, r18
     233c:	41 f0       	breq	.+16     	; 0x234e <twi_writeTo+0x9a>
-    233e:	80 91 29 07 	lds	r24, 0x0729	; 0x800729 <twi_state>
+    233e:	80 91 2b 07 	lds	r24, 0x072B	; 0x80072b <twi_state>
     2342:	82 30       	cpi	r24, 0x02	; 2
     2344:	21 f4       	brne	.+8      	; 0x234e <twi_writeTo+0x9a>
-    2346:	80 91 29 07 	lds	r24, 0x0729	; 0x800729 <twi_state>
+    2346:	80 91 2b 07 	lds	r24, 0x072B	; 0x80072b <twi_state>
     234a:	82 30       	cpi	r24, 0x02	; 2
     234c:	e1 f3       	breq	.-8      	; 0x2346 <twi_writeTo+0x92>
-    234e:	80 91 bc 06 	lds	r24, 0x06BC	; 0x8006bc <twi_error>
+    234e:	80 91 be 06 	lds	r24, 0x06BE	; 0x8006be <twi_error>
     2352:	8f 3f       	cpi	r24, 0xFF	; 255
     2354:	79 f0       	breq	.+30     	; 0x2374 <twi_writeTo+0xc0>
-    2356:	80 91 bc 06 	lds	r24, 0x06BC	; 0x8006bc <twi_error>
+    2356:	80 91 be 06 	lds	r24, 0x06BE	; 0x8006be <twi_error>
     235a:	80 32       	cpi	r24, 0x20	; 32
     235c:	41 f0       	breq	.+16     	; 0x236e <twi_writeTo+0xba>
-    235e:	80 91 bc 06 	lds	r24, 0x06BC	; 0x8006bc <twi_error>
+    235e:	80 91 be 06 	lds	r24, 0x06BE	; 0x8006be <twi_error>
     2362:	80 33       	cpi	r24, 0x30	; 48
     2364:	31 f0       	breq	.+12     	; 0x2372 <twi_writeTo+0xbe>
     2366:	34 e0       	ldi	r19, 0x04	; 4
@@ -5803,7 +5803,7 @@ HardwareTimer::HardwareTimer(Register &tccrA, Register &tccrB, Register &timsk, 
     2378:	08 95       	ret
 
 0000237a <twi_transmit>:
-    237a:	40 91 de 06 	lds	r20, 0x06DE	; 0x8006de <twi_txBufferLength>
+    237a:	40 91 e0 06 	lds	r20, 0x06E0	; 0x8006e0 <twi_txBufferLength>
     237e:	26 2f       	mov	r18, r22
     2380:	30 e0       	ldi	r19, 0x00	; 0
     2382:	24 0f       	add	r18, r20
@@ -5811,7 +5811,7 @@ HardwareTimer::HardwareTimer(Register &tccrA, Register &tccrB, Register &timsk, 
     2386:	21 32       	cpi	r18, 0x21	; 33
     2388:	31 05       	cpc	r19, r1
     238a:	ec f4       	brge	.+58     	; 0x23c6 <twi_transmit+0x4c>
-    238c:	20 91 29 07 	lds	r18, 0x0729	; 0x800729 <twi_state>
+    238c:	20 91 2b 07 	lds	r18, 0x072B	; 0x80072b <twi_state>
     2390:	24 30       	cpi	r18, 0x04	; 4
     2392:	d9 f4       	brne	.+54     	; 0x23ca <twi_transmit+0x50>
     2394:	66 23       	and	r22, r22
@@ -5820,10 +5820,10 @@ HardwareTimer::HardwareTimer(Register &tccrA, Register &tccrB, Register &timsk, 
     239a:	b9 2f       	mov	r27, r25
     239c:	80 e0       	ldi	r24, 0x00	; 0
     239e:	90 e0       	ldi	r25, 0x00	; 0
-    23a0:	30 91 de 06 	lds	r19, 0x06DE	; 0x8006de <twi_txBufferLength>
+    23a0:	30 91 e0 06 	lds	r19, 0x06E0	; 0x8006e0 <twi_txBufferLength>
     23a4:	2d 91       	ld	r18, X+
     23a6:	fc 01       	movw	r30, r24
-    23a8:	e0 52       	subi	r30, 0x20	; 32
+    23a8:	ee 51       	subi	r30, 0x1E	; 30
     23aa:	f9 4f       	sbci	r31, 0xF9	; 249
     23ac:	e3 0f       	add	r30, r19
     23ae:	f1 1d       	adc	r31, r1
@@ -5831,9 +5831,9 @@ HardwareTimer::HardwareTimer(Register &tccrA, Register &tccrB, Register &timsk, 
     23b2:	01 96       	adiw	r24, 0x01	; 1
     23b4:	86 17       	cp	r24, r22
     23b6:	a0 f3       	brcs	.-24     	; 0x23a0 <twi_transmit+0x26>
-    23b8:	80 91 de 06 	lds	r24, 0x06DE	; 0x8006de <twi_txBufferLength>
+    23b8:	80 91 e0 06 	lds	r24, 0x06E0	; 0x8006e0 <twi_txBufferLength>
     23bc:	68 0f       	add	r22, r24
-    23be:	60 93 de 06 	sts	0x06DE, r22	; 0x8006de <twi_txBufferLength>
+    23be:	60 93 e0 06 	sts	0x06E0, r22	; 0x8006e0 <twi_txBufferLength>
     23c2:	80 e0       	ldi	r24, 0x00	; 0
     23c4:	08 95       	ret
     23c6:	81 e0       	ldi	r24, 0x01	; 1
@@ -5842,13 +5842,13 @@ HardwareTimer::HardwareTimer(Register &tccrA, Register &tccrB, Register &timsk, 
     23cc:	08 95       	ret
 
 000023ce <twi_attachSlaveRxEvent>:
-    23ce:	90 93 23 07 	sts	0x0723, r25	; 0x800723 <twi_onSlaveReceive+0x1>
-    23d2:	80 93 22 07 	sts	0x0722, r24	; 0x800722 <twi_onSlaveReceive>
+    23ce:	90 93 25 07 	sts	0x0725, r25	; 0x800725 <twi_onSlaveReceive+0x1>
+    23d2:	80 93 24 07 	sts	0x0724, r24	; 0x800724 <twi_onSlaveReceive>
     23d6:	08 95       	ret
 
 000023d8 <twi_attachSlaveTxEvent>:
-    23d8:	90 93 25 07 	sts	0x0725, r25	; 0x800725 <twi_onSlaveTransmit+0x1>
-    23dc:	80 93 24 07 	sts	0x0724, r24	; 0x800724 <twi_onSlaveTransmit>
+    23d8:	90 93 27 07 	sts	0x0727, r25	; 0x800727 <twi_onSlaveTransmit+0x1>
+    23dc:	80 93 26 07 	sts	0x0726, r24	; 0x800726 <twi_onSlaveTransmit>
     23e0:	08 95       	ret
 
 000023e2 <twi_stop>:
@@ -5874,7 +5874,7 @@ void twi_stop(void)
 
   // update twi state
   twi_state = TWI_READY;
-    23f2:	10 92 29 07 	sts	0x0729, r1	; 0x800729 <twi_state>
+    23f2:	10 92 2b 07 	sts	0x072B, r1	; 0x80072b <twi_state>
     23f6:	08 95       	ret
 
 000023f8 <twi_releaseBus>:
@@ -5889,7 +5889,7 @@ void twi_releaseBus(void)
 
   // update twi state
   twi_state = TWI_READY;
-    23fe:	10 92 29 07 	sts	0x0729, r1	; 0x800729 <twi_state>
+    23fe:	10 92 2b 07 	sts	0x072B, r1	; 0x80072b <twi_state>
     2402:	08 95       	ret
 
 00002404 <__vector_39>:
@@ -5935,7 +5935,7 @@ ISR(TWI_vect)
     case TW_REP_START: // sent repeated start condition
       // copy device address and r/w bit to output register and ack
       TWDR = twi_slarw;
-    2446:	80 91 28 07 	lds	r24, 0x0728	; 0x800728 <twi_slarw>
+    2446:	80 91 2a 07 	lds	r24, 0x072A	; 0x80072a <twi_slarw>
     244a:	80 93 bb 00 	sts	0x00BB, r24	; 0x8000bb <__TEXT_REGION_LENGTH__+0x7000bb>
  */
 void twi_reply(uint8_t ack)
@@ -5952,18 +5952,18 @@ void twi_reply(uint8_t ack)
     case TW_MT_DATA_ACK: // slave receiver acked data
       // if there is data to send, send it, otherwise stop 
       if(twi_masterBufferIndex < twi_masterBufferLength){
-    2456:	90 91 01 07 	lds	r25, 0x0701	; 0x800701 <twi_masterBufferIndex>
-    245a:	80 91 00 07 	lds	r24, 0x0700	; 0x800700 <twi_masterBufferLength>
+    2456:	90 91 03 07 	lds	r25, 0x0703	; 0x800703 <twi_masterBufferIndex>
+    245a:	80 91 02 07 	lds	r24, 0x0702	; 0x800702 <twi_masterBufferLength>
     245e:	98 17       	cp	r25, r24
     2460:	80 f4       	brcc	.+32     	; 0x2482 <__vector_39+0x7e>
         // copy data to output register and ack
         TWDR = twi_masterBuffer[twi_masterBufferIndex++];
-    2462:	e0 91 01 07 	lds	r30, 0x0701	; 0x800701 <twi_masterBufferIndex>
+    2462:	e0 91 03 07 	lds	r30, 0x0703	; 0x800703 <twi_masterBufferIndex>
     2466:	81 e0       	ldi	r24, 0x01	; 1
     2468:	8e 0f       	add	r24, r30
-    246a:	80 93 01 07 	sts	0x0701, r24	; 0x800701 <twi_masterBufferIndex>
+    246a:	80 93 03 07 	sts	0x0703, r24	; 0x800703 <twi_masterBufferIndex>
     246e:	f0 e0       	ldi	r31, 0x00	; 0
-    2470:	ee 5f       	subi	r30, 0xFE	; 254
+    2470:	ec 5f       	subi	r30, 0xFC	; 252
     2472:	f8 4f       	sbci	r31, 0xF8	; 248
     2474:	80 81       	ld	r24, Z
     2476:	80 93 bb 00 	sts	0x00BB, r24	; 0x8000bb <__TEXT_REGION_LENGTH__+0x7000bb>
@@ -5982,7 +5982,7 @@ void twi_reply(uint8_t ack)
         twi_reply(1);
       }else{
 	if (twi_sendStop)
-    2482:	80 91 27 07 	lds	r24, 0x0727	; 0x800727 <twi_sendStop>
+    2482:	80 91 29 07 	lds	r24, 0x0729	; 0x800729 <twi_sendStop>
     2486:	88 23       	and	r24, r24
           twi_stop();
     2488:	11 f0       	breq	.+4      	; 0x248e <__vector_39+0x8a>
@@ -5991,7 +5991,7 @@ void twi_reply(uint8_t ack)
 	else {
 	  twi_inRepStart = true;	// we're gonna send the START
     248e:	81 e0       	ldi	r24, 0x01	; 1
-    2490:	80 93 26 07 	sts	0x0726, r24	; 0x800726 <twi_inRepStart>
+    2490:	80 93 28 07 	sts	0x0728, r24	; 0x800728 <twi_inRepStart>
 	  // don't enable the interrupt. We'll generate the start, but we 
 	  // avoid handling the interrupt until we're in the next transaction,
 	  // at the point where we would normally issue the start.
@@ -5999,7 +5999,7 @@ void twi_reply(uint8_t ack)
     2494:	84 ea       	ldi	r24, 0xA4	; 164
     2496:	80 93 bc 00 	sts	0x00BC, r24	; 0x8000bc <__TEXT_REGION_LENGTH__+0x7000bc>
 	  twi_state = TWI_READY;
-    249a:	10 92 29 07 	sts	0x0729, r1	; 0x800729 <twi_state>
+    249a:	10 92 2b 07 	sts	0x072B, r1	; 0x80072b <twi_state>
     249e:	bb c0       	rjmp	.+374    	; 0x2616 <__vector_39+0x212>
 	}
       }
@@ -6007,7 +6007,7 @@ void twi_reply(uint8_t ack)
     case TW_MT_SLA_NACK:  // address sent, nack received
       twi_error = TW_MT_SLA_NACK;
     24a0:	80 e2       	ldi	r24, 0x20	; 32
-    24a2:	80 93 bc 06 	sts	0x06BC, r24	; 0x8006bc <twi_error>
+    24a2:	80 93 be 06 	sts	0x06BE, r24	; 0x8006be <twi_error>
       twi_stop();
     24a6:	9d df       	rcall	.-198    	; 0x23e2 <twi_stop>
       break;
@@ -6015,7 +6015,7 @@ void twi_reply(uint8_t ack)
     case TW_MT_DATA_NACK: // data sent, nack received
       twi_error = TW_MT_DATA_NACK;
     24aa:	80 e3       	ldi	r24, 0x30	; 48
-    24ac:	80 93 bc 06 	sts	0x06BC, r24	; 0x8006bc <twi_error>
+    24ac:	80 93 be 06 	sts	0x06BE, r24	; 0x8006be <twi_error>
       twi_stop();
     24b0:	98 df       	rcall	.-208    	; 0x23e2 <twi_stop>
       break;
@@ -6023,7 +6023,7 @@ void twi_reply(uint8_t ack)
       twi_error = TW_MT_ARB_LOST;
     24b2:	b1 c0       	rjmp	.+354    	; 0x2616 <__vector_39+0x212>
     24b4:	88 e3       	ldi	r24, 0x38	; 56
-    24b6:	80 93 bc 06 	sts	0x06BC, r24	; 0x8006bc <twi_error>
+    24b6:	80 93 be 06 	sts	0x06BE, r24	; 0x8006be <twi_error>
       twi_releaseBus();
     24ba:	9e df       	rcall	.-196    	; 0x23f8 <twi_releaseBus>
       break;
@@ -6033,20 +6033,20 @@ void twi_reply(uint8_t ack)
     case TW_MR_DATA_ACK: // data received, ack sent
       // put byte into buffer
       twi_masterBuffer[twi_masterBufferIndex++] = TWDR;
-    24be:	e0 91 01 07 	lds	r30, 0x0701	; 0x800701 <twi_masterBufferIndex>
+    24be:	e0 91 03 07 	lds	r30, 0x0703	; 0x800703 <twi_masterBufferIndex>
     24c2:	81 e0       	ldi	r24, 0x01	; 1
     24c4:	8e 0f       	add	r24, r30
-    24c6:	80 93 01 07 	sts	0x0701, r24	; 0x800701 <twi_masterBufferIndex>
+    24c6:	80 93 03 07 	sts	0x0703, r24	; 0x800703 <twi_masterBufferIndex>
     24ca:	80 91 bb 00 	lds	r24, 0x00BB	; 0x8000bb <__TEXT_REGION_LENGTH__+0x7000bb>
     24ce:	f0 e0       	ldi	r31, 0x00	; 0
-    24d0:	ee 5f       	subi	r30, 0xFE	; 254
+    24d0:	ec 5f       	subi	r30, 0xFC	; 252
     24d2:	f8 4f       	sbci	r31, 0xF8	; 248
     24d4:	80 83       	st	Z, r24
     case TW_MR_SLA_ACK:  // address sent, ack received
       // ack if more bytes are expected, otherwise nack
       if(twi_masterBufferIndex < twi_masterBufferLength){
-    24d6:	90 91 01 07 	lds	r25, 0x0701	; 0x800701 <twi_masterBufferIndex>
-    24da:	80 91 00 07 	lds	r24, 0x0700	; 0x800700 <twi_masterBufferLength>
+    24d6:	90 91 03 07 	lds	r25, 0x0703	; 0x800703 <twi_masterBufferIndex>
+    24da:	80 91 02 07 	lds	r24, 0x0702	; 0x800702 <twi_masterBufferLength>
     24de:	98 17       	cp	r25, r24
     24e0:	20 f4       	brcc	.+8      	; 0x24ea <__vector_39+0xe6>
  */
@@ -6069,17 +6069,17 @@ void twi_reply(uint8_t ack)
     case TW_MR_DATA_NACK: // data received, nack sent
       // put final byte into buffer
       twi_masterBuffer[twi_masterBufferIndex++] = TWDR;
-    24f2:	e0 91 01 07 	lds	r30, 0x0701	; 0x800701 <twi_masterBufferIndex>
+    24f2:	e0 91 03 07 	lds	r30, 0x0703	; 0x800703 <twi_masterBufferIndex>
     24f6:	81 e0       	ldi	r24, 0x01	; 1
     24f8:	8e 0f       	add	r24, r30
-    24fa:	80 93 01 07 	sts	0x0701, r24	; 0x800701 <twi_masterBufferIndex>
+    24fa:	80 93 03 07 	sts	0x0703, r24	; 0x800703 <twi_masterBufferIndex>
     24fe:	80 91 bb 00 	lds	r24, 0x00BB	; 0x8000bb <__TEXT_REGION_LENGTH__+0x7000bb>
     2502:	f0 e0       	ldi	r31, 0x00	; 0
-    2504:	ee 5f       	subi	r30, 0xFE	; 254
+    2504:	ec 5f       	subi	r30, 0xFC	; 252
     2506:	f8 4f       	sbci	r31, 0xF8	; 248
 	if (twi_sendStop)
     2508:	80 83       	st	Z, r24
-    250a:	80 91 27 07 	lds	r24, 0x0727	; 0x800727 <twi_sendStop>
+    250a:	80 91 29 07 	lds	r24, 0x0729	; 0x800729 <twi_sendStop>
     250e:	88 23       	and	r24, r24
           twi_stop();
     2510:	11 f0       	breq	.+4      	; 0x2516 <__vector_39+0x112>
@@ -6088,7 +6088,7 @@ void twi_reply(uint8_t ack)
 	else {
 	  twi_inRepStart = true;	// we're gonna send the START
     2516:	81 e0       	ldi	r24, 0x01	; 1
-    2518:	80 93 26 07 	sts	0x0726, r24	; 0x800726 <twi_inRepStart>
+    2518:	80 93 28 07 	sts	0x0728, r24	; 0x800728 <twi_inRepStart>
 	  // don't enable the interrupt. We'll generate the start, but we 
 	  // avoid handling the interrupt until we're in the next transaction,
 	  // at the point where we would normally issue the start.
@@ -6096,7 +6096,7 @@ void twi_reply(uint8_t ack)
     251c:	84 ea       	ldi	r24, 0xA4	; 164
     251e:	80 93 bc 00 	sts	0x00BC, r24	; 0x8000bc <__TEXT_REGION_LENGTH__+0x7000bc>
 	  twi_state = TWI_READY;
-    2522:	10 92 29 07 	sts	0x0729, r1	; 0x800729 <twi_state>
+    2522:	10 92 2b 07 	sts	0x072B, r1	; 0x80072b <twi_state>
 	}    
 	break;
     case TW_MR_SLA_NACK: // address sent, nack received
@@ -6112,10 +6112,10 @@ void twi_reply(uint8_t ack)
       // enter slave receiver mode
       twi_state = TWI_SRX;
     252c:	83 e0       	ldi	r24, 0x03	; 3
-    252e:	80 93 29 07 	sts	0x0729, r24	; 0x800729 <twi_state>
+    252e:	80 93 2b 07 	sts	0x072B, r24	; 0x80072b <twi_state>
       // indicate that rx buffer can be overwritten and ack
       twi_rxBufferIndex = 0;
-    2532:	10 92 bd 06 	sts	0x06BD, r1	; 0x8006bd <twi_rxBufferIndex>
+    2532:	10 92 bf 06 	sts	0x06BF, r1	; 0x8006bf <twi_rxBufferIndex>
  */
 void twi_reply(uint8_t ack)
 {
@@ -6131,18 +6131,18 @@ void twi_reply(uint8_t ack)
     case TW_SR_GCALL_DATA_ACK: // data received generally, returned ack
       // if there is still room in the rx buffer
       if(twi_rxBufferIndex < TWI_BUFFER_LENGTH){
-    253e:	80 91 bd 06 	lds	r24, 0x06BD	; 0x8006bd <twi_rxBufferIndex>
+    253e:	80 91 bf 06 	lds	r24, 0x06BF	; 0x8006bf <twi_rxBufferIndex>
     2542:	80 32       	cpi	r24, 0x20	; 32
     2544:	80 f4       	brcc	.+32     	; 0x2566 <__vector_39+0x162>
         // put byte in buffer and ack
         twi_rxBuffer[twi_rxBufferIndex++] = TWDR;
-    2546:	e0 91 bd 06 	lds	r30, 0x06BD	; 0x8006bd <twi_rxBufferIndex>
+    2546:	e0 91 bf 06 	lds	r30, 0x06BF	; 0x8006bf <twi_rxBufferIndex>
     254a:	81 e0       	ldi	r24, 0x01	; 1
     254c:	8e 0f       	add	r24, r30
-    254e:	80 93 bd 06 	sts	0x06BD, r24	; 0x8006bd <twi_rxBufferIndex>
+    254e:	80 93 bf 06 	sts	0x06BF, r24	; 0x8006bf <twi_rxBufferIndex>
     2552:	80 91 bb 00 	lds	r24, 0x00BB	; 0x8000bb <__TEXT_REGION_LENGTH__+0x7000bb>
     2556:	f0 e0       	ldi	r31, 0x00	; 0
-    2558:	e2 54       	subi	r30, 0x42	; 66
+    2558:	e0 54       	subi	r30, 0x40	; 64
     255a:	f9 4f       	sbci	r31, 0xF9	; 249
     255c:	80 83       	st	Z, r24
  */
@@ -6168,28 +6168,28 @@ void twi_reply(uint8_t ack)
     256e:	44 df       	rcall	.-376    	; 0x23f8 <twi_releaseBus>
       // put a null char after data if there's room
       if(twi_rxBufferIndex < TWI_BUFFER_LENGTH){
-    2570:	80 91 bd 06 	lds	r24, 0x06BD	; 0x8006bd <twi_rxBufferIndex>
+    2570:	80 91 bf 06 	lds	r24, 0x06BF	; 0x8006bf <twi_rxBufferIndex>
     2574:	80 32       	cpi	r24, 0x20	; 32
     2576:	30 f4       	brcc	.+12     	; 0x2584 <__vector_39+0x180>
         twi_rxBuffer[twi_rxBufferIndex] = '\0';
-    2578:	e0 91 bd 06 	lds	r30, 0x06BD	; 0x8006bd <twi_rxBufferIndex>
+    2578:	e0 91 bf 06 	lds	r30, 0x06BF	; 0x8006bf <twi_rxBufferIndex>
     257c:	f0 e0       	ldi	r31, 0x00	; 0
-    257e:	e2 54       	subi	r30, 0x42	; 66
+    257e:	e0 54       	subi	r30, 0x40	; 64
     2580:	f9 4f       	sbci	r31, 0xF9	; 249
     2582:	10 82       	st	Z, r1
       }
       // callback to user defined callback
       twi_onSlaveReceive(twi_rxBuffer, twi_rxBufferIndex);
-    2584:	60 91 bd 06 	lds	r22, 0x06BD	; 0x8006bd <twi_rxBufferIndex>
+    2584:	60 91 bf 06 	lds	r22, 0x06BF	; 0x8006bf <twi_rxBufferIndex>
     2588:	70 e0       	ldi	r23, 0x00	; 0
-    258a:	e0 91 22 07 	lds	r30, 0x0722	; 0x800722 <twi_onSlaveReceive>
-    258e:	f0 91 23 07 	lds	r31, 0x0723	; 0x800723 <twi_onSlaveReceive+0x1>
-    2592:	8e eb       	ldi	r24, 0xBE	; 190
+    258a:	e0 91 24 07 	lds	r30, 0x0724	; 0x800724 <twi_onSlaveReceive>
+    258e:	f0 91 25 07 	lds	r31, 0x0725	; 0x800725 <twi_onSlaveReceive+0x1>
+    2592:	80 ec       	ldi	r24, 0xC0	; 192
     2594:	96 e0       	ldi	r25, 0x06	; 6
     2596:	19 95       	eicall
       // since we submit rx buffer to "wire" library, we can reset it
       twi_rxBufferIndex = 0;
-    2598:	10 92 bd 06 	sts	0x06BD, r1	; 0x8006bd <twi_rxBufferIndex>
+    2598:	10 92 bf 06 	sts	0x06BF, r1	; 0x8006bf <twi_rxBufferIndex>
       break;
     259c:	3c c0       	rjmp	.+120    	; 0x2616 <__vector_39+0x212>
 {
@@ -6208,47 +6208,47 @@ void twi_reply(uint8_t ack)
       // enter slave transmitter mode
       twi_state = TWI_STX;
     25a6:	84 e0       	ldi	r24, 0x04	; 4
-    25a8:	80 93 29 07 	sts	0x0729, r24	; 0x800729 <twi_state>
+    25a8:	80 93 2b 07 	sts	0x072B, r24	; 0x80072b <twi_state>
       // ready the tx buffer index for iteration
       twi_txBufferIndex = 0;
-    25ac:	10 92 df 06 	sts	0x06DF, r1	; 0x8006df <twi_txBufferIndex>
+    25ac:	10 92 e1 06 	sts	0x06E1, r1	; 0x8006e1 <twi_txBufferIndex>
       // set tx buffer length to be zero, to verify if user changes it
       twi_txBufferLength = 0;
-    25b0:	10 92 de 06 	sts	0x06DE, r1	; 0x8006de <twi_txBufferLength>
+    25b0:	10 92 e0 06 	sts	0x06E0, r1	; 0x8006e0 <twi_txBufferLength>
       // request for txBuffer to be filled and length to be set
       // note: user must call twi_transmit(bytes, length) to do this
       twi_onSlaveTransmit();
-    25b4:	e0 91 24 07 	lds	r30, 0x0724	; 0x800724 <twi_onSlaveTransmit>
-    25b8:	f0 91 25 07 	lds	r31, 0x0725	; 0x800725 <twi_onSlaveTransmit+0x1>
+    25b4:	e0 91 26 07 	lds	r30, 0x0726	; 0x800726 <twi_onSlaveTransmit>
+    25b8:	f0 91 27 07 	lds	r31, 0x0727	; 0x800727 <twi_onSlaveTransmit+0x1>
     25bc:	19 95       	eicall
       // if they didn't change buffer & length, initialize it
       if(0 == twi_txBufferLength){
-    25be:	80 91 de 06 	lds	r24, 0x06DE	; 0x8006de <twi_txBufferLength>
+    25be:	80 91 e0 06 	lds	r24, 0x06E0	; 0x8006e0 <twi_txBufferLength>
     25c2:	81 11       	cpse	r24, r1
     25c4:	05 c0       	rjmp	.+10     	; 0x25d0 <__vector_39+0x1cc>
         twi_txBufferLength = 1;
     25c6:	81 e0       	ldi	r24, 0x01	; 1
-    25c8:	80 93 de 06 	sts	0x06DE, r24	; 0x8006de <twi_txBufferLength>
+    25c8:	80 93 e0 06 	sts	0x06E0, r24	; 0x8006e0 <twi_txBufferLength>
         twi_txBuffer[0] = 0x00;
-    25cc:	10 92 e0 06 	sts	0x06E0, r1	; 0x8006e0 <twi_txBuffer>
+    25cc:	10 92 e2 06 	sts	0x06E2, r1	; 0x8006e2 <twi_txBuffer>
       }
       // transmit first byte from buffer, fall
     case TW_ST_DATA_ACK: // byte sent, ack returned
       // copy data to output register
       TWDR = twi_txBuffer[twi_txBufferIndex++];
-    25d0:	e0 91 df 06 	lds	r30, 0x06DF	; 0x8006df <twi_txBufferIndex>
+    25d0:	e0 91 e1 06 	lds	r30, 0x06E1	; 0x8006e1 <twi_txBufferIndex>
     25d4:	81 e0       	ldi	r24, 0x01	; 1
     25d6:	8e 0f       	add	r24, r30
-    25d8:	80 93 df 06 	sts	0x06DF, r24	; 0x8006df <twi_txBufferIndex>
+    25d8:	80 93 e1 06 	sts	0x06E1, r24	; 0x8006e1 <twi_txBufferIndex>
     25dc:	f0 e0       	ldi	r31, 0x00	; 0
-    25de:	e0 52       	subi	r30, 0x20	; 32
+    25de:	ee 51       	subi	r30, 0x1E	; 30
     25e0:	f9 4f       	sbci	r31, 0xF9	; 249
     25e2:	80 81       	ld	r24, Z
     25e4:	80 93 bb 00 	sts	0x00BB, r24	; 0x8000bb <__TEXT_REGION_LENGTH__+0x7000bb>
       // if there is more to send, ack, otherwise nack
       if(twi_txBufferIndex < twi_txBufferLength){
-    25e8:	90 91 df 06 	lds	r25, 0x06DF	; 0x8006df <twi_txBufferIndex>
-    25ec:	80 91 de 06 	lds	r24, 0x06DE	; 0x8006de <twi_txBufferLength>
+    25e8:	90 91 e1 06 	lds	r25, 0x06E1	; 0x8006e1 <twi_txBufferIndex>
+    25ec:	80 91 e0 06 	lds	r24, 0x06E0	; 0x8006e0 <twi_txBufferLength>
     25f0:	98 17       	cp	r25, r24
     25f2:	20 f4       	brcc	.+8      	; 0x25fc <__vector_39+0x1f8>
  */
@@ -6279,7 +6279,7 @@ void twi_reply(uint8_t ack)
       twi_reply(1);
       // leave slave receiver state
       twi_state = TWI_READY;
-    260a:	10 92 29 07 	sts	0x0729, r1	; 0x800729 <twi_state>
+    260a:	10 92 2b 07 	sts	0x072B, r1	; 0x80072b <twi_state>
 
     // All
     case TW_NO_INFO:   // no state information
@@ -6287,7 +6287,7 @@ void twi_reply(uint8_t ack)
     case TW_BUS_ERROR: // bus error, illegal stop/start
       twi_error = TW_BUS_ERROR;
     260e:	03 c0       	rjmp	.+6      	; 0x2616 <__vector_39+0x212>
-    2610:	10 92 bc 06 	sts	0x06BC, r1	; 0x8006bc <twi_error>
+    2610:	10 92 be 06 	sts	0x06BE, r1	; 0x8006be <twi_error>
       twi_stop();
     2614:	e6 de       	rcall	.-564    	; 0x23e2 <twi_stop>
       break;
@@ -6319,26 +6319,26 @@ void twi_reply(uint8_t ack)
 void TwoWire::onRequest( void (*function)(void) )
 {
 	user_onRequest = function;
-    263c:	80 91 54 07 	lds	r24, 0x0754	; 0x800754 <_ZN7TwoWire14rxBufferLengthE>
+    263c:	80 91 56 07 	lds	r24, 0x0756	; 0x800756 <_ZN7TwoWire14rxBufferLengthE>
     2640:	90 e0       	ldi	r25, 0x00	; 0
-    2642:	20 91 55 07 	lds	r18, 0x0755	; 0x800755 <_ZN7TwoWire13rxBufferIndexE>
+    2642:	20 91 57 07 	lds	r18, 0x0757	; 0x800757 <_ZN7TwoWire13rxBufferIndexE>
     2646:	82 1b       	sub	r24, r18
     2648:	91 09       	sbc	r25, r1
     264a:	08 95       	ret
 
 0000264c <_ZN7TwoWire4readEv>:
-    264c:	90 91 55 07 	lds	r25, 0x0755	; 0x800755 <_ZN7TwoWire13rxBufferIndexE>
-    2650:	80 91 54 07 	lds	r24, 0x0754	; 0x800754 <_ZN7TwoWire14rxBufferLengthE>
+    264c:	90 91 57 07 	lds	r25, 0x0757	; 0x800757 <_ZN7TwoWire13rxBufferIndexE>
+    2650:	80 91 56 07 	lds	r24, 0x0756	; 0x800756 <_ZN7TwoWire14rxBufferLengthE>
     2654:	98 17       	cp	r25, r24
     2656:	50 f4       	brcc	.+20     	; 0x266c <_ZN7TwoWire4readEv+0x20>
     2658:	e9 2f       	mov	r30, r25
     265a:	f0 e0       	ldi	r31, 0x00	; 0
-    265c:	ea 5a       	subi	r30, 0xAA	; 170
+    265c:	e8 5a       	subi	r30, 0xA8	; 168
     265e:	f8 4f       	sbci	r31, 0xF8	; 248
     2660:	20 81       	ld	r18, Z
     2662:	30 e0       	ldi	r19, 0x00	; 0
     2664:	9f 5f       	subi	r25, 0xFF	; 255
-    2666:	90 93 55 07 	sts	0x0755, r25	; 0x800755 <_ZN7TwoWire13rxBufferIndexE>
+    2666:	90 93 57 07 	sts	0x0757, r25	; 0x800757 <_ZN7TwoWire13rxBufferIndexE>
     266a:	02 c0       	rjmp	.+4      	; 0x2670 <_ZN7TwoWire4readEv+0x24>
     266c:	2f ef       	ldi	r18, 0xFF	; 255
     266e:	3f ef       	ldi	r19, 0xFF	; 255
@@ -6346,12 +6346,12 @@ void TwoWire::onRequest( void (*function)(void) )
     2672:	08 95       	ret
 
 00002674 <_ZN7TwoWire4peekEv>:
-    2674:	e0 91 55 07 	lds	r30, 0x0755	; 0x800755 <_ZN7TwoWire13rxBufferIndexE>
-    2678:	80 91 54 07 	lds	r24, 0x0754	; 0x800754 <_ZN7TwoWire14rxBufferLengthE>
+    2674:	e0 91 57 07 	lds	r30, 0x0757	; 0x800757 <_ZN7TwoWire13rxBufferIndexE>
+    2678:	80 91 56 07 	lds	r24, 0x0756	; 0x800756 <_ZN7TwoWire14rxBufferLengthE>
     267c:	e8 17       	cp	r30, r24
     267e:	30 f4       	brcc	.+12     	; 0x268c <_ZN7TwoWire4peekEv+0x18>
     2680:	f0 e0       	ldi	r31, 0x00	; 0
-    2682:	ea 5a       	subi	r30, 0xAA	; 170
+    2682:	e8 5a       	subi	r30, 0xA8	; 168
     2684:	f8 4f       	sbci	r31, 0xF8	; 248
     2686:	80 81       	ld	r24, Z
     2688:	90 e0       	ldi	r25, 0x00	; 0
@@ -6367,12 +6367,12 @@ void TwoWire::onRequest( void (*function)(void) )
     2694:	cf 93       	push	r28
     2696:	df 93       	push	r29
     2698:	ec 01       	movw	r28, r24
-    269a:	e0 91 2c 07 	lds	r30, 0x072C	; 0x80072c <_ZN7TwoWire14user_onReceiveE>
-    269e:	f0 91 2d 07 	lds	r31, 0x072D	; 0x80072d <_ZN7TwoWire14user_onReceiveE+0x1>
+    269a:	e0 91 2e 07 	lds	r30, 0x072E	; 0x80072e <_ZN7TwoWire14user_onReceiveE>
+    269e:	f0 91 2f 07 	lds	r31, 0x072F	; 0x80072f <_ZN7TwoWire14user_onReceiveE+0x1>
     26a2:	30 97       	sbiw	r30, 0x00	; 0
     26a4:	01 f1       	breq	.+64     	; 0x26e6 <_ZN7TwoWire16onReceiveServiceEPhi+0x52>
-    26a6:	90 91 55 07 	lds	r25, 0x0755	; 0x800755 <_ZN7TwoWire13rxBufferIndexE>
-    26aa:	80 91 54 07 	lds	r24, 0x0754	; 0x800754 <_ZN7TwoWire14rxBufferLengthE>
+    26a6:	90 91 57 07 	lds	r25, 0x0757	; 0x800757 <_ZN7TwoWire13rxBufferIndexE>
+    26aa:	80 91 56 07 	lds	r24, 0x0756	; 0x800756 <_ZN7TwoWire14rxBufferLengthE>
     26ae:	98 17       	cp	r25, r24
     26b0:	d0 f0       	brcs	.+52     	; 0x26e6 <_ZN7TwoWire16onReceiveServiceEPhi+0x52>
     26b2:	16 16       	cp	r1, r22
@@ -6386,7 +6386,7 @@ void TwoWire::onRequest( void (*function)(void) )
     26c2:	b1 1d       	adc	r27, r1
     26c4:	4c 91       	ld	r20, X
     26c6:	d9 01       	movw	r26, r18
-    26c8:	aa 5a       	subi	r26, 0xAA	; 170
+    26c8:	a8 5a       	subi	r26, 0xA8	; 168
     26ca:	b8 4f       	sbci	r27, 0xF8	; 248
     26cc:	4c 93       	st	X, r20
     26ce:	9f 5f       	subi	r25, 0xFF	; 255
@@ -6396,20 +6396,20 @@ void TwoWire::onRequest( void (*function)(void) )
     26d6:	37 07       	cpc	r19, r23
     26d8:	94 f3       	brlt	.-28     	; 0x26be <_ZN7TwoWire16onReceiveServiceEPhi+0x2a>
     26da:	cb 01       	movw	r24, r22
-    26dc:	10 92 55 07 	sts	0x0755, r1	; 0x800755 <_ZN7TwoWire13rxBufferIndexE>
-    26e0:	60 93 54 07 	sts	0x0754, r22	; 0x800754 <_ZN7TwoWire14rxBufferLengthE>
+    26dc:	10 92 57 07 	sts	0x0757, r1	; 0x800757 <_ZN7TwoWire13rxBufferIndexE>
+    26e0:	60 93 56 07 	sts	0x0756, r22	; 0x800756 <_ZN7TwoWire14rxBufferLengthE>
     26e4:	19 95       	eicall
     26e6:	df 91       	pop	r29
     26e8:	cf 91       	pop	r28
     26ea:	08 95       	ret
 
 000026ec <_ZN7TwoWire16onRequestServiceEv>:
-    26ec:	e0 91 2e 07 	lds	r30, 0x072E	; 0x80072e <_ZN7TwoWire14user_onRequestE>
-    26f0:	f0 91 2f 07 	lds	r31, 0x072F	; 0x80072f <_ZN7TwoWire14user_onRequestE+0x1>
+    26ec:	e0 91 30 07 	lds	r30, 0x0730	; 0x800730 <_ZN7TwoWire14user_onRequestE>
+    26f0:	f0 91 31 07 	lds	r31, 0x0731	; 0x800731 <_ZN7TwoWire14user_onRequestE+0x1>
     26f4:	30 97       	sbiw	r30, 0x00	; 0
     26f6:	29 f0       	breq	.+10     	; 0x2702 <_ZN7TwoWire16onRequestServiceEv+0x16>
-    26f8:	10 92 32 07 	sts	0x0732, r1	; 0x800732 <_ZN7TwoWire13txBufferIndexE>
-    26fc:	10 92 31 07 	sts	0x0731, r1	; 0x800731 <_ZN7TwoWire14txBufferLengthE>
+    26f8:	10 92 34 07 	sts	0x0734, r1	; 0x800734 <_ZN7TwoWire13txBufferIndexE>
+    26fc:	10 92 33 07 	sts	0x0733, r1	; 0x800733 <_ZN7TwoWire14txBufferLengthE>
     2700:	19 95       	eicall
     2702:	08 95       	ret
 
@@ -6420,21 +6420,21 @@ void TwoWire::onRequest( void (*function)(void) )
     270a:	cd b7       	in	r28, 0x3d	; 61
     270c:	de b7       	in	r29, 0x3e	; 62
     270e:	69 83       	std	Y+1, r22	; 0x01
-    2710:	80 91 30 07 	lds	r24, 0x0730	; 0x800730 <_ZN7TwoWire12transmittingE>
+    2710:	80 91 32 07 	lds	r24, 0x0732	; 0x800732 <_ZN7TwoWire12transmittingE>
     2714:	88 23       	and	r24, r24
     2716:	99 f0       	breq	.+38     	; 0x273e <_ZN7TwoWire5writeEh+0x3a>
-    2718:	80 91 31 07 	lds	r24, 0x0731	; 0x800731 <_ZN7TwoWire14txBufferLengthE>
+    2718:	80 91 33 07 	lds	r24, 0x0733	; 0x800733 <_ZN7TwoWire14txBufferLengthE>
     271c:	80 32       	cpi	r24, 0x20	; 32
     271e:	b0 f4       	brcc	.+44     	; 0x274c <_ZN7TwoWire5writeEh+0x48>
-    2720:	80 91 32 07 	lds	r24, 0x0732	; 0x800732 <_ZN7TwoWire13txBufferIndexE>
+    2720:	80 91 34 07 	lds	r24, 0x0734	; 0x800734 <_ZN7TwoWire13txBufferIndexE>
     2724:	e8 2f       	mov	r30, r24
     2726:	f0 e0       	ldi	r31, 0x00	; 0
-    2728:	ed 5c       	subi	r30, 0xCD	; 205
+    2728:	eb 5c       	subi	r30, 0xCB	; 203
     272a:	f8 4f       	sbci	r31, 0xF8	; 248
     272c:	60 83       	st	Z, r22
     272e:	8f 5f       	subi	r24, 0xFF	; 255
-    2730:	80 93 32 07 	sts	0x0732, r24	; 0x800732 <_ZN7TwoWire13txBufferIndexE>
-    2734:	80 93 31 07 	sts	0x0731, r24	; 0x800731 <_ZN7TwoWire14txBufferLengthE>
+    2730:	80 93 34 07 	sts	0x0734, r24	; 0x800734 <_ZN7TwoWire13txBufferIndexE>
+    2734:	80 93 33 07 	sts	0x0733, r24	; 0x800733 <_ZN7TwoWire14txBufferLengthE>
     2738:	81 e0       	ldi	r24, 0x01	; 1
     273a:	90 e0       	ldi	r25, 0x00	; 0
     273c:	09 c0       	rjmp	.+18     	; 0x2750 <_ZN7TwoWire5writeEh+0x4c>
@@ -6464,7 +6464,7 @@ void TwoWire::onRequest( void (*function)(void) )
     2768:	8c 01       	movw	r16, r24
     276a:	cb 01       	movw	r24, r22
     276c:	6a 01       	movw	r12, r20
-    276e:	20 91 30 07 	lds	r18, 0x0730	; 0x800730 <_ZN7TwoWire12transmittingE>
+    276e:	20 91 32 07 	lds	r18, 0x0732	; 0x800732 <_ZN7TwoWire12transmittingE>
     2772:	22 23       	and	r18, r18
     2774:	a1 f0       	breq	.+40     	; 0x279e <_ZN7TwoWire5writeEPKhj+0x46>
     2776:	41 15       	cp	r20, r1
@@ -6501,10 +6501,10 @@ void TwoWire::onRequest( void (*function)(void) )
     27b4:	08 95       	ret
 
 000027b6 <_ZN7TwoWire5beginEv>:
-    27b6:	10 92 55 07 	sts	0x0755, r1	; 0x800755 <_ZN7TwoWire13rxBufferIndexE>
-    27ba:	10 92 54 07 	sts	0x0754, r1	; 0x800754 <_ZN7TwoWire14rxBufferLengthE>
-    27be:	10 92 32 07 	sts	0x0732, r1	; 0x800732 <_ZN7TwoWire13txBufferIndexE>
-    27c2:	10 92 31 07 	sts	0x0731, r1	; 0x800731 <_ZN7TwoWire14txBufferLengthE>
+    27b6:	10 92 57 07 	sts	0x0757, r1	; 0x800757 <_ZN7TwoWire13rxBufferIndexE>
+    27ba:	10 92 56 07 	sts	0x0756, r1	; 0x800756 <_ZN7TwoWire14rxBufferLengthE>
+    27be:	10 92 34 07 	sts	0x0734, r1	; 0x800734 <_ZN7TwoWire13txBufferIndexE>
+    27c2:	10 92 33 07 	sts	0x0733, r1	; 0x800733 <_ZN7TwoWire14txBufferLengthE>
     27c6:	0b dd       	rcall	.-1514   	; 0x21de <twi_init>
     27c8:	86 e7       	ldi	r24, 0x76	; 118
     27ca:	93 e1       	ldi	r25, 0x13	; 19
@@ -6516,24 +6516,24 @@ void TwoWire::onRequest( void (*function)(void) )
 
 000027d6 <_ZN7TwoWire17beginTransmissionEh>:
     27d6:	81 e0       	ldi	r24, 0x01	; 1
-    27d8:	80 93 30 07 	sts	0x0730, r24	; 0x800730 <_ZN7TwoWire12transmittingE>
-    27dc:	60 93 53 07 	sts	0x0753, r22	; 0x800753 <_ZN7TwoWire9txAddressE>
-    27e0:	10 92 32 07 	sts	0x0732, r1	; 0x800732 <_ZN7TwoWire13txBufferIndexE>
-    27e4:	10 92 31 07 	sts	0x0731, r1	; 0x800731 <_ZN7TwoWire14txBufferLengthE>
+    27d8:	80 93 32 07 	sts	0x0732, r24	; 0x800732 <_ZN7TwoWire12transmittingE>
+    27dc:	60 93 55 07 	sts	0x0755, r22	; 0x800755 <_ZN7TwoWire9txAddressE>
+    27e0:	10 92 34 07 	sts	0x0734, r1	; 0x800734 <_ZN7TwoWire13txBufferIndexE>
+    27e4:	10 92 33 07 	sts	0x0733, r1	; 0x800733 <_ZN7TwoWire14txBufferLengthE>
     27e8:	08 95       	ret
 
 000027ea <_ZN7TwoWire15endTransmissionEh>:
     27ea:	0f 93       	push	r16
     27ec:	06 2f       	mov	r16, r22
     27ee:	21 e0       	ldi	r18, 0x01	; 1
-    27f0:	40 91 31 07 	lds	r20, 0x0731	; 0x800731 <_ZN7TwoWire14txBufferLengthE>
-    27f4:	63 e3       	ldi	r22, 0x33	; 51
+    27f0:	40 91 33 07 	lds	r20, 0x0733	; 0x800733 <_ZN7TwoWire14txBufferLengthE>
+    27f4:	65 e3       	ldi	r22, 0x35	; 53
     27f6:	77 e0       	ldi	r23, 0x07	; 7
-    27f8:	80 91 53 07 	lds	r24, 0x0753	; 0x800753 <_ZN7TwoWire9txAddressE>
+    27f8:	80 91 55 07 	lds	r24, 0x0755	; 0x800755 <_ZN7TwoWire9txAddressE>
     27fc:	5b dd       	rcall	.-1354   	; 0x22b4 <twi_writeTo>
-    27fe:	10 92 32 07 	sts	0x0732, r1	; 0x800732 <_ZN7TwoWire13txBufferIndexE>
-    2802:	10 92 31 07 	sts	0x0731, r1	; 0x800731 <_ZN7TwoWire14txBufferLengthE>
-    2806:	10 92 30 07 	sts	0x0730, r1	; 0x800730 <_ZN7TwoWire12transmittingE>
+    27fe:	10 92 34 07 	sts	0x0734, r1	; 0x800734 <_ZN7TwoWire13txBufferIndexE>
+    2802:	10 92 33 07 	sts	0x0733, r1	; 0x800733 <_ZN7TwoWire14txBufferLengthE>
+    2806:	10 92 32 07 	sts	0x0732, r1	; 0x800732 <_ZN7TwoWire12transmittingE>
     280a:	0f 91       	pop	r16
     280c:	08 95       	ret
 
@@ -6602,12 +6602,12 @@ void TwoWire::onRequest( void (*function)(void) )
     2888:	08 f0       	brcs	.+2      	; 0x288c <_ZN7TwoWire11requestFromEhhmhh+0x7e>
     288a:	40 e2       	ldi	r20, 0x20	; 32
     288c:	2c 2d       	mov	r18, r12
-    288e:	66 e5       	ldi	r22, 0x56	; 86
+    288e:	68 e5       	ldi	r22, 0x58	; 88
     2890:	77 e0       	ldi	r23, 0x07	; 7
     2892:	8f 2d       	mov	r24, r15
     2894:	bd dc       	rcall	.-1670   	; 0x2210 <twi_readFrom>
-    2896:	10 92 55 07 	sts	0x0755, r1	; 0x800755 <_ZN7TwoWire13rxBufferIndexE>
-    289a:	80 93 54 07 	sts	0x0754, r24	; 0x800754 <_ZN7TwoWire14rxBufferLengthE>
+    2896:	10 92 57 07 	sts	0x0757, r1	; 0x800757 <_ZN7TwoWire13rxBufferIndexE>
+    289a:	80 93 56 07 	sts	0x0756, r24	; 0x800756 <_ZN7TwoWire14rxBufferLengthE>
     289e:	df 91       	pop	r29
     28a0:	cf 91       	pop	r28
     28a2:	1f 91       	pop	r17
@@ -6659,8 +6659,8 @@ void (*TwoWire::user_onReceive)(int);
 TwoWire::TwoWire()
     28e4:	80 ec       	ldi	r24, 0xC0	; 192
     28e6:	92 e0       	ldi	r25, 0x02	; 2
-    28e8:	90 93 2b 07 	sts	0x072B, r25	; 0x80072b <Wire+0x1>
-    28ec:	80 93 2a 07 	sts	0x072A, r24	; 0x80072a <Wire>
+    28e8:	90 93 2d 07 	sts	0x072D, r25	; 0x80072d <Wire+0x1>
+    28ec:	80 93 2c 07 	sts	0x072C, r24	; 0x80072c <Wire>
     28f0:	08 95       	ret
 
 000028f2 <_ZN9IReadable15CommandReceivedEhPKhh>:
@@ -6732,7 +6732,7 @@ bool Robot::ReadTestBtn(){ //TODO remove
     2958:	fc 01       	movw	r30, r24
     295a:	ee 0f       	add	r30, r30
     295c:	ff 1f       	adc	r31, r31
-    295e:	e4 57       	subi	r30, 0x74	; 116
+    295e:	e2 57       	subi	r30, 0x72	; 114
     2960:	f8 4f       	sbci	r31, 0xF8	; 248
     2962:	20 81       	ld	r18, Z
     2964:	31 81       	ldd	r19, Z+1	; 0x01
@@ -6741,7 +6741,7 @@ bool Robot::ReadTestBtn(){ //TODO remove
     296a:	88 0f       	add	r24, r24
     296c:	99 1f       	adc	r25, r25
     296e:	fc 01       	movw	r30, r24
-    2970:	e4 57       	subi	r30, 0x74	; 116
+    2970:	e2 57       	subi	r30, 0x72	; 114
     2972:	f8 4f       	sbci	r31, 0xF8	; 248
     2974:	71 83       	std	Z+1, r23	; 0x01
     2976:	60 83       	st	Z, r22
@@ -6781,7 +6781,7 @@ bool Robot::ReadTestBtn(){ //TODO remove
     29a0:	f0 e0       	ldi	r31, 0x00	; 0
     29a2:	ee 0f       	add	r30, r30
     29a4:	ff 1f       	adc	r31, r31
-    29a6:	e4 57       	subi	r30, 0x74	; 116
+    29a6:	e2 57       	subi	r30, 0x72	; 114
     29a8:	f8 4f       	sbci	r31, 0xF8	; 248
     29aa:	a0 81       	ld	r26, Z
     29ac:	b1 81       	ldd	r27, Z+1	; 0x01
@@ -6811,7 +6811,7 @@ bool Robot::ReadTestBtn(){ //TODO remove
 class DigitalSensor : public IReadable {
 public:
 	DigitalSensor(const uint8_t ID, Register& DDRPort, Register& PortPort, Register& PinPort, uint8_t Pin, bool Inversed = true) : _id(ID), pin(Pin), pinPort(&PinPort), inversed(Inversed) {
-    29d0:	e5 e8       	ldi	r30, 0x85	; 133
+    29d0:	e7 e8       	ldi	r30, 0x87	; 135
     29d2:	f7 e0       	ldi	r31, 0x07	; 7
     29d4:	82 ed       	ldi	r24, 0xD2	; 210
     29d6:	92 e0       	ldi	r25, 0x02	; 2
@@ -6842,7 +6842,7 @@ DigitalSensor BtnTest(0, TestBtnDDR, TestBtnPort, TestBtnPinPort, TestBtnPin);
 ImuSensor Imu(1, 2);
     29f8:	42 e0       	ldi	r20, 0x02	; 2
     29fa:	61 e0       	ldi	r22, 0x01	; 1
-    29fc:	86 e7       	ldi	r24, 0x76	; 118
+    29fc:	88 e7       	ldi	r24, 0x78	; 120
     29fe:	97 e0       	ldi	r25, 0x07	; 7
     2a00:	d7 c0       	rjmp	.+430    	; 0x2bb0 <_ZN9ImuSensorC1Ehh>
     2a02:	08 95       	ret
@@ -6854,9 +6854,9 @@ ImuSensor Imu(1, 2);
 }*/
 
 bool Robot::begin(){
-    2a04:	ec e8       	ldi	r30, 0x8C	; 140
+    2a04:	ee e8       	ldi	r30, 0x8E	; 142
     2a06:	f7 e0       	ldi	r31, 0x07	; 7
-    2a08:	8c e8       	ldi	r24, 0x8C	; 140
+    2a08:	8e e8       	ldi	r24, 0x8E	; 142
     2a0a:	99 e0       	ldi	r25, 0x09	; 9
 	for(uint16_t i = 0; i < NUM_DEVICES; i++){
 		registers[i] = NULL;
@@ -6881,13 +6881,13 @@ bool Robot::begin(){
 	
 	bool begin(){ //override
 		return rov.RegisterDevice(_id, this);
-    2a18:	65 e8       	ldi	r22, 0x85	; 133
+    2a18:	67 e8       	ldi	r22, 0x87	; 135
     2a1a:	77 e0       	ldi	r23, 0x07	; 7
-    2a1c:	80 91 87 07 	lds	r24, 0x0787	; 0x800787 <BtnTest+0x2>
+    2a1c:	80 91 89 07 	lds	r24, 0x0789	; 0x800789 <BtnTest+0x2>
     2a20:	9a df       	rcall	.-204    	; 0x2956 <_ZN5Robot14RegisterDeviceEhP7IDevice>
 	BtnTest.begin();
 	Imu.begin();
-    2a22:	86 e7       	ldi	r24, 0x76	; 118
+    2a22:	88 e7       	ldi	r24, 0x78	; 120
     2a24:	97 e0       	ldi	r25, 0x07	; 7
     2a26:	0d d0       	rcall	.+26     	; 0x2a42 <_ZN9ImuSensor5beginEv>
 	return true;
@@ -6906,7 +6906,7 @@ void Robot::Loop(){
     2a30:	70 91 01 02 	lds	r23, 0x0201	; 0x800201 <_ZN9EtherComm6bufferE+0x1>
     2a34:	6d 5f       	subi	r22, 0xFD	; 253
     2a36:	7f 4f       	sbci	r23, 0xFF	; 255
-    2a38:	86 e7       	ldi	r24, 0x76	; 118
+    2a38:	88 e7       	ldi	r24, 0x78	; 120
     2a3a:	97 e0       	ldi	r25, 0x07	; 7
     2a3c:	01 c0       	rjmp	.+2      	; 0x2a40 <_ZN9ImuSensor6UpdateEPh>
     2a3e:	08 95       	ret
@@ -7025,7 +7025,7 @@ protected:
     2aca:	0e 94 00 03 	call	0x600	; 0x600 <_ZN15Adafruit_BNO0559getVectorENS_22adafruit_vector_type_tE>
     2ace:	fe 01       	movw	r30, r28
     2ad0:	31 96       	adiw	r30, 0x01	; 1
-    2ad2:	ac e8       	ldi	r26, 0x8C	; 140
+    2ad2:	ae e8       	ldi	r26, 0x8E	; 142
     2ad4:	b9 e0       	ldi	r27, 0x09	; 9
     2ad6:	ce 01       	movw	r24, r28
     2ad8:	0d 96       	adiw	r24, 0x0d	; 13
@@ -7053,7 +7053,7 @@ protected:
     2aec:	f9 07       	cpc	r31, r25
     2aee:	a9 f7       	brne	.-22     	; 0x2ada <_ZN9ImuSensor21ReadRegisterRequestedEhPh+0x6e>
 		saveFloat(vector.x(), buffer + 0);
-    2af0:	ec e8       	ldi	r30, 0x8C	; 140
+    2af0:	ee e8       	ldi	r30, 0x8E	; 142
     2af2:	f9 e0       	ldi	r31, 0x09	; 9
     2af4:	20 81       	ld	r18, Z
     2af6:	51 81       	ldd	r21, Z+1	; 0x01
@@ -7208,7 +7208,7 @@ ImuSensor::ImuSensor(const uint8_t TempId, const uint8_t AccelId) : imu(55, 0x28
     2bc8:	21 93       	st	Z+, r18
     2bca:	31 93       	st	Z+, r19
     2bcc:	cf 01       	movw	r24, r30
-    2bce:	0a e2       	ldi	r16, 0x2A	; 42
+    2bce:	0c e2       	ldi	r16, 0x2C	; 44
     2bd0:	17 e0       	ldi	r17, 0x07	; 7
     2bd2:	28 e2       	ldi	r18, 0x28	; 40
     2bd4:	47 e3       	ldi	r20, 0x37	; 55
@@ -7236,7 +7236,7 @@ ImuSensor::ImuSensor(const uint8_t TempId, const uint8_t AccelId) : imu(55, 0x28
 		{
 			memset(p_vec, 0, sizeof(double)*N);
     2bf2:	8c e0       	ldi	r24, 0x0C	; 12
-    2bf4:	ec e8       	ldi	r30, 0x8C	; 140
+    2bf4:	ee e8       	ldi	r30, 0x8E	; 142
     2bf6:	f9 e0       	ldi	r31, 0x09	; 9
     2bf8:	df 01       	movw	r26, r30
     2bfa:	1d 92       	st	X+, r1
@@ -7258,14 +7258,14 @@ ImuSensor::ImuSensor(const uint8_t TempId, const uint8_t AccelId) : imu(55, 0x28
 // Check I2C device address and correct line below (by default address is 0x29 or 0x28)
 //                                   id, address
 Adafruit_BNO055 bno = Adafruit_BNO055(55, 0x28);
-    2c06:	0a e2       	ldi	r16, 0x2A	; 42
+    2c06:	0c e2       	ldi	r16, 0x2C	; 44
     2c08:	17 e0       	ldi	r17, 0x07	; 7
     2c0a:	28 e2       	ldi	r18, 0x28	; 40
     2c0c:	47 e3       	ldi	r20, 0x37	; 55
     2c0e:	50 e0       	ldi	r21, 0x00	; 0
     2c10:	60 e0       	ldi	r22, 0x00	; 0
     2c12:	70 e0       	ldi	r23, 0x00	; 0
-    2c14:	88 e9       	ldi	r24, 0x98	; 152
+    2c14:	8a e9       	ldi	r24, 0x9A	; 154
     2c16:	99 e0       	ldi	r25, 0x09	; 9
     2c18:	0e 94 c8 01 	call	0x390	; 0x390 <_ZN15Adafruit_BNO055C1ElhP7TwoWire>
 	setup();
