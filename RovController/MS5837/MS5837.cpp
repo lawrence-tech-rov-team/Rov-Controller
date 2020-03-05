@@ -37,9 +37,8 @@ bool MS5837::begin() {
 	Wire.endTransmission();
 
 	// Wait for reset to complete
-	Timer0.start();
+	Timer0.start(1);
 	Timer0.waitForFinish();
-	//TODO timer can only do 20, does it matter? delay(10);
 
 	// Read calibration values and CRC
 	for ( uint8_t i = 0 ; i < 7 ; i++ ) {
@@ -76,7 +75,7 @@ void MS5837::read() {
 	Wire.write(MS5837_CONVERT_D1_8192);
 	Wire.endTransmission();
 
-	Timer0.start(); // Max conversion time, 20ms per datasheet
+	Timer0.start(2); // Max conversion time, 20ms per datasheet
 	Timer0.waitForFinish();
 	//delay(20); 
 	
@@ -95,7 +94,7 @@ void MS5837::read() {
 	Wire.write(MS5837_CONVERT_D2_8192);
 	Wire.endTransmission();
 
-	Timer0.start();
+	Timer0.start(2);
 	Timer0.waitForFinish(); // Max conversion time per datasheet
 	//delay(20); 
 	
