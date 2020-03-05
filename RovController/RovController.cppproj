@@ -218,6 +218,12 @@
     <Compile Include="main.cpp">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="MS5837\MS5837.cpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="MS5837\MS5837.h">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="PCA9685\PCA9685.cpp">
       <SubType>compile</SubType>
     </Compile>
@@ -251,22 +257,16 @@
     <Compile Include="Peripherals\HardwareSerial_Private.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="Peripherals\PWM\HardwareServo.cpp">
+    <Compile Include="Peripherals\HardwareServo.cpp">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="Peripherals\PWM\HardwareServo.h">
+    <Compile Include="Peripherals\HardwareServo.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="Peripherals\PWM\HardwareServo1.cpp">
+    <Compile Include="Peripherals\HardwareTimer.cpp">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="Peripherals\PWM\HardwareServo3.cpp">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="Peripherals\PWM\HardwareServo4.cpp">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="Peripherals\PWM\HardwareServo5.cpp">
+    <Compile Include="Peripherals\HardwareTimer.h">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="Peripherals\SPI.h">
@@ -285,6 +285,18 @@
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="PinDefinitions.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="PinDefinitions\ArduinoPins.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="PinDefinitions\PCBPins.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="PinDefinitions\PCB_V1.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="PinDefinitions\PCB_V3.h">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="Robot.cpp">
@@ -306,12 +318,6 @@
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="TestIMU.h">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="Timer1.cpp">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="Timer1.h">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="Utils\CpuFreq.h">
@@ -337,8 +343,9 @@
     <Folder Include="BNO055\utility" />
     <Folder Include="EtherCardModified" />
     <Folder Include="BNO055" />
+    <Folder Include="MS5837" />
+    <Folder Include="PinDefinitions" />
     <Folder Include="PCA9685" />
-    <Folder Include="Peripherals\PWM" />
     <Folder Include="Sensors" />
     <Folder Include="Utils" />
     <Folder Include="Peripherals" />

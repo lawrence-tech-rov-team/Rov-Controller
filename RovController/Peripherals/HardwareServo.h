@@ -9,7 +9,7 @@
 #ifndef HARDWARESERVO_H_
 #define HARDWARESERVO_H_
 
-#include "../../PinDefinitions.h"
+#include "../PinDefinitions.h"
 
 class HardwareServo {
 private:
@@ -20,6 +20,12 @@ private:
 	Register16* const _ocrB;
 	Register16* const _ocrC;
 	
+	Register* const _DDR;
+	
+	const uint8_t _PINA;
+	const uint8_t _PINB;
+	const uint8_t _PINC; 
+	
 	uint16_t _minA;
 	uint16_t _minB;
 	uint16_t _minC;
@@ -29,7 +35,7 @@ private:
 	uint16_t _maxC;
 	
 public:
-	HardwareServo(Register16 &icr, Register &tccrA, Register &tccrB, Register16 &ocrA, Register16 &ocrB, Register16 &ocrC);
+	HardwareServo(Register16 &icr, Register &tccrA, Register &tccrB, Register16 &ocrA, Register16 &ocrB, Register16 &ocrC, Register &ddr, const uint8_t pinA, const uint8_t pinB, const uint8_t pinC);
 	
 	void begin();
 	

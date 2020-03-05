@@ -22,6 +22,8 @@ EtherComm.cpp
 
 main.cpp
 
+MS5837\MS5837.cpp
+
 PCA9685\PCA9685.cpp
 
 PCA9685\TwiServoController.cpp
@@ -36,15 +38,9 @@ Peripherals\HardwareSerial2.cpp
 
 Peripherals\HardwareSerial3.cpp
 
-Peripherals\PWM\HardwareServo.cpp
+Peripherals\HardwareServo.cpp
 
-Peripherals\PWM\HardwareServo1.cpp
-
-Peripherals\PWM\HardwareServo3.cpp
-
-Peripherals\PWM\HardwareServo4.cpp
-
-Peripherals\PWM\HardwareServo5.cpp
+Peripherals\HardwareTimer.cpp
 
 Peripherals\twi.c
 
@@ -55,8 +51,6 @@ Robot.cpp
 Sensors\ImuSensor.cpp
 
 TestIMU.cpp
-
-Timer1.cpp
 
 Utils\Print.cpp
 

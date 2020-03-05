@@ -11,8 +11,9 @@
 #include "Robot.h"
 #include "TestIMU.h"
 #include <avr/interrupt.h>
-#include "Peripherals/PWM/HardwareServo.h"
+#include "Peripherals/HardwareServo.h"
 #include "PCA9685/TwiServoController.h"
+#include "MS5837/MS5837.h"
 
 int8_t dir = 1;
 uint8_t pos = 128;
@@ -41,12 +42,13 @@ int main(void){
 	}
 	Serial.println("Connected to controller.");
 /*	
+	//Should no longer be needed. Needs tested first tho
 	DDRB |= _BV(PINB5) | _BV(PINB6);
 	DDRE |= _BV(PINE3) | _BV(PINE4) | _BV(PINE5);
 	DDRH |= _BV(PINH3) | _BV(PINH4) | _BV(PINH5);
 	DDRL |= _BV(PINL3) | _BV(PINL4) | _BV(PINL5);
-	
-	
+	*/
+	/*
 	Servo1.begin();
 	Servo1.setMinA(MIN);
 	Servo1.setMinB(MIN);
@@ -92,7 +94,7 @@ int main(void){
 	Servo5.EnableC();
 	*/
     /* Replace with your application code */
-	TwiServo.begin();
+	//TwiServo.begin();
     while (1) {
 		EtherComm::Loop();
 		rov.Loop();
@@ -117,7 +119,7 @@ int main(void){
 			_delay_ms(500);
 		}
 		_delay_ms(5);*/
-		TwiServo.sweep();
+		//TwiServo.sweep();
     }
 }
 
