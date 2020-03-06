@@ -27,7 +27,7 @@
 #endif
 
 
-#include "../PinDefinitions.h"
+#include "../PinDefinitions/PCBPins.h"
 #define WRITE_RESULT size_t
 #define WRITE_RETURN return 1;
 

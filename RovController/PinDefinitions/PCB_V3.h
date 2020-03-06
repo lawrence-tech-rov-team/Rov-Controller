@@ -11,7 +11,7 @@ THIS FILE SHOULD NOT BE INCLUDED DIRECTLY. INSTEAD INCLUDE "PCBPins.h" AND UNCOM
 #ifndef PCB_V3_H_
 #define PCB_V3_H_
 
-
+#include <avr/io.h>
 
 
 

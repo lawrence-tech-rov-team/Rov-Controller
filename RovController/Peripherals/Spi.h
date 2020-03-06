@@ -10,14 +10,8 @@
 #define SPI_H_
 
 
-#include <avr/io.h>
-
-#define SPI_DIR DDRB
-#define SPI_PORT PORTB
-#define SPI_SS _BV(PINB0)
-#define SPI_MOSI _BV(PINB2)
-#define SPI_MISO _BV(PINB3)
-#define SPI_SCK _BV(PINB1)
+//#include <avr/io.h>
+#include "../PinDefinitions/PCBPins.h"
 
 #define SPI_CLOCK_DIV2 0x04 //4 is the x2 bit
 
@@ -25,8 +19,8 @@ class SPI{
 public:
 	static void begin(uint8_t clock = SPI_CLOCK_DIV2){
 		//SPI_DIR |= SS;
-		SPI_DIR |= SPI_MOSI | SPI_SCK | SPI_SS; //Not sure why, but SS pin requires to be set as output even when not being used.
-		SPI_DIR &= ~(SPI_MISO);
+		DDR_SPI |= MASK_MOSI | MASK_SCK | MASK_SS; //Not sure why, but SS pin requires to be set as output even when not being used.
+		DDR_SPI &= ~(MASK_MISO);
 		//disableCS();
 
 		SPSR |= (clock >> 2);

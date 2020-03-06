@@ -1,7 +1,7 @@
 #ifndef ETHER_COMM_H
 #define ETHER_COMM_H
 
-#include "PinDefinitions.h"
+#include "PinDefinitions/PCBPins.h"
 #include "EtherCardModified/EtherCard.h"
 
 #define BUFFER_SIZE 258 //Start byte, command byte, 255 data bytes, checksum byte

@@ -12,12 +12,8 @@
 #include <avr/interrupt.h>
 #include <compat/twi.h>
 #include "../Utils/CpuFreq.h"
+#include "../PinDefinitions/PCBPins.h"
 //#include "Arduino.h" // for digitalWrite
-
-#define TwiDDR PORTD
-#define TwiPort PORTD
-#define SDA _BV(PIND1)
-#define SCL _BV(PIND0)
 
 #define false 0
 #define true 1
@@ -68,7 +64,7 @@ void twi_init(void)
   twi_inRepStart = false;
   
   // activate internal pullups for twi.
-  TwiPort |= SDA | SCL;
+  PORT_TWI |= MASK_SDA | MASK_SCL;
 
   // initialize twi prescaler and bit rate
   cbi(TWSR, TWPS0);
@@ -96,7 +92,7 @@ void twi_disable(void)
   TWCR &= ~(_BV(TWEN) | _BV(TWIE) | _BV(TWEA));
 
   // deactivate internal pullups for twi.
-  TwiPort &= ~(SDA | SCL);
+  PORT_TWI &= ~(MASK_SDA | MASK_SCL);
 }
 
 /* 

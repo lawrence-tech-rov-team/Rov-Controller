@@ -26,7 +26,8 @@ void RunLedCommand(const uint8_t* data, uint8_t len){
 	if(len == 1){
 		uint8_t state = *data;
 		if(state <= 1){
-			rov.SetLed(state > 0);
+			//rov.SetLed(state > 0);
+			//todo REMOVE COMMAND
 		}
 	}
 }

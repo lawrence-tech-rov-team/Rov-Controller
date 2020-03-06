@@ -17,7 +17,7 @@ IDevice* Robot::registers[NUM_DEVICES];
 #define ID_IMU_TEMPERATURE 1
 #define ID_IMU_ACCELEROMETER 2
 
-DigitalSensor BtnTest(0, TestBtnDDR, TestBtnPort, TestBtnPinPort, TestBtnPin);
+DigitalSensor BtnTest(0, DDR_BTN0, PORT_BTN0, PIN_BTN0, MASK_BTN0);
 ImuSensor Imu(1, 2);
 /*
 bool Robot::RegisterDevices(){
@@ -32,7 +32,7 @@ bool Robot::begin(){
 		registers[i] = NULL;
 	}
 	
-	LedDDR |= LedPin;
+	//LedDDR |= LedPin;
 	BtnTest.begin();
 	Imu.begin();
 	return true;
@@ -50,15 +50,15 @@ bool Robot::RegisterDevice(uint8_t id, IDevice* device){
 		return false;
 	}
 }
-
+/*
 void Robot::SetLed(bool illuminate){ //TODO remove
 	if(illuminate) LedPort |= LedPin;
 	else LedPort &= ~LedPin;
-}
-
+}*/
+/*
 bool Robot::ReadTestBtn(){ //TODO remove
 	return !((TestBtnPinPort & TestBtnPin) > 0);
-}
+}*/
 
 void Robot::Loop(){
 	Imu.Update(EtherComm::buffer + 3);

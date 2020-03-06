@@ -5,7 +5,7 @@
  * Author : zcarey
  */ 
 
-#include "PinDefinitions.h"
+#include "PinDefinitions/PCBPins.h"
 #include "EtherComm.h"
 #include "Peripherals/HardwareSerial.h"
 #include "Robot.h"
@@ -20,6 +20,7 @@ uint8_t pos = 128;
 #include "Utils/CpuFreq.h"
 #include <util/delay.h>
 
+MS5837 PressureSensor;
 TwiServoController TwiServo(0x40);
 #define MIN 550
 #define MAX 2400
@@ -36,7 +37,15 @@ int main(void){
 	}
 	Serial.println("Robot initialized.");
 	
-	if(!EtherComm::begin((uint16_t)6001, (uint16_t)6002, EthernetDDR, EthernetPort, EthernetPin_CS)){
+	if(!PressureSensor.begin()){
+		Serial.println("Failed to initialize pressure sensor.");
+		while(1);
+	}
+	PressureSensor.setModel(MS5837::MS5837_30BA);
+	PressureSensor.setFluidDensity(997); //Freshwater
+	Serial.println("Initialized pressure sensor.");
+	
+	if(!EtherComm::begin((uint16_t)6001, (uint16_t)6002, DDR_ENC, PORT_ENC, MASK_ENC_CS)){
 		Serial.println("Failed to access Ethernet controller.");
 		while(1);
 	}
@@ -48,6 +57,14 @@ int main(void){
 	DDRH |= _BV(PINH3) | _BV(PINH4) | _BV(PINH5);
 	DDRL |= _BV(PINL3) | _BV(PINL4) | _BV(PINL5);
 	*/
+	/*Servo1.begin();
+	Servo3.begin();
+	Servo4.begin();
+	Servo5.begin();
+	
+	Servo_A1_setMin(MIN);
+	Servo_A1_setMax(MAX);
+	Servo_A1_enable();*/
 	/*
 	Servo1.begin();
 	Servo1.setMinA(MIN);
@@ -98,6 +115,7 @@ int main(void){
     while (1) {
 		EtherComm::Loop();
 		rov.Loop();
+		//Servo_A1_setPulse(pos);
 /*		Servo1.setPulseA(pos);
 		Servo1.setPulseB(pos);
 		Servo1.setPulseC(pos);
@@ -110,7 +128,8 @@ int main(void){
 		Servo5.setPulseA(pos);
 		Servo5.setPulseB(pos);
 		Servo5.setPulseC(pos);
-		pos += dir;
+		*/
+		/*pos += dir;
 		if(pos == 255){
 			dir = -1;
 			_delay_ms(500);
@@ -120,6 +139,10 @@ int main(void){
 		}
 		_delay_ms(5);*/
 		//TwiServo.sweep();
+		Serial.print("Pressure: ");
+		PressureSensor.read();
+		Serial.print(PressureSensor.pressure());
+		Serial.println(" mbar");
     }
 }
 

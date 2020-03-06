@@ -10,7 +10,7 @@
 #define ROBOT_H_
 
 
-#include "PinDefinitions.h"
+#include "PinDefinitions/PCBPins.h"
 #include "IDevice.h"
 
 #define NUM_DEVICES 256
@@ -23,8 +23,8 @@ public:
 	static void Loop();
 	static void CommandReceived(const uint8_t* data, uint8_t len);
 	
-	static void SetLed(bool illuminate);
-	static bool ReadTestBtn();
+	//static void SetLed(bool illuminate);
+	//static bool ReadTestBtn();
 	//static IDevice* devices[NUM_DEVICES];
 	static IDevice* registers[NUM_DEVICES];
 	

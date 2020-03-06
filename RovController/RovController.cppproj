@@ -284,9 +284,6 @@
     <Compile Include="Peripherals\Wire.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="PinDefinitions.h">
-      <SubType>compile</SubType>
-    </Compile>
     <Compile Include="PinDefinitions\ArduinoPins.h">
       <SubType>compile</SubType>
     </Compile>
@@ -303,6 +300,9 @@
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="Robot.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="RobotPins.h">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="Sensors\DigitalSensor.h">

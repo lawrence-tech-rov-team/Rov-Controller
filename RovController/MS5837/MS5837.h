@@ -10,7 +10,7 @@
 #ifndef MS5837_H_
 #define MS5837_H_
 
-#include "../PinDefinitions.h"
+#include "../PinDefinitions/PCBPins.h"
 
 class MS5837 {
 public:

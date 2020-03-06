@@ -6,7 +6,7 @@
  */ 
 
 #include "TestIMU.h"
-#include "PinDefinitions.h"
+#include "PinDefinitions/PCBPins.h"
 #include "Peripherals/HardwareSerial.h"
 
 #include "Peripherals/Wire.h"
