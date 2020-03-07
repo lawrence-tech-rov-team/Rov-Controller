@@ -60,7 +60,7 @@ void HardwareTimer::beginMs(float ms){
 	}else if (TOP < 0){
 		*_ocra = 0;
 	}else{
-		*_ocra = (uint8_t)TOP;
+		*_ocra = (uint8_t)(TOP + 0.5);
 	}
 }
 

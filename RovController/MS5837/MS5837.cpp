@@ -10,6 +10,9 @@
 #include "../Peripherals/HardwareTimer.h"
 #include <math.h>
 
+//#include "../Utils/CpuFreq.h"
+// #include <util/delay.h>
+
 #define MS5837_ADDR               0x76
 #define MS5837_RESET              0x1E
 #define MS5837_ADC_READ           0x00
@@ -29,6 +32,7 @@ MS5837::MS5837() {
 }
 
 bool MS5837::begin() {
+	Wire.begin();
 	Timer0.beginMs(10);
 	
 	// Reset the MS5837, per datasheet
@@ -37,6 +41,7 @@ bool MS5837::begin() {
 	Wire.endTransmission();
 
 	// Wait for reset to complete
+	//_delay_ms(10);
 	Timer0.start(1);
 	Timer0.waitForFinish();
 
@@ -77,7 +82,7 @@ void MS5837::read() {
 
 	Timer0.start(2); // Max conversion time, 20ms per datasheet
 	Timer0.waitForFinish();
-	//delay(20); 
+	//_delay_ms(20); 
 	
 	Wire.beginTransmission(MS5837_ADDR);
 	Wire.write(MS5837_ADC_READ);
@@ -96,7 +101,7 @@ void MS5837::read() {
 
 	Timer0.start(2);
 	Timer0.waitForFinish(); // Max conversion time per datasheet
-	//delay(20); 
+	//_delay_ms(20); 
 	
 	Wire.beginTransmission(MS5837_ADDR);
 	Wire.write(MS5837_ADC_READ);

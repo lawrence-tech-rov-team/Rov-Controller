@@ -37,7 +37,7 @@ private:
 	Register* const _ocra;
 	
 	uint8_t prescaleMask;
-	uint8_t ovfRemaining;
+	volatile uint8_t ovfRemaining;
 };
 
 #ifdef USE_TIMER_0
