@@ -37,6 +37,7 @@ SUBDIRS :=  \
 ../EtherCardModified \
 ../BNO055 \
 ../MS5837 \
+../Actuators \
 ../PinDefinitions \
 ../PCA9685 \
 ../Sensors \

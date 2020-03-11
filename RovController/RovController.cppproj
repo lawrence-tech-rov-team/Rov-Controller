@@ -143,6 +143,9 @@
     </ToolchainSettings>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Actuators\ServoActuator.h">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="BNO055\Adafruit_BNO055.cpp">
       <SubType>compile</SubType>
     </Compile>
@@ -350,6 +353,7 @@
     <Folder Include="EtherCardModified" />
     <Folder Include="BNO055" />
     <Folder Include="MS5837" />
+    <Folder Include="Actuators" />
     <Folder Include="PinDefinitions" />
     <Folder Include="PCA9685" />
     <Folder Include="Sensors" />
