@@ -9,6 +9,7 @@
 
 #include "Sensors/DigitalSensor.h"
 #include "Sensors/ImuSensor.h"
+#include "Sensors/PressureSensor.h"
 #include <stddef.h>
 
 IDevice* Robot::registers[NUM_DEVICES];
@@ -16,9 +17,11 @@ IDevice* Robot::registers[NUM_DEVICES];
 #define ID_TEST_BUTTON 0
 #define ID_IMU_TEMPERATURE 1
 #define ID_IMU_ACCELEROMETER 2
+#define ID_PRESSURE_SENSOR 4
 
-DigitalSensor BtnTest(0, DDR_BTN0, PORT_BTN0, PIN_BTN0, MASK_BTN0);
-ImuSensor Imu(1, 2);
+DigitalSensor BtnTest(ID_TEST_BUTTON, DDR_BTN0, PORT_BTN0, PIN_BTN0, MASK_BTN0);
+ImuSensor Imu(ID_IMU_TEMPERATURE, ID_IMU_ACCELEROMETER);
+PressureSensor Pressure(ID_PRESSURE_SENSOR, Timer0);
 /*
 bool Robot::RegisterDevices(){
 	RegisterDevice(BtnTest); //TODO return if successful
@@ -35,6 +38,7 @@ bool Robot::begin(){
 	//LedDDR |= LedPin;
 	BtnTest.begin();
 	Imu.begin();
+	Pressure.begin(); //TODO automatically?
 	return true;
 }
 
@@ -62,6 +66,7 @@ bool Robot::ReadTestBtn(){ //TODO remove
 
 void Robot::Loop(){
 	Imu.Update(EtherComm::buffer + 3);
+	Pressure.Update(EtherComm::buffer + 3);
 }
 
 void Robot::CommandReceived(const uint8_t* data, uint8_t len){

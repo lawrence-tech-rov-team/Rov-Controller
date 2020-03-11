@@ -20,7 +20,6 @@ uint8_t pos = 128;
 #include "Utils/CpuFreq.h"
 #include <util/delay.h>
 
-MS5837 PressureSensor;
 TwiServoController TwiServo(0x40);
 #define MIN 550
 #define MAX 2400
@@ -37,13 +36,12 @@ int main(void){
 	}
 	Serial.println("Robot initialized.");
 	
-	if(!PressureSensor.begin()){
+	/*if(!PressureSensor.begin()){
 		Serial.println("Failed to initialize pressure sensor.");
 		while(1);
-	}
-	PressureSensor.setModel(MS5837::MS5837_30BA);
-	PressureSensor.setFluidDensity(997); //Freshwater
-	Serial.println("Initialized pressure sensor.");
+	}*/ //TODO send error codes for intialization debugging
+	
+	//Serial.println("Initialized pressure sensor.");
 	
 	if(!EtherComm::begin((uint16_t)6001, (uint16_t)6002, DDR_ENC, PORT_ENC, MASK_ENC_CS)){
 		Serial.println("Failed to access Ethernet controller.");
@@ -139,10 +137,10 @@ int main(void){
 		}
 		_delay_ms(5);*/
 		//TwiServo.sweep();
-		Serial.print("Pressure: ");
-		PressureSensor.read();
-		Serial.print(PressureSensor.pressure());
-		Serial.println(" mbar");
+		//Serial.print("Pressure: ");
+		//PressureSensor.read();
+		//Serial.print(PressureSensor.pressure());
+		//Serial.println(" mbar");
     }
 }
 

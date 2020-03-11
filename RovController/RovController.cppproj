@@ -314,6 +314,12 @@
     <Compile Include="Sensors\ImuSensor.h">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="Sensors\PressureSensor.cpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Sensors\PressureSensor.h">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="TestIMU.cpp">
       <SubType>compile</SubType>
     </Compile>

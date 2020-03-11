@@ -11,6 +11,7 @@
 #define MS5837_H_
 
 #include "../PinDefinitions/PCBPins.h"
+#include "../Peripherals/HardwareTimer.h"
 
 class MS5837 {
 public:
@@ -21,7 +22,7 @@ public:
 	static const uint8_t MS5837_30BA;
 	static const uint8_t MS5837_02BA;
 
-	MS5837();
+	MS5837(HardwareTimer &timer);
 
 	bool begin();
 
@@ -37,7 +38,10 @@ public:
 
 	/** The read from I2C takes up to 40 ms, so use sparingly is possible.
 	 */
-	void read();
+	//void read();
+	bool startRead();
+	void update();
+	bool finished();
 
 	/** Pressure returned in mbar or mbar*conversion rate.
 	 */
@@ -62,6 +66,8 @@ private:
 	int32_t TEMP;
 	int32_t P;
 	uint8_t _model;
+	uint8_t _state;
+	HardwareTimer* _timer;
 
 	float fluidDensity;
 

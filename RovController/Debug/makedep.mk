@@ -50,6 +50,8 @@ Robot.cpp
 
 Sensors\ImuSensor.cpp
 
+Sensors\PressureSensor.cpp
+
 TestIMU.cpp
 
 Utils\Print.cpp

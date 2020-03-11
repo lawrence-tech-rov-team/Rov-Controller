@@ -7,7 +7,6 @@
 
 #include "MS5837.h"
 #include "../Peripherals/Wire.h"
-#include "../Peripherals/HardwareTimer.h"
 #include <math.h>
 
 //#include "../Utils/CpuFreq.h"
@@ -20,6 +19,10 @@
 #define MS5837_CONVERT_D1_8192    0x4A
 #define MS5837_CONVERT_D2_8192    0x5A
 
+#define STATE_FINISHED 0
+#define STATE_READ_D1 1
+#define STATE_READ_D2 2
+
 const float MS5837::Pa = 100.0f;
 const float MS5837::bar = 0.001f;
 const float MS5837::mbar = 1.0f;
@@ -27,13 +30,13 @@ const float MS5837::mbar = 1.0f;
 const uint8_t MS5837::MS5837_30BA = 0;
 const uint8_t MS5837::MS5837_02BA = 1;
 
-MS5837::MS5837() {
+MS5837::MS5837(HardwareTimer &timer) : _timer(&timer) {
 	fluidDensity = 1029;
 }
 
 bool MS5837::begin() {
 	Wire.begin();
-	Timer0.beginMs(10);
+	_timer->beginMs(10);
 	
 	// Reset the MS5837, per datasheet
 	Wire.beginTransmission(MS5837_ADDR);
@@ -42,8 +45,8 @@ bool MS5837::begin() {
 
 	// Wait for reset to complete
 	//_delay_ms(10);
-	Timer0.start(1);
-	Timer0.waitForFinish();
+	_timer->start(1);
+	_timer->waitForFinish();
 
 	// Read calibration values and CRC
 	for ( uint8_t i = 0 ; i < 7 ; i++ ) {
@@ -73,7 +76,7 @@ void MS5837::setModel(uint8_t model) {
 void MS5837::setFluidDensity(float density) {
 	fluidDensity = density;
 }
-
+/*
 void MS5837::read() {
 	// Request D1 conversion
 	Wire.beginTransmission(MS5837_ADDR);
@@ -114,6 +117,65 @@ void MS5837::read() {
 	D2 = (D2 << 8) | Wire.read();
 
 	calculate();
+}*/
+
+bool MS5837::startRead(){
+	if(_state == STATE_FINISHED){
+		_state = STATE_READ_D1; // Request D1 conversion
+		
+		Wire.beginTransmission(MS5837_ADDR);
+		Wire.write(MS5837_CONVERT_D1_8192);
+		Wire.endTransmission();
+
+		_timer->start(2); // Max conversion time, 20ms per datasheet
+	}else{
+		return false;
+	}
+}
+
+void MS5837::update(){
+	if(_state != STATE_FINISHED){
+		if(_timer->finished()){
+			if(_state == STATE_READ_D1){
+				//Read D1 conversion and Request D2 conversion
+				Wire.beginTransmission(MS5837_ADDR);
+				Wire.write(MS5837_ADC_READ);
+				Wire.endTransmission();
+
+				Wire.requestFrom(MS5837_ADDR,3);
+				D1 = 0;
+				D1 = Wire.read();
+				D1 = (D1 << 8) | Wire.read();
+				D1 = (D1 << 8) | Wire.read();
+		
+				// Request D2 conversion
+				Wire.beginTransmission(MS5837_ADDR);
+				Wire.write(MS5837_CONVERT_D2_8192);
+				Wire.endTransmission();
+
+				Timer0.start(2);
+				_state = STATE_READ_D2;
+			}else if(_state == STATE_READ_D2){
+				// Read D2 conversion and calculate readings
+				Wire.beginTransmission(MS5837_ADDR);
+				Wire.write(MS5837_ADC_READ);
+				Wire.endTransmission();
+
+				Wire.requestFrom(MS5837_ADDR,3);
+				D2 = 0;
+				D2 = Wire.read();
+				D2 = (D2 << 8) | Wire.read();
+				D2 = (D2 << 8) | Wire.read();
+
+				calculate();
+				_state = STATE_FINISHED;
+			}
+		}
+	}
+}
+
+bool MS5837::finished(){
+	return _state == STATE_FINISHED;
 }
 
 void MS5837::calculate() {
@@ -135,7 +197,7 @@ void MS5837::calculate() {
 		SENS = int64_t(C[1])*65536l+(int64_t(C[3])*dT)/128l;
 		OFF = int64_t(C[2])*131072l+(int64_t(C[4])*dT)/64l;
 		P = (D1*SENS/(2097152l)-OFF)/(32768l);
-		} else {
+	} else {
 		SENS = int64_t(C[1])*32768l+(int64_t(C[3])*dT)/256l;
 		OFF = int64_t(C[2])*65536l+(int64_t(C[4])*dT)/128l;
 		P = (D1*SENS/(2097152l)-OFF)/(8192l);
@@ -175,7 +237,7 @@ void MS5837::calculate() {
 	
 	if ( _model == MS5837_02BA ) {
 		P = (((D1*SENS2)/2097152l-OFF2)/32768l);
-		} else {
+	} else {
 		P = (((D1*SENS2)/2097152l-OFF2)/8192l);
 	}
 }
