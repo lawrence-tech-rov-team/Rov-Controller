@@ -15,10 +15,10 @@
 
 class MS5837 {
 public:
-	static const float Pa;
+	/*static const float Pa;
 	static const float bar;
 	static const float mbar;
-
+*/
 	static const uint8_t MS5837_30BA;
 	static const uint8_t MS5837_02BA;
 
@@ -34,7 +34,7 @@ public:
 	/** Provide the density of the working fluid in kg/m^3. Default is for 
 	 * seawater. Should be 997 for freshwater.
 	 */
-	void setFluidDensity(float density);
+	//void setFluidDensity(float density);
 
 	/** The read from I2C takes up to 40 ms, so use sparingly is possible.
 	 */
@@ -54,11 +54,11 @@ public:
 	/** Depth returned in meters (valid for operation in incompressible
 	 *  liquids only. Uses density that is set for fresh or seawater.
 	 */
-	float depth();
+	//float depth();
 
 	/** Altitude returned in meters (valid for operation in air only).
 	 */
-	float altitude();
+	//float altitude();
 
 private:
 	uint16_t C[8];

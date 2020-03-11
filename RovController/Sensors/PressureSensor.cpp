@@ -16,7 +16,7 @@ bool PressureSensor::begin(){
 	if(!rov.RegisterDevice(_id, this)) return false;
 	if(sensor.begin()){
 		sensor.setModel(MS5837::MS5837_30BA);
-		sensor.setFluidDensity(997); //Freshwater
+		//sensor.setFluidDensity(997); //Freshwater
 		return true;
 	}
 	

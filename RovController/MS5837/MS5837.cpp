@@ -23,10 +23,10 @@
 #define STATE_READ_D1 1
 #define STATE_READ_D2 2
 
-const float MS5837::Pa = 100.0f;
+/*const float MS5837::Pa = 100.0f;
 const float MS5837::bar = 0.001f;
 const float MS5837::mbar = 1.0f;
-
+*/
 const uint8_t MS5837::MS5837_30BA = 0;
 const uint8_t MS5837::MS5837_02BA = 1;
 
@@ -72,10 +72,10 @@ bool MS5837::begin() {
 void MS5837::setModel(uint8_t model) {
 	_model = model;
 }
-
+/*
 void MS5837::setFluidDensity(float density) {
 	fluidDensity = density;
-}
+}*/
 /*
 void MS5837::read() {
 	// Request D1 conversion
@@ -128,6 +128,7 @@ bool MS5837::startRead(){
 		Wire.endTransmission();
 
 		_timer->start(2); // Max conversion time, 20ms per datasheet
+		return true;
 	}else{
 		return false;
 	}
@@ -254,14 +255,14 @@ float MS5837::pressure(float conversion) {
 float MS5837::temperature() {
 	return TEMP/100.0f;
 }
-
+/*
 float MS5837::depth() {
 	return (pressure(MS5837::Pa)-101300)/(fluidDensity*9.80665);
-}
-
+}*/
+/*
 float MS5837::altitude() {
 	return (1-pow((pressure()/1013.25),.190284))*145366.45*.3048;
-}
+}*/
 
 
 uint8_t MS5837::crc4(uint16_t n_prom[]) {
