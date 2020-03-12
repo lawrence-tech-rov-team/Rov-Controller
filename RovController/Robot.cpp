@@ -6,6 +6,7 @@
  */ 
 
 #include "Robot.h"
+#include "Peripherals/HardwareSerial.h"
 
 #include "Sensors/DigitalSensor.h"
 #include "Sensors/ImuSensor.h"
@@ -44,10 +45,22 @@ bool Robot::begin(){
 	Servo5.begin();
 	
 	//LedDDR |= LedPin;
-	BtnTest.begin();
-	Imu.begin();
-	Pressure.begin(); //TODO automatically?
-	TestServo.begin();
+	if(!BtnTest.begin()){
+		Serial.println("Unable to initialize BtnTest.");
+		return false;
+	}
+	if(!Imu.begin()){
+		Serial.println("Unable to initialize IMU.");
+		return false;
+	}
+	if(!Pressure.begin()){ //TODO automatically?
+		Serial.println("Unable to initialize Pressure Sensor.");
+		return false;
+	} 
+	if(!TestServo.begin()){
+		Serial.println("Unable to initialize Servo.");
+		return false;
+	}
 	
 	return true;
 }
@@ -77,7 +90,7 @@ bool Robot::ReadTestBtn(){ //TODO remove
 void Robot::Loop(){
 	Imu.Update(EtherComm::buffer + 3);
 	Pressure.Update(EtherComm::buffer + 3);
-	//TestServo.Update(EtherComm::buffer + 3);
+	TestServo.Update(EtherComm::buffer + 3);
 }
 
 void Robot::CommandReceived(const uint8_t* data, uint8_t len){

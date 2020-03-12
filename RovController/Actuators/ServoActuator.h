@@ -29,8 +29,8 @@ public:
 		
 		Servo_A2_setMin(550);
 		Servo_A2_setMax(2400);
-		//Servo_A2_setPulse(127);
-		Servo_A2_setPulse(0);
+		Servo_A2_setPulse(127);
+		//Servo_A2_setPulse(0);
 		Servo_A2_enable();
 		
 		return true;	
@@ -47,7 +47,7 @@ protected:
 				//lastPos = data[0];
 				//Servo_A2_setPulse(data[0]);
 				//Servo_A2_setPulse(lastPos++);
-				Servo_A2_setPulse(255);
+				//Servo_A2_setPulse(255);
 				SendConfirmation(id);
 			}
 		}else if(id == _minId){

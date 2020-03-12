@@ -27,46 +27,46 @@ TwiServoController TwiServo(0x40);
 int main(void){
 	//TestIMU();
 	sei(); //Enable global interrupts
-	//Serial.begin(9600);
-	//Serial.println("\nInitializing...");
+	Serial.begin(9600);
+	Serial.println("\nInitializing...");
 	
-	/*if(!rov.begin()){
+	if(!rov.begin()){
 		Serial.println("Failed to initialize robot.");
 		while(1);
 	}
 	Serial.println("Robot initialized.");
-	*/
-	/*if(!PressureSensor.begin()){
+	/*
+	if(!PressureSensor.begin()){
 		Serial.println("Failed to initialize pressure sensor.");
 		while(1);
 	}*/ //TODO send error codes for intialization debugging
 	
 	//Serial.println("Initialized pressure sensor.");
-	/*
+	
 	if(!EtherComm::begin((uint16_t)6001, (uint16_t)6002, DDR_ENC, PORT_ENC, MASK_ENC_CS)){
 		Serial.println("Failed to access Ethernet controller.");
 		while(1);
 	}
-	Serial.println("Connected to controller.");*/
-	
+	Serial.println("Connected to controller.");
+	/*
 	//Should no longer be needed. Needs tested first tho
 	DDRB |= _BV(PINB5) | _BV(PINB6);
 	DDRE |= _BV(PINE3) | _BV(PINE4) | _BV(PINE5);
 	DDRH |= _BV(PINH3) | _BV(PINH4) | _BV(PINH5);
 	DDRL |= _BV(PINL3) | _BV(PINL4) | _BV(PINL5);
-	
-	Servo1.begin();
+	*/
+	/*Servo1.begin();
 	Servo3.begin();
 	Servo4.begin();
 	Servo5.begin();
-	/*
+	
 	Servo_A1_setMin(MIN);
 	Servo_A1_setMax(MAX);
-	Servo_A1_enable();
-	*/
+	Servo_A1_enable();*/
+	/*
 	Servo5.setMinC(MIN);
 	Servo5.setMaxC(MAX);
-	Servo5.EnableC();
+	Servo5.EnableC();*/
 	/*
 	Servo1.begin();
 	Servo1.setMinA(MIN);
@@ -115,10 +115,10 @@ int main(void){
     /* Replace with your application code */
 	//TwiServo.begin();
     while (1) {
-		//EtherComm::Loop();
+		EtherComm::Loop();
 		//rov.Loop();
 		//Servo_A1_setPulse(pos);
-		Servo5.setPulseC(pos);
+		//Servo5.setPulseC(pos);
 /*		Servo1.setPulseA(pos);
 		Servo1.setPulseB(pos);
 		Servo1.setPulseC(pos);
@@ -132,7 +132,7 @@ int main(void){
 		Servo5.setPulseB(pos);
 		Servo5.setPulseC(pos);
 		*/
-		pos += dir;
+		/*pos += dir;
 		if(pos == 255){
 			dir = -1;
 			_delay_ms(500);
@@ -140,7 +140,7 @@ int main(void){
 			dir = 1;
 			_delay_ms(500);
 		}
-		_delay_ms(5);
+		_delay_ms(5);*/
 		//TwiServo.sweep();
 		//Serial.print("Pressure: ");
 		//PressureSensor.read();
