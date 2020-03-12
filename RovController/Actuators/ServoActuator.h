@@ -12,6 +12,7 @@
 #include "../IWritable.h"
 #include "../Peripherals/HardwareServo.h"
 #include "../PinDefinitions/PCBPins.h"
+//#include "../Peripherals/HardwareSerial.h"
 
 class ServoActuator : public IWritable {
 public:
@@ -27,11 +28,11 @@ public:
 		if(!rov.RegisterDevice(_maxId, this)) return false;
 		if(!rov.RegisterDevice(_enId, this)) return false;
 		
-		Servo_A2_setMin(550);
-		Servo_A2_setMax(2400);
-		Servo_A2_setPulse(127);
-		//Servo_A2_setPulse(0);
-		Servo_A2_enable();
+		Servo_A1_setMin(550);
+		Servo_A1_setMax(2400);
+		Servo_A1_setPulse(127);
+		//Servo_A1_setPulse(0);
+		//Servo_A1_enable();
 		
 		return true;	
 	}
@@ -42,30 +43,35 @@ public:
 	
 protected:
 	void WriteRegisterRequested(uint8_t id, const uint8_t* data, uint8_t len){ //Override
+		//Serial.print("Id: ");
+		//Serial.println(id);
 		if(id == _id){
+			//Serial.print("Data Len: ");
+			//Serial.println(len);
 			if(len == 1){
-				//lastPos = data[0];
-				//Servo_A2_setPulse(data[0]);
-				//Servo_A2_setPulse(lastPos++);
+				//Serial.println("Recvd.");
+				lastPos = data[0];
+				Servo_A1_setPulse(data[0]);
+				//Servo_A1_setPulse(lastPos++);
 				//Servo_A2_setPulse(255);
 				SendConfirmation(id);
 			}
 		}else if(id == _minId){
 			if(len == 2){
-				//Servo_A2_setMin(*((uint16_t*)data));
-				//Servo_A2_setPulse(lastPos);
+				Servo_A1_setMin(*((uint16_t*)data));
+				Servo_A1_setPulse(lastPos);
 				SendConfirmation(id);
 			}
 		}else if(id == _maxId){
 			if(len == 2){
-				//Servo_A2_setMax(*((uint16_t*)data));
-				//Servo_A2_setPulse(lastPos);
+				Servo_A1_setMax(*((uint16_t*)data));
+				Servo_A1_setPulse(lastPos);
 				SendConfirmation(id);
 			}
 		}else if(id == _enId){
 			if(len == 1){
-				//if(data[0] == 0) Servo_A2_disable();
-				//else Servo_A2_enable();
+				if(data[0] == 0) Servo_A1_disable();
+				else Servo_A1_enable();
 				SendConfirmation(id);
 			}
 		}

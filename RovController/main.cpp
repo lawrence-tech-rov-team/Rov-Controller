@@ -116,7 +116,7 @@ int main(void){
 	//TwiServo.begin();
     while (1) {
 		EtherComm::Loop();
-		//rov.Loop();
+		rov.Loop();
 		//Servo_A1_setPulse(pos);
 		//Servo5.setPulseC(pos);
 /*		Servo1.setPulseA(pos);
