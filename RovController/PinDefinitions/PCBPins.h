@@ -11,8 +11,8 @@
 
 #include "ArduinoPins.h"
 
-#include "PCB_V1.h"
-//#include "PCB_V3.h"
+//#include "PCB_V1.h"
+#include "PCB_V3.h"
 
 #define DDR_MISCA DDRA
 #define PORT_MISCA PORTA

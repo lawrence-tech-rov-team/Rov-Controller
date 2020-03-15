@@ -21,6 +21,7 @@ private:
 	Register16* const _ocrC;
 	
 	Register* const _DDR;
+	Register* const _PORT;
 	
 	const uint8_t _PINA;
 	const uint8_t _PINB;
@@ -35,9 +36,10 @@ private:
 	uint16_t _maxC;
 	
 public:
-	HardwareServo(Register16 &icr, Register &tccrA, Register &tccrB, Register16 &ocrA, Register16 &ocrB, Register16 &ocrC, Register &ddr, const uint8_t pinA, const uint8_t pinB, const uint8_t pinC);
+	HardwareServo(Register16 &icr, Register &tccrA, Register &tccrB, Register16 &ocrA, Register16 &ocrB, Register16 &ocrC, Register &ddr, Register &port, const uint8_t pinA, const uint8_t pinB, const uint8_t pinC);
 	
 	void begin();
+	void end();
 	
 	void EnableA();
 	void EnableB();
