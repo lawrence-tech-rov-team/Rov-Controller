@@ -13,7 +13,7 @@
 #include <inttypes.h>
 
 class PCA9685{
-	public:
+public:
 	PCA9685(const uint8_t addr);
 	
 	void begin(uint8_t prescale = 0);
@@ -32,7 +32,7 @@ class PCA9685{
 	void setOscillatorFrequency(uint32_t freq);
 	uint32_t getOscillatorFrequency(void);
 
-	private:
+private:
 	const uint8_t _addr;
 	uint32_t _oscillator_freq;
 	
