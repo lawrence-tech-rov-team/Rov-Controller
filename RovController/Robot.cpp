@@ -25,7 +25,7 @@ IDevice* Robot::registers[NUM_DEVICES];
 DigitalSensor BtnTest(ID_TEST_BUTTON, DDR_BTN0, PORT_BTN0, PIN_BTN0, MASK_BTN0);
 ImuSensor Imu(ID_IMU_TEMPERATURE, ID_IMU_ACCELEROMETER);
 PressureSensor Pressure(ID_PRESSURE_SENSOR, Timer0);
-ServoActuator TestServo(5, 6, 7, 8);
+ServoActuator TestServo(5, 6);
 /*
 bool Robot::RegisterDevices(){
 	RegisterDevice(BtnTest); //TODO return if successful

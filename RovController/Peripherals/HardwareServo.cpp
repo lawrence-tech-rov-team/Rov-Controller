@@ -19,8 +19,8 @@
 
 HardwareServo::HardwareServo(Register16 &icr, Register &tccrA, Register &tccrB, Register16 &ocrA, Register16 &ocrB, Register16 &ocrC, Register &ddr, Register &port, const uint8_t pinA, const uint8_t pinB, const uint8_t pinC)
  : _icr(&icr), _tccrA(&tccrA), _tccrB(&tccrB), _ocrA(&ocrA), _ocrB(&ocrB), _ocrC(&ocrC),
-  _DDR(&ddr), _PORT(&port), _PINA(pinA), _PINB(pinB), _PINC(pinC),
-  _minA(1000), _minB(1000), _minC(1000), _maxA(2000), _maxB(2000), _maxC(2000)
+  _DDR(&ddr), _PORT(&port), _PINA(pinA), _PINB(pinB), _PINC(pinC)/*,
+  _minA(1000), _minB(1000), _minC(1000), _maxA(2000), _maxB(2000), _maxC(2000)*/
 {
 	
 }
@@ -66,40 +66,19 @@ void HardwareServo::DisableC(){
 	*_PORT &= ~_PINC;	
 }
 
-void HardwareServo::setPulseA(uint8_t pulse){
-	*_ocrA = (uint16_t)((((uint32_t)pulse * (_maxA - _minA)) / 255 + _minA) * CPU_CONST);
+void HardwareServo::setPulseA(uint16_t pulse){
+	//*_ocrA = (uint16_t)((((uint32_t)pulse * (_maxA - _minA)) / 255 + _minA) * CPU_CONST);
+	*_ocrA = (uint16_t)(pulse * CPU_CONST);
 }
 
-void HardwareServo::setPulseB(uint8_t pulse){
-	*_ocrB = (uint16_t)((((uint32_t)pulse * (_maxB - _minB)) / 255 + _minB) * CPU_CONST);	
+void HardwareServo::setPulseB(uint16_t pulse){
+	//*_ocrB = (uint16_t)((((uint32_t)pulse * (_maxB - _minB)) / 255 + _minB) * CPU_CONST);	
+	*_ocrB = (uint16_t)(pulse * CPU_CONST);	
 }
 
-void HardwareServo::setPulseC(uint8_t pulse){
-	*_ocrC = (uint16_t)((((uint32_t)pulse * (_maxC - _minC)) / 255 + _minC) * CPU_CONST);	
-}
-
-void HardwareServo::setMinA(uint16_t us){
-	_minA = us;
-}
-
-void HardwareServo::setMinB(uint16_t us){
-	_minB = us;
-}
-
-void HardwareServo::setMinC(uint16_t us){
-	_minC = us;
-}
-
-void HardwareServo::setMaxA(uint16_t us){
-	_maxA = us;
-}
-
-void HardwareServo::setMaxB(uint16_t us){
-	_maxB = us;
-}
-
-void HardwareServo::setMaxC(uint16_t us){
-	_maxC = us;
+void HardwareServo::setPulseC(uint16_t pulse){
+	//*_ocrC = (uint16_t)((((uint32_t)pulse * (_maxC - _minC)) / 255 + _minC) * CPU_CONST);	
+	*_ocrC = (uint16_t)(pulse * CPU_CONST);
 }
 
 HardwareServo Servo1(ICR1, TCCR1A, TCCR1B, OCR1A, OCR1B, OCR1C, DDR_OC1, PORT_OC1, MASK_OC1A, MASK_OC1B, MASK_OC1C);

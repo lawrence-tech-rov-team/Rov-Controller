@@ -293,7 +293,16 @@
     <Compile Include="PinDefinitions\PCBPins.h">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="PinDefinitions\PcbServo.cpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="PinDefinitions\PcbServo.h">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="PinDefinitions\PCB_V1.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="PinDefinitions\PCB_V3.cpp">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="PinDefinitions\PCB_V3.h">

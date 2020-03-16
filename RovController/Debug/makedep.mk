@@ -46,6 +46,10 @@ Peripherals\twi.c
 
 Peripherals\Wire.cpp
 
+PinDefinitions\PcbServo.cpp
+
+PinDefinitions\PCB_V3.cpp
+
 Robot.cpp
 
 Sensors\ImuSensor.cpp

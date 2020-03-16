@@ -12,7 +12,7 @@
 #include <avr/interrupt.h>
 #include <compat/twi.h>
 #include "../Utils/CpuFreq.h"
-#include "../PinDefinitions/PCBPins.h"
+#include "../PinDefinitions/ArduinoPins.h"
 //#include "Arduino.h" // for digitalWrite
 
 #define false 0

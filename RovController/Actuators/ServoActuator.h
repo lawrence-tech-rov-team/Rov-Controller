@@ -10,29 +10,30 @@
 #define SERVOACTUATOR_H_
 
 #include "../IWritable.h"
-#include "../Peripherals/HardwareServo.h"
+//#include "../Peripherals/HardwareServo.h"
 #include "../PinDefinitions/PCBPins.h"
 //#include "../Peripherals/HardwareSerial.h"
 
 class ServoActuator : public IWritable {
 public:
-	ServoActuator(const uint8_t id, const uint8_t minId, const uint8_t maxId, const uint8_t enId)
-		: _id(id), _minId(minId), _maxId(maxId), _enId(enId)
+	ServoActuator(const uint8_t id, /*const uint8_t minId, const uint8_t maxId,*/ const uint8_t enId)
+		: _id(id), /*_minId(minId), _maxId(maxId),*/ _enId(enId)
 	{
 		
 	}
 	
 	bool begin(){ //Override
-		if(!rov.RegisterDevice(_id, this)) return false;
-		if(!rov.RegisterDevice(_minId, this)) return false;
-		if(!rov.RegisterDevice(_maxId, this)) return false;
-		if(!rov.RegisterDevice(_enId, this)) return false;
+		if(!rov.RegisterDevice(_id, this) || !rov.RegisterDevice(_enId, this)) return false;
+		//if(!rov.RegisterDevice(_minId, this)) return false;
+		//if(!rov.RegisterDevice(_maxId, this)) return false;
+		//if(!rov.RegisterDevice(_enId, this)) return false;
 		
-		Servo_A1_setMin(550);
-		Servo_A1_setMax(2400);
-		Servo_A1_setPulse(127);
-		//Servo_A1_setPulse(0);
-		//Servo_A1_enable();
+		//Servo_A1_setMin(550);
+		//Servo_A1_setMax(2400);
+		//Servo_A1_setPulse(127);
+		
+		ServoA1.begin();
+		ServoA1.setPulse(1500);
 		
 		return true;	
 	}
@@ -48,15 +49,16 @@ protected:
 		if(id == _id){
 			//Serial.print("Data Len: ");
 			//Serial.println(len);
-			if(len == 1){
+			if(len == 2){
 				//Serial.println("Recvd.");
-				lastPos = data[0];
-				Servo_A1_setPulse(data[0]);
+				//lastPos = data[0];
+				//Servo_A1_setPulse(data[0]);
+				ServoA1.setPulse(*((uint16_t*)data));
 				//Servo_A1_setPulse(lastPos++);
 				//Servo_A2_setPulse(255);
 				SendConfirmation(id);
 			}
-		}else if(id == _minId){
+		/*}else if(id == _minId){
 			if(len == 2){
 				Servo_A1_setMin(*((uint16_t*)data));
 				Servo_A1_setPulse(lastPos);
@@ -68,10 +70,11 @@ protected:
 				Servo_A1_setPulse(lastPos);
 				SendConfirmation(id);
 			}
-		}else if(id == _enId){
+		*/}else if(id == _enId){
 			if(len == 1){
-				if(data[0] == 0) Servo_A1_disable();
-				else Servo_A1_enable();
+				//if(data[0] == 0) Servo_A1_disable();
+				//else Servo_A1_enable();
+				ServoA1.enable(data[0]);
 				SendConfirmation(id);
 			}
 		}
@@ -79,11 +82,11 @@ protected:
 	
 private:
 	const uint8_t _id;
-	const uint8_t _minId;
-	const uint8_t _maxId;
+	//const uint8_t _minId;
+	//const uint8_t _maxId;
 	const uint8_t _enId;
 
-	uint8_t lastPos;
+	//uint8_t lastPos;
 };
 
 
