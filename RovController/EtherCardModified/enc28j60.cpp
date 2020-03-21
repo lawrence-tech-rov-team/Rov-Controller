@@ -11,9 +11,8 @@
 
 #include "enc28j60.h"
 //#include <avr/interrupt.h>
-#include "../Utils/CpuFreq.h"
-#include <util/delay.h>
-#include "../Peripherals/Spi.h"
+#include "../Micro/CpuFreq.h"
+#include "../Micro/Peripherals/Spi.h"
 
 uint16_t ENC28J60::bufferSize;
 

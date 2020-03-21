@@ -10,7 +10,7 @@
 #define WIRE_H_
 
 #include <inttypes.h>
-#include "../Utils/Stream.h"
+#include "../../Utils/Stream.h"
 
 #define BUFFER_LENGTH 32
 

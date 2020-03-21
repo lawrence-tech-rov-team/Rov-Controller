@@ -4,8 +4,7 @@
  * Created: 2/17/2020 10:59:31 PM
  *  Author: zcarey
  */ 
-#include "../Utils/CpuFreq.h"
-#include <util/delay.h>
+#include "../Micro/CpuFreq.h"
 
 #include <limits.h>
 #include <math.h>

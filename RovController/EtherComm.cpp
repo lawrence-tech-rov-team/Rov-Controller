@@ -1,5 +1,12 @@
+/*
+ * EtherComm.cpp
+ *
+ * Created: 3/20/2020 10:59:07 PM
+ *  Author: zcarey
+ */ 
+
 #include "EtherComm.h"
-#include "Peripherals/HardwareSerial.h"
+
 
 uint8_t EtherComm::_myip[] = { 169,254,240,157 }; //What to set the Arduino ethernet ip address to
 uint8_t EtherComm::_gwip[] = { 192,168,178,1 }; //Gateway IP address. Not really used, but required.
@@ -93,3 +100,4 @@ void EtherComm::SendCommand(uint8_t cmd, uint8_t len){
   //Serial.println(len);
   ether.sendUdp(EtherComm::buffer, (uint16_t)len + (uint16_t)3, _recvPort, _destIP, _destPort);
 }
+

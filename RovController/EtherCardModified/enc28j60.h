@@ -35,7 +35,7 @@
 #define ENC_HEAP_START      SCRATCH_LIMIT
 #define ENC_HEAP_END        0x2000
 
-#include "../PinDefinitions/PCBPins.h"
+#include "../Micro/Pins.h"
 
 /** This class provide low-level interfacing with the ENC28J60 network interface. This is used by the EtherCard class and not intended for use by (normal) end users. */
 class ENC28J60 {

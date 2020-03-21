@@ -10,8 +10,8 @@
 #ifndef MS5837_H_
 #define MS5837_H_
 
-#include "../PinDefinitions/PCBPins.h"
-#include "../Peripherals/HardwareTimer.h"
+#include "../Micro/Pins.h"
+#include "../Micro/Peripherals/HardwareTimer.h"
 
 class MS5837 {
 public:

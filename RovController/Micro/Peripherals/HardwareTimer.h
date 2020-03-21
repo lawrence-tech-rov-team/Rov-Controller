@@ -12,7 +12,7 @@
 #define USE_TIMER_0
 #define USE_TIMER_2
 
-#include "../PinDefinitions/PCBPins.h"
+#include "../Pins.h"
 
 class HardwareTimer{
 public:

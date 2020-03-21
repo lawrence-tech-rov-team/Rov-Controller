@@ -6,9 +6,8 @@
  */ 
 
 #include "PCA9685.h"
-#include "../Peripherals/Wire.h"
-#include "../Utils/CpuFreq.h"
-#include <util/delay.h>
+#include "../Micro/Peripherals/Wire.h"
+#include "../Micro/CpuFreq.h"
 
 // REGISTER ADDRESSES
 #define PCA9685_MODE1 0x00      /**< Mode Register 1 */
@@ -97,6 +96,7 @@ void PCA9685::setExtClk(uint8_t prescale) {
   // use the external clock.
   write8(PCA9685_MODE1, (newmode |= MODE1_EXTCLK));
 
+  _prescale = prescale;
   write8(PCA9685_PRESCALE, prescale); // set the prescaler
 
   _delay_ms(5);
@@ -122,6 +122,7 @@ void PCA9685::setPWMFreq(float freq) {
   uint8_t oldmode = read8(PCA9685_MODE1);
   uint8_t newmode = (oldmode & ~MODE1_RESTART) | MODE1_SLEEP; // sleep
   write8(PCA9685_MODE1, newmode);                             // go to sleep
+  _prescale = prescale;
   write8(PCA9685_PRESCALE, prescale); // set the prescaler
   write8(PCA9685_MODE1, oldmode);
   _delay_ms(5);
@@ -222,12 +223,12 @@ void PCA9685::writeMicroseconds(uint8_t num, uint16_t Microseconds) {
   pulselength = 1000000; // 1,000,000 us per second
 
   // Read prescale
-  uint16_t prescale = readPrescale();
+  //uint16_t prescale = readPrescale();
 
   // Calculate the pulse for PWM based on Equation 1 from the datasheet section
   // 7.3.5
-  prescale += 1;
-  pulselength *= prescale;
+  //prescale += 1;
+  pulselength *= (_prescale + 1);
   pulselength /= _oscillator_freq;
 
   pulse /= pulselength;

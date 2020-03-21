@@ -9,7 +9,7 @@
 #ifndef HARDWARESERVO_H_
 #define HARDWARESERVO_H_
 
-#include "../PinDefinitions/PCBPins.h"
+#include "../Pins.h"
 
 class HardwareServo {
 private:

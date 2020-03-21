@@ -1,66 +1,98 @@
 /*
  * Robot.cpp
  *
- * Created: 1/4/2020 3:41:02 PM
+ * Created: 3/20/2020 10:52:56 PM
  *  Author: zcarey
  */ 
 
 #include "Robot.h"
-#include "Peripherals/HardwareSerial.h"
+#include "Micro/Peripherals/HardwareSerial.h"
+#include <stddef.h>
+#include "Micro/CpuFreq.h"
 
 #include "Sensors/DigitalSensor.h"
-#include "Sensors/ImuSensor.h"
 #include "Sensors/PressureSensor.h"
-#include "Peripherals/HardwareServo.h"
+#include "Sensors/ImuSensor.h"
+
+#include "Actuators/DigitalActuator.h"
 #include "Actuators/ServoActuator.h"
-#include <stddef.h>
 
 IDevice* Robot::registers[NUM_DEVICES];
 
-#define ID_TEST_BUTTON 0
-#define ID_IMU_TEMPERATURE 1
-#define ID_IMU_ACCELEROMETER 2
-#define ID_PRESSURE_SENSOR 4
-
-DigitalSensor BtnTest(ID_TEST_BUTTON, DDR_BTN0, PORT_BTN0, PIN_BTN0, MASK_BTN0);
-ImuSensor Imu(ID_IMU_TEMPERATURE, ID_IMU_ACCELEROMETER);
-PressureSensor Pressure(ID_PRESSURE_SENSOR, Timer0);
-ServoActuator TestServo(5, 6);
-/*
-bool Robot::RegisterDevices(){
-	RegisterDevice(BtnTest); //TODO return if successful
-	RegisterDevice(Imu);
-	
-	return true;
-}*/
+DigitalSensor Button0(0, DDR_BTN0, PORT_BTN0, PIN_BTN0, MASK_BTN0);
+DigitalSensor Button1(9, DDR_BTN1, PORT_BTN1, PIN_BTN1, MASK_BTN1);
+DigitalActuator LED(10, DDR_LED, PORT_LED, MASK_LED);
+ImuSensor Imu(1, 2);
+PressureSensor Pressure(4, Timer0);
+ServoActuator TestServo(5, 6, ServoA1);
+ServoActuator TestServo2(7, 8, ServoC1);
 
 bool Robot::begin(){
 	for(uint16_t i = 0; i < NUM_DEVICES; i++){
 		registers[i] = NULL;
 	}
 	
+	if(!EtherComm::begin(6001, 6002, DDR_ENC, PORT_ENC, MASK_ENC_CS)){
+		Serial.println("Failed to access Ethernet controller.");
+		return false;
+	}
+	Serial.println("Connected to controller.");
+	
 	Servo1.begin();
 	Servo3.begin();
 	Servo4.begin();
 	Servo5.begin();
+	Serial.println("Servos initialized.");
 	
-	//LedDDR |= LedPin;
-	if(!BtnTest.begin()){
-		Serial.println("Unable to initialize BtnTest.");
+	if(!PcaServoController.begin()){
+		Serial.println("Unable to initialize Twi Servo Controller.");
 		return false;
 	}
+	Serial.println("Initialized Twi Servo Controller.");
+	
+	/*
+	//TODO if robot can't be initialized, send diagnostics over ethernet?
+	if(!PcaServoController.begin()){
+		Serial.println("Unable to initialize Twi Servo Controller");
+		return false;
+	}
+	*/
+	//LedDDR |= LedPin;
+	if(!Button0.begin()){
+		Serial.println("Unable to initialize Button0.");
+		return false;
+	}
+	Serial.println("Initialized Button0.");
+	
+	if(!Button1.begin()){
+		Serial.println("Unable to initialize Button1.");
+		return false;
+	}
+	Serial.println("Initialized Button1.");
+	
+	if(!LED.begin()){
+		Serial.println("Unable to initialize LED.");
+		return false;
+	}
+	Serial.println("Initialized LED.");
+	
 	if(!Imu.begin()){
 		Serial.println("Unable to initialize IMU.");
 		return false;
 	}
-	if(!Pressure.begin()){ //TODO automatically?
+	Serial.println("Initialized IMU");
+	
+	if(!Pressure.begin()){ 
 		Serial.println("Unable to initialize Pressure Sensor.");
 		return false;
 	} 
-	if(!TestServo.begin()){
+	Serial.println("Initialized pressure sensor.");
+	
+	if(!TestServo.begin() || !TestServo2.begin()){
 		Serial.println("Unable to initialize Servo.");
 		return false;
 	}
+	Serial.println("Initialized test servo.");
 	
 	return true;
 }
@@ -88,9 +120,10 @@ bool Robot::ReadTestBtn(){ //TODO remove
 }*/
 
 void Robot::Loop(){
+	EtherComm::Loop();
 	Imu.Update(EtherComm::buffer + 3);
 	Pressure.Update(EtherComm::buffer + 3);
-	TestServo.Update(EtherComm::buffer + 3);
+	//TestServo.Update(EtherComm::buffer + 3);
 }
 
 void Robot::CommandReceived(const uint8_t* data, uint8_t len){
@@ -110,5 +143,3 @@ void Robot::CommandReceived(const uint8_t* data, uint8_t len){
 		}
 	}
 }
-
-

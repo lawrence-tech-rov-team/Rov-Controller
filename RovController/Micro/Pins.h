@@ -1,16 +1,32 @@
 /*
- * ArduinoPins.h
+ * Pins.h
  *
- * Created: 3/5/2020 7:21:46 PM
+ * Created: 3/20/2020 3:51:47 PM
  *  Author: zcarey
  */ 
 
 
-#ifndef ARDUINOPINS_H_
-#define ARDUINOPINS_H_
+#ifndef PINS_H_
+#define PINS_H_
 
 #include <avr/io.h>
 
+//=======================Macros===========================
+typedef volatile uint8_t Register;
+typedef volatile uint16_t Register16;
+#define SetHigh(Port, pin) ((Port) |= (pin))
+#define SetLow(Port, pin) ((Port) &= ~(pin))
+#define SetOutput(Port, pin) ((Port) |= (pin))
+#define SetInput(Port, pin) ((Port) &= ~(pin))
+
+#define bit(b) (1UL << (b))
+#define bitRead(value, bit) (((value) >> (bit)) & 0x01)
+#define bitSet(value, bit) ((value) |= (1UL << (bit)))
+#define bitClear(value, bit) ((value) &= ~(1UL << (bit)))
+#define bitWrite(value, bit, bitvalue) (bitvalue ? bitSet(value, bit) : bitClear(value, bit))
+
+#define cbi(sfr, bit) (_SFR_BYTE(sfr) &= ~_BV(bit))
+#define sbi(sfr, bit) (_SFR_BYTE(sfr) |= _BV(bit))
 //=================COUNTER==================//
 #define DDR_OC0A DDRB
 #define PORT_OC0A PORTB
@@ -101,25 +117,4 @@
 #define MASK_RX3 _BV(PJ0)
 #define MASK_TX3 _BV(PJ1)
 
-//=================MISC==================//
-#define DDR_LED DDRB
-#define PORT_LED PORTB
-#define PIN_LED PINB
-#define MASK_LED _BV(PB7)
-
-//==================Macros==================
-typedef volatile uint8_t Register;
-typedef volatile uint16_t Register16;
-#define SetHigh(Port, pin) ((Port) |= (pin))
-#define SetLow(Port, pin) ((Port) &= ~(pin))
-#define SetOutput(Port, pin) ((Port) |= (pin))
-#define SetInput(Port, pin) ((Port) &= ~(pin))
-
-//TODO Arduino Definitions
-#define bit(b) (1UL << (b))
-#define bitRead(value, bit) (((value) >> (bit)) & 0x01)
-#define bitSet(value, bit) ((value) |= (1UL << (bit)))
-#define bitClear(value, bit) ((value) &= ~(1UL << (bit)))
-#define bitWrite(value, bit, bitvalue) (bitvalue ? bitSet(value, bit) : bitClear(value, bit))
-
-#endif /* ARDUINOPINS_H_ */
+#endif /* PINS_H_ */

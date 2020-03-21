@@ -6,7 +6,7 @@
  */ 
 
 #include "HardwareTimer.h"
-#include "../Utils/CpuFreq.h"
+#include "../CpuFreq.h"
 #include <avr/interrupt.h>
 
 #define CLK_DISABLE (0)

@@ -27,7 +27,7 @@
 #endif
 
 
-#include "../PinDefinitions/PCBPins.h"
+#include "../Micro/Pins.h"
 #define WRITE_RESULT size_t
 #define WRITE_RETURN return 1;
 
@@ -35,7 +35,7 @@
 #include <avr/pgmspace.h>
 #include "enc28j60.h"
 #include "net.h"
-#include "../Peripherals/Spi.h"
+#include "../Micro/Peripherals/Spi.h"
 
 /** Enable UDP server functionality.
 *   If zero UDP server is disabled. It is

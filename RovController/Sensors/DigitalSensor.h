@@ -13,11 +13,11 @@
 
 class DigitalSensor : public IReadable {
 public:
-	DigitalSensor(const uint8_t ID, Register& DDRPort, Register& PortPort, Register& PinPort, uint8_t Pin, bool Inversed = true) : _id(ID), pin(Pin), pinPort(&PinPort), inversed(Inversed) {
-		DDRPort &= ~pin; //Enable input
-		PortPort |= pin; //Enable pullup
-		rov.RegisterDevice(0, this);
-		//TODO move to begin?
+	DigitalSensor(const uint8_t ID, Register& DDRPort, Register& PortPort, Register& PinPort, uint8_t Pin, bool Inversed = true) 
+		: _id(ID), _pin(Pin), _pinPort(&PinPort), _inversed(Inversed)
+	{
+		DDRPort &= ~Pin; //Enable input
+		PortPort |= Pin; //Enable pullup
 	}
 	
 	bool begin(){ //override
@@ -36,16 +36,16 @@ protected:
 		Serial.print("    Reg id: ");
 		Serial.println(id);*/
 		if(id == _id){
-			buffer[0] = ((*pinPort & pin) > 0) ^ inversed;
+			buffer[0] = ((*_pinPort & _pin) > 0) ^ _inversed;
 			SendCommand(id, 1);
 		}
 	}
 
 private:
 	const uint8_t _id;
-	const uint8_t pin;
-	Register* const pinPort;
-	const bool inversed;
+	const uint8_t _pin;
+	Register* const _pinPort;
+	const bool _inversed;
 };
 
 

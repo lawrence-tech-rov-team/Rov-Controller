@@ -6,7 +6,7 @@
  */ 
 
 #include "MS5837.h"
-#include "../Peripherals/Wire.h"
+#include "../Micro/Peripherals/Wire.h"
 #include <math.h>
 
 //#include "../Utils/CpuFreq.h"

@@ -11,7 +11,7 @@
 
 
 //#include <avr/io.h>
-#include "../PinDefinitions/PCBPins.h"
+#include "../Pins.h"
 
 #define SPI_CLOCK_DIV2 0x04 //4 is the x2 bit
 

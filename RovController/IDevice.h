@@ -1,7 +1,7 @@
 /*
  * IDevice.h
  *
- * Created: 2/28/2020 8:07:17 PM
+ * Created: 3/20/2020 10:53:46 PM
  *  Author: zcarey
  */ 
 
@@ -14,7 +14,6 @@
 
 class IDevice{
 public:
-
 	virtual bool begin() = 0;
 	virtual void CommandReceived(uint8_t id, const uint8_t* data, uint8_t len) = 0;
 	virtual void Update(uint8_t* buffer) = 0;
@@ -22,11 +21,11 @@ public:
 protected:
 	void inline SendCommand(uint8_t id, uint8_t len){
 		EtherComm::buffer[2] = id;
-		EtherComm::SendCommand(CMD_UpdateDevice, len + 1);
+		EtherComm::SendCommand(CMD_UpdateDevice, len + 1);	
 	}
-	
-private:	
+		
 };
+
 
 
 #endif /* IDEVICE_H_ */

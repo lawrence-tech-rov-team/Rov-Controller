@@ -143,6 +143,22 @@
     </ToolchainSettings>
   </PropertyGroup>
   <ItemGroup>
+    <Folder Include="Actuators" />
+    <Folder Include="BNO055" />
+    <Folder Include="BNO055\utility" />
+    <Folder Include="EtherCardModified" />
+    <Folder Include="Micro" />
+    <Folder Include="Micro\Peripherals" />
+    <Folder Include="MS5837" />
+    <Folder Include="Utils" />
+    <Folder Include="Sensors" />
+    <Folder Include="PcbPins" />
+    <Folder Include="PCA9685" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Actuators\DigitalActuator.h">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="Actuators\ServoActuator.h">
       <SubType>compile</SubType>
     </Compile>
@@ -221,6 +237,45 @@
     <Compile Include="main.cpp">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="Micro\CpuFreq.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Micro\Peripherals\HardwareSerial.cpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Micro\Peripherals\HardwareSerial.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Micro\Peripherals\HardwareServo.cpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Micro\Peripherals\HardwareServo.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Micro\Peripherals\HardwareTimer.cpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Micro\Peripherals\HardwareTimer.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Micro\Peripherals\Spi.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Micro\Peripherals\twi.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Micro\Peripherals\twi.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Micro\Peripherals\Wire.cpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Micro\Peripherals\Wire.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Micro\Pins.h">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="MS5837\MS5837.cpp">
       <SubType>compile</SubType>
     </Compile>
@@ -239,82 +294,31 @@
     <Compile Include="PCA9685\TwiServoController.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="Peripherals\HardwareSerial.cpp">
+    <Compile Include="PcbPins\HardwarePcbServo.cpp">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="Peripherals\HardwareSerial.h">
+    <Compile Include="PcbPins\HardwarePcbServo.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="Peripherals\HardwareSerial0.cpp">
+    <Compile Include="PcbPins\PcbPins.cpp">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="Peripherals\HardwareSerial1.cpp">
+    <Compile Include="PcbPins\PcbPins.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="Peripherals\HardwareSerial2.cpp">
+    <Compile Include="PcbPins\PcbServo.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="Peripherals\HardwareSerial3.cpp">
+    <Compile Include="PcbPins\TwiPcbServo.cpp">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="Peripherals\HardwareSerial_Private.h">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="Peripherals\HardwareServo.cpp">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="Peripherals\HardwareServo.h">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="Peripherals\HardwareTimer.cpp">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="Peripherals\HardwareTimer.h">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="Peripherals\SPI.h">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="Peripherals\twi.c">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="Peripherals\twi.h">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="Peripherals\Wire.cpp">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="Peripherals\Wire.h">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="PinDefinitions\ArduinoPins.h">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="PinDefinitions\PCBPins.h">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="PinDefinitions\PcbServo.cpp">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="PinDefinitions\PcbServo.h">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="PinDefinitions\PCB_V1.h">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="PinDefinitions\PCB_V3.cpp">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="PinDefinitions\PCB_V3.h">
+    <Compile Include="PcbPins\TwiPcbServo.h">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="Robot.cpp">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="Robot.h">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="RobotPins.h">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="Sensors\DigitalSensor.h">
@@ -332,15 +336,6 @@
     <Compile Include="Sensors\PressureSensor.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="TestIMU.cpp">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="TestIMU.h">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="Utils\CpuFreq.h">
-      <SubType>compile</SubType>
-    </Compile>
     <Compile Include="Utils\Print.cpp">
       <SubType>compile</SubType>
     </Compile>
@@ -353,21 +348,6 @@
     <Compile Include="Utils\Stream.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="Utils\wiring_private.h">
-      <SubType>compile</SubType>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="BNO055\utility" />
-    <Folder Include="EtherCardModified" />
-    <Folder Include="BNO055" />
-    <Folder Include="MS5837" />
-    <Folder Include="Actuators" />
-    <Folder Include="PinDefinitions" />
-    <Folder Include="PCA9685" />
-    <Folder Include="Sensors" />
-    <Folder Include="Utils" />
-    <Folder Include="Peripherals" />
   </ItemGroup>
   <Import Project="$(AVRSTUDIO_EXE_PATH)\\Vs\\Compiler.targets" />
 </Project>

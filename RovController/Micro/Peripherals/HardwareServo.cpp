@@ -6,16 +6,15 @@
  */ 
 
 #include "HardwareServo.h"
-
-#include "../Utils/CpuFreq.h"
-#define CPU_CONST (F_CPU / 8000000)
+#include "../CpuFreq.h"
+#define CPU_CONST (F_CPU/8000000L)
 
 #define CLK_DISABLE (0)
 #define CLK_DIV_1 (_BV(CS00))
 #define CLK_DIV_8 (_BV(CS01))
 #define CLK_DIV_64 (_BV(CS01) | _BV(CS00))
 #define CLK_DIV_256 (_BV(CS02))
-#define CLK_DIV_1024 (_B(CS02) | _BV(CS00))
+#define CLK_DIV_1024 (_BV(CS02) | _BV(CS00))
 
 HardwareServo::HardwareServo(Register16 &icr, Register &tccrA, Register &tccrB, Register16 &ocrA, Register16 &ocrB, Register16 &ocrC, Register &ddr, Register &port, const uint8_t pinA, const uint8_t pinB, const uint8_t pinC)
  : _icr(&icr), _tccrA(&tccrA), _tccrB(&tccrB), _ocrA(&ocrA), _ocrB(&ocrB), _ocrC(&ocrC),
@@ -76,7 +75,7 @@ void HardwareServo::setPulseB(uint16_t pulse){
 	*_ocrB = (uint16_t)(pulse * CPU_CONST);	
 }
 
-void HardwareServo::setPulseC(uint16_t pulse){
+void HardwareServo::setPulseC(uint16_t pulse) {
 	//*_ocrC = (uint16_t)((((uint32_t)pulse * (_maxC - _minC)) / 255 + _minC) * CPU_CONST);	
 	*_ocrC = (uint16_t)(pulse * CPU_CONST);
 }

@@ -33,16 +33,17 @@ LINKER_SCRIPT_DEP:=
 
 # Every subdirectory with source files must be described here
 SUBDIRS :=  \
+../Actuators \
+../BNO055 \
 ../BNO055/utility \
 ../EtherCardModified \
-../BNO055 \
+../Micro \
+../Micro/Peripherals \
 ../MS5837 \
-../Actuators \
-../PinDefinitions \
-../PCA9685 \
-../Sensors \
 ../Utils \
-../Peripherals
+../Sensors \
+../PcbPins \
+../PCA9685
 
 
 # Add inputs and outputs from these tool invocations to the build variables 
@@ -57,24 +58,20 @@ C_SRCS +=  \
 ../EtherCardModified/webutil.cpp \
 ../EtherComm.cpp \
 ../main.cpp \
+../Micro/Peripherals/HardwareSerial.cpp \
+../Micro/Peripherals/HardwareServo.cpp \
+../Micro/Peripherals/HardwareTimer.cpp \
+../Micro/Peripherals/twi.c \
+../Micro/Peripherals/Wire.cpp \
 ../MS5837/MS5837.cpp \
 ../PCA9685/PCA9685.cpp \
 ../PCA9685/TwiServoController.cpp \
-../Peripherals/HardwareSerial.cpp \
-../Peripherals/HardwareSerial0.cpp \
-../Peripherals/HardwareSerial1.cpp \
-../Peripherals/HardwareSerial2.cpp \
-../Peripherals/HardwareSerial3.cpp \
-../Peripherals/HardwareServo.cpp \
-../Peripherals/HardwareTimer.cpp \
-../Peripherals/twi.c \
-../Peripherals/Wire.cpp \
-../PinDefinitions/PcbServo.cpp \
-../PinDefinitions/PCB_V3.cpp \
+../PcbPins/HardwarePcbServo.cpp \
+../PcbPins/PcbPins.cpp \
+../PcbPins/TwiPcbServo.cpp \
 ../Robot.cpp \
 ../Sensors/ImuSensor.cpp \
 ../Sensors/PressureSensor.cpp \
-../TestIMU.cpp \
 ../Utils/Print.cpp \
 ../Utils/Stream.cpp
 
@@ -96,24 +93,20 @@ EtherCardModified/udpserver.o \
 EtherCardModified/webutil.o \
 EtherComm.o \
 main.o \
+Micro/Peripherals/HardwareSerial.o \
+Micro/Peripherals/HardwareServo.o \
+Micro/Peripherals/HardwareTimer.o \
+Micro/Peripherals/twi.o \
+Micro/Peripherals/Wire.o \
 MS5837/MS5837.o \
 PCA9685/PCA9685.o \
 PCA9685/TwiServoController.o \
-Peripherals/HardwareSerial.o \
-Peripherals/HardwareSerial0.o \
-Peripherals/HardwareSerial1.o \
-Peripherals/HardwareSerial2.o \
-Peripherals/HardwareSerial3.o \
-Peripherals/HardwareServo.o \
-Peripherals/HardwareTimer.o \
-Peripherals/twi.o \
-Peripherals/Wire.o \
-PinDefinitions/PcbServo.o \
-PinDefinitions/PCB_V3.o \
+PcbPins/HardwarePcbServo.o \
+PcbPins/PcbPins.o \
+PcbPins/TwiPcbServo.o \
 Robot.o \
 Sensors/ImuSensor.o \
 Sensors/PressureSensor.o \
-TestIMU.o \
 Utils/Print.o \
 Utils/Stream.o
 
@@ -128,24 +121,20 @@ EtherCardModified/udpserver.o \
 EtherCardModified/webutil.o \
 EtherComm.o \
 main.o \
+Micro/Peripherals/HardwareSerial.o \
+Micro/Peripherals/HardwareServo.o \
+Micro/Peripherals/HardwareTimer.o \
+Micro/Peripherals/twi.o \
+Micro/Peripherals/Wire.o \
 MS5837/MS5837.o \
 PCA9685/PCA9685.o \
 PCA9685/TwiServoController.o \
-Peripherals/HardwareSerial.o \
-Peripherals/HardwareSerial0.o \
-Peripherals/HardwareSerial1.o \
-Peripherals/HardwareSerial2.o \
-Peripherals/HardwareSerial3.o \
-Peripherals/HardwareServo.o \
-Peripherals/HardwareTimer.o \
-Peripherals/twi.o \
-Peripherals/Wire.o \
-PinDefinitions/PcbServo.o \
-PinDefinitions/PCB_V3.o \
+PcbPins/HardwarePcbServo.o \
+PcbPins/PcbPins.o \
+PcbPins/TwiPcbServo.o \
 Robot.o \
 Sensors/ImuSensor.o \
 Sensors/PressureSensor.o \
-TestIMU.o \
 Utils/Print.o \
 Utils/Stream.o
 
@@ -160,24 +149,20 @@ EtherCardModified/udpserver.d \
 EtherCardModified/webutil.d \
 EtherComm.d \
 main.d \
+Micro/Peripherals/HardwareSerial.d \
+Micro/Peripherals/HardwareServo.d \
+Micro/Peripherals/HardwareTimer.d \
+Micro/Peripherals/twi.d \
+Micro/Peripherals/Wire.d \
 MS5837/MS5837.d \
 PCA9685/PCA9685.d \
 PCA9685/TwiServoController.d \
-Peripherals/HardwareSerial.d \
-Peripherals/HardwareSerial0.d \
-Peripherals/HardwareSerial1.d \
-Peripherals/HardwareSerial2.d \
-Peripherals/HardwareSerial3.d \
-Peripherals/HardwareServo.d \
-Peripherals/HardwareTimer.d \
-Peripherals/twi.d \
-Peripherals/Wire.d \
-PinDefinitions/PcbServo.d \
-PinDefinitions/PCB_V3.d \
+PcbPins/HardwarePcbServo.d \
+PcbPins/PcbPins.d \
+PcbPins/TwiPcbServo.d \
 Robot.d \
 Sensors/ImuSensor.d \
 Sensors/PressureSensor.d \
-TestIMU.d \
 Utils/Print.d \
 Utils/Stream.d
 
@@ -192,24 +177,20 @@ EtherCardModified/udpserver.d \
 EtherCardModified/webutil.d \
 EtherComm.d \
 main.d \
+Micro/Peripherals/HardwareSerial.d \
+Micro/Peripherals/HardwareServo.d \
+Micro/Peripherals/HardwareTimer.d \
+Micro/Peripherals/twi.d \
+Micro/Peripherals/Wire.d \
 MS5837/MS5837.d \
 PCA9685/PCA9685.d \
 PCA9685/TwiServoController.d \
-Peripherals/HardwareSerial.d \
-Peripherals/HardwareSerial0.d \
-Peripherals/HardwareSerial1.d \
-Peripherals/HardwareSerial2.d \
-Peripherals/HardwareSerial3.d \
-Peripherals/HardwareServo.d \
-Peripherals/HardwareTimer.d \
-Peripherals/twi.d \
-Peripherals/Wire.d \
-PinDefinitions/PcbServo.d \
-PinDefinitions/PCB_V3.d \
+PcbPins/HardwarePcbServo.d \
+PcbPins/PcbPins.d \
+PcbPins/TwiPcbServo.d \
 Robot.d \
 Sensors/ImuSensor.d \
 Sensors/PressureSensor.d \
-TestIMU.d \
 Utils/Print.d \
 Utils/Stream.d
 
@@ -297,6 +278,41 @@ EtherCardModified/webutil.o: ../EtherCardModified/webutil.cpp
 	@echo Finished building: $<
 	
 
+Micro/Peripherals/HardwareSerial.o: ../Micro/Peripherals/HardwareSerial.cpp
+	@echo Building file: $<
+	@echo Invoking: AVR8/GNU C Compiler : 5.4.0
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-g++.exe$(QUOTE) -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.2.209\include"  -O1 -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -mrelax -g2 -Wall -mmcu=atmega2560 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.2.209\gcc\dev\atmega2560" -c -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	@echo Finished building: $<
+	
+
+Micro/Peripherals/HardwareServo.o: ../Micro/Peripherals/HardwareServo.cpp
+	@echo Building file: $<
+	@echo Invoking: AVR8/GNU C Compiler : 5.4.0
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-g++.exe$(QUOTE) -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.2.209\include"  -O1 -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -mrelax -g2 -Wall -mmcu=atmega2560 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.2.209\gcc\dev\atmega2560" -c -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	@echo Finished building: $<
+	
+
+Micro/Peripherals/HardwareTimer.o: ../Micro/Peripherals/HardwareTimer.cpp
+	@echo Building file: $<
+	@echo Invoking: AVR8/GNU C Compiler : 5.4.0
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-g++.exe$(QUOTE) -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.2.209\include"  -O1 -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -mrelax -g2 -Wall -mmcu=atmega2560 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.2.209\gcc\dev\atmega2560" -c -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	@echo Finished building: $<
+	
+
+Micro/Peripherals/twi.o: ../Micro/Peripherals/twi.c
+	@echo Building file: $<
+	@echo Invoking: AVR8/GNU C Compiler : 5.4.0
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.2.209\include"  -O1 -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -mrelax -g2 -Wall -mmcu=atmega2560 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.2.209\gcc\dev\atmega2560" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	@echo Finished building: $<
+	
+
+Micro/Peripherals/Wire.o: ../Micro/Peripherals/Wire.cpp
+	@echo Building file: $<
+	@echo Invoking: AVR8/GNU C Compiler : 5.4.0
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-g++.exe$(QUOTE) -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.2.209\include"  -O1 -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -mrelax -g2 -Wall -mmcu=atmega2560 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.2.209\gcc\dev\atmega2560" -c -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	@echo Finished building: $<
+	
+
 MS5837/MS5837.o: ../MS5837/MS5837.cpp
 	@echo Building file: $<
 	@echo Invoking: AVR8/GNU C Compiler : 5.4.0
@@ -318,77 +334,21 @@ PCA9685/TwiServoController.o: ../PCA9685/TwiServoController.cpp
 	@echo Finished building: $<
 	
 
-Peripherals/HardwareSerial.o: ../Peripherals/HardwareSerial.cpp
+PcbPins/HardwarePcbServo.o: ../PcbPins/HardwarePcbServo.cpp
 	@echo Building file: $<
 	@echo Invoking: AVR8/GNU C Compiler : 5.4.0
 	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-g++.exe$(QUOTE) -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.2.209\include"  -O1 -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -mrelax -g2 -Wall -mmcu=atmega2560 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.2.209\gcc\dev\atmega2560" -c -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
 	@echo Finished building: $<
 	
 
-Peripherals/HardwareSerial0.o: ../Peripherals/HardwareSerial0.cpp
+PcbPins/PcbPins.o: ../PcbPins/PcbPins.cpp
 	@echo Building file: $<
 	@echo Invoking: AVR8/GNU C Compiler : 5.4.0
 	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-g++.exe$(QUOTE) -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.2.209\include"  -O1 -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -mrelax -g2 -Wall -mmcu=atmega2560 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.2.209\gcc\dev\atmega2560" -c -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
 	@echo Finished building: $<
 	
 
-Peripherals/HardwareSerial1.o: ../Peripherals/HardwareSerial1.cpp
-	@echo Building file: $<
-	@echo Invoking: AVR8/GNU C Compiler : 5.4.0
-	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-g++.exe$(QUOTE) -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.2.209\include"  -O1 -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -mrelax -g2 -Wall -mmcu=atmega2560 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.2.209\gcc\dev\atmega2560" -c -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
-	@echo Finished building: $<
-	
-
-Peripherals/HardwareSerial2.o: ../Peripherals/HardwareSerial2.cpp
-	@echo Building file: $<
-	@echo Invoking: AVR8/GNU C Compiler : 5.4.0
-	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-g++.exe$(QUOTE) -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.2.209\include"  -O1 -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -mrelax -g2 -Wall -mmcu=atmega2560 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.2.209\gcc\dev\atmega2560" -c -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
-	@echo Finished building: $<
-	
-
-Peripherals/HardwareSerial3.o: ../Peripherals/HardwareSerial3.cpp
-	@echo Building file: $<
-	@echo Invoking: AVR8/GNU C Compiler : 5.4.0
-	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-g++.exe$(QUOTE) -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.2.209\include"  -O1 -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -mrelax -g2 -Wall -mmcu=atmega2560 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.2.209\gcc\dev\atmega2560" -c -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
-	@echo Finished building: $<
-	
-
-Peripherals/HardwareServo.o: ../Peripherals/HardwareServo.cpp
-	@echo Building file: $<
-	@echo Invoking: AVR8/GNU C Compiler : 5.4.0
-	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-g++.exe$(QUOTE) -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.2.209\include"  -O1 -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -mrelax -g2 -Wall -mmcu=atmega2560 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.2.209\gcc\dev\atmega2560" -c -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
-	@echo Finished building: $<
-	
-
-Peripherals/HardwareTimer.o: ../Peripherals/HardwareTimer.cpp
-	@echo Building file: $<
-	@echo Invoking: AVR8/GNU C Compiler : 5.4.0
-	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-g++.exe$(QUOTE) -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.2.209\include"  -O1 -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -mrelax -g2 -Wall -mmcu=atmega2560 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.2.209\gcc\dev\atmega2560" -c -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
-	@echo Finished building: $<
-	
-
-Peripherals/twi.o: ../Peripherals/twi.c
-	@echo Building file: $<
-	@echo Invoking: AVR8/GNU C Compiler : 5.4.0
-	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.2.209\include"  -O1 -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -mrelax -g2 -Wall -mmcu=atmega2560 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.2.209\gcc\dev\atmega2560" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
-	@echo Finished building: $<
-	
-
-Peripherals/Wire.o: ../Peripherals/Wire.cpp
-	@echo Building file: $<
-	@echo Invoking: AVR8/GNU C Compiler : 5.4.0
-	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-g++.exe$(QUOTE) -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.2.209\include"  -O1 -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -mrelax -g2 -Wall -mmcu=atmega2560 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.2.209\gcc\dev\atmega2560" -c -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
-	@echo Finished building: $<
-	
-
-PinDefinitions/PcbServo.o: ../PinDefinitions/PcbServo.cpp
-	@echo Building file: $<
-	@echo Invoking: AVR8/GNU C Compiler : 5.4.0
-	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-g++.exe$(QUOTE) -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.2.209\include"  -O1 -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -mrelax -g2 -Wall -mmcu=atmega2560 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.2.209\gcc\dev\atmega2560" -c -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
-	@echo Finished building: $<
-	
-
-PinDefinitions/PCB_V3.o: ../PinDefinitions/PCB_V3.cpp
+PcbPins/TwiPcbServo.o: ../PcbPins/TwiPcbServo.cpp
 	@echo Building file: $<
 	@echo Invoking: AVR8/GNU C Compiler : 5.4.0
 	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-g++.exe$(QUOTE) -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.2.209\include"  -O1 -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -mrelax -g2 -Wall -mmcu=atmega2560 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.2.209\gcc\dev\atmega2560" -c -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
@@ -410,13 +370,6 @@ Sensors/ImuSensor.o: ../Sensors/ImuSensor.cpp
 	
 
 Sensors/PressureSensor.o: ../Sensors/PressureSensor.cpp
-	@echo Building file: $<
-	@echo Invoking: AVR8/GNU C Compiler : 5.4.0
-	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-g++.exe$(QUOTE) -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.2.209\include"  -O1 -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -mrelax -g2 -Wall -mmcu=atmega2560 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.2.209\gcc\dev\atmega2560" -c -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
-	@echo Finished building: $<
-	
-
-./TestIMU.o: .././TestIMU.cpp
 	@echo Building file: $<
 	@echo Invoking: AVR8/GNU C Compiler : 5.4.0
 	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-g++.exe$(QUOTE) -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.2.209\include"  -O1 -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -mrelax -g2 -Wall -mmcu=atmega2560 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.2.209\gcc\dev\atmega2560" -c -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 

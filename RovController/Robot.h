@@ -1,7 +1,7 @@
 /*
  * Robot.h
  *
- * Created: 1/4/2020 3:40:48 PM
+ * Created: 3/20/2020 10:52:45 PM
  *  Author: zcarey
  */ 
 
@@ -9,19 +9,16 @@
 #ifndef ROBOT_H_
 #define ROBOT_H_
 
-
-#include "PinDefinitions/PCBPins.h"
+#include "PcbPins/PcbPins.h"
 #include "IDevice.h"
 
 #define NUM_DEVICES 256
-
-//typedef void(*RegisterCallback)();
 
 class Robot{
 public:
 	static bool begin();
 	static void Loop();
-	static void CommandReceived(const uint8_t* data, uint8_t len);
+	static void CommandReceived(const uint8_t* data, uint8_t len);	
 	
 	//static void SetLed(bool illuminate);
 	//static bool ReadTestBtn();
