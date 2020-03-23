@@ -10,6 +10,8 @@
 #include <stddef.h>
 #include "Micro/CpuFreq.h"
 
+#include "Registers/PingRegister.h"
+
 #include "Sensors/DigitalSensor.h"
 #include "Sensors/PressureSensor.h"
 #include "Sensors/ImuSensor.h"
@@ -17,15 +19,18 @@
 #include "Actuators/DigitalActuator.h"
 #include "Actuators/ServoActuator.h"
 
-IDevice* Robot::registers[NUM_DEVICES];
+IRegister* Robot::registers[NUM_DEVICES];
+
+//ServoActuator A1(0, 1, ServoA1);
 
 DigitalSensor Button0(0, DDR_BTN0, PORT_BTN0, PIN_BTN0, MASK_BTN0);
 DigitalSensor Button1(9, DDR_BTN1, PORT_BTN1, PIN_BTN1, MASK_BTN1);
-DigitalActuator LED(10, DDR_LED, PORT_LED, MASK_LED);
+DigitalActuator LED(3, DDR_LED, PORT_LED, MASK_LED);
 ImuSensor Imu(1, 2);
 PressureSensor Pressure(4, Timer0);
 ServoActuator TestServo(5, 6, ServoA1);
 ServoActuator TestServo2(7, 8, ServoC1);
+PingRegister ping(11);
 
 bool Robot::begin(){
 	for(uint16_t i = 0; i < NUM_DEVICES; i++){
@@ -37,6 +42,12 @@ bool Robot::begin(){
 		return false;
 	}
 	Serial.println("Connected to controller.");
+	
+	if(!ping.begin()){
+		Serial.println("Failed to initialize ping.");
+		while(true) ;
+	}
+	Serial.println("Initialized ping.");
 	
 	Servo1.begin();
 	Servo3.begin();
@@ -98,7 +109,7 @@ bool Robot::begin(){
 }
 
 
-bool Robot::RegisterDevice(uint8_t id, IDevice* device){
+bool Robot::RegisterDevice(uint8_t id, IRegister* device){
 	if(registers[id] == NULL){
 		//if(sensor.begin()){
 		registers[id] = device; //TODO error handling
@@ -121,12 +132,13 @@ bool Robot::ReadTestBtn(){ //TODO remove
 
 void Robot::Loop(){
 	EtherComm::Loop();
-	Imu.Update(EtherComm::buffer + 3);
-	Pressure.Update(EtherComm::buffer + 3);
-	//TestServo.Update(EtherComm::buffer + 3);
+	Imu.Update(EtherComm::buffer + 1/*3*/);
+	Pressure.Update(EtherComm::buffer + 1/*3*/);
+	//TestServo.Update(EtherComm::buffer + 1/*3*/);
 }
 
-void Robot::CommandReceived(const uint8_t* data, uint8_t len){
+//void Robot::CommandReceived(const uint8_t* data, uint8_t len){
+void Robot::CommandReceived(const uint8_t id, const uint8_t* data, uint8_t len) {
 	/*Serial.print(len);
 	Serial.print(':');
 	for(uint8_t i = 0; i < len; i++){
@@ -134,12 +146,12 @@ void Robot::CommandReceived(const uint8_t* data, uint8_t len){
 		Serial.print(data[i], HEX);
 	}
 	Serial.println();*/
-	if(len >= 1){
-		if(registers[data[0]] != NULL){
-			registers[data[0]]->CommandReceived(data[0], data + 1, len - 1);
+	//if(len >= 1){
+		if(registers[/*data[0]*/id] != NULL){
+			registers[/*data[0]*/id]->CommandReceived(/*data[0]*/id, data /*+ 1*/, len/* - 1*/);
 		}else{
 			//Serial.println("Not found: ");
 			//Serial.println(registers[data[0]] == nullptr);
 		}
-	}
+	//}
 }

@@ -150,6 +150,7 @@
     <Folder Include="Micro" />
     <Folder Include="Micro\Peripherals" />
     <Folder Include="MS5837" />
+    <Folder Include="Registers" />
     <Folder Include="Utils" />
     <Folder Include="Sensors" />
     <Folder Include="PcbPins" />
@@ -225,7 +226,7 @@
     <Compile Include="EtherComm.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="IDevice.h">
+    <Compile Include="IRegister.h">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="IReadable.h">
@@ -313,6 +314,9 @@
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="PcbPins\TwiPcbServo.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Registers\PingRegister.h">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="Robot.cpp">

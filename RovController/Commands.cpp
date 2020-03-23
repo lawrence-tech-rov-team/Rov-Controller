@@ -39,12 +39,13 @@ void RunLedCommand(const uint8_t* data, uint8_t len){
 	}
 }
 
-void EtherComm::CommandReceived(uint8_t command, const uint8_t* data, uint8_t len){
-	switch(command){
-		case CMD_Ping: RunPingCommand(data, len); break;
-		case CMD_Echo: RunEchoCommand(data, len); break;
-		case CMD_Led: RunLedCommand(data, len); break;
-		case CMD_UpdateDevice: rov.CommandReceived(data, len); break;
-		default: break;
-	}
+void EtherComm::CommandReceived(uint8_t id, const uint8_t* data, uint8_t len){
+	//TODO remove useless commands
+	//switch(command){
+		//case CMD_Ping: RunPingCommand(data, len); break;
+		//case CMD_Echo: RunEchoCommand(data, len); break;
+		//case CMD_Led: RunLedCommand(data, len); break;
+		/*case CMD_UpdateDevice:*/ rov.CommandReceived(id, data, len); //break;
+		//default: break;
+	//}
 }

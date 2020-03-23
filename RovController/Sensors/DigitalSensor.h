@@ -31,10 +31,6 @@ public:
 protected:
 
 	void ReadRegisterRequested(uint8_t id, uint8_t* buffer) { //override
-		/*Serial.print("My id: ");
-		Serial.print(_id);
-		Serial.print("    Reg id: ");
-		Serial.println(id);*/
 		if(id == _id){
 			buffer[0] = ((*_pinPort & _pin) > 0) ^ _inversed;
 			SendCommand(id, 1);

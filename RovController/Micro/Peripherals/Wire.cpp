@@ -14,6 +14,7 @@ extern "C" {
 }
 
 #include "Wire.h"
+#include <avr/interrupt.h>
 
 // Initialize Class Variables //////////////////////////////////////////////////
 
@@ -40,6 +41,7 @@ TwoWire::TwoWire()
 
 void TwoWire::begin(void)
 {
+	sei();
 	rxBufferIndex = 0;
 	rxBufferLength = 0;
 

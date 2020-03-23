@@ -9,8 +9,8 @@
 #ifndef ROBOT_H_
 #define ROBOT_H_
 
-#include "PcbPins/PcbPins.h"
-#include "IDevice.h"
+#include "Micro/Pins.h"
+#include "IRegister.h"
 
 #define NUM_DEVICES 256
 
@@ -18,19 +18,15 @@ class Robot{
 public:
 	static bool begin();
 	static void Loop();
-	static void CommandReceived(const uint8_t* data, uint8_t len);	
+	//static void CommandReceived(const uint8_t* data, uint8_t len);
+	static void CommandReceived(const uint8_t id, const uint8_t* data, uint8_t len);
 	
-	//static void SetLed(bool illuminate);
-	//static bool ReadTestBtn();
-	//static IDevice* devices[NUM_DEVICES];
-	static IDevice* registers[NUM_DEVICES];
-	
-	static bool RegisterDevice(uint8_t id, IDevice* device);
+	static bool RegisterDevice(uint8_t id, IRegister* device);
 	
 private:
 	Robot(){}
-	//static bool RegisterDevices();
-
+	static IRegister* registers[NUM_DEVICES];
+	
 };
 
 extern Robot rov;

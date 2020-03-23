@@ -27,7 +27,7 @@ public:
 		ether.packetLoop(ether.packetReceive());
 	}
 
-	static void SendCommand(uint8_t cmd, uint8_t len);
+	static void SendCommand(uint8_t id, uint8_t len);
 
 	//static char buffer[];
 	static uint8_t* buffer;

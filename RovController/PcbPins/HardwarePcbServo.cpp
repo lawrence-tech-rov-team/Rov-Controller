@@ -40,7 +40,6 @@ void HardwarePcbServo::begin(){
 }*/
 #include "../Micro/Peripherals/HardwareSerial.h"
 void HardwarePcbServo::setPulse(uint16_t us){
-	Serial.println(_servo);
 	switch(_servo){
 		case ServoA:
 			_controller->setPulseA(us);

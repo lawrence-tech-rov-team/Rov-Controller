@@ -9,14 +9,14 @@
 #ifndef IREADABLE_H_
 #define IREADABLE_H_
 
-#include "IDevice.h"
+#include "IRegister.h"
 #include "EtherComm.h"
 
-class IReadable : public IDevice {
+class IReadable : public IRegister {
 public:
 	void CommandReceived(uint8_t id, const uint8_t* data, uint8_t len){
 		if(len == 0){
-			ReadRegisterRequested(id, EtherComm::buffer + 3);
+			ReadRegisterRequested(id, EtherComm::buffer + 1/*+ 3*/);
 		}
 	}
 

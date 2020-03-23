@@ -40,6 +40,7 @@ SUBDIRS :=  \
 ../Micro \
 ../Micro/Peripherals \
 ../MS5837 \
+../Registers \
 ../Utils \
 ../Sensors \
 ../PcbPins \
