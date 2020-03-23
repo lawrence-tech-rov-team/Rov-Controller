@@ -47,37 +47,37 @@
 #define MASK_LED _BV(PB7)
 
 
-extern HardwarePcbServo ServoA1;
-extern HardwarePcbServo ServoA2;
-extern HardwarePcbServo ServoA3;
-extern HardwarePcbServo ServoA4;
-extern HardwarePcbServo ServoA5;
+extern HardwarePcbServo PcbServoA1;
+extern HardwarePcbServo PcbServoA2;
+extern HardwarePcbServo PcbServoA3;
+extern HardwarePcbServo PcbServoA4;
+extern HardwarePcbServo PcbServoA5;
 
-extern HardwarePcbServo ServoB1;
-extern HardwarePcbServo ServoB2;
-extern HardwarePcbServo ServoB3;
-extern HardwarePcbServo ServoB4;
-extern HardwarePcbServo ServoB5;
-extern HardwarePcbServo ServoB6;
+extern HardwarePcbServo PcbServoB1;
+extern HardwarePcbServo PcbServoB2;
+extern HardwarePcbServo PcbServoB3;
+extern HardwarePcbServo PcbServoB4;
+extern HardwarePcbServo PcbServoB5;
+extern HardwarePcbServo PcbServoB6;
 
 extern TwiServoController PcaServoController;
 
-extern TwiPcbServo ServoC1;
-extern TwiPcbServo ServoC2;
-extern TwiPcbServo ServoC3;
-extern TwiPcbServo ServoC4;
-extern TwiPcbServo ServoC5;
-extern TwiPcbServo ServoC6;
-extern TwiPcbServo ServoC7;
-extern TwiPcbServo ServoC8;
+extern TwiPcbServo PcbServoC1;
+extern TwiPcbServo PcbServoC2;
+extern TwiPcbServo PcbServoC3;
+extern TwiPcbServo PcbServoC4;
+extern TwiPcbServo PcbServoC5;
+extern TwiPcbServo PcbServoC6;
+extern TwiPcbServo PcbServoC7;
+extern TwiPcbServo PcbServoC8;
 
-extern TwiPcbServo ServoD1;
-extern TwiPcbServo ServoD2;
-extern TwiPcbServo ServoD3;
-extern TwiPcbServo ServoD4;
-extern TwiPcbServo ServoD5;
-extern TwiPcbServo ServoD6;
-extern TwiPcbServo ServoD7;
-extern TwiPcbServo ServoD8;
+extern TwiPcbServo PcbServoD1;
+extern TwiPcbServo PcbServoD2;
+extern TwiPcbServo PcbServoD3;
+extern TwiPcbServo PcbServoD4;
+extern TwiPcbServo PcbServoD5;
+extern TwiPcbServo PcbServoD6;
+extern TwiPcbServo PcbServoD7;
+extern TwiPcbServo PcbServoD8;
 
 #endif /* PCBPINS_H_ */

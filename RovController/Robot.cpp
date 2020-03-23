@@ -9,8 +9,7 @@
 #include "Micro/Peripherals/HardwareSerial.h"
 #include <stddef.h>
 #include "Micro/CpuFreq.h"
-
-#include "Registers/PingRegister.h"
+#include "PcbPins/PcbPins.h"
 
 #include "Sensors/DigitalSensor.h"
 #include "Sensors/PressureSensor.h"
@@ -24,13 +23,106 @@ IRegister* Robot::registers[NUM_DEVICES];
 //ServoActuator A1(0, 1, ServoA1);
 
 DigitalSensor Button0(0, DDR_BTN0, PORT_BTN0, PIN_BTN0, MASK_BTN0);
-DigitalSensor Button1(9, DDR_BTN1, PORT_BTN1, PIN_BTN1, MASK_BTN1);
-DigitalActuator LED(3, DDR_LED, PORT_LED, MASK_LED);
-ImuSensor Imu(1, 2);
-PressureSensor Pressure(4, Timer0);
-ServoActuator TestServo(5, 6, ServoA1);
-ServoActuator TestServo2(7, 8, ServoC1);
-PingRegister ping(11);
+DigitalSensor Button1(1, DDR_BTN1, PORT_BTN1, PIN_BTN1, MASK_BTN1);
+DigitalActuator LED(2, DDR_LED, PORT_LED, MASK_LED);
+PressureSensor Pressure(3, Timer0);
+ImuSensor Imu(4, 5);
+
+ServoActuator ServoA1(6, 7, PcbServoA1);
+ServoActuator ServoA2(8, 9, PcbServoA2);
+ServoActuator ServoA3(10, 11, PcbServoA3);
+ServoActuator ServoA4(12, 13, PcbServoA4);
+ServoActuator ServoA5(14, 15, PcbServoA5);
+
+ServoActuator ServoB1(16, 17, PcbServoB1);
+ServoActuator ServoB2(18, 19, PcbServoB2);
+ServoActuator ServoB3(20, 21, PcbServoB3);
+ServoActuator ServoB4(22, 23, PcbServoB4);
+ServoActuator ServoB5(24, 25, PcbServoB5);
+ServoActuator ServoB6(26, 27, PcbServoB6);
+
+ServoActuator ServoC1(28, 29, PcbServoC1);
+ServoActuator ServoC2(30, 31, PcbServoC2);
+ServoActuator ServoC3(32, 33, PcbServoC3);
+ServoActuator ServoC4(34, 35, PcbServoC4);
+ServoActuator ServoC5(36, 37, PcbServoC5);
+ServoActuator ServoC6(38, 39, PcbServoC6);
+ServoActuator ServoC7(40, 41, PcbServoC7);
+ServoActuator ServoC8(42, 43, PcbServoC8);
+
+ServoActuator ServoD1(44, 45, PcbServoD1);
+ServoActuator ServoD2(46, 47, PcbServoD2);
+ServoActuator ServoD3(48, 49, PcbServoD3);
+ServoActuator ServoD4(50, 51, PcbServoD4);
+ServoActuator ServoD5(52, 53, PcbServoD5);
+ServoActuator ServoD6(54, 55, PcbServoD6);
+ServoActuator ServoD7(56, 57, PcbServoD7);
+ServoActuator ServoD8(58, 59, PcbServoD8);
+
+void printServoErrorCode(uint8_t code){
+	if(code == 0x01){
+		Serial.println("Unable to initialize Twi Servo Controller.");
+		return;
+	}
+	
+	char letter = '?';
+	uint8_t num = code & 0x0F;
+	
+	switch(code >> 4){
+		case 1: letter = 'A'; break;
+		case 2: letter = 'B'; break;
+		case 3: letter = 'C'; break;
+		case 4: letter = 'D'; break;
+	}
+	
+	Serial.print("Unable to initialize Servo");
+	Serial.print(letter);
+	Serial.print(num);
+	Serial.println(".");
+}
+
+bool initializeServos(){
+	Servo1.begin();
+	Servo3.begin();
+	Servo4.begin();
+	Servo5.begin();
+	
+	if(!PcaServoController.begin()) return 0x01;
+	Serial.println("Initialized Twi Servo Controller.");
+	
+	if(!ServoA1.begin()) return 0x11;
+	if(!ServoA2.begin()) return 0x12;
+	if(!ServoA3.begin()) return 0x13;
+	if(!ServoA4.begin()) return 0x14;
+	if(!ServoA5.begin()) return 0x15;
+	
+	if(!ServoB1.begin()) return 0x21;
+	if(!ServoB2.begin()) return 0x22;
+	if(!ServoB3.begin()) return 0x23;
+	if(!ServoB4.begin()) return 0x24;
+	if(!ServoB5.begin()) return 0x25;
+	if(!ServoB6.begin()) return 0x26;
+	
+	if(!ServoC1.begin()) return 0x31;
+	if(!ServoC2.begin()) return 0x32;
+	if(!ServoC3.begin()) return 0x33;
+	if(!ServoC4.begin()) return 0x34;
+	if(!ServoC5.begin()) return 0x35;
+	if(!ServoC6.begin()) return 0x36;
+	if(!ServoC7.begin()) return 0x37;
+	if(!ServoC8.begin()) return 0x38;
+	
+	if(!ServoD1.begin()) return 0x41;
+	if(!ServoD2.begin()) return 0x42;
+	if(!ServoD3.begin()) return 0x43;
+	if(!ServoD4.begin()) return 0x44;
+	if(!ServoD5.begin()) return 0x45;
+	if(!ServoD6.begin()) return 0x46;
+	if(!ServoD7.begin()) return 0x47;
+	if(!ServoD8.begin()) return 0x48;
+	
+	return 0;
+}
 
 bool Robot::begin(){
 	for(uint16_t i = 0; i < NUM_DEVICES; i++){
@@ -43,32 +135,13 @@ bool Robot::begin(){
 	}
 	Serial.println("Connected to controller.");
 	
-	if(!ping.begin()){
-		Serial.println("Failed to initialize ping.");
-		while(true) ;
+	uint8_t code = initializeServos();
+	if(code != 0){
+		printServoErrorCode(code);
+		return false;
 	}
-	Serial.println("Initialized ping.");
-	
-	Servo1.begin();
-	Servo3.begin();
-	Servo4.begin();
-	Servo5.begin();
 	Serial.println("Servos initialized.");
-	
-	if(!PcaServoController.begin()){
-		Serial.println("Unable to initialize Twi Servo Controller.");
-		return false;
-	}
-	Serial.println("Initialized Twi Servo Controller.");
-	
-	/*
 	//TODO if robot can't be initialized, send diagnostics over ethernet?
-	if(!PcaServoController.begin()){
-		Serial.println("Unable to initialize Twi Servo Controller");
-		return false;
-	}
-	*/
-	//LedDDR |= LedPin;
 	if(!Button0.begin()){
 		Serial.println("Unable to initialize Button0.");
 		return false;
@@ -98,12 +171,6 @@ bool Robot::begin(){
 		return false;
 	} 
 	Serial.println("Initialized pressure sensor.");
-	
-	if(!TestServo.begin() || !TestServo2.begin()){
-		Serial.println("Unable to initialize Servo.");
-		return false;
-	}
-	Serial.println("Initialized test servo.");
 	
 	return true;
 }
