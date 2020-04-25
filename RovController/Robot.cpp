@@ -22,44 +22,53 @@
 
 IRegister* Robot::registers[NUM_DEVICES];
 
-DigitalSensor Button0(0, DDR_BTN0, PORT_BTN0, PIN_BTN0, MASK_BTN0);
-DigitalSensor Button1(1, DDR_BTN1, PORT_BTN1, PIN_BTN1, MASK_BTN1);
-DigitalActuator LED(2, DDR_LED, PORT_LED, MASK_LED);
-PressureSensor Pressure(3, Timer0);
-ImuSensor Imu(4, 5);
+ServoActuator ServoA1(0, 1, PcbServoA1); //Position Id, Enable Id
+ServoActuator ServoA2(2, 3, PcbServoA2);
+ServoActuator ServoA3(4, 5, PcbServoA3);
+ServoActuator ServoA4(6, 7, PcbServoA4);
+ServoActuator ServoA5(8, 9, PcbServoA5);
 
-ServoActuator ServoA1(6, 7, PcbServoA1);
-ServoActuator ServoA2(8, 9, PcbServoA2);
-ServoActuator ServoA3(10, 11, PcbServoA3);
-ServoActuator ServoA4(12, 13, PcbServoA4);
-ServoActuator ServoA5(14, 15, PcbServoA5);
+ServoActuator ServoB1(10, 11, PcbServoB1);
+ServoActuator ServoB2(12, 13, PcbServoB2);
+ServoActuator ServoB3(14, 15, PcbServoB3);
+ServoActuator ServoB4(16, 17, PcbServoB4);
+ServoActuator ServoB5(18, 19, PcbServoB5);
+ServoActuator ServoB6(20, 21, PcbServoB6);
 
-ServoActuator ServoB1(16, 17, PcbServoB1);
-ServoActuator ServoB2(18, 19, PcbServoB2);
-ServoActuator ServoB3(20, 21, PcbServoB3);
-ServoActuator ServoB4(22, 23, PcbServoB4);
-ServoActuator ServoB5(24, 25, PcbServoB5);
-ServoActuator ServoB6(26, 27, PcbServoB6);
+ServoActuator ServoC1(22, 23, PcbServoC1);
+ServoActuator ServoC2(24, 25, PcbServoC2);
+ServoActuator ServoC3(26, 27, PcbServoC3);
+ServoActuator ServoC4(28, 29, PcbServoC4);
+ServoActuator ServoC5(30, 31, PcbServoC5);
+ServoActuator ServoC6(32, 33, PcbServoC6);
+ServoActuator ServoC7(34, 35, PcbServoC7);
+ServoActuator ServoC8(36, 37, PcbServoC8);
 
-ServoActuator ServoC1(28, 29, PcbServoC1);
-ServoActuator ServoC2(30, 31, PcbServoC2);
-ServoActuator ServoC3(32, 33, PcbServoC3);
-ServoActuator ServoC4(34, 35, PcbServoC4);
-ServoActuator ServoC5(36, 37, PcbServoC5);
-ServoActuator ServoC6(38, 39, PcbServoC6);
-ServoActuator ServoC7(40, 41, PcbServoC7);
-ServoActuator ServoC8(42, 43, PcbServoC8);
+ServoActuator ServoD1(38, 39, PcbServoD1);
+ServoActuator ServoD2(40, 41, PcbServoD2);
+ServoActuator ServoD3(42, 43, PcbServoD3);
+ServoActuator ServoD4(44, 45, PcbServoD4);
+ServoActuator ServoD5(46, 47, PcbServoD5);
+ServoActuator ServoD6(48, 49, PcbServoD6);
+ServoActuator ServoD7(50, 51, PcbServoD7);
+ServoActuator ServoD8(52, 53, PcbServoD8);
 
-ServoActuator ServoD1(44, 45, PcbServoD1);
-ServoActuator ServoD2(46, 47, PcbServoD2);
-ServoActuator ServoD3(48, 49, PcbServoD3);
-ServoActuator ServoD4(50, 51, PcbServoD4);
-ServoActuator ServoD5(52, 53, PcbServoD5);
-ServoActuator ServoD6(54, 55, PcbServoD6);
-ServoActuator ServoD7(56, 57, PcbServoD7);
-ServoActuator ServoD8(58, 59, PcbServoD8);
+DigitalSensor Button0(54, DDR_BTN0, PORT_BTN0, PIN_BTN0, MASK_BTN0);
+DigitalSensor Button1(55, DDR_BTN1, PORT_BTN1, PIN_BTN1, MASK_BTN1);
+DigitalActuator LED(56, DDR_LED, PORT_LED, MASK_LED);
 
-TwiRegister TwiSettings(60);
+PressureSensor Pressure(57, Timer0);
+ImuSensor Imu(
+	58, //Temperature Id
+	59, //Accelerometer Id
+	60, //Magnometer Id
+	61, //Gyroscope Id
+	62, //Euler Id
+	63, //Linear Accelerometer Id
+	64  //Gravity Id
+);
+
+TwiRegister TwiSettings(65);
 
 void printServoErrorCode(uint8_t code){
 	if(code == 0x01){

@@ -14,7 +14,7 @@
 
 class ImuSensor : public IReadable{
 public:
-	ImuSensor(const uint8_t TempId, const uint8_t AccelId);
+	ImuSensor(const uint8_t TempId, const uint8_t AccelId, const uint8_t MagId, const uint8_t GyroId, const uint8_t EulerId, const uint8_t LinearId, const uint8_t GravityId);
 	
 	bool begin(); //override
 	
@@ -27,6 +27,11 @@ private:
 	Adafruit_BNO055 imu;
 	const uint8_t tempId;
 	const uint8_t accelId;
+	const uint8_t magId;
+	const uint8_t gyroId;
+	const uint8_t eulerId;
+	const uint8_t linearId;
+	const uint8_t gravityId;
 };
 
 
