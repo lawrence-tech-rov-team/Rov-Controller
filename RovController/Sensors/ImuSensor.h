@@ -14,7 +14,7 @@
 
 class ImuSensor : public IReadable{
 public:
-	ImuSensor(const uint8_t TempId, const uint8_t AccelId, const uint8_t MagId, const uint8_t GyroId, const uint8_t EulerId, const uint8_t LinearId, const uint8_t GravityId);
+	ImuSensor(const uint8_t TempId, const uint8_t AccelId, const uint8_t MagId, const uint8_t GyroId, const uint8_t EulerId, const uint8_t LinearId, const uint8_t GravityId, const uint8_t QuatId);
 	
 	bool begin(); //override
 	
@@ -32,6 +32,7 @@ private:
 	const uint8_t eulerId;
 	const uint8_t linearId;
 	const uint8_t gravityId;
+	const uint8_t quatId;
 };
 
 

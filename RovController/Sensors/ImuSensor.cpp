@@ -8,8 +8,8 @@
 #include "ImuSensor.h"
 #include "../Robot.h"
 
-ImuSensor::ImuSensor(const uint8_t TempId, const uint8_t AccelId, const uint8_t MagId, const uint8_t GyroId, const uint8_t EulerId, const uint8_t LinearId, const uint8_t GravityId) 
-	: imu(55, 0x28), tempId(TempId), accelId(AccelId), magId(MagId), gyroId(GyroId), eulerId(EulerId), linearId(LinearId), gravityId(GravityId) 
+ImuSensor::ImuSensor(const uint8_t TempId, const uint8_t AccelId, const uint8_t MagId, const uint8_t GyroId, const uint8_t EulerId, const uint8_t LinearId, const uint8_t GravityId, const uint8_t QuatId) 
+	: imu(55, 0x28), tempId(TempId), accelId(AccelId), magId(MagId), gyroId(GyroId), eulerId(EulerId), linearId(LinearId), gravityId(GravityId), quatId(QuatId) 
 {
 	
 }
@@ -18,6 +18,12 @@ bool ImuSensor::begin(){
 	return 
 		rov.RegisterDevice(tempId, this)
 		&& rov.RegisterDevice(accelId, this)
+		&& rov.RegisterDevice(magId, this)
+		&& rov.RegisterDevice(gyroId, this)
+		&& rov.RegisterDevice(eulerId, this)
+		&& rov.RegisterDevice(linearId, this)
+		&& rov.RegisterDevice(gravityId, this)
+		&& rov.RegisterDevice(quatId, this)
 		&& imu.begin();
 }
 
@@ -41,5 +47,7 @@ void ImuSensor::ReadRegisterRequested(uint8_t id, uint8_t* buffer){
 		SendCommand(id, imu.getVector(Adafruit_BNO055::VECTOR_LINEARACCEL, buffer));
 	}else if(id == gravityId){
 		SendCommand(id, imu.getVector(Adafruit_BNO055::VECTOR_GRAVITY, buffer));
+	}else if(id == quatId){
+		SendCommand(id, imu.getQuat(buffer));
 	}
 }

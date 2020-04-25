@@ -417,6 +417,8 @@ uint8_t Adafruit_BNO055::getVector(adafruit_vector_type_t vector_type, uint8_t* 
   return 6;
 }
 
+
+
 /*!
  *  @brief  Gets a quaternion reading from the specified source
  *  @return quaternion reading
@@ -444,6 +446,12 @@ AdafruitImu::Quaternion Adafruit_BNO055::getQuat() {
   const double scale = (1.0 / (1 << 14));
   AdafruitImu::Quaternion quat(scale * w, scale * x, scale * y, scale * z);
   return quat;
+}
+
+uint8_t Adafruit_BNO055::getQuat(uint8_t* buffer) {
+  /* Read quat data (8 bytes) */
+  readLen(BNO055_QUATERNION_DATA_W_LSB_ADDR, buffer, 8);
+  return 8;
 }
 
 /*!

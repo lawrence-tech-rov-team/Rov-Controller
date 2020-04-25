@@ -65,10 +65,11 @@ ImuSensor Imu(
 	61, //Gyroscope Id
 	62, //Euler Id
 	63, //Linear Accelerometer Id
-	64  //Gravity Id
+	64, //Gravity Id
+	65  //Quaternion
 );
 
-TwiRegister TwiSettings(65);
+TwiRegister TwiSettings(66);
 
 void printServoErrorCode(uint8_t code){
 	if(code == 0x01){
