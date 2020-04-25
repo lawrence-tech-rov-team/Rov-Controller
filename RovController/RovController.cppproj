@@ -332,6 +332,9 @@
     <Compile Include="PcbPins\TwiPcbServo.h">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="Registers\TwiRegister.h">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="Robot.cpp">
       <SubType>compile</SubType>
     </Compile>

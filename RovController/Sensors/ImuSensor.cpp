@@ -27,14 +27,14 @@ bool ImuSensor::begin(){
 void ImuSensor::Update(uint8_t* buffer){
 	
 }
-
+/*
 static void saveFloat(float f, uint8_t* buffer){ //TODO put in IRegister? Used in PressureSensor too
 	uint8_t* val = (uint8_t*)(&f);
 	*buffer++ = *val++;
 	*buffer++ = *val++;
 	*buffer++ = *val++;
 	*buffer++ = *val++;
-}
+}*/
 
 AdafruitImu::Vector<3> vector;
 

@@ -13,12 +13,12 @@
 #include "IRegister.h"
 #include "Commands.h"
 class IWritable : public IRegister {
-	public:
+public:
 	inline void CommandReceived(uint8_t id, const uint8_t* data, uint8_t len){
 		WriteRegisterRequested(id, data, len);
 	}
 	
-	protected:
+protected:
 	virtual void WriteRegisterRequested(uint8_t id, const uint8_t* data, uint8_t len);
 	void SendConfirmation(uint8_t id){
 		//EtherComm::buffer[2] = id;

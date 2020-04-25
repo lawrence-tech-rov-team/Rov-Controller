@@ -18,9 +18,9 @@
 #include "Actuators/DigitalActuator.h"
 #include "Actuators/ServoActuator.h"
 
-IRegister* Robot::registers[NUM_DEVICES];
+#include "Registers/TwiRegister.h"
 
-//ServoActuator A1(0, 1, ServoA1);
+IRegister* Robot::registers[NUM_DEVICES];
 
 DigitalSensor Button0(0, DDR_BTN0, PORT_BTN0, PIN_BTN0, MASK_BTN0);
 DigitalSensor Button1(1, DDR_BTN1, PORT_BTN1, PIN_BTN1, MASK_BTN1);
@@ -58,6 +58,8 @@ ServoActuator ServoD5(52, 53, PcbServoD5);
 ServoActuator ServoD6(54, 55, PcbServoD6);
 ServoActuator ServoD7(56, 57, PcbServoD7);
 ServoActuator ServoD8(58, 59, PcbServoD8);
+
+TwiRegister TwiSettings(60);
 
 void printServoErrorCode(uint8_t code){
 	if(code == 0x01){
@@ -171,6 +173,11 @@ bool Robot::begin(){
 		return false;
 	} 
 	Serial.println("Initialized pressure sensor.");
+	
+	if(!TwiSettings.begin()){
+		Serial.println("Unable to initialize TWI settings.");
+	}
+	Serial.println("Initialized settings.");
 	
 	return true;
 }
