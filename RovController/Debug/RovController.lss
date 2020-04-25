@@ -5038,7 +5038,7 @@ HardwareTimer::HardwareTimer(Register &tccrA, Register &tccrB, Register &timsk, 
     1ee0:	80 81       	ld	r24, Z
     1ee2:	8d 7f       	andi	r24, 0xFD	; 253
     1ee4:	80 83       	st	Z, r24
-    1ee6:	88 e4       	ldi	r24, 0x48	; 72
+    1ee6:	8c e0       	ldi	r24, 0x0C	; 12
     1ee8:	80 93 b8 00 	sts	0x00B8, r24	; 0x8000b8 <__TEXT_REGION_LENGTH__+0x7000b8>
     1eec:	85 e4       	ldi	r24, 0x45	; 69
     1eee:	80 93 bc 00 	sts	0x00BC, r24	; 0x8000bc <__TEXT_REGION_LENGTH__+0x7000bc>
