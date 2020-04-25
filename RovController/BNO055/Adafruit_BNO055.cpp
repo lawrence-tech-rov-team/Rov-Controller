@@ -411,6 +411,12 @@ AdafruitImu::Vector<3> Adafruit_BNO055::getVector(adafruit_vector_type_t vector_
   return xyz;
 }
 
+uint8_t Adafruit_BNO055::getVector(adafruit_vector_type_t vector_type, uint8_t* buffer) {
+  /* Read vector data (6 bytes) */
+  readLen((adafruit_bno055_reg_t)vector_type, buffer, 6);
+  return 6;
+}
+
 /*!
  *  @brief  Gets a quaternion reading from the specified source
  *  @return quaternion reading

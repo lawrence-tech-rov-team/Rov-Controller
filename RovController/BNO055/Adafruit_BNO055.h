@@ -281,6 +281,7 @@ public:
                       uint8_t *mag);
 
   AdafruitImu::Vector<3> getVector(adafruit_vector_type_t vector_type);
+  uint8_t getVector(adafruit_vector_type_t vector_type, uint8_t* buffer);
   AdafruitImu::Quaternion getQuat();
   int8_t getTemp();
 

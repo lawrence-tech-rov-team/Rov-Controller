@@ -42,12 +42,14 @@ void ImuSensor::ReadRegisterRequested(uint8_t id, uint8_t* buffer){
 	if(id == tempId){
 		buffer[0] = imu.getTemp();
 		SendCommand(id, 1);
-	}else if(id == accelId){
-		vector = imu.getVector(Adafruit_BNO055::VECTOR_ACCELEROMETER );
+	}else if(id == accelId) {
+		/*vector = imu.getVector(Adafruit_BNO055::VECTOR_ACCELEROMETER );
 		saveFloat(vector.x(), buffer + 0);
 		saveFloat(vector.y(), buffer + 4);
 		saveFloat(vector.z(), buffer + 8);
-		SendCommand(id, 12);
+		SendCommand(id, 12);*/
+		uint8_t bytes = imu.getVector(Adafruit_BNO055::VECTOR_ACCELEROMETER, buffer);
+		SendCommand(id, bytes);
 	}
 /*	vector = imu.getVector(Adafruit_BNO055::VECTOR_EULER);
 	saveFloat(vector.x(), buffer + 14);
