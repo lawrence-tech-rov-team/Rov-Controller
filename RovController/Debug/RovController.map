@@ -146,7 +146,7 @@ Discarded input sections
  .debug_aranges
                 0x00000000       0x18 BNO055/Adafruit_Sensor.o
  .debug_line    0x00000000       0x1a BNO055/Adafruit_Sensor.o
- .debug_str     0x00000000      0x1ce BNO055/Adafruit_Sensor.o
+ .debug_str     0x00000000      0x1d0 BNO055/Adafruit_Sensor.o
  .comment       0x00000000       0x31 BNO055/Adafruit_Sensor.o
  .text          0x00000000        0x0 Commands.o
  .data          0x00000000        0x0 Commands.o
@@ -409,7 +409,7 @@ Discarded input sections
                 0x00000000       0x80 Utils/Stream.o
  .debug_ranges  0x00000000       0x88 Utils/Stream.o
  .debug_line    0x00000000      0x4fb Utils/Stream.o
- .debug_str     0x00000000      0x616 Utils/Stream.o
+ .debug_str     0x00000000      0x618 Utils/Stream.o
  .comment       0x00000000       0x31 Utils/Stream.o
  .debug_frame   0x00000000      0x28c Utils/Stream.o
  .text          0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr6\libm.a(addsf3.o)
@@ -2371,57 +2371,57 @@ END GROUP
  .debug_frame   0x00001b1c       0xc0 Sensors/PressureSensor.o
  .debug_frame   0x00001bdc      0x2e0 Utils/Print.o
 
-.debug_str      0x00000000     0x6ba1
+.debug_str      0x00000000     0x6ba3
  *(.debug_str)
  .debug_str     0x00000000      0x3e6 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.209/gcc/dev/atmega2560/avr6/crtatmega2560.o
- .debug_str     0x000003e6     0x31bb BNO055/Adafruit_BNO055.o
-                               0x3329 (size before relaxing)
- .debug_str     0x000035a1      0x862 Commands.o
-                                0xa74 (size before relaxing)
- .debug_str     0x00003e03      0x21f EtherCardModified/enc28j60.o
-                                0x54b (size before relaxing)
- .debug_str     0x00004022       0xf7 EtherCardModified/EtherCard.o
-                                0x8c9 (size before relaxing)
- .debug_str     0x00004119      0x1fe EtherCardModified/tcpip.o
-                                0x9c2 (size before relaxing)
- .debug_str     0x00004317       0x68 EtherCardModified/udpserver.o
-                                0x841 (size before relaxing)
- .debug_str     0x0000437f       0xba EtherCardModified/webutil.o
-                                0x865 (size before relaxing)
- .debug_str     0x00004439       0xfe EtherComm.o
-                                0xa03 (size before relaxing)
- .debug_str     0x00004537       0x5d main.o
-                                0x91f (size before relaxing)
- .debug_str     0x00004594      0x6b0 Micro/Peripherals/HardwareSerial.o
-                                0x9a5 (size before relaxing)
- .debug_str     0x00004c44      0x2ac Micro/Peripherals/HardwareServo.o
-                                0x508 (size before relaxing)
- .debug_str     0x00004ef0      0x226 Micro/Peripherals/HardwareTimer.o
-                                0x488 (size before relaxing)
- .debug_str     0x00005116      0x28d Micro/Peripherals/twi.o
-                                0x380 (size before relaxing)
- .debug_str     0x000053a3      0x44f Micro/Peripherals/Wire.o
-                                0xc74 (size before relaxing)
- .debug_str     0x000057f2      0x206 MS5837/MS5837.o
-                                0x706 (size before relaxing)
- .debug_str     0x000059f8      0x2c7 PCA9685/PCA9685.o
-                                0x684 (size before relaxing)
- .debug_str     0x00005cbf       0xe4 PCA9685/TwiServoController.o
-                                0x572 (size before relaxing)
- .debug_str     0x00005da3      0x1e8 PcbPins/HardwarePcbServo.o
-                                0x63f (size before relaxing)
- .debug_str     0x00005f8b      0x16e PcbPins/PcbPins.o
-                                0x90f (size before relaxing)
- .debug_str     0x000060f9       0xd1 PcbPins/TwiPcbServo.o
-                                0x69f (size before relaxing)
- .debug_str     0x000061ca      0x62d Robot.o
-                               0x271b (size before relaxing)
- .debug_str     0x000067f7      0x105 Sensors/ImuSensor.o
-                                0xebf (size before relaxing)
- .debug_str     0x000068fc       0xca Sensors/PressureSensor.o
-                                0xef5 (size before relaxing)
- .debug_str     0x000069c6      0x1db Utils/Print.o
-                                0x4a1 (size before relaxing)
+ .debug_str     0x000003e6     0x31bd BNO055/Adafruit_BNO055.o
+                               0x332b (size before relaxing)
+ .debug_str     0x000035a3      0x862 Commands.o
+                                0xa76 (size before relaxing)
+ .debug_str     0x00003e05      0x21f EtherCardModified/enc28j60.o
+                                0x54d (size before relaxing)
+ .debug_str     0x00004024       0xf7 EtherCardModified/EtherCard.o
+                                0x8cb (size before relaxing)
+ .debug_str     0x0000411b      0x1fe EtherCardModified/tcpip.o
+                                0x9c4 (size before relaxing)
+ .debug_str     0x00004319       0x68 EtherCardModified/udpserver.o
+                                0x843 (size before relaxing)
+ .debug_str     0x00004381       0xba EtherCardModified/webutil.o
+                                0x867 (size before relaxing)
+ .debug_str     0x0000443b       0xfe EtherComm.o
+                                0xa05 (size before relaxing)
+ .debug_str     0x00004539       0x5d main.o
+                                0x921 (size before relaxing)
+ .debug_str     0x00004596      0x6b0 Micro/Peripherals/HardwareSerial.o
+                                0x9a7 (size before relaxing)
+ .debug_str     0x00004c46      0x2ac Micro/Peripherals/HardwareServo.o
+                                0x50a (size before relaxing)
+ .debug_str     0x00004ef2      0x226 Micro/Peripherals/HardwareTimer.o
+                                0x48a (size before relaxing)
+ .debug_str     0x00005118      0x28d Micro/Peripherals/twi.o
+                                0x382 (size before relaxing)
+ .debug_str     0x000053a5      0x44f Micro/Peripherals/Wire.o
+                                0xc76 (size before relaxing)
+ .debug_str     0x000057f4      0x206 MS5837/MS5837.o
+                                0x708 (size before relaxing)
+ .debug_str     0x000059fa      0x2c7 PCA9685/PCA9685.o
+                                0x686 (size before relaxing)
+ .debug_str     0x00005cc1       0xe4 PCA9685/TwiServoController.o
+                                0x574 (size before relaxing)
+ .debug_str     0x00005da5      0x1e8 PcbPins/HardwarePcbServo.o
+                                0x641 (size before relaxing)
+ .debug_str     0x00005f8d      0x16e PcbPins/PcbPins.o
+                                0x911 (size before relaxing)
+ .debug_str     0x000060fb       0xd1 PcbPins/TwiPcbServo.o
+                                0x6a1 (size before relaxing)
+ .debug_str     0x000061cc      0x62d Robot.o
+                               0x271d (size before relaxing)
+ .debug_str     0x000067f9      0x105 Sensors/ImuSensor.o
+                                0xec1 (size before relaxing)
+ .debug_str     0x000068fe       0xca Sensors/PressureSensor.o
+                                0xef7 (size before relaxing)
+ .debug_str     0x000069c8      0x1db Utils/Print.o
+                                0x4a3 (size before relaxing)
 
 .debug_loc      0x00000000     0xc342
  *(.debug_loc)
