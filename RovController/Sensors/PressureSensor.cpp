@@ -23,14 +23,6 @@ bool PressureSensor::begin(){
 	return false;
 }
 
-static void saveFloat(float f, uint8_t* buffer){ //TODO put in IRegister? Used in IMU too
-	uint8_t* val = (uint8_t*)(&f);
-	*buffer++ = *val++;
-	*buffer++ = *val++;
-	*buffer++ = *val++;
-	*buffer++ = *val++;
-}
-
 void PressureSensor::Update(uint8_t* buffer){
 	if(reading){
 		sensor.update();

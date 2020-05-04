@@ -24,28 +24,21 @@ void udpReceive(uint16_t dest_port, uint8_t src_ip[IP_LEN], uint16_t src_port, c
 /*  IPAddress src(src_ip[0],src_ip[1],src_ip[2],src_ip[3]);
   ether.printIp(src_ip);*/
 	
-	if(packetLen >= 2/*3*/){ //At minimum, start byte, command, and checksum.
-		if(packetLen <= 257/*258*/){
-			uint8_t dataLen = (uint8_t)(packetLen - 2/*3*/);
-			//if((uint8_t)data[0] == START_BYTE){
-			//		Serial.print("Computed Checksum: ");
-				if(EtherComm::CheckChecksum(data, dataLen)){
-					EtherComm::CommandReceived(data[0/*1*/], (const uint8_t*)(data + 1/*2*/), dataLen);
-				}
-			//}
+	if(packetLen >= 2){ //At minimum, register id, and checksum.
+		if(packetLen <= 257){
+			uint8_t dataLen = (uint8_t)(packetLen - 2);
+			if(EtherComm::CheckChecksum(data, dataLen)){
+				EtherComm::CommandReceived(data[0], (const uint8_t*)(data + 1), dataLen);
+			}
 		}
 	}
 }
 
 bool EtherComm::CheckChecksum(const char *data, uint8_t len){
-  //data++; //Ignore first byte, the start byte.
   uint8_t checksum = (uint8_t)(*(data++)); //Start by 'adding' the command to the checksum
-  //checksum += (uint8_t)(*(data++));
   while(len-- > 0){
     checksum += (uint8_t)(*(data++));
   }
-  //Serial.print("Checksum: ");
-  //Serial.println((uint8_t)(checksum & CHECKSUM_MASK));
   return (checksum & CHECKSUM_MASK) == (uint8_t)(*data);
 }
 
@@ -71,17 +64,15 @@ bool EtherComm::begin(uint16_t recvPort, uint16_t destPort, Register& csDDR, Reg
 
 void EtherComm::SendCommand(uint8_t id, uint8_t len){
   EtherComm::buffer[0] = id; //START_BYTE;
-  //EtherComm::buffer[1] = cmd;
-  //EtherComm::buffer[2] = len;
   
-  uint8_t checksum = id; //START_BYTE + cmd;
-  uint8_t* index = &EtherComm::buffer[1/*2*/]; //TODO why is char* being used? convert ot uint8_t*!!
+  uint8_t checksum = id; 
+  uint8_t* index = &EtherComm::buffer[1]; 
   uint8_t bytes = len;
   while(bytes-- > 0){
     checksum += (uint8_t)(*(index++));  
   }
   (*index) = (uint8_t)(checksum & CHECKSUM_MASK);
 
-  ether.sendUdp(EtherComm::buffer, (uint16_t)len + 2/*(uint16_t)3*/, _recvPort, _destIP, _destPort);
+  ether.sendUdp(EtherComm::buffer, (uint16_t)len + 2, _recvPort, _destIP, _destPort);
 }
 

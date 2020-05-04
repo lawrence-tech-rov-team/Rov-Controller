@@ -71,8 +71,40 @@ ImuSensor Imu(
 
 TwiRegister TwiSettings(66);
 
+enum ErrorFlag {
+	None = 0x00,
+	IdCollision = 0x01,
+	InitializationError = 0x02,
+	RegisterNotFound = 0x04
+};
+
+inline ErrorFlag operator | (ErrorFlag lhs, ErrorFlag rhs) {
+	return static_cast<ErrorFlag>(static_cast<int>(lhs) | static_cast<int>(rhs));
+}
+
+inline ErrorFlag& operator |= (ErrorFlag& lhs, ErrorFlag rhs) {
+	lhs = lhs | rhs;
+	return lhs;
+}
+
+struct ErrorCodeStruct{
+	ErrorFlag errors;
+	uint8_t id_collision; //The last id collision that occured
+	uint8_t init_error; //Code for what device could not be initialized
+	uint8_t reg_not_found; //Id of the last register that could not be found
+};
+
+ErrorCodeStruct ErrorCodes;
+
+#define ERROR_INIT_BTN0 0x01
+#define ERROR_INIT_BTN1 0x02
+#define ERROR_INIT_LED 0x03
+#define ERROR_INIT_IMU 0x04
+#define ERROR_INIT_PRESSURE 0x05
+#define ERROR_INIT_TWI 0x06
+
 void printServoErrorCode(uint8_t code){
-	if(code == 0x01){
+	if(code == 0x10){
 		Serial.println("Unable to initialize Twi Servo Controller.");
 		return;
 	}
@@ -99,7 +131,7 @@ bool initializeServos(){
 	Servo4.begin();
 	Servo5.begin();
 	
-	if(!PcaServoController.begin()) return 0x01;
+	if(!PcaServoController.begin()) return 0x10;
 	Serial.println("Initialized Twi Servo Controller.");
 	
 	if(!ServoA1.begin()) return 0x11;
@@ -149,42 +181,56 @@ bool Robot::begin(){
 	
 	uint8_t code = initializeServos();
 	if(code != 0){
+		ErrorCodes.errors |= InitializationError;
+		ErrorCodes.init_error = code;
 		printServoErrorCode(code);
 		return false;
 	}
 	Serial.println("Servos initialized.");
-	//TODO if robot can't be initialized, send diagnostics over ethernet?
+	
 	if(!Button0.begin()){
+		ErrorCodes.errors |= InitializationError;
+		ErrorCodes.init_error = ERROR_INIT_BTN0;
 		Serial.println("Unable to initialize Button0.");
 		return false;
 	}
 	Serial.println("Initialized Button0.");
 	
 	if(!Button1.begin()){
+		ErrorCodes.errors |= InitializationError;
+		ErrorCodes.init_error = ERROR_INIT_BTN1;
 		Serial.println("Unable to initialize Button1.");
 		return false;
 	}
 	Serial.println("Initialized Button1.");
 	
 	if(!LED.begin()){
+		ErrorCodes.errors |= InitializationError;
+		ErrorCodes.init_error = ERROR_INIT_LED;
 		Serial.println("Unable to initialize LED.");
 		return false;
 	}
 	Serial.println("Initialized LED.");
 	
 	if(!Imu.begin()){
+		ErrorCodes.errors |= InitializationError;
+		ErrorCodes.init_error = ERROR_INIT_IMU;
 		Serial.println("Unable to initialize IMU.");
 		return false;
 	}
 	Serial.println("Initialized IMU");
 	
 	if(!Pressure.begin()){ 
+		ErrorCodes.errors |= InitializationError;
+		ErrorCodes.init_error = ERROR_INIT_PRESSURE;
 		Serial.println("Unable to initialize Pressure Sensor.");
 		return false;
 	} 
 	Serial.println("Initialized pressure sensor.");
 	
 	if(!TwiSettings.begin()){
+		ErrorCodes.errors |= InitializationError;
+		ErrorCodes.init_error = ERROR_INIT_TWI;
 		Serial.println("Unable to initialize TWI settings.");
 	}
 	Serial.println("Initialized settings.");
@@ -194,48 +240,37 @@ bool Robot::begin(){
 
 
 bool Robot::RegisterDevice(uint8_t id, IRegister* device){
-	if(registers[id] == NULL){
-		//if(sensor.begin()){
-		registers[id] = device; //TODO error handling
-		//}
+	if((id != 0xFF) && (registers[id] == NULL)){
+		registers[id] = device; 
 		return true;
 	}else{
-		//TODO id collisions
+		ErrorCodes.errors |= IdCollision;
+		ErrorCodes.id_collision = id;
 		return false;
 	}
 }
-/*
-void Robot::SetLed(bool illuminate){ //TODO remove
-	if(illuminate) LedPort |= LedPin;
-	else LedPort &= ~LedPin;
-}*/
-/*
-bool Robot::ReadTestBtn(){ //TODO remove
-	return !((TestBtnPinPort & TestBtnPin) > 0);
-}*/
 
 void Robot::Loop(){
 	EtherComm::Loop();
-	Imu.Update(EtherComm::buffer + 1/*3*/);
-	Pressure.Update(EtherComm::buffer + 1/*3*/);
-	//TestServo.Update(EtherComm::buffer + 1/*3*/);
+	Imu.Update(EtherComm::buffer + 1);
+	Pressure.Update(EtherComm::buffer + 1);
 }
 
-//void Robot::CommandReceived(const uint8_t* data, uint8_t len){
+void PrintErrorCodes(){
+	EtherComm::buffer[1] = ErrorCodes.errors;
+	EtherComm::buffer[2] = ErrorCodes.id_collision;
+	EtherComm::buffer[3] = ErrorCodes.init_error;
+	EtherComm::buffer[4] = ErrorCodes.reg_not_found;
+	EtherComm::SendCommand(0xFF, 4);
+}
+
 void Robot::CommandReceived(const uint8_t id, const uint8_t* data, uint8_t len) {
-	/*Serial.print(len);
-	Serial.print(':');
-	for(uint8_t i = 0; i < len; i++){
-		Serial.print(' ');
-		Serial.print(data[i], HEX);
+	if(id == 0xFF){
+		PrintErrorCodes();
+	}else if(registers[id] != NULL){
+		registers[id]->CommandReceived(id, data, len);
+	}else{
+		ErrorCodes.errors |= RegisterNotFound;
+		ErrorCodes.reg_not_found = id;
 	}
-	Serial.println();*/
-	//if(len >= 1){
-		if(registers[/*data[0]*/id] != NULL){
-			registers[/*data[0]*/id]->CommandReceived(/*data[0]*/id, data /*+ 1*/, len/* - 1*/);
-		}else{
-			//Serial.println("Not found: ");
-			//Serial.println(registers[data[0]] == nullptr);
-		}
-	//}
 }

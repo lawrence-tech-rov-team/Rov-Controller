@@ -146,7 +146,7 @@ Discarded input sections
  .debug_aranges
                 0x00000000       0x18 BNO055/Adafruit_Sensor.o
  .debug_line    0x00000000       0x1a BNO055/Adafruit_Sensor.o
- .debug_str     0x00000000      0x1d0 BNO055/Adafruit_Sensor.o
+ .debug_str     0x00000000      0x1ce BNO055/Adafruit_Sensor.o
  .comment       0x00000000       0x31 BNO055/Adafruit_Sensor.o
  .text          0x00000000        0x0 Commands.o
  .data          0x00000000        0x0 Commands.o
@@ -409,7 +409,7 @@ Discarded input sections
                 0x00000000       0x80 Utils/Stream.o
  .debug_ranges  0x00000000       0x88 Utils/Stream.o
  .debug_line    0x00000000      0x4fb Utils/Stream.o
- .debug_str     0x00000000      0x618 Utils/Stream.o
+ .debug_str     0x00000000      0x616 Utils/Stream.o
  .comment       0x00000000       0x31 Utils/Stream.o
  .debug_frame   0x00000000      0x28c Utils/Stream.o
  .text          0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr6\libm.a(addsf3.o)
@@ -928,7 +928,7 @@ END GROUP
 .rela.plt
  *(.rela.plt)
 
-.text           0x00000000     0x5628
+.text           0x00000000     0x5406
  *(.vectors)
  .vectors       0x00000000       0xe4 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.209/gcc/dev/atmega2560/avr6/crtatmega2560.o
                 0x00000000                __vector_default
@@ -1506,202 +1506,205 @@ END GROUP
  .text._ZN11TwiRegister22WriteRegisterRequestedEhPKhh
                 0x00003f40       0x20 Robot.o
                 0x00003f40                _ZN11TwiRegister22WriteRegisterRequestedEhPKhh
- .text._ZN11TwiRegister5beginEv
-                0x00003f60       0x2e Robot.o
-                0x00003f60                _ZN11TwiRegister5beginEv
- .text._ZN15DigitalActuator5beginEv
-                0x00003f8e       0x2e Robot.o
-                0x00003f8e                _ZN15DigitalActuator5beginEv
- .text._ZN13DigitalSensor5beginEv
-                0x00003fbc       0x2e Robot.o
-                0x00003fbc                _ZN13DigitalSensor5beginEv
- .text._ZN13ServoActuator5beginEv
-                0x00003fea       0x7e Robot.o
-                0x00003fea                _ZN13ServoActuator5beginEv
  .text._Z19printServoErrorCodeh
-                0x00004068       0x84 Robot.o
-                0x00004068                _Z19printServoErrorCodeh
- .text._Z16initializeServosv
-                0x000040ec      0x480 Robot.o
-                0x000040ec                _Z16initializeServosv
+                0x00003f60       0x84 Robot.o
+                0x00003f60                _Z19printServoErrorCodeh
  .text._ZN5Robot14RegisterDeviceEhP9IRegister
-                0x0000456c       0x2a Robot.o
-                0x0000456c                _ZN5Robot14RegisterDeviceEhP9IRegister
+                0x00003fe4       0x3c Robot.o
+                0x00003fe4                _ZN5Robot14RegisterDeviceEhP9IRegister
+ .text._ZN13ServoActuator5beginEv
+                0x00004020       0x40 Robot.o
+                0x00004020                _ZN13ServoActuator5beginEv
+ .text._ZN13DigitalSensor5beginEv
+                0x00004060        0xa Robot.o
+                0x00004060                _ZN13DigitalSensor5beginEv
+ .text._ZN15DigitalActuator5beginEv
+                0x0000406a        0xa Robot.o
+                0x0000406a                _ZN15DigitalActuator5beginEv
+ .text._ZN11TwiRegister5beginEv
+                0x00004074        0xa Robot.o
+                0x00004074                _ZN11TwiRegister5beginEv
+ .text._Z16initializeServosv
+                0x0000407e      0x318 Robot.o
+                0x0000407e                _Z16initializeServosv
+ .text._Z15PrintErrorCodesv
+                0x00004396       0x3a Robot.o
+                0x00004396                _Z15PrintErrorCodesv
  .text._ZN5Robot15CommandReceivedEhPKhh
-                0x00004596       0x2c Robot.o
-                0x00004596                _ZN5Robot15CommandReceivedEhPKhh
+                0x000043d0       0x42 Robot.o
+                0x000043d0                _ZN5Robot15CommandReceivedEhPKhh
  .text._GLOBAL__sub_I__ZN5Robot9registersE
-                0x000045c2      0x340 Robot.o
+                0x00004412      0x340 Robot.o
  .text._ZN5Robot5beginEv
-                0x00004902      0x1b6 Robot.o
-                0x00004902                _ZN5Robot5beginEv
+                0x00004752      0x1a0 Robot.o
+                0x00004752                _ZN5Robot5beginEv
  .text._ZN5Robot4LoopEv
-                0x00004ab8       0x2e Robot.o
-                0x00004ab8                _ZN5Robot4LoopEv
+                0x000048f2       0x2e Robot.o
+                0x000048f2                _ZN5Robot4LoopEv
  .text._ZN9ImuSensor6UpdateEPh
-                0x00004ae6        0x2 Sensors/ImuSensor.o
-                0x00004ae6                _ZN9ImuSensor6UpdateEPh
+                0x00004920        0x2 Sensors/ImuSensor.o
+                0x00004920                _ZN9ImuSensor6UpdateEPh
  .text._ZN9ImuSensor5beginEv
-                0x00004ae8       0x66 Sensors/ImuSensor.o
-                0x00004ae8                _ZN9ImuSensor5beginEv
+                0x00004922       0x66 Sensors/ImuSensor.o
+                0x00004922                _ZN9ImuSensor5beginEv
  .text._ZN9ImuSensor21ReadRegisterRequestedEhPh
-                0x00004b4e       0xe6 Sensors/ImuSensor.o
-                0x00004b4e                _ZN9ImuSensor21ReadRegisterRequestedEhPh
+                0x00004988       0xe6 Sensors/ImuSensor.o
+                0x00004988                _ZN9ImuSensor21ReadRegisterRequestedEhPh
  .text._ZN9ImuSensorC2Ehhhhhhhh
-                0x00004c34       0x78 Sensors/ImuSensor.o
-                0x00004c34                _ZN9ImuSensorC2Ehhhhhhhh
-                0x00004c34                _ZN9ImuSensorC1Ehhhhhhhh
+                0x00004a6e       0x78 Sensors/ImuSensor.o
+                0x00004a6e                _ZN9ImuSensorC2Ehhhhhhhh
+                0x00004a6e                _ZN9ImuSensorC1Ehhhhhhhh
  .text._ZN14PressureSensor5beginEv
-                0x00004cac       0x36 Sensors/PressureSensor.o
-                0x00004cac                _ZN14PressureSensor5beginEv
- .text._ZN14PressureSensor21ReadRegisterRequestedEhPh
-                0x00004ce2       0x1c Sensors/PressureSensor.o
-                0x00004ce2                _ZN14PressureSensor21ReadRegisterRequestedEhPh
+                0x00004ae6       0x36 Sensors/PressureSensor.o
+                0x00004ae6                _ZN14PressureSensor5beginEv
  .text._ZN14PressureSensor6UpdateEPh
-                0x00004cfe       0xca Sensors/PressureSensor.o
-                0x00004cfe                _ZN14PressureSensor6UpdateEPh
+                0x00004b1c       0x6e Sensors/PressureSensor.o
+                0x00004b1c                _ZN14PressureSensor6UpdateEPh
+ .text._ZN14PressureSensor21ReadRegisterRequestedEhPh
+                0x00004b8a       0x1c Sensors/PressureSensor.o
+                0x00004b8a                _ZN14PressureSensor21ReadRegisterRequestedEhPh
  .text._ZN14PressureSensorC2EhR13HardwareTimer
-                0x00004dc8       0x26 Sensors/PressureSensor.o
-                0x00004dc8                _ZN14PressureSensorC2EhR13HardwareTimer
-                0x00004dc8                _ZN14PressureSensorC1EhR13HardwareTimer
+                0x00004ba6       0x26 Sensors/PressureSensor.o
+                0x00004ba6                _ZN14PressureSensorC2EhR13HardwareTimer
+                0x00004ba6                _ZN14PressureSensorC1EhR13HardwareTimer
  .text._ZN5Print5writeEPKhj
-                0x00004dee       0x5e Utils/Print.o
-                0x00004dee                _ZN5Print5writeEPKhj
+                0x00004bcc       0x5e Utils/Print.o
+                0x00004bcc                _ZN5Print5writeEPKhj
  .text._ZN5Print5printEPKc
-                0x00004e4c       0x2c Utils/Print.o
-                0x00004e4c                _ZN5Print5printEPKc
+                0x00004c2a       0x2c Utils/Print.o
+                0x00004c2a                _ZN5Print5printEPKc
  .text._ZN5Print5printEc
-                0x00004e78       0x10 Utils/Print.o
-                0x00004e78                _ZN5Print5printEc
+                0x00004c56       0x10 Utils/Print.o
+                0x00004c56                _ZN5Print5printEc
  .text._ZN5Print7printlnEv
-                0x00004e88       0x18 Utils/Print.o
-                0x00004e88                _ZN5Print7printlnEv
+                0x00004c66       0x18 Utils/Print.o
+                0x00004c66                _ZN5Print7printlnEv
  .text._ZN5Print7printlnEPKc
-                0x00004ea0       0x20 Utils/Print.o
-                0x00004ea0                _ZN5Print7printlnEPKc
+                0x00004c7e       0x20 Utils/Print.o
+                0x00004c7e                _ZN5Print7printlnEPKc
  .text._ZN5Print11printNumberEmh
-                0x00004ec0       0xba Utils/Print.o
-                0x00004ec0                _ZN5Print11printNumberEmh
+                0x00004c9e       0xba Utils/Print.o
+                0x00004c9e                _ZN5Print11printNumberEmh
  .text._ZN5Print5printEmi
-                0x00004f7a       0x1e Utils/Print.o
-                0x00004f7a                _ZN5Print5printEmi
+                0x00004d58       0x1e Utils/Print.o
+                0x00004d58                _ZN5Print5printEmi
  .text._ZN5Print5printEhi
-                0x00004f98        0xe Utils/Print.o
-                0x00004f98                _ZN5Print5printEhi
+                0x00004d76        0xe Utils/Print.o
+                0x00004d76                _ZN5Print5printEhi
  .text.avr-libc.fplib
-                0x00004fa6        0xa c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr6\libm.a(addsf3.o)
-                0x00004fa6                __subsf3
-                0x00004fa8                __addsf3
+                0x00004d84        0xa c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr6\libm.a(addsf3.o)
+                0x00004d84                __subsf3
+                0x00004d86                __addsf3
  .text.avr-libc.fplib
-                0x00004fb0       0xc0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr6\libm.a(addsf3x.o)
-                0x00004fca                __addsf3x
+                0x00004d8e       0xc0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr6\libm.a(addsf3x.o)
+                0x00004da8                __addsf3x
  .text.avr-libc.fplib
-                0x00005070        0x8 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr6\libm.a(cmpsf2.o)
-                0x00005070                __nesf2
-                0x00005070                __eqsf2
-                0x00005070                __cmpsf2
-                0x00005070                __ltsf2
-                0x00005070                __lesf2
+                0x00004e4e        0x8 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr6\libm.a(cmpsf2.o)
+                0x00004e4e                __nesf2
+                0x00004e4e                __eqsf2
+                0x00004e4e                __cmpsf2
+                0x00004e4e                __ltsf2
+                0x00004e4e                __lesf2
  .text.avr-libc.fplib
-                0x00005078        0x4 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr6\libm.a(divsf3.o)
-                0x00005078                __divsf3
+                0x00004e56        0x4 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr6\libm.a(divsf3.o)
+                0x00004e56                __divsf3
  .text.avr-libc.fplib
-                0x0000507c       0xcc c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr6\libm.a(divsf3x.o)
-                0x00005092                __divsf3x
-                0x00005096                __divsf3_pse
+                0x00004e5a       0xcc c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr6\libm.a(divsf3x.o)
+                0x00004e70                __divsf3x
+                0x00004e74                __divsf3_pse
  .text.avr-libc.fplib
-                0x00005148       0x58 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr6\libm.a(fixunssfsi.o)
-                0x00005148                __fixunssfsi
+                0x00004f26       0x58 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr6\libm.a(fixunssfsi.o)
+                0x00004f26                __fixunssfsi
  .text.avr-libc.fplib
-                0x000051a0       0x7a c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr6\libm.a(floatsisf.o)
-                0x000051a0                __floatunsisf
-                0x000051a4                __floatsisf
+                0x00004f7e       0x7a c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr6\libm.a(floatsisf.o)
+                0x00004f7e                __floatunsisf
+                0x00004f82                __floatsisf
  .text.avr-libc.fplib
-                0x0000521a       0x48 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr6\libm.a(fp_cmp.o)
-                0x0000521a                __fp_cmp
+                0x00004ff8       0x48 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr6\libm.a(fp_cmp.o)
+                0x00004ff8                __fp_cmp
  .text.avr-libc.fplib
-                0x00005262        0xc c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr6\libm.a(fp_inf.o)
-                0x00005262                __fp_inf
+                0x00005040        0xc c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr6\libm.a(fp_inf.o)
+                0x00005040                __fp_inf
  .text.avr-libc.fplib
-                0x0000526e        0x6 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr6\libm.a(fp_nan.o)
-                0x0000526e                __fp_nan
+                0x0000504c        0x6 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr6\libm.a(fp_nan.o)
+                0x0000504c                __fp_nan
  .text.avr-libc.fplib
-                0x00005274        0xe c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr6\libm.a(fp_pscA.o)
-                0x00005274                __fp_pscA
+                0x00005052        0xe c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr6\libm.a(fp_pscA.o)
+                0x00005052                __fp_pscA
  .text.avr-libc.fplib
-                0x00005282        0xe c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr6\libm.a(fp_pscB.o)
-                0x00005282                __fp_pscB
+                0x00005060        0xe c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr6\libm.a(fp_pscB.o)
+                0x00005060                __fp_pscB
  .text.avr-libc.fplib
-                0x00005290       0x22 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr6\libm.a(fp_round.o)
-                0x00005290                __fp_round
+                0x0000506e       0x22 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr6\libm.a(fp_round.o)
+                0x0000506e                __fp_round
  .text.avr-libc.fplib
-                0x000052b2       0x44 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr6\libm.a(fp_split3.o)
-                0x000052b2                __fp_split3
-                0x000052c2                __fp_splitA
+                0x00005090       0x44 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr6\libm.a(fp_split3.o)
+                0x00005090                __fp_split3
+                0x000050a0                __fp_splitA
  .text.avr-libc.fplib
-                0x000052f6        0xe c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr6\libm.a(fp_zero.o)
-                0x000052f6                __fp_zero
-                0x000052f8                __fp_szero
+                0x000050d4        0xe c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr6\libm.a(fp_zero.o)
+                0x000050d4                __fp_zero
+                0x000050d6                __fp_szero
  .text.avr-libc.fplib
-                0x00005304        0x8 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr6\libm.a(gesf2.o)
-                0x00005304                __gesf2
-                0x00005304                __gtsf2
+                0x000050e2        0x8 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr6\libm.a(gesf2.o)
+                0x000050e2                __gesf2
+                0x000050e2                __gtsf2
  .text.avr-libc.fplib
-                0x0000530c        0x4 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr6\libm.a(mulsf3.o)
-                0x0000530c                __mulsf3
+                0x000050ea        0x4 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr6\libm.a(mulsf3.o)
+                0x000050ea                __mulsf3
  .text.avr-libc.fplib
-                0x00005310       0xc2 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr6\libm.a(mulsf3x.o)
-                0x00005324                __mulsf3x
-                0x00005328                __mulsf3_pse
+                0x000050ee       0xc2 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr6\libm.a(mulsf3x.o)
+                0x00005102                __mulsf3x
+                0x00005106                __mulsf3_pse
  .text.libgcc.mul
-                0x000053d2       0x1e c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr6\libgcc.a(_mulsi3.o)
-                0x000053d2                __mulsi3
+                0x000051b0       0x1e c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr6\libgcc.a(_mulsi3.o)
+                0x000051b0                __mulsi3
  .text.libgcc.div
-                0x000053f0       0x44 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr6\libgcc.a(_udivmodsi4.o)
-                0x000053f0                __udivmodsi4
- .text.libgcc   0x00005434       0x10 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr6\libgcc.a(_tablejump2.o)
-                0x00005434                __tablejump2__
+                0x000051ce       0x44 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr6\libgcc.a(_udivmodsi4.o)
+                0x000051ce                __udivmodsi4
+ .text.libgcc   0x00005212       0x10 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr6\libgcc.a(_tablejump2.o)
+                0x00005212                __tablejump2__
  .text.libgcc.mul
-                0x00005444       0x14 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr6\libgcc.a(_muluhisi3.o)
-                0x00005444                __muluhisi3
+                0x00005222       0x14 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr6\libgcc.a(_muluhisi3.o)
+                0x00005222                __muluhisi3
  .text.libgcc.mul
-                0x00005458       0x92 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr6\libgcc.a(_muldi3.o)
-                0x00005458                __muldi3
+                0x00005236       0x92 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr6\libgcc.a(_muldi3.o)
+                0x00005236                __muldi3
  .text.libgcc.mul
-                0x000054ea       0x10 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr6\libgcc.a(_muldi3_6.o)
-                0x000054ea                __muldi3_6
+                0x000052c8       0x10 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr6\libgcc.a(_muldi3_6.o)
+                0x000052c8                __muldi3_6
  .text.libgcc.builtins
-                0x000054fa       0x32 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr6\libgcc.a(_ashldi3.o)
-                0x000054fa                __ashldi3
+                0x000052d8       0x32 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr6\libgcc.a(_ashldi3.o)
+                0x000052d8                __ashldi3
  .text.libgcc.builtins
-                0x0000552c       0x3c c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr6\libgcc.a(_ashrdi3.o)
-                0x0000552c                __ashrdi3
-                0x00005530                __lshrdi3
- .text.libgcc   0x00005568       0x12 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr6\libgcc.a(_adddi3.o)
-                0x00005568                __adddi3
- .text.libgcc   0x0000557a       0x18 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr6\libgcc.a(_adddi3_s8.o)
-                0x0000557a                __adddi3_s8
- .text.libgcc   0x00005592       0x12 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr6\libgcc.a(_subdi3.o)
-                0x00005592                __subdi3
- .text.libgcc   0x000055a4       0x18 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr6\libgcc.a(_cmpdi2_s8.o)
-                0x000055a4                __cmpdi2_s8
+                0x0000530a       0x3c c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr6\libgcc.a(_ashrdi3.o)
+                0x0000530a                __ashrdi3
+                0x0000530e                __lshrdi3
+ .text.libgcc   0x00005346       0x12 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr6\libgcc.a(_adddi3.o)
+                0x00005346                __adddi3
+ .text.libgcc   0x00005358       0x18 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr6\libgcc.a(_adddi3_s8.o)
+                0x00005358                __adddi3_s8
+ .text.libgcc   0x00005370       0x12 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr6\libgcc.a(_subdi3.o)
+                0x00005370                __subdi3
+ .text.libgcc   0x00005382       0x18 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr6\libgcc.a(_cmpdi2_s8.o)
+                0x00005382                __cmpdi2_s8
  .text.libgcc.mul
-                0x000055bc       0x1e c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr6\libgcc.a(_umulhisi3.o)
-                0x000055bc                __umulhisi3
+                0x0000539a       0x1e c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr6\libgcc.a(_umulhisi3.o)
+                0x0000539a                __umulhisi3
  .text.avr-libc
-                0x000055da       0x12 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr6\libc.a(memcpy_P.o)
-                0x000055da                memcpy_P
+                0x000053b8       0x12 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr6\libc.a(memcpy_P.o)
+                0x000053b8                memcpy_P
  .text.avr-libc
-                0x000055ec       0x1a c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr6\libc.a(memcmp.o)
-                0x000055ec                memcmp
+                0x000053ca       0x1a c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr6\libc.a(memcmp.o)
+                0x000053ca                memcmp
  .text.avr-libc
-                0x00005606       0x1e c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr6\libc.a(strncpy.o)
-                0x00005606                strncpy
-                0x00005624                . = ALIGN (0x2)
+                0x000053e4       0x1e c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr6\libc.a(strncpy.o)
+                0x000053e4                strncpy
+                0x00005402                . = ALIGN (0x2)
  *(.fini9)
- .fini9         0x00005624        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr6\libgcc.a(_exit.o)
-                0x00005624                _exit
-                0x00005624                exit
+ .fini9         0x00005402        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr6\libgcc.a(_exit.o)
+                0x00005402                _exit
+                0x00005402                exit
  *(.fini9)
  *(.fini8)
  *(.fini8)
@@ -1720,11 +1723,11 @@ END GROUP
  *(.fini1)
  *(.fini1)
  *(.fini0)
- .fini0         0x00005624        0x4 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr6\libgcc.a(_exit.o)
+ .fini0         0x00005402        0x4 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr6\libgcc.a(_exit.o)
  *(.fini0)
-                0x00005628                _etext = .
+                0x00005406                _etext = .
 
-.data           0x00800200      0x2e8 load address 0x00005628
+.data           0x00800200      0x2e8 load address 0x00005406
                 0x00800200                PROVIDE (__data_start, .)
  *(.data)
  *(.data*)
@@ -1799,7 +1802,7 @@ END GROUP
                 0x008004e8                _edata = .
                 0x008004e8                PROVIDE (__data_end, .)
 
-.bss            0x008004e8      0x771
+.bss            0x008004e8      0x775
                 0x008004e8                PROVIDE (__bss_start, .)
  *(.bss)
  *(.bss*)
@@ -2039,86 +2042,89 @@ END GROUP
  .bss.PcbServoA1
                 0x00800959        0x5 PcbPins/PcbPins.o
                 0x00800959                PcbServoA1
+ .bss.ErrorCodes
+                0x0080095e        0x4 Robot.o
+                0x0080095e                ErrorCodes
  .bss.TwiSettings
-                0x0080095e        0x3 Robot.o
-                0x0080095e                TwiSettings
- .bss.Imu       0x00800961       0x15 Robot.o
-                0x00800961                Imu
- .bss.Pressure  0x00800976       0x2c Robot.o
-                0x00800976                Pressure
- .bss.LED       0x008009a2        0x7 Robot.o
-                0x008009a2                LED
- .bss.Button1   0x008009a9        0x7 Robot.o
-                0x008009a9                Button1
- .bss.Button0   0x008009b0        0x7 Robot.o
-                0x008009b0                Button0
- .bss.ServoD8   0x008009b7        0x6 Robot.o
-                0x008009b7                ServoD8
- .bss.ServoD7   0x008009bd        0x6 Robot.o
-                0x008009bd                ServoD7
- .bss.ServoD6   0x008009c3        0x6 Robot.o
-                0x008009c3                ServoD6
- .bss.ServoD5   0x008009c9        0x6 Robot.o
-                0x008009c9                ServoD5
- .bss.ServoD4   0x008009cf        0x6 Robot.o
-                0x008009cf                ServoD4
- .bss.ServoD3   0x008009d5        0x6 Robot.o
-                0x008009d5                ServoD3
- .bss.ServoD2   0x008009db        0x6 Robot.o
-                0x008009db                ServoD2
- .bss.ServoD1   0x008009e1        0x6 Robot.o
-                0x008009e1                ServoD1
- .bss.ServoC8   0x008009e7        0x6 Robot.o
-                0x008009e7                ServoC8
- .bss.ServoC7   0x008009ed        0x6 Robot.o
-                0x008009ed                ServoC7
- .bss.ServoC6   0x008009f3        0x6 Robot.o
-                0x008009f3                ServoC6
- .bss.ServoC5   0x008009f9        0x6 Robot.o
-                0x008009f9                ServoC5
- .bss.ServoC4   0x008009ff        0x6 Robot.o
-                0x008009ff                ServoC4
- .bss.ServoC3   0x00800a05        0x6 Robot.o
-                0x00800a05                ServoC3
- .bss.ServoC2   0x00800a0b        0x6 Robot.o
-                0x00800a0b                ServoC2
- .bss.ServoC1   0x00800a11        0x6 Robot.o
-                0x00800a11                ServoC1
- .bss.ServoB6   0x00800a17        0x6 Robot.o
-                0x00800a17                ServoB6
- .bss.ServoB5   0x00800a1d        0x6 Robot.o
-                0x00800a1d                ServoB5
- .bss.ServoB4   0x00800a23        0x6 Robot.o
-                0x00800a23                ServoB4
- .bss.ServoB3   0x00800a29        0x6 Robot.o
-                0x00800a29                ServoB3
- .bss.ServoB2   0x00800a2f        0x6 Robot.o
-                0x00800a2f                ServoB2
- .bss.ServoB1   0x00800a35        0x6 Robot.o
-                0x00800a35                ServoB1
- .bss.ServoA5   0x00800a3b        0x6 Robot.o
-                0x00800a3b                ServoA5
- .bss.ServoA4   0x00800a41        0x6 Robot.o
-                0x00800a41                ServoA4
- .bss.ServoA3   0x00800a47        0x6 Robot.o
-                0x00800a47                ServoA3
- .bss.ServoA2   0x00800a4d        0x6 Robot.o
-                0x00800a4d                ServoA2
- .bss.ServoA1   0x00800a53        0x6 Robot.o
-                0x00800a53                ServoA1
+                0x00800962        0x3 Robot.o
+                0x00800962                TwiSettings
+ .bss.Imu       0x00800965       0x15 Robot.o
+                0x00800965                Imu
+ .bss.Pressure  0x0080097a       0x2c Robot.o
+                0x0080097a                Pressure
+ .bss.LED       0x008009a6        0x7 Robot.o
+                0x008009a6                LED
+ .bss.Button1   0x008009ad        0x7 Robot.o
+                0x008009ad                Button1
+ .bss.Button0   0x008009b4        0x7 Robot.o
+                0x008009b4                Button0
+ .bss.ServoD8   0x008009bb        0x6 Robot.o
+                0x008009bb                ServoD8
+ .bss.ServoD7   0x008009c1        0x6 Robot.o
+                0x008009c1                ServoD7
+ .bss.ServoD6   0x008009c7        0x6 Robot.o
+                0x008009c7                ServoD6
+ .bss.ServoD5   0x008009cd        0x6 Robot.o
+                0x008009cd                ServoD5
+ .bss.ServoD4   0x008009d3        0x6 Robot.o
+                0x008009d3                ServoD4
+ .bss.ServoD3   0x008009d9        0x6 Robot.o
+                0x008009d9                ServoD3
+ .bss.ServoD2   0x008009df        0x6 Robot.o
+                0x008009df                ServoD2
+ .bss.ServoD1   0x008009e5        0x6 Robot.o
+                0x008009e5                ServoD1
+ .bss.ServoC8   0x008009eb        0x6 Robot.o
+                0x008009eb                ServoC8
+ .bss.ServoC7   0x008009f1        0x6 Robot.o
+                0x008009f1                ServoC7
+ .bss.ServoC6   0x008009f7        0x6 Robot.o
+                0x008009f7                ServoC6
+ .bss.ServoC5   0x008009fd        0x6 Robot.o
+                0x008009fd                ServoC5
+ .bss.ServoC4   0x00800a03        0x6 Robot.o
+                0x00800a03                ServoC4
+ .bss.ServoC3   0x00800a09        0x6 Robot.o
+                0x00800a09                ServoC3
+ .bss.ServoC2   0x00800a0f        0x6 Robot.o
+                0x00800a0f                ServoC2
+ .bss.ServoC1   0x00800a15        0x6 Robot.o
+                0x00800a15                ServoC1
+ .bss.ServoB6   0x00800a1b        0x6 Robot.o
+                0x00800a1b                ServoB6
+ .bss.ServoB5   0x00800a21        0x6 Robot.o
+                0x00800a21                ServoB5
+ .bss.ServoB4   0x00800a27        0x6 Robot.o
+                0x00800a27                ServoB4
+ .bss.ServoB3   0x00800a2d        0x6 Robot.o
+                0x00800a2d                ServoB3
+ .bss.ServoB2   0x00800a33        0x6 Robot.o
+                0x00800a33                ServoB2
+ .bss.ServoB1   0x00800a39        0x6 Robot.o
+                0x00800a39                ServoB1
+ .bss.ServoA5   0x00800a3f        0x6 Robot.o
+                0x00800a3f                ServoA5
+ .bss.ServoA4   0x00800a45        0x6 Robot.o
+                0x00800a45                ServoA4
+ .bss.ServoA3   0x00800a4b        0x6 Robot.o
+                0x00800a4b                ServoA3
+ .bss.ServoA2   0x00800a51        0x6 Robot.o
+                0x00800a51                ServoA2
+ .bss.ServoA1   0x00800a57        0x6 Robot.o
+                0x00800a57                ServoA1
  .bss._ZN5Robot9registersE
-                0x00800a59      0x200 Robot.o
-                0x00800a59                _ZN5Robot9registersE
+                0x00800a5d      0x200 Robot.o
+                0x00800a5d                _ZN5Robot9registersE
  *(COMMON)
-                0x00800c59                PROVIDE (__bss_end, .)
-                0x00005628                __data_load_start = LOADADDR (.data)
-                0x00005910                __data_load_end = (__data_load_start + SIZEOF (.data))
+                0x00800c5d                PROVIDE (__bss_end, .)
+                0x00005406                __data_load_start = LOADADDR (.data)
+                0x000056ee                __data_load_end = (__data_load_start + SIZEOF (.data))
 
-.noinit         0x00800c59        0x0
+.noinit         0x00800c5d        0x0
                 [!provide]                PROVIDE (__noinit_start, .)
  *(.noinit*)
                 [!provide]                PROVIDE (__noinit_end, .)
-                0x00800c59                _end = .
+                0x00800c5d                _end = .
                 [!provide]                PROVIDE (__heap_start, .)
 
 .eeprom         0x00810000        0x0
@@ -2206,7 +2212,7 @@ END GROUP
 .debug_sfnames
  *(.debug_sfnames)
 
-.debug_aranges  0x00000000      0xa40
+.debug_aranges  0x00000000      0xa48
  *(.debug_aranges)
  .debug_aranges
                 0x00000000       0xf8 BNO055/Adafruit_BNO055.o
@@ -2249,18 +2255,18 @@ END GROUP
  .debug_aranges
                 0x00000808       0x30 PcbPins/TwiPcbServo.o
  .debug_aranges
-                0x00000838       0xc0 Robot.o
+                0x00000838       0xc8 Robot.o
  .debug_aranges
-                0x000008f8       0x40 Sensors/ImuSensor.o
+                0x00000900       0x40 Sensors/ImuSensor.o
  .debug_aranges
-                0x00000938       0x40 Sensors/PressureSensor.o
+                0x00000940       0x40 Sensors/PressureSensor.o
  .debug_aranges
-                0x00000978       0xc8 Utils/Print.o
+                0x00000980       0xc8 Utils/Print.o
 
 .debug_pubnames
  *(.debug_pubnames)
 
-.debug_info     0x00000000    0x185ee
+.debug_info     0x00000000    0x187b1
  *(.debug_info .gnu.linkonce.wi.*)
  .debug_info    0x00000000      0xbbc C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.209/gcc/dev/atmega2560/avr6/crtatmega2560.o
  .debug_info    0x00000bbc     0x437e BNO055/Adafruit_BNO055.o
@@ -2283,12 +2289,12 @@ END GROUP
  .debug_info    0x0000fe56      0x6b1 PcbPins/HardwarePcbServo.o
  .debug_info    0x00010507      0xd09 PcbPins/PcbPins.o
  .debug_info    0x00011210      0x6f7 PcbPins/TwiPcbServo.o
- .debug_info    0x00011907     0x3784 Robot.o
- .debug_info    0x0001508b     0x1237 Sensors/ImuSensor.o
- .debug_info    0x000162c2     0x116c Sensors/PressureSensor.o
- .debug_info    0x0001742e     0x11c0 Utils/Print.o
+ .debug_info    0x00011907     0x3940 Robot.o
+ .debug_info    0x00015247     0x1254 Sensors/ImuSensor.o
+ .debug_info    0x0001649b     0x1156 Sensors/PressureSensor.o
+ .debug_info    0x000175f1     0x11c0 Utils/Print.o
 
-.debug_abbrev   0x00000000     0x5147
+.debug_abbrev   0x00000000     0x5204
  *(.debug_abbrev)
  .debug_abbrev  0x00000000      0xb1a C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.209/gcc/dev/atmega2560/avr6/crtatmega2560.o
  .debug_abbrev  0x00000b1a      0x5a8 BNO055/Adafruit_BNO055.o
@@ -2311,12 +2317,12 @@ END GROUP
  .debug_abbrev  0x00003ab0      0x21e PcbPins/HardwarePcbServo.o
  .debug_abbrev  0x00003cce      0x1c3 PcbPins/PcbPins.o
  .debug_abbrev  0x00003e91      0x21e PcbPins/TwiPcbServo.o
- .debug_abbrev  0x000040af      0x5f3 Robot.o
- .debug_abbrev  0x000046a2      0x414 Sensors/ImuSensor.o
- .debug_abbrev  0x00004ab6      0x3f5 Sensors/PressureSensor.o
- .debug_abbrev  0x00004eab      0x29c Utils/Print.o
+ .debug_abbrev  0x000040af      0x693 Robot.o
+ .debug_abbrev  0x00004742      0x440 Sensors/ImuSensor.o
+ .debug_abbrev  0x00004b82      0x3e6 Sensors/PressureSensor.o
+ .debug_abbrev  0x00004f68      0x29c Utils/Print.o
 
-.debug_line     0x00000000     0x6314
+.debug_line     0x00000000     0x6276
  *(.debug_line .debug_line.* .debug_line_end)
  .debug_line    0x00000000      0x1f9 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.209/gcc/dev/atmega2560/avr6/crtatmega2560.o
  .debug_line    0x000001f9      0xc94 BNO055/Adafruit_BNO055.o
@@ -2339,12 +2345,12 @@ END GROUP
  .debug_line    0x000047c6      0x20e PcbPins/HardwarePcbServo.o
  .debug_line    0x000049d4      0x1f0 PcbPins/PcbPins.o
  .debug_line    0x00004bc4      0x15f PcbPins/TwiPcbServo.o
- .debug_line    0x00004d23      0xab1 Robot.o
- .debug_line    0x000057d4      0x39d Sensors/ImuSensor.o
- .debug_line    0x00005b71      0x2b8 Sensors/PressureSensor.o
- .debug_line    0x00005e29      0x4eb Utils/Print.o
+ .debug_line    0x00004d23      0xa33 Robot.o
+ .debug_line    0x00005756      0x39d Sensors/ImuSensor.o
+ .debug_line    0x00005af3      0x298 Sensors/PressureSensor.o
+ .debug_line    0x00005d8b      0x4eb Utils/Print.o
 
-.debug_frame    0x00000000     0x1ebc
+.debug_frame    0x00000000     0x1ec4
  *(.debug_frame)
  .debug_frame   0x00000000      0x490 BNO055/Adafruit_BNO055.o
  .debug_frame   0x00000490       0x64 Commands.o
@@ -2366,64 +2372,64 @@ END GROUP
  .debug_frame   0x000017e4       0x44 PcbPins/HardwarePcbServo.o
  .debug_frame   0x00001828       0x24 PcbPins/PcbPins.o
  .debug_frame   0x0000184c       0x44 PcbPins/TwiPcbServo.o
- .debug_frame   0x00001890      0x1bc Robot.o
- .debug_frame   0x00001a4c       0xd0 Sensors/ImuSensor.o
- .debug_frame   0x00001b1c       0xc0 Sensors/PressureSensor.o
- .debug_frame   0x00001bdc      0x2e0 Utils/Print.o
+ .debug_frame   0x00001890      0x1d4 Robot.o
+ .debug_frame   0x00001a64       0xd0 Sensors/ImuSensor.o
+ .debug_frame   0x00001b34       0xb0 Sensors/PressureSensor.o
+ .debug_frame   0x00001be4      0x2e0 Utils/Print.o
 
-.debug_str      0x00000000     0x6ba3
+.debug_str      0x00000000     0x6c91
  *(.debug_str)
  .debug_str     0x00000000      0x3e6 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.209/gcc/dev/atmega2560/avr6/crtatmega2560.o
- .debug_str     0x000003e6     0x31bd BNO055/Adafruit_BNO055.o
-                               0x332b (size before relaxing)
- .debug_str     0x000035a3      0x862 Commands.o
-                                0xa76 (size before relaxing)
- .debug_str     0x00003e05      0x21f EtherCardModified/enc28j60.o
-                                0x54d (size before relaxing)
- .debug_str     0x00004024       0xf7 EtherCardModified/EtherCard.o
-                                0x8cb (size before relaxing)
- .debug_str     0x0000411b      0x1fe EtherCardModified/tcpip.o
-                                0x9c4 (size before relaxing)
- .debug_str     0x00004319       0x68 EtherCardModified/udpserver.o
-                                0x843 (size before relaxing)
- .debug_str     0x00004381       0xba EtherCardModified/webutil.o
-                                0x867 (size before relaxing)
- .debug_str     0x0000443b       0xfe EtherComm.o
-                                0xa05 (size before relaxing)
- .debug_str     0x00004539       0x5d main.o
-                                0x921 (size before relaxing)
- .debug_str     0x00004596      0x6b0 Micro/Peripherals/HardwareSerial.o
-                                0x9a7 (size before relaxing)
- .debug_str     0x00004c46      0x2ac Micro/Peripherals/HardwareServo.o
-                                0x50a (size before relaxing)
- .debug_str     0x00004ef2      0x226 Micro/Peripherals/HardwareTimer.o
-                                0x48a (size before relaxing)
- .debug_str     0x00005118      0x28d Micro/Peripherals/twi.o
-                                0x382 (size before relaxing)
- .debug_str     0x000053a5      0x44f Micro/Peripherals/Wire.o
-                                0xc76 (size before relaxing)
- .debug_str     0x000057f4      0x206 MS5837/MS5837.o
-                                0x708 (size before relaxing)
- .debug_str     0x000059fa      0x2c7 PCA9685/PCA9685.o
-                                0x686 (size before relaxing)
- .debug_str     0x00005cc1       0xe4 PCA9685/TwiServoController.o
-                                0x574 (size before relaxing)
- .debug_str     0x00005da5      0x1e8 PcbPins/HardwarePcbServo.o
-                                0x641 (size before relaxing)
- .debug_str     0x00005f8d      0x16e PcbPins/PcbPins.o
-                                0x911 (size before relaxing)
- .debug_str     0x000060fb       0xd1 PcbPins/TwiPcbServo.o
-                                0x6a1 (size before relaxing)
- .debug_str     0x000061cc      0x62d Robot.o
-                               0x271d (size before relaxing)
- .debug_str     0x000067f9      0x105 Sensors/ImuSensor.o
-                                0xec1 (size before relaxing)
- .debug_str     0x000068fe       0xca Sensors/PressureSensor.o
-                                0xef7 (size before relaxing)
- .debug_str     0x000069c8      0x1db Utils/Print.o
-                                0x4a3 (size before relaxing)
+ .debug_str     0x000003e6     0x31bb BNO055/Adafruit_BNO055.o
+                               0x3329 (size before relaxing)
+ .debug_str     0x000035a1      0x862 Commands.o
+                                0xa74 (size before relaxing)
+ .debug_str     0x00003e03      0x21f EtherCardModified/enc28j60.o
+                                0x54b (size before relaxing)
+ .debug_str     0x00004022       0xf7 EtherCardModified/EtherCard.o
+                                0x8c9 (size before relaxing)
+ .debug_str     0x00004119      0x1fe EtherCardModified/tcpip.o
+                                0x9c2 (size before relaxing)
+ .debug_str     0x00004317       0x68 EtherCardModified/udpserver.o
+                                0x841 (size before relaxing)
+ .debug_str     0x0000437f       0xb4 EtherCardModified/webutil.o
+                                0x865 (size before relaxing)
+ .debug_str     0x00004433       0xfe EtherComm.o
+                                0xa03 (size before relaxing)
+ .debug_str     0x00004531       0x5d main.o
+                                0x91f (size before relaxing)
+ .debug_str     0x0000458e      0x6b0 Micro/Peripherals/HardwareSerial.o
+                                0x9a5 (size before relaxing)
+ .debug_str     0x00004c3e      0x2ac Micro/Peripherals/HardwareServo.o
+                                0x508 (size before relaxing)
+ .debug_str     0x00004eea      0x226 Micro/Peripherals/HardwareTimer.o
+                                0x488 (size before relaxing)
+ .debug_str     0x00005110      0x28d Micro/Peripherals/twi.o
+                                0x380 (size before relaxing)
+ .debug_str     0x0000539d      0x44f Micro/Peripherals/Wire.o
+                                0xc74 (size before relaxing)
+ .debug_str     0x000057ec      0x206 MS5837/MS5837.o
+                                0x706 (size before relaxing)
+ .debug_str     0x000059f2      0x2c7 PCA9685/PCA9685.o
+                                0x684 (size before relaxing)
+ .debug_str     0x00005cb9       0xe4 PCA9685/TwiServoController.o
+                                0x572 (size before relaxing)
+ .debug_str     0x00005d9d      0x1e8 PcbPins/HardwarePcbServo.o
+                                0x63f (size before relaxing)
+ .debug_str     0x00005f85      0x16e PcbPins/PcbPins.o
+                                0x90f (size before relaxing)
+ .debug_str     0x000060f3       0xd1 PcbPins/TwiPcbServo.o
+                                0x69f (size before relaxing)
+ .debug_str     0x000061c4      0x72d Robot.o
+                               0x2826 (size before relaxing)
+ .debug_str     0x000068f1      0x105 Sensors/ImuSensor.o
+                                0xee5 (size before relaxing)
+ .debug_str     0x000069f6       0xc0 Sensors/PressureSensor.o
+                                0xf11 (size before relaxing)
+ .debug_str     0x00006ab6      0x1db Utils/Print.o
+                                0x4a1 (size before relaxing)
 
-.debug_loc      0x00000000     0xc342
+.debug_loc      0x00000000     0xbfe5
  *(.debug_loc)
  .debug_loc     0x00000000     0x2220 BNO055/Adafruit_BNO055.o
  .debug_loc     0x00002220      0x1a7 Commands.o
@@ -2444,10 +2450,10 @@ END GROUP
  .debug_loc     0x00008932      0x2d6 PcbPins/HardwarePcbServo.o
  .debug_loc     0x00008c08       0x29 PcbPins/PcbPins.o
  .debug_loc     0x00008c31      0x162 PcbPins/TwiPcbServo.o
- .debug_loc     0x00008d93     0x1273 Robot.o
- .debug_loc     0x0000a006      0x821 Sensors/ImuSensor.o
- .debug_loc     0x0000a827      0x4fb Sensors/PressureSensor.o
- .debug_loc     0x0000ad22     0x1620 Utils/Print.o
+ .debug_loc     0x00008d93     0x100b Robot.o
+ .debug_loc     0x00009d9e      0x821 Sensors/ImuSensor.o
+ .debug_loc     0x0000a5bf      0x406 Sensors/PressureSensor.o
+ .debug_loc     0x0000a9c5     0x1620 Utils/Print.o
 
 .debug_macinfo
  *(.debug_macinfo)
@@ -2467,7 +2473,7 @@ END GROUP
 .debug_pubtypes
  *(.debug_pubtypes)
 
-.debug_ranges   0x00000000      0x978
+.debug_ranges   0x00000000      0x980
  *(.debug_ranges)
  .debug_ranges  0x00000000       0xe8 BNO055/Adafruit_BNO055.o
  .debug_ranges  0x000000e8       0x30 Commands.o
@@ -2489,10 +2495,10 @@ END GROUP
  .debug_ranges  0x00000760       0x20 PcbPins/HardwarePcbServo.o
  .debug_ranges  0x00000780       0x10 PcbPins/PcbPins.o
  .debug_ranges  0x00000790       0x20 PcbPins/TwiPcbServo.o
- .debug_ranges  0x000007b0       0xb0 Robot.o
- .debug_ranges  0x00000860       0x30 Sensors/ImuSensor.o
- .debug_ranges  0x00000890       0x30 Sensors/PressureSensor.o
- .debug_ranges  0x000008c0       0xb8 Utils/Print.o
+ .debug_ranges  0x000007b0       0xb8 Robot.o
+ .debug_ranges  0x00000868       0x30 Sensors/ImuSensor.o
+ .debug_ranges  0x00000898       0x30 Sensors/PressureSensor.o
+ .debug_ranges  0x000008c8       0xb8 Utils/Print.o
 
 .debug_macro
  *(.debug_macro)

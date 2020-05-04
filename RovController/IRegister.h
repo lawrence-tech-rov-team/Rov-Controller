@@ -24,6 +24,15 @@ protected:
 		//EtherComm::SendCommand(CMD_UpdateDevice, len + 1);
 		EtherComm::SendCommand(id, len);	
 	}
+	
+	static void saveFloat(float f, uint8_t* buffer){ 
+		/*uint8_t* val = (uint8_t*)(&f);
+		*buffer++ = *val++;
+		*buffer++ = *val++;
+		*buffer++ = *val++;
+		*buffer++ = *val++;*/
+		*((float*)buffer) = f;
+	}
 		
 };
 
