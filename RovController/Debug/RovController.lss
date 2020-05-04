@@ -15,19 +15,19 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, READONLY
   5 .debug_aranges 00000a50  00000000  00000000  00005810  2**0
                   CONTENTS, READONLY, DEBUGGING
-  6 .debug_info   0001884c  00000000  00000000  00006260  2**0
+  6 .debug_info   00018865  00000000  00000000  00006260  2**0
                   CONTENTS, READONLY, DEBUGGING
-  7 .debug_abbrev 00005204  00000000  00000000  0001eaac  2**0
+  7 .debug_abbrev 0000520d  00000000  00000000  0001eac5  2**0
                   CONTENTS, READONLY, DEBUGGING
-  8 .debug_line   000062a8  00000000  00000000  00023cb0  2**0
+  8 .debug_line   000062a8  00000000  00000000  00023cd2  2**0
                   CONTENTS, READONLY, DEBUGGING
-  9 .debug_frame  00001ed4  00000000  00000000  00029f58  2**2
+  9 .debug_frame  00001ed4  00000000  00000000  00029f7c  2**2
                   CONTENTS, READONLY, DEBUGGING
- 10 .debug_str    00006ccc  00000000  00000000  0002be2c  2**0
+ 10 .debug_str    00006ccc  00000000  00000000  0002be50  2**0
                   CONTENTS, READONLY, DEBUGGING
- 11 .debug_loc    0000bfe5  00000000  00000000  00032af8  2**0
+ 11 .debug_loc    0000c00f  00000000  00000000  00032b1c  2**0
                   CONTENTS, READONLY, DEBUGGING
- 12 .debug_ranges 00000988  00000000  00000000  0003eadd  2**0
+ 12 .debug_ranges 00000988  00000000  00000000  0003eb2b  2**0
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
@@ -9852,7 +9852,8 @@ protected:
     3f4c:	24 30       	cpi	r18, 0x04	; 4
     3f4e:	49 f4       	brne	.+18     	; 0x3f62 <_ZN11TwiRegister22WriteRegisterRequestedEhPKhh+0x1e>
     3f50:	fa 01       	movw	r30, r20
-				Wire.setClock(*((uint32_t*)data));
+				uint32_t clock = *((uint32_t*)data);
+				Wire.setClock(clock);
     3f52:	40 81       	ld	r20, Z
     3f54:	51 81       	ldd	r21, Z+1	; 0x01
     3f56:	62 81       	ldd	r22, Z+2	; 0x02

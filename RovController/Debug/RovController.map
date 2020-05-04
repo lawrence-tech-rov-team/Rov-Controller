@@ -2272,7 +2272,7 @@ END GROUP
 .debug_pubnames
  *(.debug_pubnames)
 
-.debug_info     0x00000000    0x1884c
+.debug_info     0x00000000    0x18865
  *(.debug_info .gnu.linkonce.wi.*)
  .debug_info    0x00000000      0xbbc C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.209/gcc/dev/atmega2560/avr6/crtatmega2560.o
  .debug_info    0x00000bbc     0x437e BNO055/Adafruit_BNO055.o
@@ -2295,12 +2295,12 @@ END GROUP
  .debug_info    0x0000fe79      0x6b1 PcbPins/HardwarePcbServo.o
  .debug_info    0x0001052a      0xd09 PcbPins/PcbPins.o
  .debug_info    0x00011233      0x6f7 PcbPins/TwiPcbServo.o
- .debug_info    0x0001192a     0x399e Robot.o
- .debug_info    0x000152c8     0x1261 Sensors/ImuSensor.o
- .debug_info    0x00016529     0x1163 Sensors/PressureSensor.o
- .debug_info    0x0001768c     0x11c0 Utils/Print.o
+ .debug_info    0x0001192a     0x39b7 Robot.o
+ .debug_info    0x000152e1     0x1261 Sensors/ImuSensor.o
+ .debug_info    0x00016542     0x1163 Sensors/PressureSensor.o
+ .debug_info    0x000176a5     0x11c0 Utils/Print.o
 
-.debug_abbrev   0x00000000     0x5204
+.debug_abbrev   0x00000000     0x520d
  *(.debug_abbrev)
  .debug_abbrev  0x00000000      0xb1a C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.209/gcc/dev/atmega2560/avr6/crtatmega2560.o
  .debug_abbrev  0x00000b1a      0x5a8 BNO055/Adafruit_BNO055.o
@@ -2323,10 +2323,10 @@ END GROUP
  .debug_abbrev  0x00003ab0      0x21e PcbPins/HardwarePcbServo.o
  .debug_abbrev  0x00003cce      0x1c3 PcbPins/PcbPins.o
  .debug_abbrev  0x00003e91      0x21e PcbPins/TwiPcbServo.o
- .debug_abbrev  0x000040af      0x693 Robot.o
- .debug_abbrev  0x00004742      0x440 Sensors/ImuSensor.o
- .debug_abbrev  0x00004b82      0x3e6 Sensors/PressureSensor.o
- .debug_abbrev  0x00004f68      0x29c Utils/Print.o
+ .debug_abbrev  0x000040af      0x69c Robot.o
+ .debug_abbrev  0x0000474b      0x440 Sensors/ImuSensor.o
+ .debug_abbrev  0x00004b8b      0x3e6 Sensors/PressureSensor.o
+ .debug_abbrev  0x00004f71      0x29c Utils/Print.o
 
 .debug_line     0x00000000     0x62a8
  *(.debug_line .debug_line.* .debug_line_end)
@@ -2427,7 +2427,7 @@ END GROUP
  .debug_str     0x00006122       0xd1 PcbPins/TwiPcbServo.o
                                 0x6a1 (size before relaxing)
  .debug_str     0x000061f3      0x739 Robot.o
-                               0x2861 (size before relaxing)
+                               0x2867 (size before relaxing)
  .debug_str     0x0000692c      0x105 Sensors/ImuSensor.o
                                 0xf14 (size before relaxing)
  .debug_str     0x00006a31       0xc0 Sensors/PressureSensor.o
@@ -2435,7 +2435,7 @@ END GROUP
  .debug_str     0x00006af1      0x1db Utils/Print.o
                                 0x4a3 (size before relaxing)
 
-.debug_loc      0x00000000     0xbfe5
+.debug_loc      0x00000000     0xc00f
  *(.debug_loc)
  .debug_loc     0x00000000     0x2220 BNO055/Adafruit_BNO055.o
  .debug_loc     0x00002220      0x1a7 Commands.o
@@ -2456,10 +2456,10 @@ END GROUP
  .debug_loc     0x00008932      0x2d6 PcbPins/HardwarePcbServo.o
  .debug_loc     0x00008c08       0x29 PcbPins/PcbPins.o
  .debug_loc     0x00008c31      0x162 PcbPins/TwiPcbServo.o
- .debug_loc     0x00008d93     0x100b Robot.o
- .debug_loc     0x00009d9e      0x821 Sensors/ImuSensor.o
- .debug_loc     0x0000a5bf      0x406 Sensors/PressureSensor.o
- .debug_loc     0x0000a9c5     0x1620 Utils/Print.o
+ .debug_loc     0x00008d93     0x1035 Robot.o
+ .debug_loc     0x00009dc8      0x821 Sensors/ImuSensor.o
+ .debug_loc     0x0000a5e9      0x406 Sensors/PressureSensor.o
+ .debug_loc     0x0000a9ef     0x1620 Utils/Print.o
 
 .debug_macinfo
  *(.debug_macinfo)

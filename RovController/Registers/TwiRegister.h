@@ -28,7 +28,8 @@ protected:
 	void WriteRegisterRequested(uint8_t id, const uint8_t* data, uint8_t len){
 		if(id == _id){
 			if(len == 4){
-				Wire.setClock(*((uint32_t*)data));
+				uint32_t clock = *((uint32_t*)data);
+				Wire.setClock(clock);
 			}
 		}
 	}
