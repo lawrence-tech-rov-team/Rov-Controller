@@ -15,7 +15,7 @@ int main(void)
 	
 	if(!rov.begin()){
 		Serial.println("Failed to initialize robot.");
-		while(true) ;
+		while(true) rov.CheckErrorsOnly();
 	}
 	Serial.println("Initialized robot.");
 	

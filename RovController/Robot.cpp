@@ -71,6 +71,8 @@ ImuSensor Imu(
 
 TwiRegister TwiSettings(66);
 
+bool initialized = false;
+
 enum ErrorFlag {
 	None = 0x00,
 	IdCollision = 0x01,
@@ -235,6 +237,7 @@ bool Robot::begin(){
 	}
 	Serial.println("Initialized settings.");
 	
+	initialized = true;
 	return true;
 }
 
@@ -256,6 +259,10 @@ void Robot::Loop(){
 	Pressure.Update(EtherComm::buffer + 1);
 }
 
+void Robot::CheckErrorsOnly(){
+	EtherComm::Loop();
+}
+
 void PrintErrorCodes(){
 	EtherComm::buffer[1] = ErrorCodes.errors;
 	EtherComm::buffer[2] = ErrorCodes.id_collision;
@@ -267,10 +274,12 @@ void PrintErrorCodes(){
 void Robot::CommandReceived(const uint8_t id, const uint8_t* data, uint8_t len) {
 	if(id == 0xFF){
 		PrintErrorCodes();
-	}else if(registers[id] != NULL){
-		registers[id]->CommandReceived(id, data, len);
-	}else{
-		ErrorCodes.errors |= RegisterNotFound;
-		ErrorCodes.reg_not_found = id;
+	}else if(initialized) { 
+		if(registers[id] != NULL){
+			registers[id]->CommandReceived(id, data, len);
+		}else{
+			ErrorCodes.errors |= RegisterNotFound;
+			ErrorCodes.reg_not_found = id;
+		}
 	}
 }

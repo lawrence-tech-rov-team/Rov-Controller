@@ -17,6 +17,7 @@
 class Robot{
 public:
 	static bool begin();
+	static void CheckErrorsOnly();
 	static void Loop();
 	//static void CommandReceived(const uint8_t* data, uint8_t len);
 	static void CommandReceived(const uint8_t id, const uint8_t* data, uint8_t len);
